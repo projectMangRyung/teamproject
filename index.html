@@ -3,9 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Team project</title>
+    <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Test</h1>
+    <header>
+        <div class="logo">LOGO</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="brand.html">브랜드</a></li>
+                <li><a href="product.html">제품보기</a></li>
+                <li><a href="sale.html">세일특가</a></li>
+                <li><a href="map.html">오시는 길</a></li>
+                <li><a href="contact.html">고객센터</a></li>
+            </ul>
+        </nav>
+        <div class="login">
+            <ul>
+                <li><button>로그인</button></li>
+                <li><button>회원가입</button></li>
+                <li><img src="" alt="like"/></li>
+                <li><img src="" alt="cart"/></li>
+            </ul>
+        </div>
+    </header>
+    <div class="banner">
+        <section>
+            <div class="banner_text">
+                <h1>슬라이드 내용</h1>
+                <p>메인 배너 카피 영역</p>
+                <button>건강용품 보러가기</button>
+            </div>
+            <div class="banner_img">
+                <img src="./img/banner_1.jpg" alt=""/>
+            </div>
+        </section>
+    </div>
+    <div class="service">
+        <div>
+            <img src="" alt=""/>
+            <h4>무료 배송</h4>
+            <p>3만원 이상 무료배송</p>
+        </div>
+        <div>
+            <img src="" alt=""/>
+            <h4>30일 반품</h4>
+            <p>구매 후 30일 이내 반품</p>
+        </div>
+        <div>
+            <img src="" alt=""/>
+            <h4>정품 보장</h4>
+            <p>100% 정품만 판매</p>
+        </div>
+        <div>
+            <img src="" alt=""/>
+            <h4>24시 고객센터</h4>
+            <p>언제든지 문의 가능</p>
+        </div>
+    </div>
+    <div class="products">
+        <div class="category">
+            <div>
+                <img src="" alt="cate_dog"/>
+                <h4>강아지 카테고리</h4>
+                <p>사료, 간식, 액세서리</p>
+            </div>
+            <div>
+                <img src="" alt="cate_cat"/>
+                <h4>고양이 카테고리</h4>
+                <p>고양이 전용 용품</p>
+            </div>
+            <div>
+                <img src="" alt="cate_health"/>
+                <h4>건강 카테고리</h4>
+                <p>영양제 건강식품</p>
+            </div>
+        </div>
+        <div class="products_best">
+            <div class="best_title">
+                <h3>인기 상품</h3>
+                <button>전체 보기</button>
+            </div>
+            <div class="best_box">
+            </div>
+        </div>
+        <div class="random">
+            <img src="./img/product_1.jpg" alt="random_img"/>
+            <div class="random_text">
+                <h3>랜덤 강아지</h3>
+                <p>오늘의 랜덤 강아지를 만나보세요!</p>
+                <button>강아지 돌리기</button>
+        </div>
+    </div>
+    <div class="review">
+        <h1>우리가 말하지 않아도</h1>
+        <h1>보호자분들이 말해주셨어요</h1>
+        <div class="review_box">
+            <div class="review_card">
+                <img src="" alt="reviewimg1"/>
+                <ul>
+                    <li>로얄캐닌 미니 어덜트</li>
+                </ul>
+                <ul>
+                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
+                </ul>
+                <ul>
+                    <li>몽이</li>
+                    <li>김○○님</li>
+                </ul>
+                <ul>
+                    <li><img src="" alt="recommend"/>도움돼요 124</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function jsonload(){
+            try{
+                let res = await fetch("./json/product.json")
+                let product = await res.json()
+                let html = ''
+                product.forEach(function(item){
+                    html += `
+                            <div class='best_card'><img src='${item.src}' alt='${item.title}'/>
+                                <p>${item.brand}</p>
+                                <h4>${item.name}</h4>
+                                <h4>${item.price}</h4>
+                                <button>장바구니</button>
+                            </div>
+                            `
+                })
+                let bestBox = document.querySelector(".best_box")
+                bestBox.innerHTML = html
+            }catch(err){
+                console.error("에러발생", err)
+            }
+        }
+        jsonload()
+    </script>
 </body>
 </html>

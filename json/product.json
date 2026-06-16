@@ -1,0 +1,10 @@
+[
+    {"src" : "./img/product_1.jpg", "name" : "aaa", "price" : 1000, "brand" : "로얄캐닌", "title" : "product_1"},
+    {"src" : "./img/product_2.jpg", "name" : "bbb", "price" : 2000, "brand" : "수제공방", "title" : "product_2"},
+    {"src" : "./img/product_3.jpg", "name" : "ccc", "price" : 3000, "brand" : "내추럴코어", "title" : "product_3"},
+    {"src" : "./img/product_4.jpg", "name" : "ddd", "price" : 4000, "brand" : "홀리스틱", "title" : "product_4"},
+    {"src" : "./img/product_5.jpg", "name" : "eee", "price" : 5000, "brand" : "두두둑", "title" : "product_5"},
+    {"src" : "./img/product_6.jpg", "name" : "fff", "price" : 6000, "brand" : "슬리피", "title" : "product_6"},
+    {"src" : "./img/product_7.jpg", "name" : "ggg", "price" : 7000, "brand" : "여행멍", "title" : "product_7"},
+    {"src" : "./img/product_8.jpg", "name" : "hhh", "price" : 8000, "brand" : "아쿠아펫", "title" : "product_8"}
+]
