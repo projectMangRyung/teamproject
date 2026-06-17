@@ -6,11 +6,13 @@
     <title>Team project</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <header>
-        <div class="logo">LOGO</div>
+        <div class="logo"><img src="./img/logo_white.png" alt="logo"/></div>
         <nav>
             <ul>
                 <li><a href="index.html">홈</a></li>
@@ -30,17 +32,24 @@
             </ul>
         </div>
     </header>
-    <div class="banner">
-        <section>
-            <div class="banner_text">
-                <h1>슬라이드 내용</h1>
-                <p>메인 배너 카피 영역</p>
-                <button>건강용품 보러가기</button>
+    <div class="swiper banner">
+        <div class="swiper_wrapper">
+            <div class="swiper-slide">
+                <img src="./img/banner_1.jpg"/>
             </div>
-            <div class="banner_img">
-                <img src="./img/banner_1.jpg" alt=""/>
+            <div class="swiper-slide">
+                <img src="./img/banner_2.jpg"/>
             </div>
-        </section>
+            <div class="swiper-slide">
+                <img src="./img/banner_3.jpg"/>
+            </div>
+            <div class="swiper-slide">
+                <img src="./img/banner_4.jpg"/>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </div>
     <div class="service">
         <div>
@@ -67,9 +76,10 @@
     <div class="products">
         <div class="category">
             <div>
-                <img src="" alt="cate_dog"/>
+                
                 <h4>강아지 카테고리</h4>
                 <p>사료, 간식, 액세서리</p>
+                <img src="./img/dog.png" class="hover-anim dog-anim" alt="강아지 등장">
             </div>
             <div>
                 <img src="" alt="cate_cat"/>
@@ -91,11 +101,11 @@
             </div>
         </div>
         <div class="random">
-            <img src="./img/product_1.jpg" alt="random_img"/>
+            <img src="https://dog.ceo/api/breeds/image/random" alt="random_img"/>
             <div class="random_text">
                 <h3>랜덤 강아지</h3>
                 <p>오늘의 랜덤 강아지를 만나보세요!</p>
-                <button>강아지 돌리기</button>
+                <button onclick="randomDog()">강아지 돌리기</button>
             </div>
         </div>
     </div>
@@ -104,7 +114,7 @@
         <h1>보호자분들이 말해주셨어요</h1>
         <div class="review_box">
             <div class="review_card">
-                <img src="" alt="reviewimg1"/>
+                <img src="./img/product_1.jpg" alt="reviewimg1"/>
                 <ul>
                     <li>로얄캐닌 미니 어덜트</li>
                 </ul>
@@ -116,11 +126,104 @@
                     <li>김○○님</li>
                 </ul>
                 <ul>
-                    <li><img src="" alt="recommend"/>도움돼요 124</li>
+                    <li>도움돼요 124</li>
+                </ul>
+            </div>
+            <div class="review_card">
+                <img src="./img/product_1.jpg" alt="reviewimg1"/>
+                <ul>
+                    <li>로얄캐닌 미니 어덜트</li>
+                </ul>
+                <ul>
+                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
+                </ul>
+                <ul>
+                    <li>몽이</li>
+                    <li>김○○님</li>
+                </ul>
+                <ul>
+                    <li>도움돼요 124</li>
+                </ul>
+            </div>
+            <div class="review_card">
+                <img src="./img/product_1.jpg" alt="reviewimg1"/>
+                <ul>
+                    <li>로얄캐닌 미니 어덜트</li>
+                </ul>
+                <ul>
+                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
+                </ul>
+                <ul>
+                    <li>몽이</li>
+                    <li>김○○님</li>
+                </ul>
+                <ul>
+                    <li>도움돼요 124</li>
+                </ul>
+            </div>
+            <div class="review_card">
+                <img src="./img/product_1.jpg" alt="reviewimg1"/>
+                <ul>
+                    <li>로얄캐닌 미니 어덜트</li>
+                </ul>
+                <ul>
+                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
+                </ul>
+                <ul>
+                    <li>몽이</li>
+                    <li>김○○님</li>
+                </ul>
+                <ul>
+                    <li>도움돼요 124</li>
                 </ul>
             </div>
         </div>
     </div>
+    <div class="brandBox">
+    <div class="brand">
+        <h3>저희는 양심적으로 운영합니다</h3>
+        <p>반려동물을 가족처럼 생각하는 분들이 믿고 사용할 수 있도록, 우리가 지키는 원칙들을 투명하게 공개합니다.</p>
+        
+        <p>※ 위 약속을 지키지 못했을 경우 고객센터(이메일·채팅) 또는 SNS 어느 채널로든 알려주시면 즉시 처리합니다.</p>
+    </div>
+    </div>
+
+    <div class="join">
+        <img src="" alt="icon"/>
+        <h3>반려동물쇼핑몰 회원이 되어보세요</h3>
+        <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
+        <button>무료 회원가입</button>
+    </div>
+    
+    <footer>
+        <ul>
+            <li>logo</li>
+            <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
+            <li>
+                <img src="" alt="footer_icon1"/>
+                <img src="" alt="footer_icon2"/>
+            </li>
+        </ul>
+        <ul>
+            <li>쇼핑</li>
+            <li>제품보기</li>
+            <li>세일특가</li>
+            <li>브랜드 소개</li>
+        </ul>
+        <ul>
+            <li>고객지원</li>
+            <li>고객센터</li>
+            <li>오시는 길</li>
+            <li>로그인</li>
+            <li>회원가입</li>
+        </ul>
+        <ul>
+            <li>정보</li>
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+            <li>제휴/입점 문의</li>
+        </ul>
+    </footer>
     <script>
         async function jsonload(){
             try{
@@ -143,7 +246,27 @@
                 console.error("에러발생", err)
             }
         }
+        async function randomDog() {
+            try{
+                let ranimg = await fetch("https://dog.ceo/api/breeds/image/random")
+                let dogimg = await ranimg.json()
+                let html =  `
+                                <img src="${dogimg.message}" alt="random_img"/>
+                                <div class="random_text">
+                                    <h3>랜덤 강아지</h3>
+                                    <p>오늘의 랜덤 강아지를 만나보세요!</p>
+                                    <button>강아지 돌리기</button>
+                                </div>
+                            `
+                console.log(dogimg)
+                let randomBox = document.querySelector(".random")
+                randomBox.innerHTML = html
+            }catch(err){
+                console.err("이미지 로드 실패", err)
+            }
+        }
         jsonload()
+        randomDog()
     </script>
 </body>
 </html>
