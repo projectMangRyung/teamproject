@@ -1,11 +1,11 @@
 :root {
-    black : #222222;
-    light-black : #333333;
-    white : #EEEEEE;
-    Color-1 : #6FCF97;
-    Color-2 : #2FA084;
-    Color-3 : #1F6F5F;
-    ezen-dark : #27272E;
+    --black : #222222;
+    --light-black : #333333;
+    --white : #EEEEEE;
+    --Color-1 : #6FCF97;
+    --Color-2 : #2FA084;
+    --Color-3 : #1F6F5F;
+    --ezen-dark : #27272E;
 }
 
 *{
