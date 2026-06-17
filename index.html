@@ -255,14 +255,14 @@
                                 <div class="random_text">
                                     <h3>랜덤 강아지</h3>
                                     <p>오늘의 랜덤 강아지를 만나보세요!</p>
-                                    <button>강아지 돌리기</button>
+                                    <button onclick="randomDog()">강아지 돌리기</button>
                                 </div>
                             `
                 console.log(dogimg)
                 let randomBox = document.querySelector(".random")
                 randomBox.innerHTML = html
             }catch(err){
-                console.err("이미지 로드 실패", err)
+                console.error("이미지 로드 실패", err)
             }
         }
         jsonload()
