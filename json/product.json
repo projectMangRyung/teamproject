@@ -1,10 +1,10 @@
 [
-    {"src" :  "./img/dog1.jpg", "name" : "로얄캐닌 미니 어덜트 사료 2kg", "price" : "28,900원", "brand" : "로얄캐닌", "title" : "product_1"},
-    {"src" :  "./img/dog2.jpg", "name" : "오리&고구마 저알러지 수제간식200g", "price" : "11,900원", "brand" : "수제공방", "title" : "product_2"},
-    {"src" :  "./img/dog3.jpg", "name" : "퍼피 그레인프리 연어 사료 1.5kg", "price" : "45,000원", "brand" : "내추럴코어", "title" : "product_3"},
-    {"src" :  "./img/dog4.jpg", "name" : "치킨 저키 간식 100g", "price" : "8,900원", "brand" : "도기랑", "title" : "product_4"},
-    {"src" :  "./img/dog5.jpg", "name" : "바우와우 당근치즈볼 200g", "price" : "9,500원", "brand" : "웰펫", "title" : "product_5"},
-    {"src" :  "./img/dog6.jpg", "name" : "홀리스틱 어덜트 램&채소 사료 2kg", "price" : "34,000원", "brand" : "홀리스틱", "title" : "product_6"},
-    {"src" :  "./img/dog7.jpg", "name" : "스마트하트 퍼피 사료 1kg 3개 ", "price" : "29,900원", "brand" : "스마트하트", "title" : "product_7"},
-    {"src" :  "./img/dog8.jpg", "name" : "자연애 헌터본 덴탈케어껌 16P 3종", "price" : "13,500원", "brand" : "피플", "title" : "product_8"}
+    {"src" : "./img/product_1.jpg", "name" : "로얄캐닌 미니 어덜트 사료 2kg", "price" : "28,900원", "brand" : "로얄캐닌", "title" : "product_1"},
+    {"src" : "./img/product_2.jpg", "name" : "오리&고구마 저알러지 수제간식200g", "price" : "11,900원", "brand" : "수제공방", "title" : "product_2"},
+    {"src" : "./img/product_3.jpg", "name" : "퍼피 그레인프리 연어 사료 1.5kg", "price" : "45,000원", "brand" : "내추럴코어", "title" : "product_3"},
+    {"src" : "./img/product_4.jpg", "name" : "치킨 저키 간식 100g", "price" : "8,900원", "brand" : "도기랑", "title" : "product_4"},
+    {"src" : "./img/product_5.jpg", "name" : "강아지 치즈볼 간식 130g", "price" : "9,500원", "brand" : "도기랑", "title" : "product_5"},
+    {"src" : "./img/product_6.jpg", "name" : "홀리스틱 어덜트 람&채소 사료 6kg", "price" : "68,000원", "brand" : "홀리스틱", "title" : "product_6"},
+    {"src" : "./img/product_7.jpg", "name" : "스마트하트 퍼피 사료 3kg", "price" : "19,900원", "brand" : "스마트하트", "title" : "product_7"},
+    {"src" : "./img/product_8.jpg", "name" : "덴탈 껌 15개입", "price" : "13,500원", "brand" : "그린본", "title" : "product_8"}
 ]
