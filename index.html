@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -269,4 +270,304 @@
         randomDog()
     </script>
 </body>
+=======
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team project</title>
+    <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">LOGO</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li><a href="brand.html">브랜드</a></li>
+                <li><a href="product.html">제품보기</a></li>
+                <li><a href="sale.html">세일특가</a></li>
+                <li><a href="map.html">오시는 길</a></li>
+                <li><a href="contact.html">고객센터</a></li>
+            </ul>
+        </nav>
+        <div class="login">
+            <ul>
+                <li><button>로그인</button></li>
+                <li><button>회원가입</button></li>
+                <li><img src="" alt="like"/></li>
+                <li><img src="" alt="cart"/></li>
+            </ul>
+        </div>
+    </header>
+    <div class="banner">
+        <section>
+            <div class="banner_text">
+                <h1>슬라이드 내용</h1>
+                <p>메인 배너 카피 영역</p>
+                <button>건강용품 보러가기</button>
+            </div>
+            <div class="banner_img">
+                <img src="./img/banner_1.jpg" alt=""/>
+            </div>
+        </section>
+    </div>
+    <div class="service">
+        <div>
+            <img src="" alt=""/>
+            <h4>무료 배송</h4>
+            <p>3만원 이상 무료배송</p>
+        </div>
+        <div>
+            <img src="" alt=""/>
+            <h4>30일 반품</h4>
+            <p>구매 후 30일 이내 반품</p>
+        </div>
+        <div>
+            <img src="" alt=""/>
+            <h4>정품 보장</h4>
+            <p>100% 정품만 판매</p>
+        </div>
+        <div>
+            <img src="" alt=""/>
+            <h4>24시 고객센터</h4>
+            <p>언제든지 문의 가능</p>
+        </div>
+    </div>
+    <div class="products">
+        <div class="category">
+            <div>
+                <img src="" alt="cate_dog"/>
+                <h4>강아지 카테고리</h4>
+                <p>사료, 간식, 액세서리</p>
+            </div>
+            <div>
+                <img src="" alt="cate_cat"/>
+                <h4>고양이 카테고리</h4>
+                <p>고양이 전용 용품</p>
+            </div>
+            <div>
+                <img src="" alt="cate_health"/>
+                <h4>건강 카테고리</h4>
+                <p>영양제 건강식품</p>
+            </div>
+        </div>
+        <div class="products_best">
+            <div class="best_title">
+                <h3>인기 상품</h3>
+                <button>전체 보기</button>
+            </div>
+            <div class="best_box">
+            </div>
+        </div>
+        <div class="random">
+            <img src="./img/product_1.jpg" alt="random_img"/>
+            <div class="random_text">
+                <h3>랜덤 강아지</h3>
+                <p>오늘의 랜덤 강아지를 만나보세요!</p>
+                <button>강아지 돌리기</button>
+            </div>
+        </div>
+    </div>
+    <div class="review">
+        <h1>우리가 말하지 않아도</h1>
+        <h1>보호자분들이 말해주셨어요</h1>
+        <div class="review_box">
+            <div class="review_card">
+                <img src="" alt="reviewimg1"/>
+                <ul>
+                    <li>로얄캐닌 미니 어덜트</li>
+                </ul>
+                <ul>
+                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
+                </ul>
+                <ul>
+                    <li>몽이</li>
+                    <li>김○○님</li>
+                </ul>
+                <ul>
+                    <li><img src="" alt="recommend"/>도움돼요 124</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        async function jsonload(){
+            try{
+                let res = await fetch("./json/product.json")
+                let product = await res.json()
+                let html = ''
+                product.forEach(function(item){
+                    html += `
+                            <div class='best_card'><img src='${item.src}' alt='${item.title}'/>
+                                <p>${item.brand}</p>
+                                <h4>${item.name}</h4>
+                                <h4>${item.price}</h4>
+                                <button>장바구니</button>
+                            </div>
+                            `
+                })
+                let bestBox = document.querySelector(".best_box")
+                bestBox.innerHTML = html
+            }catch(err){
+                console.error("에러발생", err)
+            }
+        }
+        jsonload()
+    </script>
+=======
+test
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멍냥이 세상</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>반려동물 쇼핑몰</h1>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">반려동물 정보</a></li>
+                <li><a href="#">입양 안내</a></li>
+                <li><a href="#">커뮤니티</a></li>
+                <li><a href="#">고객센터</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- 메인 비주얼 -->
+        <section class="visual">
+            <h2>행복한 반려생활</h2>
+            <p>반려동물과 함께하는 즐거운 세상</p>
+        </section>
+
+        <!-- 반려동물 정보 -->
+        <section class="info">
+            <h2>반려동물 정보</h2>
+
+            <article>
+                <h3>강아지</h3>
+                <p>강아지의 특징과 관리 방법을 알아보세요.</p>
+            </article>
+
+            <article>
+                <h3>고양이</h3>
+                <p>고양이의 습성과 건강 정보를 제공합니다.</p>
+            </article>
+        </section>
+
+        <!-- 입양 안내 -->
+        <section class="adoption">
+            <h2>입양 안내</h2>
+            <p>유기동물 입양 절차와 준비사항을 확인하세요.</p>
+        </section>
+
+        <!-- 커뮤니티 -->
+        <section class="community">
+            <h2>커뮤니티</h2>
+            <p>반려인들이 자유롭게 소통하는 공간입니다.</p>
+        </section>
+
+        <!-- 공지사항 -->
+        <section class="notice">
+            <h2>공지사항</h2>
+
+            <ul>
+                <li>반려동물 건강관리 세미나 안내</li>
+                <li>입양 캠페인 일정 공지</li>
+                <li>사이트 업데이트 안내</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>상호명 : 멍냥이 세상</p>
+        <p>전화번호 : 010-1234-5678</p>
+        <p>Copyright © 2026 All Rights Reserved.</p>
+    </footer>
+    <script>
+    /* =============================================
+   멍냥이 세상 - main.js
+   ============================================= */
+
+// ===== 1. 헤더 스크롤 효과 =====
+const header = document.getElementById('header');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 30) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// ===== 2. 햄버거 메뉴 (모바일) =====
+const hamburger = document.getElementById('hamburger');
+const nav = document.getElementById('nav');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    nav.classList.toggle('open');
+});
+
+// 메뉴 밖 클릭시 닫기
+document.addEventListener('click', (e) => {
+    if (!header.contains(e.target)) {
+        hamburger.classList.remove('active');
+        nav.classList.remove('open');
+    }
+});
+
+// ===== 3. IntersectionObserver - 스크롤 등장 효과 =====
+const revealEls = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // 한 번 등장하면 관찰 해제
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+revealEls.forEach(el => observer.observe(el));
+
+// ===== 4. TOP 버튼 =====
+const topBtn = document.getElementById('topBtn');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        topBtn.classList.add('visible');
+    } else {
+        topBtn.classList.remove('visible');
+    }
+});
+
+topBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
+>>>>>>> 752b9baf8ec8846a06cff2f9fc1156630dc541a5
+</body>
+>>>>>>> origin/main
 </html>
