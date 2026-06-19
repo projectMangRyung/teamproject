@@ -47,21 +47,21 @@ function Createbtn(){
         .btn {
             display : flex;
             position : absolute;
-            bottom : calc(50% - 60px);
-            width: 40px;
-            height : 40px;
+            bottom : calc(50% -3.75rem);
+            width: 2.5rem;
+            height : 2.5rem;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 40px;
-            border: 1px solid white;
+            font-size: 2.5rem;
+            border: 0.0625rem solid white;
             border-radius: 50%;
         }
         .leftbtn{
-            left : 20px;
+            left : 2.5rem;
         }
         .rightbtn{
-            right : 20px;
+            right : 2.5rem;
         }
     `
     AddStyle(BtnStyle);
