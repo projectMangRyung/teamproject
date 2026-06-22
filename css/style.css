@@ -549,14 +549,58 @@ h3 {
 }
 
 .brand {
-    width: 90%;
-    max-width: 90rem;
-    margin: 0 auto;
-    padding: 5rem 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    width:90%;
+    max-width:90rem;
+    margin:3.75rem auto;
+    padding:3.125rem;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
+
+.brand img{
+    width:100%;
+    max-width:50rem;
+    margin:0 auto;
+    border-radius:1rem;
+    display:block;
+    box-shadow:0 0.25rem 1rem rgba(0,0,0,.1);
+}
+
+.brand h3{
+    font-size:2rem;
+    font-weight:700;
+    color:#1F6F5F;
+}
+
+.brand > p:first-of-type{
+    font-size:1.1rem;
+    color:#666;
+}
+
+.brand p:last-child{
+    font-size:1.5rem;
+    color:#333;
+    padding:1rem;
+}
+
+.brand_box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 1.875rem;
+}
+
+.brand_card {
+    display:flex;
+    justify-content:space-between;
+    flex-direction:column;
+    text-align:center;
+    margin-top:1.875rem;
+    background-color:#fff;
+    border-radius:0.9375rem;
+    box-shadow:0 0.25rem 0.75rem rgba(0,0,0,.08);
 }
 
 .brand h3 {
@@ -567,19 +611,13 @@ h3 {
 
 .brand > p:first-of-type {
     font-size: 1.125rem;
-    color: #555;
-    margin-bottom: 3.125rem;
-    line-height: 1.6;
-    word-break: keep-all;
+    color:#333;
 }
 
-.brand img {
-    width: 100%;
-    max-height: 30rem;
-    object-fit: cover;
-    border-radius: 1.25rem;
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.875rem;
+.brand_card p {
+    margin: 0.3125rem auto;
+    font-size: 0.9375rem;
+    color:#333;
 }
 
 .brand > p:last-of-type {
@@ -598,12 +636,9 @@ h3 {
     background-color: #2FA084;
 }
 
-.join img {
-    width: 4rem;
-    height: 4rem;
-    margin-bottom: 1.25rem;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
+.join img{
+    width:100%;
+    max-width:25rem;
 }
 
 .join h3 {
@@ -637,73 +672,27 @@ h3 {
     background-color: #fafafa;
 }
 
-
-footer {
-    width: 90%;
-    max-width: 90rem;
-    margin: 0 auto;
-    padding: 5rem 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 2.5rem;
-    flex-wrap: wrap;
+.join button:active{
+    transform:translateY(0.1rem);
 }
 
-footer ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9375rem;
+.dogInfo{
+    margin: 1.25rem 0;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.08);
 }
 
-footer ul:first-child {
-    flex: 2;
-    padding-right: 2rem;
-}
-
-footer ul:not(:first-child) {
-    flex: 1;
-}
-
-footer ul:first-child li:nth-child(1) img {
-    width: 10rem;
-    margin-bottom: 0.625rem;
-}
-
-footer ul:first-child li:nth-child(2) {
-    color: #666;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-}
-
-footer ul:first-child li:nth-child(3) {
-    display: flex;
-    gap: 0.625rem;
-    margin-top: 0.5rem;
-}
-
-footer ul:first-child li:nth-child(3) img {
-    width: 2.5rem;
-    height: 2.5rem;
-    background-color: #ccc;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-footer ul:not(:first-child) li:first-child {
-    font-size: 1.125rem;
+.dogInfo h4{
+    font-size: 1.25rem;
     font-weight: 700;
-    color: #333;
-    margin-bottom: 0.625rem;
-}
-
-footer ul:not(:first-child) li:not(:first-child) {
-    font-size: 0.9375rem;
-    color: #777;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-footer ul:not(:first-child) li:not(:first-child):hover {
     color: #1F6F5F;
-    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.dogInfo p{
+    font-size: 0.9375rem;
+    color: #666;
+    line-height: 1.6;
 }
