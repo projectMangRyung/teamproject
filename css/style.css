@@ -12,6 +12,7 @@ body {
     background-color: #EEEEEE;
 }
 
+/* ========== header ========== */
 header {
     width: 100%;
     height: 4rem;
@@ -77,6 +78,7 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     font-weight: 500;
     gap: 2rem;
 }
@@ -115,18 +117,13 @@ header {
     display: flex;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-}
-
-
+/* ========== slide ========== (2025/06/19 최정은) */
 .slidewrap{
-
     width: 100%;
+    height: 44rem;
     position: relative;
     overflow: hidden;
-
+    top: 2rem;
 }
 .slides{
     display: flex;
@@ -138,7 +135,7 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 36rem;
+    height: 44rem;
     overflow: hidden;
 
     color: white;
@@ -146,60 +143,52 @@ header {
 }
 .slide > img{
     width: 100%;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
 }
 .banner {
     width: 100%;
-    height: 36rem;
+    height: 44rem;
     position: relative;
 }
 
-.banner section {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    background-color: #fafafa;
-}
 
-.banner > section > img {
-    width: 100%;
-    object-fit: cover;
-}
+/* ========== service ========== */
 
 .service {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fafafa;
-    padding: 1.5rem;
+    background-color: white;
     box-shadow: 0 0.125rem 0.3125rem rgba(31, 111, 95, 0.15);
-    padding-top: 0;
-    padding-bottom: 2rem;
+    position: relative;
 }
 
-.service > div {
+.serviceBox{
     width: 90%;
     max-width: 90rem;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
-
-.service div img {
-    width: 3.125rem;
-    height: 3.125rem;
-    margin-bottom: 0.625rem;
+.serviceCard{
+    width: calc(100/4%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 0;
 }
-
+.serviceCard img{
+    width: clamp(4rem, 1.2vw, 5rem);
+    object-fit: cover;
+}
 .service .serviceBar {
     display: flex;
     flex-direction: column;
-    margin: 0.625rem;
+    text-align: center;
 }
 
 .service .serviceBar p {
@@ -341,7 +330,7 @@ h3 {
 }
 
 .random {
-    width: 90%;
+    width: 100%;
     max-width: 90rem;
     margin: 6.25rem auto 0;
     padding: 3.125rem;
@@ -379,10 +368,10 @@ h3 {
 }
 
 .review {
-    width: 90%;
+    width: 100%;
     max-width: 90rem;
     margin: 3.75rem auto;
-    padding: 5rem 2.5rem;
+    padding: 5rem 0rem;
     background-color: #EEEEEE;
     text-align: left;
     display: flex;
@@ -545,49 +534,79 @@ h3 {
 }
 
 
+/* === 저희는 양심적으로 ~~~ (26/06/22 전승근) === */
+
 .brandBox {
     width: 100%;
-    background-color: #E8F5E9; 
-    margin-top: 6.25rem;
+    background-color: #FAFAFA;
+    padding: 6.25rem 0;
 }
 
-.brand {
-    width: 90%;
-    max-width: 90rem;
+.brand-container {
+    width: 100%;
+    max-width: 85rem;
     margin: 0 auto;
-    padding: 5rem 0;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start; 
+    gap: 5rem;
 }
 
-.brand h3 {
+/* 좌측 고정 섹션 */
+.brand-sidebar {
+    flex: 1; /* 좌측 영역 비율 */
+    position: sticky;
+    top: 6rem;
+}
+
+.brand-sidebar .category {
+    color: #1abc9c;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+.brand-sidebar h3 {
     font-size: 2.25rem;
-    color: #1F6F5F;
+    color: #333;
     margin-bottom: 1.25rem;
+    line-height: 1.4;
 }
 
-.brand > p:first-of-type {
-    font-size: 1.125rem;
-    color: #555;
-    margin-bottom: 3.125rem;
+.brand-sidebar p {
+    font-size: 1rem;
+    color: #888;
     line-height: 1.6;
     word-break: keep-all;
 }
 
-.brand img {
-    width: 100%;
-    max-height: 30rem;
-    object-fit: cover;
-    border-radius: 1.25rem;
-    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.875rem;
+.brand-content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
 }
 
-.brand > p:last-of-type {
-    font-size: 0.875rem;
+.brand-item img {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+}
+
+.brand-item h4 {
+    font-size: 1.375rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.brand-item p {
+    font-size: 1rem;
     color: #888;
+    line-height: 1.6;
+    word-break: keep-all;
 }
 
 
