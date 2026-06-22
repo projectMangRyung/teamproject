@@ -19,10 +19,10 @@
 
             <!-- 메인 메뉴 -->
             <ul class="gnb">
-                <li><a href="index.html">홈</a></li>
-                <li><a href="brand.html">브랜드</a></li>
+                <li><a href="./index.html">홈</a></li>
+                <li><a href="./brand.html">브랜드</a></li>
                 <li class="gnb_products">
-                    <a href="product.html">제품보기</a>
+                    <a href="./product.html">제품보기</a>
                     <!-- 서브 메뉴 -->
                     <ul class="snb">
                         <li><a>전체 상품</a></li>
@@ -51,11 +51,12 @@
     <div class="banner">
         <div class="slidewrap">
             <div class="slides">
-                <div class="section1 slide"><img src="./img/banner_test.png" alt="banner_test"/></div>
-                <div class="section2 slide"><img src="./img/banner_test2.png" alt="banner_1"/></div>
-                <div class="section3 slide"><img src="./img/banner_test3.png" alt="banner_2"/></div>
-                <div class="section4 slide"><img src="./img/banner_3.jpg" alt="banner_3"/></div>
-                <div class="section5 slide"><img src="./img/banner_4.jpg" alt="banner_4"/></div>    
+                <div class="section1 slide"><img src="./img/new1.jpg" alt="banner_test"/></div>
+                <div class="section2 slide"><img src="./img/new2.jpg" alt="banner_1"/></div>
+                <div class="section3 slide"><img src="./img/new3.jpg" alt="banner_2"/></div>
+                <div class="section4 slide"><img src="./img/new4.jpg" alt="banner_3"/></div>
+                <div class="section5 slide"><img src="./img/new5.jpg" alt="banner_4"/></div>
+                <div class="section5 slide"><img src="./img/new6.jpg" alt="banner_5"/></div>       
             </div>
         </div>
     </div>
@@ -96,21 +97,27 @@
     <div class="products">
 
         <div class="category">
-            <div>
-                <h4>강아지 카테고리</h4>
-                <p>사료, 간식, 액세서리</p>
-                <img src="./img/dog.png" class="hover-anim dog-anim" alt="강아지 등장">
-            </div>
-            <div>
-                <h4>고양이 카테고리</h4>
-                <p>고양이 전용 용품</p>
-                <img src="./img/cat.png" class="hover-anim cat-anim" alt="고양이 등장">
-            </div>
-            <div>
-                <h4>건강 카테고리</h4>
-                <p>영양제 건강식품</p>
-                <img src="./img/pill.png" class="hover-anim pill-right" alt="건강이 등장">
-            </div>
+            <a href="./dogproduct.html">
+                <div class="dog_product">
+                    <h4>강아지 용품</h4>
+                    <p>사료, 간식, 액세서리</p>
+                    <img src="./img/dog.png" class="hover-anim dog-anim" alt="강아지 등장">
+                </div>
+            </a>
+            <a href="./catproduct.html">
+                <div class="cat_product">
+                    <h4>고양이 용품</h4>
+                    <p>고양이 전용 용품</p>
+                    <img src="./img/cat.png" class="hover-anim cat-anim" alt="고양이 등장">
+                </div>
+            </a>
+            <a href="./healthproduct">
+                <div class="health_product">
+                    <h4>건강식품</h4>
+                    <p>영양제 건강식품</p>
+                    <img src="./img/pill.png" class="hover-anim pill-right" alt="건강이 등장">
+                </div>
+            </a>       
         </div>
         <div class="products_best">
             <div class="best_title">
@@ -137,12 +144,32 @@
         </div>
     </div>
     <div class="brandBox">
-    <div class="brand">
-        <h3>저희는 양심적으로 운영합니다</h3>
-        <p>반려동물을 가족처럼 생각하는 분들이 믿고 사용할 수 있도록, 우리가 지키는 원칙들을 투명하게 공개합니다.</p>
-        <img src="./img/brandimg.jpg" alt="brandimg"/>
-        <p>※ 위 약속을 지키지 못했을 경우 고객센터(이메일·채팅) 또는 SNS 어느 채널로든 알려주시면 즉시 처리합니다.</p>
-    </div>
+        <div class="brand-container">
+            <div class="brand-sidebar">
+                <span class="category">MAGAZINE</span>
+                <h3>저희는 양심적으로<br>운영합니다.</h3>
+                <p>반려동물을 가족처럼 생각하는 분들이 믿고 사용할 수 있도록, 우리가 지키는 원칙들을 투명하게 공개합니다.</p>
+            </div>
+
+            <div class="brand-content">
+                <div class="brand-item">
+                    <img src="./img/new1.jpg" alt="100% 정품" />
+                    <h4>100% 정품만 판매합니다</h4>
+                    <p>모든 입점 상품은 브랜드 공식 계약 후 유통됩니다. 가품 적발 시 구매가의 200% 보상을 약속합니다.</p>
+                </div>
+            
+            <div class="brand-item">
+                <img src="./img/new1.jpg" alt="두 번째 약속 이미지" />
+                <h4>100% 정품만 판매합니다2</h4>
+                <p>모든 입점 상품은 브랜드 공식 계약 후 유통됩니다. 가품 적발 시 구매가의 300% 보상을 약속합니다.</p>
+            </div>
+            
+            <div class="brand-item">
+                <img src="./img/new1.jpg" alt="세 번째 약속 이미지" />
+                <h4>100% 정품만 판매합니다3</h4>
+                <p>모든 입점 상품은 브랜드 공식 계약 후 유통됩니다. 가품 적발 시 구매가의 200% 보상을 약속합니다.</p>
+            </div>
+        </div>
     </div>
 
     <div class="join">
