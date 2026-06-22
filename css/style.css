@@ -556,6 +556,7 @@ h3 {
     flex: 1; /* 좌측 영역 비율 */
     position: sticky;
     top: 6rem;
+    padding-bottom: 10.5rem;
 }
 
 .brand-sidebar .category {
@@ -586,7 +587,8 @@ h3 {
     flex: 2;
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    gap: 5rem;
+    padding-bottom: 10rem;
 }
 
 .brand-item img {
@@ -609,6 +611,8 @@ h3 {
     word-break: keep-all;
 }
 
+
+/* === ~~ 매거진 종료(26/06/22 전승근2) === */
 
 .join {
     width: 100%;
