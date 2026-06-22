@@ -157,7 +157,7 @@ header {
 }
 
 
-/* ========== service ========== */
+/* ========== service  gap 추가(2026.06.22 최정은) ========== */
 
 .service {
     width: 100%;
@@ -184,6 +184,7 @@ header {
     align-items: center;
     flex-direction: column;
     padding: 2rem 0;
+    gap: 1rem;
 }
 .serviceCard img{
     width: clamp(4rem, 1.2vw, 5rem);
@@ -193,6 +194,7 @@ header {
     display: flex;
     flex-direction: column;
     text-align: center;
+    gap: 0.2rem;
 }
 
 .service .serviceBar p {
@@ -639,6 +641,7 @@ header {
 }
 
 
+/* === ~~ 매거진 종료(26/06/22 전승근2) === */
 
 .join {
     width: 100%;
@@ -689,7 +692,6 @@ header {
     background-color: #fafafa;
 }
 
-
 footer {
     width: 90%;
     max-width: 90rem;
@@ -736,8 +738,6 @@ footer ul:first-child li:nth-child(3) {
 footer ul:first-child li:nth-child(3) img {
     width: 2.5rem;
     height: 2.5rem;
-    background-color: #ccc;
-    border-radius: 50%;
     cursor: pointer;
 }
 
