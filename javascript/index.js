@@ -196,59 +196,16 @@ async function userload(){
 }
 async function randomDog() {
     try{
-        let ranimg = await fetch("https://dog.ceo/api/breeds/image/random");
-        let dogimg = await ranimg.json();
-
-        let breed = dogimg.message.split("/")[4];
-
-        const dogInfo = {
-            labrador: {
-                name: "래브라도 리트리버",
-                desc: "온순하고 사람을 좋아하는 대표적인 가족견입니다."
-            },
-            husky: {
-                name: "시베리안 허스키",
-                desc: "활동량이 많고 매우 똑똑한 견종입니다."
-            },
-            pug: {
-                name: "퍼그",
-                desc: "애교가 많고 사람과 함께 있는 것을 좋아합니다."
-            },
-            poodle: {
-                name: "푸들",
-                desc: "지능이 높고 털 빠짐이 적어 인기가 많습니다."
-            },
-            beagle: {
-                name: "비글",
-                desc: "호기심이 많고 에너지가 넘치는 견종입니다."
-            },
-            bulldog: {
-                name: "불독",
-                desc: "차분하고 충성심이 강한 성격을 가지고 있습니다."
-            },
-            corgi: {
-                name: "웰시코기",
-                desc: "짧은 다리와 귀여운 외모로 사랑받는 견종입니다."
-            }
-        };
-
-        let dogName = "오늘의 강아지";
-        let dogDesc = "귀여운 강아지를 만나보세요!";
-
-        if(dogInfo[breed]){
-            dogName = dogInfo[breed].name;
-            dogDesc = dogInfo[breed].desc;
-        }
-
-        document.querySelector(".randomImg").innerHTML = `
-            <img src="${dogimg.message}" alt="random_img">
-        `;
-
-        document.querySelector(".dogInfo h4").innerText = dogName;
-        document.querySelector(".dogInfo p").innerText = dogDesc;
-
+        let ranimg = await fetch("https://dog.ceo/api/breeds/image/random")
+        let dogimg = await ranimg.json()
+        let html =  `
+                        <img src="${dogimg.message}" alt="random_img"/>
+                    `
+        console.log(dogimg)
+        let randomBox = document.querySelector(".randomImg")
+        randomBox.innerHTML = html
     }catch(err){
-        console.error("이미지 로드 실패", err);
+        console.err("이미지 로드 실패", err)
     }
 }
 productload()
