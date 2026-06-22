@@ -148,7 +148,10 @@ async function productload(){
         let html = ''
         product.forEach(function(item){
             html += `
-                    <div class='best_card'><img src='${item.src}' alt='${item.title}'/>
+                    <div class='best_card'>
+                        <div class='bestImg'>
+                            <img src='${item.src}' alt='${item.title}'/>
+                        </div>
                         <p>${item.brand}</p>
                         <h4>${item.name}</h4>
                         <h4>${item.price}</h4>
