@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Product</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
     <link rel="stylesheet" href="./css/product.css"/>
@@ -47,6 +47,41 @@
             </ul>
         </div>
     </header>
+    <div class="product">
+        <div class="product_leftBox">
+            <ul>
+                <li>카테고리</li>
+                <li>전체상품</li>
+                <li>강아지 용품</li>
+                <li>고양이 용품</li>
+                <li>사료/간식</li>
+                <li>장난감</li>
+                <li>액세서리</li>
+                <li>건강/미용</li>
+            </ul>
+        </div>
+        <div class="product_all">
+            <div class="all_search">
+                <h1>전체상품</h1>
+                <label>
+                    <input type="text" placeholder="검색어를 입력해주세요"/>
+                    <button><img src="./img/search_icon.png" alt="search"/></button>
+                </label>
+            </div>
+            <hr>
+            <div class="sort">
+                <label>정렬
+                    <select id="sort" name="sort">
+                        <option value="date">최신순</option>
+                        <option value="review">평점순</option>
+                        <option value="name">이름순</option>
+                    </select>
+                </label>
+            </div>
+            <div class="product_box">
+            </div>
+        </div>
+    </div>
     <footer>
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
@@ -78,5 +113,6 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./javascript/common.js"></script>
+    <script src="./javascript/product.js"></script>
 </body>
 </html>
