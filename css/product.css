@@ -1,0 +1,84 @@
+.product{
+    width: 100%;
+    position: relative;
+    display: flex;
+    top: 4rem;
+    background-color: white;
+}
+.product_leftBox{
+    width: 20rem;
+    position: sticky;
+    background-color: #f1f1f1;
+    border-right: 1px solid #ddd;
+    padding: 2rem;
+}
+.product_leftBox > ul{
+    display: flex;
+    flex-direction: column;
+}
+.product_leftBox > ul > li{
+    padding: 1rem;
+    border: 1px solid black;
+}
+.product_all{
+    width: 100%;
+    margin: 4rem;
+}
+.all_search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+.all_search > label{
+    width: 30rem;
+    border: 1px solid #ddd;
+    padding: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.all_search > label > input{
+    width: 20rem;
+    border: none;
+}
+.sort{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+.product_box{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.product_card{
+    height: 30rem;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.9375rem;
+}
+.product_card > p{
+    color: #999;
+}
+.productImg{
+    height: 20rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.productImg > img{
+    object-fit: cover;
+}
+.product_card > button{
+    border: 1px solid #bbb;
+    color: black;
+    padding: 0.8rem;
+    transition: all 0.3s;
+    font-weight: 500;
+}
