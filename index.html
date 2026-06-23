@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team project</title>
     <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/common.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,10 +20,10 @@
 
             <!-- 메인 메뉴 -->
             <ul class="gnb">
-                <li><a href="index.html">홈</a></li>
-                <li><a href="brand.html">브랜드</a></li>
+                <li><a href="./index.html">홈</a></li>
+                <li><a href="./brand.html">브랜드</a></li>
                 <li class="gnb_products">
-                    <a href="product.html">제품보기</a>
+                    <a href="./product.html">제품보기</a>
                     <!-- 서브 메뉴 -->
                     <ul class="snb">
                         <li><a>전체 상품</a></li>
@@ -39,8 +40,8 @@
                 <li><a href="contact.html">고객센터</a></li>
             </ul>
             <ul class="login">
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
                 <li><a><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
@@ -49,52 +50,75 @@
 
     <!-- 배너 화면 -->
     <div class="banner">
-        <section>
-            <img src="./img/banner_test.png" alt="bannerimg"/>
-        </section>
+        <div class="slidewrap">
+            <div class="slides">
+                <div class="section1 slide"><img src="./img/new1.jpg" alt="banner_test"/></div>
+                <div class="section2 slide"><img src="./img/new2.jpg" alt="banner_1"/></div>
+                <div class="section3 slide"><img src="./img/new3.jpg" alt="banner_2"/></div>
+                <div class="section4 slide"><img src="./img/new4.jpg" alt="banner_3"/></div>
+                <div class="section5 slide"><img src="./img/new5.jpg" alt="banner_4"/></div>
+                <div class="section5 slide"><img src="./img/new6.jpg" alt="banner_5"/></div>       
+            </div>
+        </div>
     </div>
 
     <!-- 서비스 강점 -->
     <div class="service">
-        <div>
-            <img src="./img/icon_1.png" alt=""/>
-            <h4>무료 배송</h4>
-            <p>3만원 이상 무료배송</p>
-        </div>
-        <div>
-            <img src="./img/icon_2.png" alt=""/>
-            <h4>30일 반품</h4>
-            <p>구매 후 30일 이내 반품</p>
-        </div>
-        <div>
-            <img src="./img/icon_3.png" alt=""/>
-            <h4>정품 보장</h4>
-            <p>100% 정품만 판매</p>
-        </div>
-        <div>
-            <img src="./img/icon_4.png" alt=""/>
-            <h4>24시 고객센터</h4>
-            <p>언제든지 문의 가능</p>
+        <div class="serviceBox">
+            <div class="serviceCard">
+                <img src="./img/icon_1.png" alt=""/>
+                <div class="serviceBar"> 
+                    <h4>무료 배송</h4>
+                    <p>3만원 이상 무료배송</p>
+                </div>
+            </div>
+            <div class="serviceCard">
+                <img src="./img/icon_2.png" alt=""/>
+                <div class="serviceBar"> 
+                    <h4>30일 반품</h4>
+                    <p>구매 후 30일 이내 반품</p>
+                </div>
+            </div>
+            <div class="serviceCard">
+                <img src="./img/icon_3.png" alt=""/>
+                <div class="serviceBar"> 
+                    <h4>정품 보장</h4>
+                    <p>100% 정품만 판매</p>
+                </div>
+            </div>
+            <div class="serviceCard">
+                <img src="./img/icon_4.png" alt=""/>
+                <div class="serviceBar"> 
+                    <h4>24시 고객센터</h4>
+                    <p>언제든지 문의 가능</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="products">
+
         <div class="category">
-            <div>
-                <h4>강아지 카테고리</h4>
-                <p>사료, 간식, 액세서리</p>
-                <img src="./img/dog_2.png" class="hover-anim dog-anim" alt="강아지 등장">
-            </div>
-            <div>
-                <h4>고양이 카테고리</h4>
-                <p>고양이 전용 용품</p>
-                <img src="./img/cat_2.png" class="hover-anim cat-anim" alt="고양이 등장">
-            </div>
-            <div>
-                <h4>건강 카테고리</h4>
-                <p>영양제 건강식품</p>
-                <img src="./img/cat_1.png" class="hover-anim pill-left" alt="강아지 알약">
-                <img src="./img/dog_1.png" class="hover-anim pill-right" alt="고양이 알약">
-            </div>
+            <a href="./dogproduct.html">
+                <div class="dog_product">
+                    <h4>강아지 용품</h4>
+                    <p>사료, 간식, 액세서리</p>
+                    <img src="./img/dog_product.png" class="hover-anim dog-anim" alt="강아지 등장">
+                </div>
+            </a>
+            <a href="./catproduct.html">
+                <div class="cat_product">
+                    <h4>고양이 용품</h4>
+                    <p>고양이 전용 용품</p>
+                    <img src="./img/cat_product.png" class="hover-anim cat-anim" alt="고양이 등장">
+                </div>
+            </a>
+            <a href="./healthproduct">
+                <div class="health_product">
+                    <h4>건강식품</h4>
+                    <p>영양제 건강식품</p>
+                    <img src="./img/pill.png" class="hover-anim pill-right" alt="건강이 등장">
+                </div>
+            </a>       
         </div>
         <div class="products_best">
             <div class="best_title">
@@ -105,7 +129,8 @@
             </div>
         </div>
         <div class="random">
-            <img src="https://dog.ceo/api/breeds/image/random" alt="random_img"/>
+            <div class="randomImg">
+            </div>
             <div class="random_text">
                 <h3>랜덤 강아지</h3>
                 <p>오늘의 랜덤 강아지를 만나보세요!</p>
@@ -117,84 +142,40 @@
         <h1>우리가 말하지 않아도</h1>
         <h1>보호자분들이 말해주셨어요</h1>
         <div class="review_box">
-            <div class="review_card">
-                <img src="./img/product_1.jpg" alt="reviewimg1"/>
-                <ul>
-                    <li>로얄캐닌 미니 어덜트</li>
-                </ul>
-                <ul>
-                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
-                </ul>
-                <ul>
-                    <li>몽이</li>
-                    <li>김○○님</li>
-                </ul>
-                <ul>
-                    <li>도움돼요 124</li>
-                </ul>
-            </div>
-            <div class="review_card">
-                <img src="./img/product_1.jpg" alt="reviewimg1"/>
-                <ul>
-                    <li>로얄캐닌 미니 어덜트</li>
-                </ul>
-                <ul>
-                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
-                </ul>
-                <ul>
-                    <li>몽이</li>
-                    <li>김○○님</li>
-                </ul>
-                <ul>
-                    <li>도움돼요 124</li>
-                </ul>
-            </div>
-            <div class="review_card">
-                <img src="./img/product_1.jpg" alt="reviewimg1"/>
-                <ul>
-                    <li>로얄캐닌 미니 어덜트</li>
-                </ul>
-                <ul>
-                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
-                </ul>
-                <ul>
-                    <li>몽이</li>
-                    <li>김○○님</li>
-                </ul>
-                <ul>
-                    <li>도움돼요 124</li>
-                </ul>
-            </div>
-            <div class="review_card">
-                <img src="./img/product_1.jpg" alt="reviewimg1"/>
-                <ul>
-                    <li>로얄캐닌 미니 어덜트</li>
-                </ul>
-                <ul>
-                    <li>먹기 전 체중이 3.5kg이었는데 2달만에 건강하게 4.2kg이 됐어요. 사료 바꾸고 나서 너무 잘 먹어서 깜짝 놀랐어요 😊</li>
-                </ul>
-                <ul>
-                    <li>몽이</li>
-                    <li>김○○님</li>
-                </ul>
-                <ul>
-                    <li>도움돼요 124</li>
-                </ul>
-            </div>
         </div>
     </div>
     <div class="brandBox">
-    <div class="brand">
-        <h3>저희는 양심적으로 운영합니다</h3>
-        <p>반려동물을 가족처럼 생각하는 분들이 믿고 사용할 수 있도록, 우리가 지키는 원칙들을 투명하게 공개합니다.</p>
-        <img src="./img/brand_1.jpg" alt="brandimg"/>
-        <p>※ 위 약속을 지키지 못했을 경우 고객센터(이메일·채팅) 또는 SNS 어느 채널로든 알려주시면 즉시 처리합니다.</p>
-    </div>
+        <div class="brand-container">
+            <div class="brand-sidebar">
+                <span class="category">MAGAZINE</span>
+                <h3>저희는 양심적으로<br>운영합니다.</h3>
+                <p>반려동물을 가족처럼 생각하는 분들이 믿고 사용할 수 있도록, 우리가 지키는 원칙들을 투명하게 공개합니다.</p>
+            </div>
+
+            <div class="brand-content">
+                <div class="brand-item">
+                <img src="./img/content1.jpg" alt="1c" />
+                <h4>100% 정품만 판매합니다</h4>
+                <p>모든 입점 상품은 브랜드 공식 계약 후 유통됩니다. 가품 적발 시 구매가의 200% 보상을 약속합니다.</p>
+            </div>
+            
+            <div class="brand-item">
+                <img src="./img/content2.jpg" alt="2c" />
+                <h4>수의사가 직접 검수합니다</h4>
+                <p>사료·영양제·건강용품은 제휴 수의사 3인이 성분과 안전성을 검토한 뒤 등록됩니다.</p>
+            </div>
+            
+            <div class="brand-item">
+                <img src="./img/content3.jpg" alt="3c" />
+                <h4>수익의 5%를 유기동물 보호소에</h4>
+                <p>매달 전체 매출의 5%가 전국 보호소에 사료 및 의료비로 기부됩니다. 구매가 곧 나눔입니다.</p>
+            </div>
+        </div>
     </div>
 
     <div class="join">
-        <img src="" alt="icon"/>
-        <h3>반려동물쇼핑몰 회원이 되어보세요</h3>
+        <img src="./img/join_logo_dark.png" alt="icon"/>
+        <h3>멍냥허브 회원이 되어보세요</h3>
         <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
         <button>무료 회원가입</button>
     </div>
@@ -203,8 +184,8 @@
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
             <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
             <li>
-                <img src="" alt="footer_icon1"/>
-                <img src="" alt="footer_icon2"/>
+                <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
+                <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
             </li>
         </ul>
         <ul>
@@ -228,57 +209,7 @@
         </ul>
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script>
-        $(function(){
-            $(".gnb_products").mouseenter(function(){
-                $(".snb").addClass("on")
-            })
-            $(".gnb_products").mouseleave(function(){
-                $(".snb").removeClass("on")
-            })
-        })
-        async function jsonload(){
-            try{
-                let res = await fetch("./json/product.json")
-                let product = await res.json()
-                let html = ''
-                product.forEach(function(item){
-                    html += `
-                            <div class='best_card'><img src='${item.src}' alt='${item.title}'/>
-                                <p>${item.brand}</p>
-                                <h4>${item.name}</h4>
-                                <h4>${item.price}</h4>
-                                <button>장바구니</button>
-                            </div>
-                            `
-                })
-                let bestBox = document.querySelector(".best_box")
-                bestBox.innerHTML = html
-            }catch(err){
-                console.error("에러발생", err)
-            }
-        }
-        async function randomDog() {
-            try{
-                let ranimg = await fetch("https://dog.ceo/api/breeds/image/random")
-                let dogimg = await ranimg.json()
-                let html =  `
-                                <img src="${dogimg.message}" alt="random_img"/>
-                                <div class="random_text">
-                                    <h3>랜덤 강아지</h3>
-                                    <p>오늘의 랜덤 강아지를 만나보세요!</p>
-                                    <button>강아지 돌리기</button>
-                                </div>
-                            `
-                console.log(dogimg)
-                let randomBox = document.querySelector(".random")
-                randomBox.innerHTML = html
-            }catch(err){
-                console.err("이미지 로드 실패", err)
-            }
-        }
-        jsonload()
-        randomDog()
-    </script>
+    <script src="./javascript/index.js"></script>
+    <script src="./javascript/common.js"></script>
 </body>
 </html>
