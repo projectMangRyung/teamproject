@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
-    <link rel="stylesheet" href="./css/product.css"/>
+    <link rel="stylesheet" href="./css/map.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
@@ -47,6 +47,48 @@
             </ul>
         </div>
     </header>
+
+    <div class="mapContainer">
+        <div class="map_wrap">
+            <h2>오시는 길</h2>
+            <!-- 지도 컨테이너 -->
+            <div id="map"></div>
+        </div>
+    </div>
+    <div class="addressContainer">
+        <div class="address_wrap">
+            <h2>주소</h2>
+            <hr>
+            <p>서울특별시 강남구 테헤란로 427 위워크타워 5층</p>
+            <h2>연락처</h2>
+            <hr>
+            <p>02-1234-5678</p>
+        </div>
+        <div class="road_wrap">
+            <div class="road_bus">
+                <img src="./img/map_bus_icon.png" alt="bus"/>
+                <div class="road_bus_inner">
+                    <h2>버스 이용시</h2>
+                    <p>버스역</p>
+                </div>
+            </div>
+            <div class="road_subway">
+                <img src="./img/map_subway_icon.png" alt="subway"/>
+                <div class="road_subway_inner">
+                    <h2>지하철 이용시</h2>
+                    <p>지하철역</p>
+                </div>
+            </div>
+            <div class="road_car">
+                <img src="./img/map_car_icon.png" alt="car"/>
+                <div class="road_car_inner">
+                    <h2>자가용 이용시</h2>
+                    <p>주차장</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer -->
     <footer>
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
@@ -78,5 +120,7 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./javascript/common.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faa5b32ec9ddd4f39910a3a5eca4b743"></script>
+    <script src="./javascript/map.js"></script>
 </body>
 </html>
