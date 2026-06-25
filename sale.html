@@ -1,11 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>멍냥허브 - 세일특가</title>
+    <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/sale.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    
+    <header>
+        <div class="headerInner">
+            <div class="logo">
+                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+            </div>
+            <ul class="gnb">
+                <li><a href="./index.html">홈</a></li>
+                <li><a href="./brand.html">브랜드</a></li>
+                <li class="gnb_products">
+                    <a href="./product.html">제품보기</a>
+                    <ul class="snb">
+                        <li><a>전체 상품</a></li>
+                        <li><a>강아지 용품</a></li>
+                        <li><a>고양이 용품</a></li>
+                        <li><a>사료/간식</a></li>
+                        <li><a>장난감</a></li>
+                        <li><a>액세서리</a></li>
+                        <li><a>건강/미용</a></li>
+                    </ul>
+                </li>
+                <li><a href="sale.html">세일특가</a></li>
+                <li><a href="map.html">오시는 길</a></li>
+                <li><a href="contact.html">고객센터</a></li>
+            </ul>
+            <ul class="login">
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입</a></li>
+                <li><a><img src="./img/like.png" alt="like"/></a></li>
+                <li><a><img src="./img/cart.png" alt="cart"/></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="sale-wrap">
+        <section class="sale-hero">
+            <div class="hero-content">
+                <div class="badge-top"></div>
+            </div>
+            <div class="deco bag">🛍️</div>
+            <div class="deco dog">🐶</div>
+            <div class="deco cat">🐱</div>
+            <div class="deco balloon1">🎈</div>
+            <div class="deco balloon2">🎈</div>
+        </section>
+
+        <div class="timer-wrap">
+            <div class="timer-box">
+                <span>세일 종료까지</span>
+                <div class="timer">
+                    <div class="time-block" id="hours">00</div><span class="colon">:</span>
+                    <div class="time-block" id="minutes">00</div><span class="colon">:</span>
+                    <div class="time-block" id="seconds">00</div>
+                </div>
+            </div>
+        </div>
+
+        <section class="sale-categories-sec">
+            <h2 class="section-title">✨ 카테고리별 특가</h2>
+            <div class="sale-categories">
+                <div class="cat-item bg-pink">
+                    <div class="icon">🐾</div>
+                    <h3>전체 상품</h3>
+                    <p>모든 특가 아이템</p>
+                </div>
+                <div class="cat-item bg-orange">
+                    <div class="icon">🐶</div>
+                    <h3>강아지 용품</h3>
+                    <p>댕댕이 인기 용품</p>
+                </div>
+                <div class="cat-item bg-yellow">
+                    <div class="icon">🐱</div>
+                    <h3>고양이 용품</h3>
+                    <p>냥냥이 취향 저격</p>
+                </div>
+                <div class="cat-item bg-green">
+                    <div class="icon">🥫</div>
+                    <h3>사료/간식</h3>
+                    <p>맛있고 신선한 먹거리</p>
+                </div>
+                <div class="cat-item bg-blue">
+                    <div class="icon">🎾</div>
+                    <h3>장난감</h3>
+                    <p>스트레스 풀리는 놀이</p>
+                </div>
+                <div class="cat-item bg-purple">
+                    <div class="icon">🎀</div>
+                    <h3>액세서리</h3>
+                    <p>스타일을 살리는 소품</p>
+                </div>
+                <div class="cat-item bg-gray">
+                    <div class="icon">🧼</div>
+                    <h3>건강/미용</h3>
+                    <p>깨끗하고 건강한 케어</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="todays-deal-sec">
+            <div class="deal-header">
+                <h2 class="section-title">🔥 오늘의 특가 DEAL</h2>
+                <div class="deal-right">
+                    <span class="deal-badge">매일 00시 새로운 특가 OPEN!</span>
+                    <button class="btn-more">전체보기 ></button>
+                </div>
+            </div>
+            <div class="deal-grid" id="deal-product-list">
+            </div>
+        </section>
+
+        <section class="sale-event-sec">
+            <div class="event-machine-wrap">
+                <div class="machine-title">
+                    <p>하루 한 번 행운의 찬스</p>
+                    <h2>LUCKY CLAW MACHINE</h2>
+                    <p class="sub">✨ 통통 튀는 캡슐을 뽑고 10~50% 랜덤 쿠폰을 획득하세요! ✨</p>
+                </div>
+                
+                <div class="claw-machine">
+                    <div class="glass-box">
+                        <div class="claw-assembly">
+                            <div class="claw-rod"></div>
+                            <div class="claw-joint-box">
+                                <div class="claw-arm left-arm"></div>
+                                <div class="claw-arm right-arm"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="machine-base">
+                        <button class="btn-play" onclick="randomCoupon()">PUSH START</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="long-event-image-wrap">
+        <img src="./img/pag_banner.png" alt="이벤트 상세 이미지" style="width: 100%; display: block; margin: 0 auto;">
+    </div>
+
+    <footer>
+        <ul>
+            <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
+            <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
+            <li>
+                <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
+                <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
+            </li>
+        </ul>
+        <ul>
+            <li>쇼핑</li>
+            <li>제품보기</li>
+            <li>세일특가</li>
+            <li>브랜드 소개</li>
+        </ul>
+        <ul>
+            <li>고객지원</li>
+            <li>고객센터</li>
+            <li>오시는 길</li>
+            <li>로그인</li>
+            <li>회원가입</li>
+        </ul>
+        <ul>
+            <li>정보</li>
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+            <li>제휴/입점 문의</li>
+        </ul>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $(".gnb_products").mouseenter(function(){
+                $(".snb").addClass("on")
+            })
+            $(".gnb_products").mouseleave(function(){
+                $(".snb").removeClass("on")
+            })
+        });
+
+        function updateTimer() {
+            const now = new Date();
+            const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            const diff = midnight - now;
+
+            let h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            let m = Math.floor((diff / 1000 / 60) % 60);
+            let s = Math.floor((diff / 1000) % 60);
+
+            const hoursEl = document.getElementById('hours');
+            const minutesEl = document.getElementById('minutes');
+            const secondsEl = document.getElementById('seconds');
+            
+            if (hoursEl && minutesEl && secondsEl) {
+                hoursEl.innerText = h < 10 ? '0' + h : h;
+                minutesEl.innerText = m < 10 ? '0' + m : m;
+                secondsEl.innerText = s < 10 ? '0' + s : s;
+            }
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        const saleProducts = [
+            { "src" : "./img/product_1.jpg", "name" : "로얄캐닌 미니 어덜트 사료 2kg", "price" : 28900, "discount" : 30, "rating": 4.8, "review": 128 },
+            { "src" : "./img/product_2.jpg", "name" : "오리&고구마 저알러지 수제간식", "price" : 11900, "discount" : 25, "rating": 4.9, "review": 96 },
+            { "src" : "./img/product_15.jpg", "name" : "대형 모찌 바스락 삑삑이 인형", "price" : 9500, "discount" : 20, "rating": 4.7, "review": 73 },
+            { "src" : "./img/product_22.jpg", "name" : "당근과 채찍 레이저 낚시대", "price" : 26900, "discount" : 35, "rating": 4.5, "review": 55 },
+            { "src" : "./img/product_18.jpg", "name" : "반사판 올인원 우비 (강아지)", "price" : 10500, "discount" : 15, "rating": 4.6, "review": 81 }
+        ];
+
+        const dealList = document.getElementById('deal-product-list');
+        if (dealList) {
+            saleProducts.forEach(prod => {
+                const discountedPrice = Math.floor(prod.price * (1 - prod.discount / 100)).toLocaleString();
+                const originalPrice = prod.price.toLocaleString();
+                const card = `
+                    <div class="deal-card">
+                        <div class="img-wrap">
+                            <div class="discount-badge">${prod.discount}%</div>
+                            <img src="${prod.src}" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/300?text=Image'">
+                            <button class="btn-wish">♡</button>
+                        </div>
+                        <div class="info-wrap">
+                            <h4>${prod.name}</h4>
+                            <div class="price-wrap">
+                                <span class="original">${originalPrice}원</span>
+                                <span class="discounted">${discountedPrice}원</span>
+                            </div>
+                            <div class="rating">
+                                ⭐ ${prod.rating} <span>(${prod.review})</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                dealList.innerHTML += card;
+            });
+        }
+
+        function randomCoupon() {
+            const coupons = [10, 20, 30, 40, 50];
+            const randomIndex = Math.floor(Math.random() * coupons.length);
+            const selectedCoupon = coupons[randomIndex];
+
+            let html = `
+                <div class="coupon-popup">
+                    <h3>🎉 축하합니다! 🎉</h3>
+                    <p><strong>${selectedCoupon}%</strong> 랜덤 쿠폰 당첨!</p>
+                </div>
+            `;
+            
+            let randomBox = document.querySelector(".glass-box");
+            let existingPopup = document.querySelector(".coupon-popup");
+            if(existingPopup) {
+                existingPopup.remove();
+            }
+            randomBox.insertAdjacentHTML('beforeend', html);
+        }
+    </script>
 </body>
 </html>
