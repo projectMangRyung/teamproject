@@ -1,156 +1,269 @@
 /* ====================
+   스크롤 등장
+==================== */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-hidden.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====================
    브랜드 소개
 ==================== */
-
-.intro{
-    padding:180px 0 120px;
-    text-align:center;
+.intro {
+    padding: 11.25rem 0 7.5rem;
+    text-align: center;
 }
 
-.intro-inner p{
-    color:#1F6F5F;
-    font-size:3rem;
-    font-weight:bold;
-    margin-bottom:35rem;
+.intro-inner h2 {
+    font-size: 4rem;
+    color: #1F6F5F;
+    margin-bottom: 1rem;
 }
 
-.intro-inner h2{
-    font-size:1.4rem;
+.intro-inner p {
+    font-size: 1.3rem;
+    color: #111;
 }
 
 /* ====================
    비전
 ==================== */
-
-.vision{
-    width:90%;
-    margin:0 auto 20rem;
+.vision {
+    width: 90%;
+    margin: 0 auto 20rem;
 }
 
-.vision-content{
-    position:relative;
-    overflow:hidden;
-    border-radius:5rem;
+.vision-content {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5rem;
 }
 
-.vision-content img{
-    width:100%;
-    height:55rem;
-    object-fit:cover;
-    display:block;
-    filter:brightness(55%);
+.vision-content img {
+    width: 100%;
+    height: 55rem;
+    object-fit: cover;
+    display: block;
+    filter: brightness(55%);
 }
 
-.vision-content span{
-    position:absolute;
-    top:6rem;
-    left:6.5rem;
-    color:#fff;
-    font-size:1.4rem;
-    z-index:2;
+.vision-content span {
+    position: absolute;
+    top: 3rem;
+    left: 6.5rem;
+    color: #fff;
+    font-size: 1.4rem;
+    z-index: 2;
 }
 
-.vision-content h2{
-    position:absolute;
-    left:6.5rem;
-    top:12rem;
-
-    color:#fff;
-    z-index:2;
-
-    font-size:3rem;
-    font-weight:bold;
+.vision-content h2 {
+    position: absolute;
+    left: 6.5rem;
+    top: 6rem;
+    color: #fff;
+    z-index: 2;
+    font-size: 2.7rem;
+    font-weight: bold;
 }
 
 /* ====================
    슬로건
 ==================== */
-
-.brand-slogun{
-    padding:20rem 20rem;
-    text-align:center;
+.brand-slogun {
+    padding: 10rem 20rem;
+    text-align: center;
 }
 
-.brand-slogun h1{
-    color:#1F6F5F;
-    font-size:1.6rem;
-    margin-bottom:3rem;
+.brand-slogun h1 {
+    color: #1F6F5F;
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
 }
 
-.brand-slogun img{
-    width:80rem;
-    margin-bottom:5rem;
+.brand-slogun img {
+    width: 80rem;
+    margin-bottom: 5rem;
     border-radius: 2rem;
 }
 
-.brand-slogun p{
-    font-size:1.8rem;
-    color:black;
-    line-height:1.8;
+.brand-slogun p {
+    font-size: 1.8rem;
+    color: black;
+    line-height: 1.8;
 }
 
 /* ====================
    핵심가치
 ==================== */
-
-.brand-value{
-    padding:150px 0;
+.brand-value {
+    padding: 9.375rem 0;
 }
 
-.value-title{
-    display:block;
-    text-align:center;
-    color:#1F6F5F;
-    font-size:1.5rem;
-    font-weight:bold;
-    margin-bottom:7rem;
-}
-
-.value-wrap{
-    max-width:110rem;
-    margin:0 auto;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-}
-
-.value-item{
-    position:relative;
-    text-align:center;
-}
-
-.value-item h3{
-    font-size:54px;
-    color:#1F6F5F;
-    margin-bottom:0.9rem;
-}
-
-.value-item span{
-    font-size:3rem;
-    color:#1F6F5F;
-    margin-bottom:1rem;
-}
-
-.value-item p{
-    width: 15rem;
-    position:absolute;
-    top:30rem;
-    left:5rem;
-    color: white;
-    font-size:1.43rem;
+.value-title {
+    display: block;
+    text-align: center;
+    color: #1F6F5F;
+    font-size: 1.5rem;
     font-weight: bold;
-    z-index:10;
+    margin-bottom: 7rem;
 }
 
-.value-item img{
-    width:25rem;
-    height:25rem;
-    border-radius:50%;
-    object-fit:cover;
-    transition: all 0.5s;
+.value-wrap {
+    max-width: 110rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-.value-item img:hover{
-    transform:scale(1.1);
+.value-item {
+    position: relative;
+    text-align: center;
+}
+
+.value-item h3 {
+    font-size: 3.375rem;
+    color: #1F6F5F;
+    margin-bottom: 0.9rem;
+}
+
+.value-item span {
+    font-size: 3rem;
+    color: #1F6F5F;
+    margin-bottom: 1rem;
+}
+
+.value-item p {
+    width: 15rem;
+    position: absolute;
+    top: 30rem;
+    left: 5rem;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+.value-item img {
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.value-item img:hover {
+    transform: scale(1.1);
+}
+
+/* ====================
+   TOP 버튼
+==================== */
+.top-btn {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #1F6F5F;
+    color: #fff;
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+    z-index: 999;
+}
+
+.top-btn:hover {
+    opacity: 0.8;
+}
+
+/* ====================
+   반응형
+==================== */
+@media (max-width: 48rem) {
+    .intro {
+        padding: 8rem 1.5rem 4rem;
+    }
+
+    .intro-inner h2 {
+        font-size: 2.5rem;
+    }
+
+    .intro-inner p {
+        font-size: 1.1rem;
+    }
+
+    .vision {
+        width: 95%;
+        margin-bottom: 8rem;
+    }
+
+    .vision-content img {
+        height: 25rem;
+    }
+
+    .vision-content h2 {
+        font-size: 1.8rem;
+        top: 7rem;
+        left: 2rem;
+    }
+
+    .vision-content span {
+        top: 3.5rem;
+        left: 2rem;
+        font-size: 1rem;
+    }
+
+    .brand-slogun {
+        padding: 5rem 1.5rem;
+    }
+
+    .brand-slogun img {
+        width: 100%;
+    }
+
+    .brand-slogun p {
+        font-size: 1.1rem;
+    }
+
+    .brand-value {
+        padding: 5rem 0;
+    }
+
+    .value-title {
+        font-size: 1.2rem;
+        margin-bottom: 4rem;
+    }
+
+    .value-wrap {
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+        padding: 0 1.5rem;
+    }
+
+    .value-item h3 {
+        font-size: 2.5rem;
+    }
+
+    .value-item img {
+        width: 18rem;
+        height: 18rem;
+    }
+
+    .value-item p {
+        width: 12rem;
+        top: 22rem;
+        left: 3rem;
+        font-size: 1rem;
+    }
 }
