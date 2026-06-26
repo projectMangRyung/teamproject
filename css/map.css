@@ -1,81 +1,155 @@
-.mapContainer{
-    width: 100%;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    top: 4rem;
+/* ==========================================
+   오시는 길 페이지 레이아웃 & 여백 조정
+========================================== */
+.subpage-main {
+    /* 하단 푸터와의 간격을 넓혀 전체적인 레이아웃 호흡을 유연하게 만듭니다. */
+    padding-bottom: 10rem;
 }
-.map_wrap{
-    width: 90%;
-    max-width: 90rem;
-}
-.map_wrap > h2{
+
+/* 배너 오버라이드 */
+.map-banner {
+    background: linear-gradient(rgba(46, 90, 68, 0.75), rgba(46, 90, 68, 0.75)), url('../img/background_black.png') center/contain;
+    padding: 8rem 0; /* 배너 높이감을 키워 시원한 공간감 확보 */
     text-align: center;
-    font-size: 3.2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
 }
-#map{
-    width: clamp(50rem, 1.2vw, 60rem);
-    height: clamp(40rem, 1.2vw, 48rem);
-    margin: 2rem auto;
+
+.banner-text{
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 3;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
-.addressContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4rem;
+
+.banner-text p{
+    line-height: 1.6;
+}
+/* 지도 영역 컨테이너 */
+.map-container {
     position: relative;
-    background-color: white;
+    max-width: 1450px; /* 대화면에서 무한정 늘어나지 않도록 고정 */
+    margin: 8rem auto 6rem auto; /* 배너 및 하단 콘텐츠와의 간격 대폭 확대 */
+    border-radius: 36px; /* 더 부드럽고 둥근 외곽선 */
+    background-color: #FDFBF7;
+    padding: 1.5rem; /* 지도 테두리 여백 */
+    box-shadow: 0 12px 35px rgba(46, 90, 68, 0.04); /* 고급스러운 그림자 효과 */
+    border: 1px solid rgba(46, 90, 68, 0.04);
 }
-.address_wrap{
-    width: 90%;
-    max-width: 90rem;
-    margin: 4rem auto;
+
+/* 실제 카카오맵 영역 */
+.kakao-map {
+    width: 100%;
+    height: 42rem; /* 지도가 화면에서 충분한 비중을 차지하도록 높이 확대 */
+    border-radius: 28px; /* 컨테이너에 맞춘 내부 곡률 */
+    background-color: #E6E2D8; /* 맵 로딩 전 대체 컬러 */
+}
+
+/* 지도 위 떠있는 주소 카드 */
+.address-card {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 3.5rem;
+    background-color: rgba(253, 251, 247, 0.95);
+    backdrop-filter: blur(12px); /* 배경 블러 효과 강화 */
+    padding: 2.5rem 3rem; /* 카드 내부 여백 확장 */
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); /* 맵 위에서 붕 떠보이도록 입체감 향상 */
+    z-index: 10; /* 카카오맵 컨트롤 위로 */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem; /* 텍스트 간의 숨통 트기 */
+    border: 1px solid rgba(46, 90, 68, 0.1);
 }
-.address_wrap > h2{
-    font-size: 2.5rem;
+
+.address-header h3 {
+    font-size: 1.6rem;
+    color: #2E5A44;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.5px;
 }
-.address_wrap > hr{
-    border: 1px solid #ddd;
-    width: 10rem;
+
+.address-header p {
+    font-size: 1.1rem;
+    color: #2A2C2B;
+    line-height: 1.5;
 }
-.address_wrap > p{
-    font-size: 1.5rem;
+
+.address-contact {
+    font-size: 1.15rem;
+    color: #5A625E;
+    border-top: 1px solid rgba(46, 90, 68, 0.1);
+    padding-top: 1.2rem;
+    margin-top: 0.5rem;
 }
-.road_wrap{
-    width: 90%;
-    max-width: 90rem;
-    margin: 4rem auto;
+
+.address-contact strong {
+    color: #2E5A44;
+    margin-right: 0.5rem;
+    font-weight: 800;
+}
+
+/* 교통수단 안내 카드 */
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem; /* 카드 사이 간격 확대 */
+    max-width: 1500px;
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 0 2rem;
+}
+
+.transport-card {
     display: flex;
-    flex-direction: column;
-    gap: 5rem;
+    align-items: center;
+    gap: 1.8rem; /* 아이콘과 텍스트 사이 간격 확보 */
+    background-color: #FDFBF7;
+    border: 1px solid rgba(46, 90, 68, 0.04);
+    border-radius: 28px;
+    padding: 2.5rem 2rem; /* 카드 내부 상하좌우 패딩 확장 */
+    box-shadow: 0 10px 30px rgba(46, 90, 68, 0.02);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-.road_wrap > div{
-    display: flex;
-    gap: 4rem;
+
+.transport-card:hover {
+    transform: translateY(-12px); /* 호버 시 조금 더 극적인 반응 */
+    box-shadow: 0 20px 40px rgba(46, 90, 68, 0.08);
 }
-.road_wrap > div > img{
-    width: 8rem;
-    height: 8rem;
+
+.t-icon {
+    width: 5.5rem; /* 아이콘 배경 원 크기 확대 */
+    height: 5.5rem;
+    background-color: #F5F3EE;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-shrink: 0;
 }
-.road_wrap > div > div{
-    height: 8rem;
+
+.t-icon img {
+    width: 2.8rem; /* 아이콘 이미지 크기 확대 */
+    height: 2.8rem;
+    object-fit: contain;
+}
+
+.t-info {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     gap: 0.5rem;
+}
+
+.t-info h4 {
+    font-size: 1.3rem;
+    color: #2A2C2B;
+    font-weight: 800;
+    margin: 0;
+}
+
+.t-info p {
+    font-size: 1rem;
+    color: #7A827E;
+    line-height: 1.6; /* 텍스트 가독성 확보 */
+    word-break: keep-all; /* 단어 단위로 줄바꿈 되도록 설정 */
+    margin: 0;
 }

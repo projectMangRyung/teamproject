@@ -1,0 +1,8 @@
+.headerInner {
+    opacity: 0;
+    transform: translateY(1rem);
+}
+.headerInner.observe{
+    opacity: 1;
+    transform: translateY(0);
+}
