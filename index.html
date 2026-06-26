@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team project</title>
     <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/common.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,8 +40,8 @@
                 <li><a href="contact.html">고객센터</a></li>
             </ul>
             <ul class="login">
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
                 <li><a><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
@@ -122,18 +123,10 @@
         <div class="products_best">
             <div class="best_title">
                 <h3>인기 상품</h3>
-                <button>전체 보기</button>
+                <!-- 전체 보기 버튼 클릭 시 모든 상품 표시(2026.06.25 최정은) -->
+                <button id="show_all">전체 보기</button>
             </div>
             <div class="best_box">
-            </div>
-        </div>
-        <div class="random">
-            <div class="randomImg">
-            </div>
-            <div class="random_text">
-                <h3>랜덤 강아지</h3>
-                <p>오늘의 랜덤 강아지를 만나보세요!</p>
-                <button onclick="randomDog()">강아지 돌리기</button>
             </div>
         </div>
     </div>
@@ -209,15 +202,6 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./javascript/index.js"></script>
-    <script>
-        $(function(){
-            $(".gnb_products").mouseenter(function(){
-                $(".snb").addClass("on")
-            })
-            $(".gnb_products").mouseleave(function(){
-                $(".snb").removeClass("on")
-            })
-        })
-    </script>
+    <script src="./javascript/common.js"></script>
 </body>
 </html>

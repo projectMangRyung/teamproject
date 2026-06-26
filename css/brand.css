@@ -23,28 +23,26 @@
 .intro-inner h2 {
     font-size: 4rem;
     color: #1F6F5F;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
     margin-bottom: 1rem;
 }
 
 .intro-inner p {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #111;
-    font-weight: bold;
 }
 
 /* ====================
    비전
 ==================== */
 .vision {
-    width: 100%;
+    width: 90%;
     margin: 0 auto 20rem;
 }
 
 .vision-content {
     position: relative;
     overflow: hidden;
-    /* border-radius: 5rem; */
+    border-radius: 5rem;
 }
 
 .vision-content img {
@@ -52,6 +50,7 @@
     height: 55rem;
     object-fit: cover;
     display: block;
+    filter: brightness(55%);
 }
 
 .vision-content span {
@@ -71,7 +70,6 @@
     z-index: 2;
     font-size: 2.7rem;
     font-weight: bold;
-    text-shadow: 0 0 8px rgba(41, 165, 3, 0.822)
 }
 
 /* ====================

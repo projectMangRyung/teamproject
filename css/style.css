@@ -278,13 +278,15 @@ header {
     right: 1.25rem;
     opacity: 1;
 }
-
+/* 전체보기 버튼 클릭 시 높이 자동으로 변경(2026.06.25 최정은) */
 .products_best {
     width: 90%;
     max-width: 90rem;
     margin: 3.125rem auto;
     display: flex;
     flex-direction: column;
+    height: 35rem;
+    overflow: hidden;
 }
 
 .best_title {
@@ -360,49 +362,6 @@ header {
     border: 1px solid #999;
 }
 
-/* 랜덤 강아지 수정(2026.06.22 최정은) */
-.random {
-    width: 90%;
-    max-width: 90rem;
-    margin: 6.25rem auto 0;
-    padding: 3.125rem;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    flex-direction: row;
-    background-color: #fafafa;
-    border: 1px solid #ddd;
-}
-
-.random img {
-    width: 9.375rem;
-    height: 9.375rem;
-    object-fit: cover;
-}
-
-.random p {
-    margin-top: 1.25rem;
-    font-size: 1.125rem;
-    color: #333;
-}
-
-.random button {
-    background-color: #fff;
-    border: none;
-    padding: 0.625rem 1.25rem;
-    font-size: 1.125rem;
-    cursor: pointer;
-    margin-top: 1.25rem;
-    border-radius: 1.5625rem;
-    transition: all 0.3s;
-    border: 1px solid #ddd;
-    font-weight: bold;
-}
-.random button:hover{
-    background-color: #f1f1f1;
-    color: #1F6F5F;
-}
 .review {
     width: 90%;
     max-width: 90rem;
@@ -658,8 +617,6 @@ header {
     width: 4rem;
     height: 4rem;
     margin-bottom: 1.25rem;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
 }
 
 .join h3 {
