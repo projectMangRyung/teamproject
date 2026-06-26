@@ -165,6 +165,13 @@ async function productload(){
         console.error("에러발생", err)
     }
 }
+// 전체보기 버튼 클릭 시 높이 자동으로 변경(2026.06.25 최정은)
+const showAllBtn = document.getElementById("show_all");
+showAllBtn.addEventListener("click", function() {
+    const product_best = document.querySelector(".products_best");
+    product_best.style.height = "auto";
+    product_best.style.overflow = "visible";
+});
 
 async function userload(){
     try{
@@ -197,20 +204,5 @@ async function userload(){
         console.error("에러발생", err)
     }
 }
-async function randomDog() {
-    try{
-        let ranimg = await fetch("https://dog.ceo/api/breeds/image/random")
-        let dogimg = await ranimg.json()
-        let html =  `
-                        <img src="${dogimg.message}" alt="random_img"/>
-                    `
-        console.log(dogimg)
-        let randomBox = document.querySelector(".randomImg")
-        randomBox.innerHTML = html
-    }catch(err){
-        console.err("이미지 로드 실패", err)
-    }
-}
 productload()
 userload()
-randomDog()
