@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 - 멍냥허브</title>
+    <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/common.css"/>
+    <link rel="stylesheet" href="./css/cart.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ========== 헤더 ========== -->
+    <header>
+        <div class="headerInner">
+            <div class="logo">
+                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+            </div>
+            <ul class="gnb">
+                <li><a href="./index.html">홈</a></li>
+                <li><a href="./brand.html">브랜드</a></li>
+                <li class="gnb_products">
+                    <a href="./product.html">제품보기</a>
+                    <ul class="snb">
+                        <li><a>전체 상품</a></li>
+                        <li><a>강아지 용품</a></li>
+                        <li><a>고양이 용품</a></li>
+                        <li><a>사료/간식</a></li>
+                        <li><a>장난감</a></li>
+                        <li><a>액세서리</a></li>
+                        <li><a>건강/미용</a></li>
+                    </ul>
+                </li>
+                <li><a href="sale.html">세일특가</a></li>
+                <li><a href="map.html">오시는 길</a></li>
+                <li><a href="contact.html">고객센터</a></li>
+            </ul>
+            <ul class="login">
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
+                <li><a><img src="./img/like.png" alt="like"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ========== 배너 ========== -->
+    <section class="cart-banner scroll-hidden">
+        <nav class="breadcrumb">
+            <a href="./index.html">홈</a>
+            <span class="breadcrumb-arrow">›</span>
+            <span class="breadcrumb-current">장바구니</span>
+        </nav>
+        <h2>장바구니</h2>
+        <p>담으신 상품을 확인해보세요</p>
+        <p class="cart-count">총 <strong id="bannerCount">0</strong>개의 상품</p>
+    </section>
+
+    <!-- ========== 장바구니 본문 ========== -->
+    <section class="cart-wrap scroll-hidden">
+
+        <!-- 장바구니 목록 -->
+        <div class="cart-list">
+
+            <!-- 전체선택 / 선택삭제 -->
+            <div class="cart-list-header">
+                <label>
+                    <input type="checkbox" id="checkAll"> 전체 선택
+                </label>
+                <button id="deleteSelected">선택 삭제</button>
+            </div>
+
+            <!-- 아이템 렌더링 영역 (JS로 동적 생성) -->
+            <div id="cartItems"></div>
+
+            <!-- 빈 장바구니 -->
+            <div id="emptyCart" class="empty-cart">
+                <p>🐕‍🦺 장바구니가 비어있어요</p>
+                <p class="empty-sub">마음에 드는 상품을 담아보세요!</p>
+                <a href="./product.html">쇼핑 계속하기</a>
+            </div>
+
+        </div>
+
+        <!-- 주문 요약 -->
+        <div class="cart-summary scroll-hidden">
+            <h3>주문 요약</h3>
+            <div class="summary-row">
+                <span>상품 금액</span>
+                <span id="totalPrice">0원</span>
+            </div>
+            <div class="summary-row">
+                <span>배송비</span>
+                <span id="deliveryFee">0원</span>
+            </div>
+            <div class="summary-row total">
+                <span>총 결제금액</span>
+                <span id="finalPrice">0원</span>
+            </div>
+            <p class="free-delivery-notice" id="freeNotice"></p>
+            <button class="order-btn">주문하기</button>
+            <a href="./product.html" class="continue-shopping">쇼핑 계속하기</a>
+        </div>
+
+    </section>
+
+    <!-- ========== TOP 버튼 ========== -->
+    <button class="top-btn">▲</button>
+
+    <!-- ========== 푸터 ========== -->
+    <footer>
+        <ul>
+            <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
+            <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
+            <li>
+                <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
+                <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
+            </li>
+        </ul>
+        <ul>
+            <li>쇼핑</li>
+            <li>제품보기</li>
+            <li>세일특가</li>
+            <li>브랜드 소개</li>
+        </ul>
+        <ul>
+            <li>고객지원</li>
+            <li>고객센터</li>
+            <li>오시는 길</li>
+            <li>로그인</li>
+            <li>회원가입</li>
+        </ul>
+        <ul>
+            <li>정보</li>
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+            <li>제휴/입점 문의</li>
+        </ul>
+    </footer>
+
+    <!-- ========== 스크립트 ========== -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./javascript/common.js"></script>
+    <script src="./javascript/cart.js"></script>
+
+</body>
+</html>
