@@ -1,0 +1,87 @@
+.mapContainer{
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    top: 4rem;
+}
+.map_wrap{
+    width: 90%;
+    max-width: 90rem;
+}
+.map_wrap > h2{
+    text-align: center;
+    font-size: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+#map{
+    width: clamp(50rem, 1.2vw, 60rem);
+    height: clamp(40rem, 1.2vw, 48rem);
+    margin: 2rem auto;
+}
+.addressContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    position: relative;
+    background-color: white;
+}
+.address_wrap{
+    width: 90%;
+    max-width: 90rem;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.address_wrap > h2{
+    font-size: 2.5rem;
+}
+.address_wrap > hr{
+    border: 1px solid #ddd;
+    width: 10rem;
+}
+.address_wrap > p{
+    font-size: 1.5rem;
+}
+.road_wrap{
+    width: 90%;
+    max-width: 90rem;
+    margin: 4rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+.road_wrap > div{
+    display: flex;
+    gap: 4rem;
+}
+.road_wrap > div > img{
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.road_wrap > div > div{
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+.road_wrap > div > div > h3{
+    font-size: 1.5rem;
+}
+.road_wrap > div > div > p{
+    font-size: 1.2rem;
+}
