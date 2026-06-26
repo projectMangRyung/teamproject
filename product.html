@@ -65,7 +65,7 @@
                 <h1>전체상품</h1>
                 <label>
                     <input type="text" placeholder="검색어를 입력해주세요"/>
-                    <button><img src="./img/search_icon.png" alt="search"/></button>
+                    <button><img src="./img/search.png" alt="search"/></button>
                 </label>
             </div>
             <hr>
@@ -114,5 +114,52 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./javascript/common.js"></script>
     <script src="./javascript/product.js"></script>
+
+    <div id="productModal" class="modal">
+        <div class="modal_content">
+            <button class="modal_close" aria-label="닫기">&times;</button>
+            <div class="modal_body">
+                <div class="modal_left">
+                    <img id="modalImg" src="" alt="">
+                </div>
+                <div class="modal_right">
+                    <p id="modalBrand" class="modal_brand"></p>
+                    <h2 id="modalName" class="modal_name"></h2>
+                    <div id="modalPrice" class="modal_price"></div>
+                    
+                    <hr class="modal_divider">
+                    
+                    <div class="modal_option">
+                        <label for="productOption">옵션 선택</label>
+                        <select id="productOption">
+                            <option value="">[필수] 옵션을 선택해주세요</option>
+                            <option value="basic">기본형 (추가금 없음)</option>
+                            <option value="premium">고급형 (+3,000원)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="modal_qty_container">
+                        <span class="qty_label">수량</span>
+                        <div class="qty_selector">
+                            <button type="button" class="qty_btn minus">-</button>
+                            <input type="number" id="modalQty" value="1" min="1" readonly />
+                            <button type="button" class="qty_btn plus">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="modal_total">
+                        <span>총 상품금액</span>
+                        <span id="modalTotalPrice">0원</span>
+                    </div>
+                    
+                    <div class="modal_buttons">
+                        <button class="btn_modal_cart">장바구니 담기</button>
+                        <button class="btn_modal_buy">바로 구매하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
