@@ -1,30 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>브랜드 - 멍냥허브</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
-    <link rel="stylesheet" href="./css/product.css"/>
+    <link rel="stylesheet" href="./css/style.css"/> <!-- 메인 스타일 연동 (헤더/푸터/폰트 유지) -->
+    <link rel="stylesheet" href="./css/brand.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <div class="headerInner">
             <div class="logo">
                 <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
             </div>
-
-            <!-- 메인 메뉴 -->
             <ul class="gnb">
                 <li><a href="./index.html">홈</a></li>
-                <li><a href="./brand.html">브랜드</a></li>
+                <li class="active"><a href="./brand.html" style="color: #2E5A44;">브랜드</a></li>
                 <li class="gnb_products">
                     <a href="./product.html">제품보기</a>
-                    <!-- 서브 메뉴 -->
                     <ul class="snb">
                         <li><a>전체 상품</a></li>
                         <li><a>강아지 용품</a></li>
@@ -47,6 +46,71 @@
             </ul>
         </div>
     </header>
+
+    <main class="subpage-main">
+        <!-- 브랜드 배너 -->
+        <section class="sub-banner">
+    <video class="bg-video" autoplay muted loop playsinline poster="./img/fallback-image.jpg">
+        <source src="./img/brand_video.mp4" type="video/mp4">
+    </video>
+    
+    <div class="banner-text">
+        <h2>오늘의 행복으로<br>내일의 가치를 만듭니다</h2>
+        <p>반려동물의 건강과 행복을 최우선으로 생각하는 멍냥허브</p>
+    </div>
+</section>
+
+        <!-- 브랜드 비전 -->
+        <section class="brand-vision fade-in">
+            <div class="vision-text">
+                <span class="badge">OUR VISION</span>
+                <h3>우리가 말하지 않아도<br>가치가 증명되는 공간</h3>
+                <p>멍냥허브는 단순히 물건을 파는 곳이 아닙니다. 반려동물과 보호자가 함께하는 모든 순간이 더 빛날 수 있도록, 깐깐한 기준으로 엄선된 제품만을 소개합니다. 우리는 원칙을 통해 믿음을 만들어 갑니다.</p>
+            </div>
+            <div class="vision-image">
+                <img src="./img/brand-img9.png" alt="Vision Image"/>
+            </div>
+        </section>
+
+        <!-- 핵심 가치 -->
+        <section class="brand-values fade-in">
+            <div class="section-title">
+                <h3>멍냥허브의 <span>핵심가치</span></h3>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <img src="./img/brand_4.jpg" alt="고객"/>
+                    <div class="value-info">
+                        <h4>고객과 이웃</h4>
+                        <p>우리는 고객과 이웃을 먼저 생각하며 소통합니다.</p>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <img src="./img/brand-img15.jpg" alt="신뢰"/>
+                    <div class="value-info">
+                        <h4>투명한 신뢰</h4>
+                        <p>타협하지 않는 원칙을 통해 굳건한 믿음을 만듭니다.</p>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <img src="./img/brand-img12.jpg" alt="전문성"/>
+                    <div class="value-info">
+                        <h4>검증된 전문성</h4>
+                        <p>각 분야 전문가들이 직접 선도하고 검수하는 상품입니다.</p>
+                    </div>
+                </div>
+                <div class="value-card">
+                    <img src="./img/brand-img23.jpg" alt="행복"/>
+                    <div class="value-info">
+                        <h4>모두의 행복</h4>
+                        <p>고객과 동물이 함께 누리는 행복을 최우선으로 합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 영역 (index.html과 동일) -->
     <footer>
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
@@ -76,7 +140,10 @@
             <li>제휴/입점 문의</li>
         </ul>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <button class="top-btn">▲</button>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./javascript/common.js"></script>
+    <script src="./javascript/brand.js"></script>
 </body>
 </html>
