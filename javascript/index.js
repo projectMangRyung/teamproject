@@ -2,9 +2,14 @@
 const slidewrap = document.querySelector(".slidewrap");
 const slidescnt = document.querySelectorAll(".slide").length;
 const slideContainer = document.getElementsByClassName("slides");
-const slideWidth = slidewrap.offsetWidth;
+let slideWidth = slidewrap.offsetWidth;
 let currentSlide = 0;
 
+window.addEventListener("resize", function(){
+    slideWidth = window.innerWidth
+    slidewrap.style.width = window.innerWidth
+    slideContainer.style.width = window.innerWidth
+})
 /*  공통으로 이용할 함수
 
         슬라이드 이동 함수
@@ -48,14 +53,15 @@ function Createpagination(){
             position : absolute;
             left : 50%;
             transform: translateX(-50%);
-            bottom : 8rem;
+            bottom : 6rem;
         }
         .pagination li{
             list-style: none;
-            width: 10rem;
-            height: 0.3rem;
+            width: clamp(5rem, 0.8vw, 8rem);
+            height: 0.5rem;
             background-color:  #1F6F5F;
             opacity: 0.5;
+            cursor: pointer;
         }
         .pagination .act{
             opacity: 1;
@@ -126,12 +132,18 @@ function Createbtn(){
         event.preventDefault(); // 기본 앵커 링크 동작을 막습니다.
         const index = (currentSlide-1) >=0 ? currentSlide-1 : slidescnt-1; // 삼항 연산을 통해 페이지 이동 최소 값 제한
         goToSlide(index);
+        if(index < 0){
+            goToSlide(slidescnt)
+        }
     })
     const BtnR = document.querySelector(".rightbtn");
     BtnR.addEventListener('click',(event)=>{
         event.preventDefault(); // 기본 앵커 링크 동작을 막습니다.
         const index = (currentSlide+1) < slidescnt ? currentSlide+1 : 0; //삼항 연산을 통해 페이지 이동 최대 값 제한
         goToSlide(index);
+        if(index > slidescnt){
+            goToSlide(0)
+        }
     })
 }
 

@@ -124,7 +124,7 @@ document.querySelector(".btn_modal_buy").addEventListener("click", function() {
 // 탑버튼
 window.addEventListener("scroll", function() {
     let topBtn = document.getElementById("topBtn");
-    if (window.scrollY > 300) {
+    if (window.scrollY > 1000) {
         topBtn.style.display = "block";
     } else {
         topBtn.style.display = "none";

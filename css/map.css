@@ -20,7 +20,15 @@
     color: #ffffff;
     text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
-
+.banner-text.move{
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 2s;
+}
+.banner-text.move.on{
+    opacity: 1;
+    transform: translateY(0);
+}
 .banner-text p{
     line-height: 1.6;
 }
