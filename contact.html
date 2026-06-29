@@ -6,148 +6,174 @@
     <title>고객센터 - 멍냥허브</title>
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/style.css"> 
     <link rel="stylesheet" href="./css/contact.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<header>
-    <div class="headerInner">
-        <div class="logo">
-            <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+     <header>
+        <div class="headerInner">
+            <div class="logo">
+                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+            </div>
+            <ul class="gnb">
+                <li><a href="./index.html">홈</a></li>
+                <li class="active"><a href="./brand.html" style="color: #2E5A44;">브랜드</a></li>
+                <li class="gnb_products">
+                    <a href="./product.html">제품보기</a>
+                    <ul class="snb">
+                        <li><a>전체 상품</a></li>
+                        <li><a>강아지 용품</a></li>
+                        <li><a>고양이 용품</a></li>
+                        <li><a>사료/간식</a></li>
+                        <li><a>장난감</a></li>
+                        <li><a>액세서리</a></li>
+                        <li><a>건강/미용</a></li>
+                    </ul>
+                </li>
+                <li><a href="sale.html">세일특가</a></li>
+                <li><a href="map.html">오시는 길</a></li>
+                <li><a href="contact.html">고객센터</a></li>
+            </ul>
+            <ul class="login">
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
+                <li><a><img src="./img/like.png" alt="like"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
+            </ul>
         </div>
+    </header>
 
-        <!-- 메인 메뉴 -->
-        <ul class="gnb">
-            <li><a href="./index.html">홈</a></li>
-            <li><a href="./brand.html">브랜드</a></li>
-            <li class="gnb_products">
-                <a href="./product.html">제품보기</a>
+    <main class="subpage-main">
+        <!-- 고객센터 배너 -->
+        <section class="sub-banner contact-banner fade-in">
+            <div class="banner-text">
+                <h2>무엇을 도와드릴까요?</h2>
+                <p>멍냥허브 고객센터는 24시간 언제나 열려있습니다.<br>필요할 땐 주저하지 마시고 도움을 요청해주세요.</p>
+            </div>
+        </section>
 
-                <!-- 서브 메뉴 -->
-                <ul class="snb">
-                    <li><a>전체 상품</a></li>
-                    <li><a>강아지 용품</a></li>
-                    <li><a>고양이 용품</a></li>
-                    <li><a>사료/간식</a></li>
-                    <li><a>장난감</a></li>
-                    <li><a>액세서리</a></li>
-                    <li><a>건강/미용</a></li>
-                </ul>
+        <!-- 상담 방법 카드 -->
+        <section class="contact-info-grid fade-in">
+            <div class="contact-card">
+                <div class="icon-wrap">📞</div>
+                <h3>전화상담</h3>
+                <strong>1588-1234</strong>
+                <p>평일 09:00 ~ 18:00</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon-wrap">📧</div>
+                <h3>이메일 문의</h3>
+                <strong>help@mnhub.com</strong>
+                <p>24시간 접수 가능</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon-wrap">💬</div>
+                <h3>실시간 톡상담</h3>
+                <strong>@mnhub</strong>
+                <p>빠른 실시간 답변</p>
+            </div>
+        </section>
+
+        <!-- FAQ & 1:1 문의 레이아웃 -->
+        <section class="support-section fade-in">
+            <div class="faq-container">
+                <div class="section-title left-align">
+                    <h3>자주 묻는 <span>질문</span></h3>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Q. 배송은 보통 얼마나 걸리나요?</summary>
+                        <p>평균적으로 결제 완료 후 1~3 영업일이 소요됩니다. (도서 산간 지역 제외)</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Q. 배송비는 무료인가요?</summary>
+                        <p>네, 멍냥허브는 3만원 이상 구매 시 전 상품 무료 배송 혜택을 제공합니다.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Q. 교환 및 환불 규정이 궁금해요.</summary>
+                        <p>상품 수령 후 30일 이내에 미개봉 상품에 한하여 교환 및 환불이 가능합니다.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Q. 배송 전 주문을 취소하거나 변경할 수 있나요?</summary>
+                        <p>상품 준비 중 단계에서는 [마이페이지 > 주문내역]에서 직접 취소 및 옵션 변경이 가능합니다. 단, 이미 '배송 중' 상태로 넘어간 경우에는 처리가 어려우니 고객센터로 문의해 주세요.</p>
+                        </details>
+                    <details class="faq-item">
+                        <summary>Q. 품절된 상품은 언제쯤 다시 입고되나요?</summary>
+                        <p>상품에 따라 입고 일정이 다릅니다. 해당 상품 페이지에서 '재입고 알림 신청'을 눌러주시면, 입고 즉시 카카오톡이나 문자로 가장 먼저 안내해 드립니다.</p>
+                        </details>
+                </div>
+            </div>
+
+            <div class="inquiry-container">
+                <div class="section-title left-align">
+                    <h3>1:1 <span>문의하기</span></h3>
+                </div>
+                <form id="inquiryForm" class="inquiry-form">
+                    <div class="input-group">
+                        <select required>
+                            <option value="" disabled selected>문의 유형을 선택해주세요</option>
+                            <option>배송 문의</option>
+                            <option>교환 및 환불</option>
+                            <option>상품 문의</option>
+                            <option>기타</option>
+                        </select>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <input type="text" placeholder="성함" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" placeholder="이메일" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" placeholder="문의 제목" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea placeholder="문의하실 내용을 상세히 적어주세요." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">문의 접수하기</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <ul>
+            <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
+            <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
+            <li>
+                <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
+                <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
             </li>
-            <li><a href="sale.html">세일특가</a></li>
-            <li><a href="map.html">오시는 길</a></li>
-            <li><a href="contact.html">고객센터</a></li>
         </ul>
-        <ul class="login">
-            <li><a href="#">로그인</a></li>
-            <li><a href="#">회원가입</a></li>
-            <li><a><img src="./img/like.png" alt="like"/></a></li>
-            <li><a><img src="./img/cart.png" alt="cart"/></a></li>
+        <ul>
+            <li>쇼핑</li>
+            <li>제품보기</li>
+            <li>세일특가</li>
+            <li>브랜드 소개</li>
         </ul>
-    </div>
-</header>
+        <ul>
+            <li>고객지원</li>
+            <li>고객센터</li>
+            <li>오시는 길</li>
+            <li>로그인</li>
+            <li>회원가입</li>
+        </ul>
+        <ul>
+            <li>정보</li>
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+            <li>제휴/입점 문의</li>
+        </ul>
+    </footer>
 
-<!-- 첫번째 -->
-<section class="contact-banner scroll-hidden">
-    <div class="contact-banner-inner">
-        <h2>고객센터</h2>
-        <p>무엇을 도와드릴까요?</p>
-    </div>
-</section>
+    <button class="top-btn">▲</button>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./javascript/common.js"></script>
+    <script src="./javascript/brand.js"></script>
 
-<!-- 상담 방법-->
-<section class="customer-info scroll-hidden">
-    <div class="info-box">
-        <h3>📞 전화상담</h3>
-        <strong>1588-1234</strong>
-        <p>평일 09:00 ~ 18:00</p>
-    </div>
-    <div class="info-box">
-        <h3>📧 이메일 문의</h3>
-        <strong>help@meongnyanghub.com</strong>
-        <p>24시간 접수 가능</p>
-    </div>
-    <div class="info-box">
-        <h3>💬 실시간 상담</h3>
-        <strong>@멍냥허브</strong>
-        <p>평일 실시간 상담</p>
-    </div>
-</section>
-
-<!-- faq -->
-<section class="faq scroll-hidden">
-    <h2>자주 묻는 질문</h2>
-    <div class="faq-item">
-        <h3>Q. 배송은 얼마나 걸리나요?</h3>
-        <p>A. 평균 1~3일 소요됩니다.</p>
-    </div>
-    <div class="faq-item">
-        <h3>Q. 배송비는 무료인가요?</h3>
-        <p>A. 네, 무료입니다.</p>
-    </div>
-    <div class="faq-item">
-        <h3>Q. 교환 및 환불은 어떻게 하나요?</h3>
-        <p>A. 수령 후 7일 이내 가능합니다.</p>
-    </div>
-</section>
-
-<!-- 문의하기 -->
-<section class="inquiry scroll-hidden">
-    <h2>1:1 문의하기</h2>
-    <form id="inquiryForm">
-        <select data-key="inquiry-type">
-            <option value="">문의 유형 선택</option>
-            <option>배송 문의</option>
-            <option>교환/환불</option>
-            <option>상품 문의</option>
-            <option>기타</option>
-        </select>
-        <input type="text" placeholder="문의 제목" data-key="inquiry-title">
-        <input type="text" placeholder="성함" data-key="inquiry-name">
-        <input type="email" placeholder="이메일" data-key="inquiry-email">
-        <textarea placeholder="문의 내용을 입력해주세요" data-key="inquiry-content"></textarea>
-        <button type="submit">문의하기</button>
-    </form>
-</section>
-
-<footer>
-    <ul>
-        <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
-        <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
-        <li>
-            <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
-            <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
-        </li>
-    </ul>
-    <ul>
-        <li>쇼핑</li>
-        <li>제품보기</li>
-        <li>세일특가</li>
-        <li>브랜드 소개</li>
-    </ul>
-    <ul>
-        <li>고객지원</li>
-        <li>고객센터</li>
-        <li>오시는 길</li>
-        <li>로그인</li>
-        <li>회원가입</li>
-    </ul>
-    <ul>
-        <li>정보</li>
-        <li>이용약관</li>
-        <li>개인정보처리방침</li>
-        <li>제휴/입점 문의</li>
-    </ul>
-</footer>
-
-<!-- TOP 버튼 -->
-<button class="top-btn">▲</button>
-
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="./javascript/common.js"></script>
-<script src="./javascript/contact.js"></script>
 </body>
 </html>
