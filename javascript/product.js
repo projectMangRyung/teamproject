@@ -1,15 +1,29 @@
 let allProducts = [];
 let currentPrice = 0;
 
+// URL에서 카테고리 파라미터 읽기
+let urlParams = new URLSearchParams(window.location.search);
+let currentCategory = urlParams.get("category") || "전체";
+
 // 상품 불러오기
 async function productload() {
     let res = await fetch("./json/product.json");
     allProducts = await res.json();
+
+    // 페이지 제목 변경
+    document.querySelector(".all_search h1").textContent = currentCategory === "전체" ? "전체상품" : currentCategory;
+
+    renderProducts(currentCategory);
+}
+
+// 상품 렌더링
+function renderProducts(category) {
+    let list = category === "전체" ? allProducts : allProducts.filter(item => item.category === category);
     let html = '';
 
-    allProducts.forEach(function(item, index) {
+    list.forEach(function(item, index) {
         html += `
-            <div class='product_card' data-index='${index}'>
+            <div class='product_card' data-index='${allProducts.indexOf(item)}'>
                 <div class='productImg'>
                     <img src='${item.src}' alt='${item.name}'/>
                 </div>
@@ -35,7 +49,7 @@ function openModal(index) {
     document.getElementById("modalPrice").textContent = item.price;
     document.getElementById("modalQty").value = 1;
     document.getElementById("productModal").setAttribute("data-index", index);
-    
+
     calcTotal();
     document.getElementById("productModal").classList.add("show");
     document.body.style.overflow = "hidden";
@@ -105,6 +119,20 @@ document.querySelector(".btn_modal_buy").addEventListener("click", function() {
     let qty = parseInt(document.getElementById("modalQty").value);
     addToCart(allProducts[index], qty);
     window.location.href = "./cart.html";
+});
+
+// 탑버튼
+window.addEventListener("scroll", function() {
+    let topBtn = document.getElementById("topBtn");
+    if (window.scrollY > 300) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+});
+
+document.getElementById("topBtn").addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 productload();

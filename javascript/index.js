@@ -2,11 +2,13 @@
 const slidewrap = document.querySelector(".slidewrap");
 const slidescnt = document.querySelectorAll(".slide").length;
 const slideContainer = document.getElementsByClassName("slides");
-const slideWidth = slidewrap.offsetWidth;
+let slideWidth = slidewrap.offsetWidth;
 let currentSlide = 0;
 
 window.addEventListener("resize", function(){
     slideWidth = window.innerWidth
+    slidewrap.style.width = window.innerWidth
+    slideContainer.style.width = window.innerWidth
 })
 /*  공통으로 이용할 함수
 
@@ -51,11 +53,11 @@ function Createpagination(){
             position : absolute;
             left : 50%;
             transform: translateX(-50%);
-            bottom : 8rem;
+            bottom : 6rem;
         }
         .pagination li{
             list-style: none;
-            width: 10rem;
+            width: clamp(5rem, 0.8vw, 8rem);
             height: 0.5rem;
             background-color:  #1F6F5F;
             opacity: 0.5;
