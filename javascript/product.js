@@ -1,161 +1,110 @@
 let allProducts = [];
 let currentPrice = 0;
 
+// 상품 불러오기
 async function productload() {
-    try {
-        let res = await fetch("./json/product.json");
-        allProducts = await res.json();
-        let html = '';
+    let res = await fetch("./json/product.json");
+    allProducts = await res.json();
+    let html = '';
 
-        allProducts.forEach(function (item, index) {
-            html += `
-                <div class='product_card' data-index='${index}'>
-                    <div class='productImg'>
-                        <img src='${item.src}' alt='${item.name}'/>
-                    </div>
-                    <p>${item.brand}</p>
-                    <h4>${item.name}</h4>
-                    <h4>${item.price}</h4>
-                    <button class="btn_card_cart">장바구니</button>
+    allProducts.forEach(function(item, index) {
+        html += `
+            <div class='product_card' data-index='${index}'>
+                <div class='productImg'>
+                    <img src='${item.src}' alt='${item.name}'/>
                 </div>
-            `;
-        });
+                <p>${item.brand}</p>
+                <h4>${item.name}</h4>
+                <h4>${item.price}</h4>
+                <button class="btn_card_cart">장바구니</button>
+            </div>
+        `;
+    });
 
-        document.querySelector(".product_box").innerHTML = html;
-        initModalEvents();
-
-    } catch (err) {
-        console.error("에러발생", err);
-    }
+    document.querySelector(".product_box").innerHTML = html;
 }
 
-function initModalEvents() {
-    const productBox = document.querySelector(".product_box");
-    const modal = document.getElementById("productModal");
-    const modalClose = document.querySelector(".modal_close");
+// 모달 열기
+function openModal(index) {
+    let item = allProducts[index];
+    currentPrice = parseInt(String(item.price).replace(/[^0-9]/g, '')) || 0;
 
-    const modalImg = document.getElementById("modalImg");
-    const modalBrand = document.getElementById("modalBrand");
-    const modalName = document.getElementById("modalName");
-    const modalPrice = document.getElementById("modalPrice");
-    const modalQty = document.getElementById("modalQty");
-    const modalTotalPrice = document.getElementById("modalTotalPrice");
-
-    const btnMinus = document.querySelector(".qty_btn.minus");
-    const btnPlus = document.querySelector(".qty_btn.plus");
-
-    /* ====================
-       카드 클릭
-    ==================== */
-    productBox.addEventListener("click", function (e) {
-        const card = e.target.closest(".product_card");
-        if (!card) return;
-
-        const index = card.getAttribute("data-index");
-        const product = allProducts[index];
-
-        if (e.target.classList.contains("btn_card_cart")) {
-            addToCart(product);
-            return;
-        }
-
-        if (product) {
-            modalImg.src = product.src;
-            modalImg.alt = product.name;
-            modalBrand.textContent = product.brand;
-            modalName.textContent = product.name;
-            modalPrice.textContent = typeof product.price === 'number'
-                ? product.price.toLocaleString() + '원'
-                : product.price;
-
-            currentPrice = parseInt(String(product.price).replace(/[^0-9]/g, '')) || 0;
-            modalQty.value = 1;
-            updateTotalPrice();
-
-            modal.setAttribute("data-index", index);
-            modal.classList.add("show");
-            document.body.style.overflow = "hidden";
-        }
-    });
-
-    /* ====================
-       모달 닫기
-    ==================== */
-    modalClose.addEventListener("click", closeModal);
-    modal.addEventListener("click", function (e) {
-        if (e.target === modal) closeModal();
-    });
-
-    function closeModal() {
-        modal.classList.remove("show");
-        document.body.style.overflow = "auto";
-    }
-
-    /* ====================
-       수량 변경
-    ==================== */
-    btnMinus.addEventListener("click", function () {
-        let qty = parseInt(modalQty.value);
-        if (qty > 1) {
-            modalQty.value = qty - 1;
-            updateTotalPrice();
-        }
-    });
-
-    btnPlus.addEventListener("click", function () {
-        modalQty.value = parseInt(modalQty.value) + 1;
-        updateTotalPrice();
-    });
-
-    function updateTotalPrice() {
-        let qty = parseInt(modalQty.value);
-        modalTotalPrice.textContent = (currentPrice * qty).toLocaleString() + "원";
-    }
-
-    /* ====================
-       모달 장바구니 담기
-    ==================== */
-    document.querySelector(".btn_modal_cart").addEventListener("click", function () {
-        const index = modal.getAttribute("data-index");
-        const product = allProducts[index];
-        const qty = parseInt(modalQty.value);
-        for (let i = 0; i < qty; i++) addToCart(product);
-        window.location.href = "./cart.html";
-    });
-
-    /* ====================
-       바로 구매하기
-    ==================== */
-    document.querySelector(".btn_modal_buy").addEventListener("click", function () {
-        const index = modal.getAttribute("data-index");
-        const product = allProducts[index];
-        const qty = parseInt(modalQty.value);
-        for (let i = 0; i < qty; i++) addToCart(product);
-        window.location.href = "./cart.html";
-    });
+    document.getElementById("modalImg").src = item.src;
+    document.getElementById("modalBrand").textContent = item.brand;
+    document.getElementById("modalName").textContent = item.name;
+    document.getElementById("modalPrice").textContent = item.price;
+    document.getElementById("modalQty").value = 1;
+    document.getElementById("productModal").setAttribute("data-index", index);
+    
+    calcTotal();
+    document.getElementById("productModal").classList.add("show");
+    document.body.style.overflow = "hidden";
 }
 
-/* ====================
-   장바구니 담기
-==================== */
-function addToCart(item) {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const exist = cart.findIndex(c => c.title === item.title);
+// 모달 닫기
+function closeModal() {
+    document.getElementById("productModal").classList.remove("show");
+    document.body.style.overflow = "auto";
+}
+
+// 총 금액 계산
+function calcTotal() {
+    let qty = parseInt(document.getElementById("modalQty").value);
+    document.getElementById("modalTotalPrice").textContent = (currentPrice * qty).toLocaleString() + "원";
+}
+
+// 장바구니 담기
+function addToCart(item, qty = 1) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let exist = cart.findIndex(c => c.name === item.name);
 
     if (exist !== -1) {
-        cart[exist].qty++;
+        cart[exist].qty += qty;
     } else {
-        cart.push({
-            src: item.src,
-            name: item.name,
-            brand: item.brand,
-            title: item.title,
-            priceNum: parseInt(String(item.price).replace(/[^0-9]/g, '')),
-            qty: 1
-        });
+        cart.push({ src: item.src, name: item.name, brand: item.brand, priceNum: currentPrice, qty: qty });
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+// 카드 클릭 → 모달 열기
+document.querySelector(".product_box").addEventListener("click", function(e) {
+    let card = e.target.closest(".product_card");
+    if (!card) return;
+    openModal(card.getAttribute("data-index"));
+});
+
+// 닫기 버튼
+document.querySelector(".modal_close").addEventListener("click", closeModal);
+document.getElementById("productModal").addEventListener("click", function(e) {
+    if (e.target === this) closeModal();
+});
+
+// 수량 버튼
+document.querySelector(".qty_btn.minus").addEventListener("click", function() {
+    let qty = document.getElementById("modalQty");
+    if (parseInt(qty.value) > 1) { qty.value--; calcTotal(); }
+});
+document.querySelector(".qty_btn.plus").addEventListener("click", function() {
+    document.getElementById("modalQty").value++;
+    calcTotal();
+});
+
+// 장바구니 담기 버튼
+document.querySelector(".btn_modal_cart").addEventListener("click", function() {
+    let index = document.getElementById("productModal").getAttribute("data-index");
+    let qty = parseInt(document.getElementById("modalQty").value);
+    addToCart(allProducts[index], qty);
+    closeModal();
+    alert("장바구니에 담겼습니다!");
+});
+
+// 바로 구매하기 버튼
+document.querySelector(".btn_modal_buy").addEventListener("click", function() {
+    let index = document.getElementById("productModal").getAttribute("data-index");
+    let qty = parseInt(document.getElementById("modalQty").value);
+    addToCart(allProducts[index], qty);
+    window.location.href = "./cart.html";
+});
 
 productload();
