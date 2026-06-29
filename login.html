@@ -4,8 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/common.css"/>
+    <link rel="stylesheet" href="./css/login.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    
+    <header>
+        <div class="headerInner">
+            <div class="logo">
+                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+            </div>
+            <ul class="gnb">
+                <li><a href="./index.html">홈</a></li>
+                <li><a href="./brand.html">브랜드</a></li>
+                <li class="gnb_products">
+                    <a href="./product.html">제품보기</a>
+                    <ul class="snb">
+                        <li><a>전체 상품</a></li>
+                        <li><a>강아지 용품</a></li>
+                        <li><a>고양이 용품</a></li>
+                        <li><a>사료/간식</a></li>
+                        <li><a>장난감</a></li>
+                        <li><a>액세서리</a></li>
+                        <li><a>건강/미용</a></li>
+                    </ul>
+                </li>
+                <li><a href="sale.html">세일특가</a></li>
+                <li><a href="map.html">오시는 길</a></li>
+                <li><a href="contact.html">고객센터</a></li>
+            </ul>
+            <ul class="login">
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
+                <li><a><img src="./img/like.png" alt="like"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="userContainer">
+        <div class="select">
+            <div class="login_select selected">로그인</div>
+            <div class="join_select" onclick="location.href='./join.html'">회원가입</div>
+        </div>
+        <div class="login_container on">
+            <div class="login_box">
+                <div class="login_input">
+                    <div class="login_inputbox">
+                        <span>
+                            <label for="user_id">아이디</label>
+                            <input type="text" id="user_id" placeholder="아이디를 입력하세요"/>
+                        </span>
+                        <span>
+                            <label for="user_pw">비밀번호</label>
+                            <input type="password" id="user_pw" placeholder="비밀번호를 입력하세요"/>
+                        </span>
+                        <label>
+                            <input type="checkbox" id="keep">로그인 상태 유지
+                        </label>
+                        <button>로그인</button>
+                    </div>
+                    <hr>
+                    <div class="login_other">
+                        <button class="btn_kakao">
+                            <img src="./img/kakao_login.png" alt="카카오 로고" />
+                            <span>카카오로 시작하기</span>
+                        </button>
+                        <button class="btn_naver">
+                            <img src="./img/naver_login.png" alt="네이버 로고" />
+                            <span>네이버로 시작하기</span>
+                        </button>
+                        <button class="btn_google">
+                            <img src="./img/google_login.png" alt="구글 로고" />
+                            <span>Google로 시작하기</span>
+                        </button>
+                    </div>
+                    <p>계정이 없으신가요?</p>
+                    <a href="./join.html">회원가입</a>
+                </div>
+            </div>
+            <div class="login_banner">
+                <img src="./img/join_banner.png" alt="회원가입 배너">
+                
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
+            <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
+            <li>
+                <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
+                <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
+            </li>
+        </ul>
+        <ul>
+            <li>쇼핑</li>
+            <li>제품보기</li>
+            <li>세일특가</li>
+            <li>브랜드 소개</li>
+        </ul>
+        <ul>
+            <li>고객지원</li>
+            <li>고객센터</li>
+            <li>오시는 길</li>
+            <li>로그인</li>
+            <li>회원가입</li>
+        </ul>
+        <ul>
+            <li>정보</li>
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+            <li>제휴/입점 문의</li>
+        </ul>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./javascript/common.js"></script>
+    <script src="./javascript/login.js"></script>
 </body>
 </html>

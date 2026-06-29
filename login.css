@@ -1,0 +1,390 @@
+.userContainer {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #EEEEEE;
+    padding-top: 8rem;
+    padding-bottom: 6rem;
+}
+.select {
+    width: 90%;
+    max-width: 30rem;
+    display: flex;
+    margin-bottom: 3rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.select > div {
+    flex: 1;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    background-color: white;
+    color: #888;
+    border: 1px solid #ddd;
+    transition: all 0.3s;
+}
+.select > div:first-child {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+.select > div:last-child {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+.login_select.selected,
+.join_select.selected {
+    background-color: #1F6F5F;
+    color: white;
+    border-color: #1F6F5F;
+}
+.login_container,
+.join_container {
+    width: 90%;
+    max-width: 90rem;
+    margin: 0 auto;
+    display: none;
+    flex-direction: column;
+    gap: 5rem;
+}
+.login_container.on,
+.join_container.on {
+    display: flex;
+}
+.login_box, .join_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.login_input, .join_input {
+    width: 100%;
+    max-width: 35rem;
+    padding: 4rem 3rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+.login_input h3, .join_input h3 {
+    font-size: 2rem;
+    color: #333;
+    font-weight: 700;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+.login_input hr, .join_input hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 0.5rem 0;
+}
+.login_inputbox, .join_inputbox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+.login_inputbox span, .join_inputbox > span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: #333;
+    font-weight: 600;
+}
+.login_inputbox label, .join_inputbox label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    color: #333;
+    font-weight: 600;
+    width: 100%;
+}
+.login_inputbox input[type="text"],
+.login_inputbox input[type="password"],
+.join_inputbox input[type="text"],
+.join_inputbox input[type="email"],
+.join_inputbox input[type="password"] {
+    width: 100%;
+    height: 3.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    padding: 0 1.25rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    font-weight: 400;
+}
+.login_inputbox input[type="text"]:focus,
+.login_inputbox input[type="password"]:focus,
+.join_inputbox input[type="text"]:focus,
+.join_inputbox input[type="email"]:focus,
+.join_inputbox input[type="password"]:focus {
+    border-color: #1F6F5F;
+}
+.login_inputbox label:has(#keep) {
+    flex-direction: row;
+    align-items: center;
+    gap: 0rem;
+    font-weight: 400;
+    color: #666;
+    cursor: pointer;
+    margin-top: -0.25rem;
+}
+#keep {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    accent-color: #1F6F5F;
+}
+.login_inputbox > button, .join_btn {
+    width: 100%;
+    background-color: #1F6F5F;
+    color: white;
+    padding: 1.25rem 0;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+}
+.login_inputbox > button:hover, .join_btn:hover {
+    background-color: #2FA084;
+}
+.login_other {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.login_other > button {
+    width: 100%;
+    height: 3.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.login_other > button:hover {
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+.login_other > button img {
+    width: 1.5rem;
+    height: 1.5rem;
+    object-fit: contain;
+    position: absolute;
+    left: 1.5rem;
+}
+.login_other > button span {
+    width: 100%;
+    text-align: center;
+}
+.btn_kakao {
+    background-color: #fddc3f;
+    color: #000000;
+}
+.btn_naver {
+    background-color: #00c300;
+    color: #FFFFFF;
+}
+.btn_google {
+    background-color: #FFFFFF;
+    color: #1F1F1F;
+    border: 1px solid #DADCE0 !important;
+}
+.login_input > p {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    font-size: 0.9375rem;
+    color: #888;
+}
+.login_input > a {
+    color: #1F6F5F;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+}
+.phone_input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.phone_input input {
+    flex: 1;
+    text-align: center;
+    padding: 0 !important;
+}
+.phone_input span {
+    color: #666;
+    font-weight: 400;
+}
+.join_terms {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.join_terms label {
+    display: flex;
+    font-size: 0.9375rem;
+    color: #333;
+    cursor: pointer;
+    line-height: 1.4;
+}
+.join_terms label.term_all {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.join_terms label input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.5rem;
+    accent-color: #1F6F5F;
+    float: left;
+    margin-top: 0.1rem;
+}
+.join_terms label p {
+    font-size: 0.8125rem;
+    color: #888;
+    margin-top: 0.25rem;
+    margin-left: 1.75rem;
+}
+.join_social {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+.join_social button {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+}
+.join_social button:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.social_kakao {
+    background-color: #fddd3e;
+    color: #000000;
+}
+.social_naver {
+    background-color: #03C75A;
+    color: #FFFFFF;
+}
+.social_google {
+    background-color: #FFFFFF;
+    color: #1F1F1F;
+    border: 1px solid #DADCE0 !important;
+}
+.login_banner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    
+
+}
+
+.login_banner img{
+    border: 5px solid white;
+    border-radius: 1rem;
+}
+
+.promo {
+    width: 100%;
+    padding: 6rem 2rem;
+    background-color: #E8F5E9;
+    border-radius: 1rem;
+    text-align: center;
+    color: #1F6F5F;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.03);
+}
+.benefit {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.benefit > div {
+    background-color: white;
+    padding: 3.5rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s;
+}
+.benefit > div:hover {
+    transform: translateY(-0.25rem);
+}
+.benefit > div h3 {
+    color: #333;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+.info {
+    background-color: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid #ddd;
+}
+.info h4 {
+    color: #333;
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+.info ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+.info ul li {
+    color: #666;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 1rem;
+}
+.info ul li::before {
+    content: '-';
+    position: absolute;
+    left: 0;
+    color: #999;
+}
+
