@@ -165,14 +165,13 @@ async function productload(){
         console.error("에러발생", err)
     }
 }
-// 전체보기 버튼 클릭 시 높이 자동으로 변경(2026.06.25 최정은)
-const showAllBtn = document.getElementById("show_all");
-showAllBtn.addEventListener("click", function() {
-    const product_best = document.querySelector(".products_best");
-    product_best.style.height = "auto";
-    product_best.style.overflow = "visible";
-});
-
+// 전체보기 버튼 클릭 시 높이 자동으로 변경(2026.06.26 최정은)
+$(function(){
+    $("#show_all").on("click", function(){
+        $(".products_best").toggleClass("on");
+        $(this).html($(this).html() === "전체 보기" ? "닫기" : "전체 보기");
+    });
+})
 async function userload(){
     try{
         let res = await fetch("./json/user.json")
