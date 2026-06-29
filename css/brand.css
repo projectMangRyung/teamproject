@@ -175,7 +175,6 @@
     opacity: 0;
     transform: translateY(1rem);
     transition: all 2s;
-    transition-delay: 1s;
 }
 .value-grid.move.on{
     opacity: 1;
