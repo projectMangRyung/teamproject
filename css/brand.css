@@ -137,7 +137,6 @@
     opacity: 0;
     transform: translateY(2rem);
     transition: all 2s;
-    transition-delay: 1s;
 }
 .vision-image.move.on{
     opacity: 1;
@@ -148,7 +147,15 @@
     text-align: center;
     margin-bottom: 4rem;
 }
-
+.section-title.move{
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 2s;
+}
+.section-title.move.on{
+    opacity: 1;
+    transform: translateY(0);
+}
 .section-title h3 {
     font-size: 2.5rem;
     color: #2A2C2B;
@@ -164,7 +171,16 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
 }
-
+.value-grid.move{
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 2s;
+    transition-delay: 1s;
+}
+.value-grid.move.on{
+    opacity: 1;
+    transform: translateY(0);
+}
 .value-card {
     background-color: #FDFBF7;
     border: 1px solid rgba(46, 90, 68, 0.04);
