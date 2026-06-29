@@ -1,30 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>오시는 길 - 멍냥허브</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
+    <link rel="stylesheet" href="./css/style.css"/> 
     <link rel="stylesheet" href="./css/map.css"/>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> 
 </head>
 <body>
+
     <header>
         <div class="headerInner">
             <div class="logo">
                 <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
             </div>
-
-            <!-- 메인 메뉴 -->
             <ul class="gnb">
                 <li><a href="./index.html">홈</a></li>
-                <li><a href="./brand.html">브랜드</a></li>
+                <li class="active"><a href="./brand.html" style="color: #2E5A44;">브랜드</a></li>
                 <li class="gnb_products">
                     <a href="./product.html">제품보기</a>
-                    <!-- 서브 메뉴 -->
                     <ul class="snb">
                         <li><a>전체 상품</a></li>
                         <li><a>강아지 용품</a></li>
@@ -43,52 +40,60 @@
                 <li><a href="./login.html">로그인</a></li>
                 <li><a href="./join.html">회원가입</a></li>
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
-                <li><a><img src="./img/cart.png" alt="cart"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
         </div>
     </header>
 
-    <div class="mapContainer">
-        <div class="map_wrap">
-            <h2>오시는 길</h2>
-            <!-- 지도 컨테이너 -->
-            <div id="map"></div>
-        </div>
-    </div>
-    <div class="addressContainer">
-        <div class="address_wrap">
-            <h2>주소</h2>
-            <hr>
-            <p>서울특별시 강남구 테헤란로 427 위워크타워 5층</p>
-            <h2>연락처</h2>
-            <hr>
-            <p>02-1234-5678</p>
-        </div>
-        <div class="road_wrap">
-            <div class="road_bus">
-                <img src="./img/map_bus_icon.png" alt="bus"/>
-                <div class="road_bus_inner">
-                    <h2>버스 이용시</h2>
-                    <p>버스역</p>
+    <main class="subpage-main">
+        <section class="sub-banner map-banner fade-in">
+            <div class="banner-text">
+                <h2>오시는 길</h2>
+                <p>멍냥허브 본사로 찾아오시는 방법을 안내해 드립니다.</p>
+            </div>
+        </section>
+
+        <!-- 카카오 맵 영역 -->
+        <section class="map-container fade-in">
+            <div id="map" class="kakao-map"></div>
+            
+            <div class="address-card">
+                <div class="address-header">
+                    <h3>멍냥허브 본사</h3>
+                    <p>서울특별시 강남구 테헤란로 427 위워크타워 5층</p>
+                </div>
+                <div class="address-contact">
+                    <strong>TEL.</strong> 02-1234-5678
                 </div>
             </div>
-            <div class="road_subway">
-                <img src="./img/map_subway_icon.png" alt="subway"/>
-                <div class="road_subway_inner">
-                    <h2>지하철 이용시</h2>
-                    <p>지하철역</p>
+        </section>
+
+        <!-- 오시는 길 안내 카드 -->
+        <section class="transport-grid fade-in">
+            <div class="transport-card">
+                <div class="t-icon"><img src="./img/map_subway_icon.png" alt="subway"/></div>
+                <div class="t-info">
+                    <h4>지하철 이용시</h4>
+                    <p>2호선, 수인분당선 선릉역 10번 출구에서 도보 5분</p>
                 </div>
             </div>
-            <div class="road_car">
-                <img src="./img/map_car_icon.png" alt="car"/>
-                <div class="road_car_inner">
-                    <h2>자가용 이용시</h2>
-                    <p>주차장</p>
+            <div class="transport-card">
+                <div class="t-icon"><img src="./img/map_bus_icon.png" alt="bus"/></div>
+                <div class="t-info">
+                    <h4>버스 이용시</h4>
+                    <p>선릉역.선정릉정문 정류장 하차 (간선 472, 지선 3426)</p>
                 </div>
             </div>
-        </div>
-    </div>
-    <!-- footer -->
+            <div class="transport-card">
+                <div class="t-icon"><img src="./img/map_car_icon.png" alt="car"/></div>
+                <div class="t-info">
+                    <h4>자가용 이용시</h4>
+                    <p>건물 내 지하 주차장 이용 가능 (방문객 2시간 무료)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <footer>
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
@@ -118,8 +123,13 @@
             <li>제휴/입점 문의</li>
         </ul>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <button class="top-btn">▲</button>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./javascript/common.js"></script>
+    <script src="./javascript/brand.js"></script>
+
+
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faa5b32ec9ddd4f39910a3a5eca4b743"></script>
     <script src="./javascript/map.js"></script>
 </body>

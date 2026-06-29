@@ -4,7 +4,7 @@ $(function () {
        상수
     ==================== */
     const CART_KEY = 'cart';
-    const FREE_DELIVERY = 30000;
+    const FREE_DELIVERY = 10000;
     const DELIVERY_FEE = 3000;
 
     /* ====================

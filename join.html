@@ -4,8 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./reset.css"/>
+    <link rel="stylesheet" href="./css/common.css"/>
+    <link rel="stylesheet" href="./css/login.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    
+    <header>
+        <div class="headerInner">
+            <div class="logo">
+                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+            </div>
+
+            <!-- 메인 메뉴 -->
+            <ul class="gnb">
+                <li><a href="./index.html">홈</a></li>
+                <li><a href="./brand.html">브랜드</a></li>
+                <li class="gnb_products">
+                    <a href="./product.html">제품보기</a>
+                    <!-- 서브 메뉴 -->
+                    <ul class="snb">
+                        <li><a>전체 상품</a></li>
+                        <li><a>강아지 용품</a></li>
+                        <li><a>고양이 용품</a></li>
+                        <li><a>사료/간식</a></li>
+                        <li><a>장난감</a></li>
+                        <li><a>액세서리</a></li>
+                        <li><a>건강/미용</a></li>
+                    </ul>
+                </li>
+                <li><a href="sale.html">세일특가</a></li>
+                <li><a href="map.html">오시는 길</a></li>
+                <li><a href="contact.html">고객센터</a></li>
+            </ul>
+            <ul class="login">
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
+                <li><a><img src="./img/like.png" alt="like"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="userContainer">
+        <div class="select">
+            <div class="login_select">로그인</div>
+            <div class="join_select selected">회원가입</div>
+        </div>
+        <div class="login_container">
+            <div class="login_box">
+                <div class="login_input">
+                    <img src="./img/join_logo_dark.png" alt="join_logo_dark"/>
+                    <h3>멍냥허브</h3>
+                    <p>반려동물 쇼핑몰 로그인</p>
+                    <hr>
+                    <div class="login_inputbox">
+                        <span>
+                            <label for="user_id">아이디
+                        </span>
+                            <input type="text" id="user_id" placeholder="아이디를 입력하세요"/>
+                        </label>
+                        <span>
+                            <label for="user_pw">비밀번호
+                        </span>
+                            <input type="text" id="user_pw" placeholder="비밀번호를 입력하세요"/>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="keep">로그인 상태 유지
+                        </label>
+                        <button>로그인</button>
+                    </div>
+                    <hr>
+                    <div class="login_other">
+                        <button>카카오로 로그인</button>
+                        <button>네이버로 로그인</button>
+                        <button>구글로 로그인</button>
+                    </div>
+                    <p>계정이 없으인가요?</p><a href="./join.html">회원가입</a>
+                </div>
+            </div>
+            <div class="login_banner">
+                <div class="promo"><h3>[프로모션 배너 영역]</h3></div>
+                <div class="benefit">
+                    <div><h3>신규 가입 혜택</h3></div>
+                    <div><h3>적립금 제도</h3></div>
+                    <div><h3>빠른 배송</h3></div>
+                </div>
+                <div class="info">
+                    <h4>[공지사항 / 유의사항]</h4>
+                    <ul>
+                        <li>개인정보는 안전하게 암호화되어 보관됩니다.</li>
+                        <li>비밀번호는 주기적으로 변경하시기 바랍니다.</li>
+                        <li>SNS 간편 로그인 이용 시 약관에 동의하신 것으로 간주합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="join_container on">
+            <div class="join_box">회원가입 화면</div>
+            <div class="join_banner">
+                <div class="promo"><h3>[프로모션 배너 영역]</h3></div>
+                <div class="benefit">
+                    <div><h3>신규 가입 혜택</h3></div>
+                    <div><h3>적립금 제도</h3></div>
+                    <div><h3>빠른 배송</h3></div>
+                </div>
+                <div class="info">
+                    <h4>[공지사항 / 유의사항]</h4>
+                    <ul>
+                        <li>개인정보는 안전하게 암호화되어 보관됩니다.</li>
+                        <li>비밀번호는 주기적으로 변경하시기 바랍니다.</li>
+                        <li>SNS 간편 로그인 이용 시 약관에 동의하신 것으로 간주합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
+            <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
+            <li>
+                <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
+                <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
+            </li>
+        </ul>
+        <ul>
+            <li>쇼핑</li>
+            <li>제품보기</li>
+            <li>세일특가</li>
+            <li>브랜드 소개</li>
+        </ul>
+        <ul>
+            <li>고객지원</li>
+            <li>고객센터</li>
+            <li>오시는 길</li>
+            <li>로그인</li>
+            <li>회원가입</li>
+        </ul>
+        <ul>
+            <li>정보</li>
+            <li>이용약관</li>
+            <li>개인정보처리방침</li>
+            <li>제휴/입점 문의</li>
+        </ul>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./javascript/common.js"></script>
+    <script src="./javascript/login.js"></script>
 </body>
 </html>
