@@ -33,6 +33,7 @@
     color: #FDFBF7;
     box-shadow: 0 10px 30px rgba(46, 90, 68, 0.1);
 }
+/* 배너 로드 시 애니메이션 (2026.06.29 최정은)*/
 .sub-banner.move{
     opacity: 0;
     transition: all 2s;
@@ -101,7 +102,18 @@
     line-height: 1.4;
     margin-bottom: 1.5rem;
 }
-
+/* 비전 텍스트 로드 시 애니메이션 (2026.06.29 최정은)*/
+.vision-text h3.move,
+.vision-text p.move{
+    opacity: 0;
+    transform: translateY(1.2rem);
+    transition: all 2s;
+}
+.vision-text h3.move.on,
+.vision-text p.move.on{
+    opacity: 1;
+    transform: translateY(0);
+}
 .vision-text p {
     font-size: 1.1rem;
     color: #5A625E;
@@ -121,7 +133,16 @@
     height: 100%;
     object-fit: cover;
 }
-
+.vision-image.move{
+    opacity: 0;
+    transform: translateY(2rem);
+    transition: all 2s;
+    transition-delay: 1s;
+}
+.vision-image.move.on{
+    opacity: 1;
+    transform: translateY(0);
+}
 /* 핵심 가치 */
 .section-title {
     text-align: center;
