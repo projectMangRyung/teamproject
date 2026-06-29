@@ -1,0 +1,30 @@
+.headerInner.move{
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 2s;
+}
+.headerInner.move.on {
+    opacity: 1;
+    transform: translateY(0);
+}
+.banner.move{
+    opacity: 0;
+    transition: all 2s;
+}
+.banner.move.on{
+    opacity: 1;
+}
+.brand-title.move,
+.brand-text.move,
+.brand-item.move
+{
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 2s;
+}
+.brand-title.move.on,
+.brand-text.move.on,
+.brand-item.move.on{
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -7,19 +7,22 @@
 }
 
 body {
-    font-family: 'Asta Sans', sans-serif;
-    color: #222222;
-    background-color: #EEEEEE;
+    font-family: 'Asta Sans', 'Noto Sans KR', sans-serif;
+    color: #2A2C2B;
+    background-color: #F5F3EE;
+    /* 내가 만든 커스텀 커서 적용 (경로와 파일명을 맞춰주세요) */
+    cursor: url('../img/cursor.png'), auto;
 }
 
 /* ========== header ========== */
 header {
     width: 100%;
     height: 4rem;
-    background-color: white;
+    background-color: rgba(253, 251, 247, 0.98);
     position: fixed;
     z-index: 100;
-    border-bottom: 1px solid #ddd;
+    border-bottom: none; 
+    box-shadow: 0 4px 15px rgba(46, 90, 68, 0.05); 
 }
 
 .headerInner {
@@ -61,17 +64,15 @@ header {
     justify-content: center;
     align-items: center;
     font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     font-weight: bold;
     cursor: pointer;
+    color: #5A625E;
 }
 
 .gnb > li:hover > a {
-    background-color: #f1f1f1;
-}
-
-.gnb > li > a:hover {
-    color: #1F6F5F;
+    color: #2E5A44;
+    transform: scale(1.05); 
 }
 
 .login {
@@ -86,36 +87,47 @@ header {
 
 .login > li > a {
     font-size: clamp(0.7rem, 1.2vw, 1rem);
-    transition: all 0.3s;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    color: #5A625E;
 }
 
 .login > li > a > img {
     width: 1.6rem;
     cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .login > li > a:hover{
-    color: #1F6F5F;
+    color: #2E5A44;
+    transform: translateY(-2px);
+}
+.login > li > a:hover > img {
+    transform: scale(1.15) rotate(5deg); 
 }
 
 .snb {
     position: relative;
     width: 100%;
-    background-color: white;
+    background-color: #FDFBF7;
     display: none;
     flex-direction: column;
     transition: all 0.3s;
     gap: 1.25rem;
     padding: 0.625rem;
+    border-radius: 0 0 16px 16px; 
+    box-shadow: 0 10px 20px rgba(46, 90, 68, 0.08);
 }
 
 .snb > li > a {
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 600;
+    color: #5A625E;
 }
 
 .snb > li > a:hover {
-    color: #1F6F5F;
+    color: #2E5A44;
+    padding-left: 5px; 
 }
 
 .snb.on {
@@ -123,6 +135,11 @@ header {
 }
 
 /* ========== slide ========== (2025/06/19 최정은) */
+.banner {
+    height: 44rem;
+    position: relative;
+}
+
 .slidewrap{
     width: 100%;
     height: 44rem;
@@ -132,7 +149,6 @@ header {
 }
 .slides{
     display: flex;
-
 }
 .slide{
     flex: 0 0 100%;
@@ -140,34 +156,26 @@ header {
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 44rem;
+    height: 40rem;
     overflow: hidden;
-
     color: white;
     font-size: 40px;
 }
 .slide > img{
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
-
-.banner {
-    height: 44rem;
-    position: relative;
-}
-
-
 /* ========== service  gap 추가(2026.06.22 최정은) ========== */
-
 .service {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: #FDFBF7;
     position: relative;
-    border-bottom: 1px solid #ddd;
+    border-bottom: none;
+    box-shadow: 0 4px 20px rgba(46, 90, 68, 0.03);
 }
 
 .serviceBox{
@@ -186,10 +194,18 @@ header {
     flex-direction: column;
     padding: 2rem 0;
     gap: 1rem;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.serviceCard:hover {
+    transform: translateY(-5px);
 }
 .serviceCard img{
     width: clamp(4rem, 1.2vw, 5rem);
     object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.serviceCard:hover img {
+    transform: scale(1.1);
 }
 .service .serviceBar {
     display: flex;
@@ -199,7 +215,7 @@ header {
 }
 
 .service .serviceBar p {
-    color: #888;
+    color: #7A827E;
     font-size: 0.9375rem;
 }
 
@@ -212,7 +228,7 @@ header {
 
 .product div {
     flex: 1;
-    background-color: #A9A9A9;
+    background-color: #E6E2D8;
     padding: 2.5rem;
 }
 
@@ -228,27 +244,29 @@ header {
 }
 
 .category a {
-    background-color: white;
+    background-color: #FDFBF7;
     flex: 1;
     padding: 1.25rem;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(46, 90, 68, 0.05);
+    border-radius: 24px; 
+    box-shadow: 0 8px 24px rgba(46, 90, 68, 0.04);
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    /* 카드 전체가 들썩거리는 애니메이션 삭제됨 */
 }
 
 .category div h4 {
     margin-bottom: 0.3125rem;
     font-size: 1.125rem;
-    color: #333;
+    color: #2A2C2B;
     font-weight: bold;
 }
 
 .category div p {
     font-size: 1rem;
-    color: #666;
+    color: #5A625E;
 }
-
 
 .hover-anim {
     position: absolute;
@@ -272,12 +290,14 @@ header {
     right: -6.25rem;
 }
 
-.category div:hover .dog-anim,
-.category div:hover .cat-anim,
-.category div:hover .pill-right {
+/* 카드 영역의 '어디를' 호버해도 애니메이션이 나오게 a 태그로 기준 변경 */
+.category a:hover .dog-anim,
+.category a:hover .cat-anim,
+.category a:hover .pill-right {
     right: 1.25rem;
     opacity: 1;
 }
+
 /* 전체보기 버튼 클릭 시 높이 자동으로 변경(2026.06.25 최정은) */
 .products_best {
     width: 90%;
@@ -295,6 +315,8 @@ header {
     align-items: center;
     margin-bottom: 2.5rem;
     font-size: 1.875rem;
+    font-weight: 800;
+    color: #2A2C2B;
 }
 
 .best_box {
@@ -302,71 +324,86 @@ header {
     grid-template-columns: repeat(4, 1fr);
     gap: 1.25rem;
 }
+
 /* 베스트 상품 카드 수정(2026.06.22 최정은) */
 .best_card {
     height: 28rem;
     padding: 0.9375rem;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     cursor: pointer;
-    background-color: #fafafa;
-    border: 1px solid #ddd;
+    background-color: #FDFBF7;
+    border: 1px solid rgba(46, 90, 68, 0.04);
+    border-radius: 24px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.02);
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
+
 .best_card > h4 {
     font-size: clamp(1rem, 1.2vw, 1.2rem);
+    color: #2A2C2B;
 }
 .best_card > p{
     font-size: clamp(0.8rem, 1.2vw, 1rem);
-    color: #999;
+    color: #7A827E;
     font-weight: 600;
 }
 .bestImg{
     width: 100%;
     height: 16rem;
     overflow: hidden;
-    border: 1px solid #ddd;
+    border-radius: 16px; 
+    border: none;
 }
 .best_card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.best_card:hover img {
+    transform: scale(1.05); 
 }
 
 .best_card > button{
-    border: 1px solid #bbb;
-    color: black;
+    border: none;
+    background-color: #F5F3EE; 
+    color: #2E5A44;
     padding: 0.8rem;
-    transition: all 0.3s;
-    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-weight: 700;
+    border-radius: 12px;
 }
 .best_card > button:hover{
-    color: #1F6F5F;
-    border: 1px solid #999;
+    background-color: #2E5A44;
+    color: #FDFBF7;
+    transform: scale(1.02);
 }
+
 .products_best .best_title button {
-    background-color: #fafafa;
-    color: #333;
-    border: 1px solid #bbb;
+    background-color: #FDFBF7;
+    color: #2E5A44;
+    border: 2px solid #2E5A44; 
     padding: 0.625rem 1.25rem;
     font-size: 1.125rem;
     cursor: pointer;
     margin-top: 1.25rem;
     border-radius: 20rem;
-    font-weight: 500;
-    transition: all 0.3s;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .best_title button:hover{
-    color: #1F6F5F;
-    border: 1px solid #999;
+    background-color: #2E5A44;
+    color: #FDFBF7;
+    transform: scale(1.05);
 }
 
 .review {
     width: 90%;
     max-width: 90rem;
     margin: 3.75rem auto;
-    background-color: #EEEEEE;
+    background-color: transparent;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -381,14 +418,14 @@ header {
 
 .review h1 {
     font-size: 2rem;
-    color: #333;
+    color: #2A2C2B;
     margin-bottom: 0.625rem;
+    font-weight: 800;
 }
 
 .review h1:nth-child(2) {
     margin-bottom: 3.125rem;
-    color: #1F6F5F;
-    font-weight: 700;
+    color: #2E5A44;
 }
 
 .review_box {
@@ -401,16 +438,19 @@ header {
 }
 
 .review_card {
-    background-color: #fff;
+    background-color: #FDFBF7;
     overflow: hidden;
     text-align: left;
     outline: none;
-    transition: all 0.3s;
-    border: 1px solid #ddd;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 1px solid rgba(46, 90, 68, 0.04);
+    border-radius: 24px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.02);
 }
 
 .review_card:hover {
-    transform: translateY(-0.125rem);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 32px rgba(46, 90, 68, 0.08);
 }
 
 .review_card img {
@@ -428,13 +468,13 @@ header {
 .review_card ul:nth-of-type(1) {
     padding: 1.25rem 1.25rem 0.625rem;
     font-size: 0.8125rem;
-    color: #888;
+    color: #7A827E;
 }
 
 .review_card ul:nth-of-type(2) {
     padding: 0 1.25rem;
     font-size: 0.9375rem;
-    color: #333;
+    color: #2A2C2B;
     line-height: 1.6;
     height: 4.6875rem;
     overflow: hidden;
@@ -445,18 +485,18 @@ header {
     gap: 0.625rem;
     padding: 1.25rem 1.25rem 0.625rem;
     font-size: 0.8125rem;
-    color: #999;
+    color: #7A827E;
 }
 
 .review_card ul:nth-of-type(3) li:first-child {
-    color: #1F6F5F;
+    color: #2E5A44;
     font-weight: 600;
 }
 
 .review_card ul:nth-of-type(4) {
     padding: 0 1.25rem 1.25rem;
     font-size: 0.875rem;
-    color: #6FCF97;
+    color: #4A8C6E;
     font-weight: 700;
 }
 
@@ -470,17 +510,23 @@ header {
     top: 40%;
     transform: translateY(-50%);
     z-index: 10;
-    width: 2.75rem;
-    height: 2.75rem;
-    background-color: #fff;
+    width: 3rem;
+    height: 3rem;
+    background-color: #FDFBF7;
     border-radius: 50%;
     cursor: pointer;
     font-size: 0;
-    box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.review_box .slick-prev:hover,
+.review_box .slick-next:hover {
+    transform: translateY(-50%) scale(1.1);
 }
 
 .review_box .slick-prev::before,
@@ -489,14 +535,14 @@ header {
     display: block;
     width: 0.625rem;
     height: 0.625rem;
-    border-top: 0.125rem solid #1F6F5F;
-    border-right: 0.125rem solid #1F6F5F;
+    border-top: 0.15rem solid #2E5A44;
+    border-right: 0.15rem solid #2E5A44;
 }
 
-.review_box .slick-prev { left: -1.375rem; }
+.review_box .slick-prev { left: -1.5rem; }
 .review_box .slick-prev::before { transform: rotate(-135deg); margin-left: 0.25rem; }
 
-.review_box .slick-next { right: -1.375rem; }
+.review_box .slick-next { right: -1.5rem; }
 .review_box .slick-next::before { transform: rotate(45deg); margin-right: 0.25rem; }
 
 .review_box .slick-dots {
@@ -513,15 +559,15 @@ header {
     width: 0.625rem;
     height: 0.625rem;
     border-radius: 50%;
-    background-color: #ccc;
+    background-color: #D8D2C4;
     border: none;
     cursor: pointer;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .review_box .slick-dots li.slick-active button {
-    background-color: #6FCF97;
-    width: 1.5rem;
+    background-color: #4A8C6E;
+    width: 1.8rem;
     border-radius: 0.3125rem;
 }
 
@@ -529,7 +575,7 @@ header {
 
 .brandBox {
     width: 100%;
-    background-color: #FAFAFA;
+    background-color: #FDFBF7; 
     padding: 6.25rem 0;
 }
 
@@ -543,33 +589,37 @@ header {
     margin-bottom: 5rem;
 }
 
-/* 좌측 고정 섹션 */
 .brand-sidebar {
-    flex: 1; /* 좌측 영역 비율 */
+    flex: 1; 
     position: sticky;
     top: 6rem;
 }
 
 .brand-sidebar .category {
-    color: #1abc9c;
+    color: #2E5A44;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 800;
     letter-spacing: 0.1em;
     display: block;
     margin-bottom: 1.5rem;
     margin-left: 0.5rem;
+    background: #E8E5DC; 
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
 }
 
 .brand-sidebar h3 {
     font-size: 2.25rem;
-    color: #333;
+    color: #2A2C2B;
     margin-bottom: 1.25rem;
     line-height: 1.4;
+    font-weight: 800;
 }
 
 .brand-sidebar p {
     font-size: 1rem;
-    color: #888;
+    color: #5A625E;
     line-height: 1.6;
     word-break: keep-all;
 }
@@ -585,21 +635,23 @@ header {
     width: 100%;
     object-fit: cover;
     margin-bottom: 1.5rem;
+    border-radius: 32px; 
+    box-shadow: 0 10px 30px rgba(46, 90, 68, 0.05);
 }
 
 .brand-item h4 {
     font-size: 1.375rem;
-    color: #333;
+    color: #2A2C2B;
     margin-bottom: 1rem;
+    font-weight: 800;
 }
 
 .brand-item p {
     font-size: 1rem;
-    color: #888;
+    color: #5A625E;
     line-height: 1.6;
     word-break: keep-all;
 }
-
 
 /* === ~~ 매거진 종료(26/06/22 전승근2) === */
 
@@ -610,7 +662,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #2FA084;
+    background-color: #2E5A44;
 }
 
 .join img {
@@ -621,33 +673,34 @@ header {
 
 .join h3 {
     font-size: 2.25rem;
-    color: #ffffff;
+    color: #FDFBF7;
     margin-bottom: 0.625rem;
+    font-weight: 800;
 }
 
 .join p {
     font-size: 1.125rem;
-    color: #E8F5E9;
+    color: #E6E2D8;
     margin-bottom: 2.5rem;
 }
 
 .join button {
-    background-color: #ffffff;
-    color: #1F6F5F;
+    background-color: #FDFBF7;
+    color: #2E5A44;
     border: none;
-    padding: 1rem 3.125rem;
+    padding: 1.2rem 3.5rem; 
     font-size: 1.125rem;
-    font-weight: 700;
-    border-radius: 2rem;
+    font-weight: 800;
+    border-radius: 50px; 
     cursor: pointer;
-    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .join button:hover {
-    transform: translateY(0.125rem);
-    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.2);
-    background-color: #fafafa;
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background-color: #F5F3EE;
 }
 
 footer {
@@ -682,7 +735,7 @@ footer ul:first-child li:nth-child(1) img {
 }
 
 footer ul:first-child li:nth-child(2) {
-    color: #666;
+    color: #5A625E;
     font-size: 0.9375rem;
     line-height: 1.6;
 }
@@ -697,23 +750,28 @@ footer ul:first-child li:nth-child(3) img {
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+footer ul:first-child li:nth-child(3) img:hover {
+    transform: scale(1.15) translateY(-3px);
 }
 
 footer ul:not(:first-child) li:first-child {
     font-size: 1.125rem;
-    font-weight: 700;
-    color: #333;
+    font-weight: 800;
+    color: #2A2C2B;
     margin-bottom: 0.625rem;
 }
 
 footer ul:not(:first-child) li:not(:first-child) {
     font-size: 0.9375rem;
-    color: #777;
+    color: #7A827E;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
 }
 
 footer ul:not(:first-child) li:not(:first-child):hover {
-    color: #1F6F5F;
-    font-weight: 600;
+    color: #2E5A44;
+    font-weight: 700;
+    transform: translateX(5px); 
 }
