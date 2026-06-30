@@ -5,17 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>멍냥허브 - 세일특가</title>
     <link rel="stylesheet" href="./reset.css"/>
-    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/common.css"/>
     <link rel="stylesheet" href="./css/sale.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+<style>
+    /* 인트로 오버레이 고정 스타일 */
+    #intro-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100vw; height: 100vh;
+        background-color: #0e100f; /* 참고하신 GSAP 배경색 */
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+</style>
 </head>
-<body>
+
+<div id="intro-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center;">
+        <div class="container" style="opacity: 0; color: white; text-align: center;">
+            <h1 id="main" style="font-size: 3rem; margin-bottom: 20px;">SALE EVENT</h1>
+            <div style="display: flex; gap: 20px; justify-content: center; font-size: 2rem;">
+                <span id="free">RIGHT</span>
+                <span id="all">NOW</span>
+            </div>
+            <!-- 애니메이션용 가상 요소들 (필요시 SVG 구조에 맞게 커스텀) -->
+            <div id="plane" style="font-size: 2rem; margin-top: 20px;">✈️</div>
+            <div class="confetti">
+                <span style="position:absolute; opacity:0;">✨</span>
+                <span style="position:absolute; opacity:0;">🎉</span>
+                <span style="position:absolute; opacity:0;">🎈</span>
+            </div>
+        </div>
+    </div>
     <header>
-        <div class="headerInner">
+        <div class="headerInner move" id="sale-header">
             <div class="logo">
-                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+                <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
             <ul class="gnb">
                 <li><a href="./index.html">홈</a></li>
@@ -23,13 +54,13 @@
                 <li class="gnb_products">
                     <a href="./product.html">제품보기</a>
                     <ul class="snb">
-                        <li><a>전체 상품</a></li>
-                        <li><a>강아지 용품</a></li>
-                        <li><a>고양이 용품</a></li>
-                        <li><a>사료/간식</a></li>
-                        <li><a>장난감</a></li>
-                        <li><a>액세서리</a></li>
-                        <li><a>건강/미용</a></li>
+                        <li><a href="./product.html">전체 상품</a></li>
+                        <li><a href="./dogproduct.html">강아지 용품</a></li>
+                        <li><a href="./catproduct.html">고양이 용품</a></li>
+                        <li><a href="food.html">사료/간식</a></li>
+                        <li><a href="toy.html">장난감</a></li>
+                        <li><a href="accessory.html">액세서리</a></li>
+                        <li><a href="healthproduct.html">건강/미용</a></li>
                     </ul>
                 </li>
                 <li><a href="sale.html">세일특가</a></li>
@@ -37,10 +68,10 @@
                 <li><a href="contact.html">고객센터</a></li>
             </ul>
             <ul class="login">
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입</a></li>
+                <li><a href="./login.html">로그인</a></li>
+                <li><a href="./join.html">회원가입</a></li>
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
-                <li><a><img src="./img/cart.png" alt="cart"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
         </div>
     </header>
@@ -147,11 +178,13 @@
         </section>
     </main>
 
-    <div class="long-event-image-wrap">
-        <img src="./img/pag_banner.png" alt="이벤트 상세 이미지" style="width: 100%; display: block; margin: 0 auto;">
+    <div class="long-event-image-wrap" id="event-target">
+        <img src="./img/pag_banner.png" alt="이벤트 상세 이미지" style="width: 50%; display: block; margin: 0 auto;">
     </div>
 
+
     <footer>
+    <div class="footer-inner">
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
             <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
@@ -179,9 +212,23 @@
             <li>개인정보처리방침</li>
             <li>제휴/입점 문의</li>
         </ul>
-    </footer>
+    </div>
+</footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- jQuery[cite: 1] -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- GSAP & Plugins (CodePen 테스트용 URL 적용) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
+    <script src="https://assets.codepen.io/16327/DrawSVGPlugin3.min.js"></script>
+    <script src="https://assets.codepen.io/16327/MotionPathPlugin.min.js"></script>
+    <script src="https://assets.codepen.io/16327/CustomBounce3.min.js"></script>
+    <script src="https://assets.codepen.io/16327/CustomWiggle3.min.js"></script>
+    <script src="https://assets.codepen.io/16327/Physics2DPlugin3.min.js"></script>
+    
+    <!-- 새로 만든 sale.js 연결 -->
+    <script src="./javascript/sale.js"></script>
     <script>
         $(function(){
             $(".gnb_products").mouseenter(function(){
