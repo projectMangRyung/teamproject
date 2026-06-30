@@ -6,8 +6,9 @@
     <title>오시는 길 - 멍냥허브</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
-    <link rel="stylesheet" href="./css/style.css"/> 
     <link rel="stylesheet" href="./css/map.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> 
 </head>
 <body>
@@ -15,11 +16,11 @@
     <header>
         <div class="headerInner">
             <div class="logo">
-                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+                <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
             <ul class="gnb">
                 <li><a href="./index.html">홈</a></li>
-                <li class="active"><a href="./brand.html" style="color: #2E5A44;">브랜드</a></li>
+                <li class="active"><a href="./brand.html">브랜드</a></li>
                 <li class="gnb_products">
                     <a href="./product.html">제품보기</a>
                     <ul class="snb">
@@ -52,6 +53,30 @@
                 <p>멍냥허브 본사로 찾아오시는 방법을 안내해 드립니다.</p>
             </div>
         </section>
+
+    <div class="all_search">
+        <h1>길찾기</h1>
+        <div class="route-search">
+            <div>
+                <strong>출발지</strong>
+                <input id="start_search" type="text" placeholder="출발지를 입력해주세요" />
+                <button id="searchBtn" type="button">
+                    <img src="./img/search.png" alt="검색" />
+                </button>
+            </div>
+            <div>
+                <strong>목적지</strong>
+            <input
+                id="destination"
+                type="text"
+                value="서울특별시 강남구 테헤란로 427"
+                readonly
+            />
+            </div>
+            <button id="routeBtn" type="button">길찾기</button>
+        </div>
+        <div id="routeResult" class="route-result"></div>
+    </div>
 
         <!-- 카카오 맵 영역 -->
         <section class="map-container fade-in">
@@ -127,10 +152,9 @@
     <button class="top-btn">▲</button>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./javascript/common.js"></script>
-    <script src="./javascript/brand.js"></script>
 
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faa5b32ec9ddd4f39910a3a5eca4b743"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faa5b32ec9ddd4f39910a3a5eca4b743&libraries=services"></script>
     <script src="./javascript/map.js"></script>
 </body>
 </html>

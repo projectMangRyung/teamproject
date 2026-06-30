@@ -16,7 +16,7 @@
     <header>
         <div class="headerInner move">
             <div class="logo">
-                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+                <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
 
             <!-- 메인 메뉴 -->
@@ -49,6 +49,22 @@
         </div>
     </header>
 
+    <!-- 팝업 배너 창 -->
+    <div class="modalBg">
+        <div class="modal">
+            <div class="wrap">
+                <h2>공지사항</h2>
+                <p>
+                    오늘의 이벤트 안내<br>
+                    다양한 혜택이 있습니다
+                </p>
+            </div>
+            <div class="closebtn">
+                <button class="todayClose">오늘 그만보기</button>
+                <button class="close">닫기</button>
+            </div>
+        </div>
+    </div>
     <!-- 배너 화면 -->
     <div class="banner move">
         <div class="slidewrap">
@@ -63,64 +79,52 @@
         </div>
     </div>
 
-    <!-- 서비스 강점 -->
-    <div class="service">
-        <div class="serviceBox">
-            <div class="serviceCard move">
-                <img src="./img/icon_1.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>무료 배송</h4>
-                    <p>3만원 이상 무료배송</p>
-                </div>
-            </div>
-            <div class="serviceCard move">
-                <img src="./img/icon_2.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>30일 반품</h4>
-                    <p>구매 후 30일 이내 반품</p>
-                </div>
-            </div>
-            <div class="serviceCard move">
-                <img src="./img/icon_3.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>정품 보장</h4>
-                    <p>100% 정품만 판매</p>
-                </div>
-            </div>
-            <div class="serviceCard move">
-                <img src="./img/icon_4.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>24시 고객센터</h4>
-                    <p>언제든지 문의 가능</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="products">
 
-        <div class="category">
-            <a href="./dogproduct.html">
-                <div class="dog_product">
+    <div class="service">
+    <div class="category">
+        <a href="./dogproduct.html">
+            <div class="item-box">
+                <div class="img-wrap">
+                    <!-- 호버 시 표정이 바뀌도록 이미지 2장 배치 -->
+                    <img src="./img/dog.png" class="default-img" alt="강아지 기본">
+                    <img src="./img/dog_2.png" class="hover-img" alt="강아지 호버">
+                </div>
+                <div class="text-wrap">
                     <h4>강아지 용품</h4>
                     <p>사료, 간식, 액세서리</p>
-                    <img src="./img/dog_product.png" class="hover-anim dog-anim" alt="강아지 등장">
                 </div>
-            </a>
-            <a href="./catproduct.html">
-                <div class="cat_product">
+            </div>
+        </a>
+        <a href="./catproduct.html">
+            <div class="item-box">
+                <div class="img-wrap">
+                    <img src="./img/cat.png" class="default-img" alt="고양이 기본">
+                    <img src="./img/cat_2.png" class="hover-img" alt="고양이 호버">
+                </div>
+                <div class="text-wrap">
                     <h4>고양이 용품</h4>
                     <p>고양이 전용 용품</p>
-                    <img src="./img/cat_product.png" class="hover-anim cat-anim" alt="고양이 등장">
                 </div>
-            </a>
-            <a href="./healthproduct">
-                <div class="health_product">
+            </div>
+        </a>
+        <a href="./healthproduct.html">
+            <div class="item-box">
+                <div class="img-wrap">
+                    <img src="./img/health.png" class="default-img" alt="건강식품 기본">
+                    <img src="./img/health_2.png" class="hover-img" alt="건강식품 호버">
+                </div>
+                <div class="text-wrap">
                     <h4>건강식품</h4>
                     <p>영양제 건강식품</p>
-                    <img src="./img/pill.png" class="hover-anim pill-right" alt="건강이 등장">
                 </div>
-            </a>       
-        </div>
+            </div>
+        </a>       
+    </div>
+</div>
+
+    <div class="products">
+
+        
         <div class="products_best">
             <div class="best_title">
                 <h3>인기 상품</h3>
@@ -132,9 +136,9 @@
         </div>
     </div>
     <div class="review">
-        <h1 class="review_text move">우리가 말하지 않아도</h1>
-        <h1 class="review_text move">보호자분들이 말해주셨어요</h1>
-        <div class="review_box move">
+        <h1>우리가 말하지 않아도</h1>
+        <h1>보호자분들이 말해주셨어요</h1>
+        <div class="review_box">
         </div>
     </div>
     <div class="brandBox">
@@ -167,10 +171,12 @@
     </div>
 
     <div class="join">
-        <img class="join_img move" src="./img/join_logo_dark.png" alt="icon"/>
-        <h3 class="join_text move">멍냥허브 회원이 되어보세요</h3>
-        <p class="join_text move">첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
-        <button class="join_text move">무료 회원가입</button>
+        <img src="./img/join_logo_dark.png" alt="icon"/>
+        <h3>멍냥허브 회원이 되어보세요</h3>
+        <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
+        <a href="join.html" style="text-decoration: none;">
+        <button type="button">무료 회원가입</button>
+    </a>
     </div>
     <footer>
         <ul>

@@ -1,3 +1,21 @@
+// 팝업 오늘 다시보지 않기
+$(function(){
+    let today1 = new Date().toLocaleDateString()
+    let saveday1 = localStorage.getItem("closeD")
+
+    if(saveday1 !== today1){
+        $(".modalBg").css("display", "flex")
+    }
+    $(".todayClose").click(function(){
+        localStorage.setItem("closeD", today1)
+        $(".modalBg").hide()
+    })
+
+    $(".close").click(function(){
+        $(".modalBg").hide()
+    })
+})
+
 //기본적인 슬라이드 정보 얻어두기
 const slidewrap = document.querySelector(".slidewrap");
 const slidescnt = document.querySelectorAll(".slide").length;
