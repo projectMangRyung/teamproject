@@ -22,7 +22,7 @@ var searchedStart = null;
 var REST_API_KEY = 'aeacbeec9d5317614b6c6c72178090ac';
 
 var DESTINATION = {
-  name: '멍냥러브 본사',
+  name: '멍냥허브 본사',
   lat: 37.506502,
   lng: 127.053617,
   address: '서울특별시 강남구 테헤란로 427'
