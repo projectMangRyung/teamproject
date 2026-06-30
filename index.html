@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="stylesheet" href="./css/index.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <header>
-        <div class="headerInner">
+        <div class="headerInner move">
             <div class="logo">
-                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+                <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
 
             <!-- 메인 메뉴 -->
@@ -26,13 +27,13 @@
                     <a href="./product.html">제품보기</a>
                     <!-- 서브 메뉴 -->
                     <ul class="snb">
-                        <li><a>전체 상품</a></li>
-                        <li><a>강아지 용품</a></li>
-                        <li><a>고양이 용품</a></li>
-                        <li><a>사료/간식</a></li>
-                        <li><a>장난감</a></li>
-                        <li><a>액세서리</a></li>
-                        <li><a>건강/미용</a></li>
+                        <li><a href="./product.html">전체 상품</a></li>
+                        <li><a href="./dogproduct.html">강아지 용품</a></li>
+                        <li><a href="./catproduct.html">고양이 용품</a></li>
+                        <li><a href="food.html">사료/간식</a></li>
+                        <li><a href="toy.html">장난감</a></li>
+                        <li><a href="accessory.html">액세서리</a></li>
+                        <li><a href="healthproduct.html">건강/미용</a></li>
                     </ul>
                 </li>
                 <li><a href="sale.html">세일특가</a></li>
@@ -43,13 +44,13 @@
                 <li><a href="./login.html">로그인</a></li>
                 <li><a href="./join.html">회원가입</a></li>
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
-                <li><a><img src="./img/cart.png" alt="cart"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
         </div>
     </header>
 
     <!-- 배너 화면 -->
-    <div class="banner">
+    <div class="banner move">
         <div class="slidewrap">
             <div class="slides">
                 <div class="section1 slide"><img src="./img/new1.jpg" alt="banner_test"/></div>
@@ -62,64 +63,52 @@
         </div>
     </div>
 
-    <!-- 서비스 강점 -->
-    <div class="service">
-        <div class="serviceBox">
-            <div class="serviceCard">
-                <img src="./img/icon_1.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>무료 배송</h4>
-                    <p>3만원 이상 무료배송</p>
-                </div>
-            </div>
-            <div class="serviceCard">
-                <img src="./img/icon_2.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>30일 반품</h4>
-                    <p>구매 후 30일 이내 반품</p>
-                </div>
-            </div>
-            <div class="serviceCard">
-                <img src="./img/icon_3.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>정품 보장</h4>
-                    <p>100% 정품만 판매</p>
-                </div>
-            </div>
-            <div class="serviceCard">
-                <img src="./img/icon_4.png" alt=""/>
-                <div class="serviceBar"> 
-                    <h4>24시 고객센터</h4>
-                    <p>언제든지 문의 가능</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="products">
 
-        <div class="category">
-            <a href="./dogproduct.html">
-                <div class="dog_product">
+    <div class="service">
+    <div class="category">
+        <a href="./dogproduct.html">
+            <div class="item-box">
+                <div class="img-wrap">
+                    <!-- 호버 시 표정이 바뀌도록 이미지 2장 배치 -->
+                    <img src="./img/dog.png" class="default-img" alt="강아지 기본">
+                    <img src="./img/dog_2.png" class="hover-img" alt="강아지 호버">
+                </div>
+                <div class="text-wrap">
                     <h4>강아지 용품</h4>
                     <p>사료, 간식, 액세서리</p>
-                    <img src="./img/dog_product.png" class="hover-anim dog-anim" alt="강아지 등장">
                 </div>
-            </a>
-            <a href="./catproduct.html">
-                <div class="cat_product">
+            </div>
+        </a>
+        <a href="./catproduct.html">
+            <div class="item-box">
+                <div class="img-wrap">
+                    <img src="./img/cat.png" class="default-img" alt="고양이 기본">
+                    <img src="./img/cat_2.png" class="hover-img" alt="고양이 호버">
+                </div>
+                <div class="text-wrap">
                     <h4>고양이 용품</h4>
                     <p>고양이 전용 용품</p>
-                    <img src="./img/cat_product.png" class="hover-anim cat-anim" alt="고양이 등장">
                 </div>
-            </a>
-            <a href="./healthproduct">
-                <div class="health_product">
+            </div>
+        </a>
+        <a href="./healthproduct.html">
+            <div class="item-box">
+                <div class="img-wrap">
+                    <img src="./img/health.png" class="default-img" alt="건강식품 기본">
+                    <img src="./img/health_2.png" class="hover-img" alt="건강식품 호버">
+                </div>
+                <div class="text-wrap">
                     <h4>건강식품</h4>
                     <p>영양제 건강식품</p>
-                    <img src="./img/pill.png" class="hover-anim pill-right" alt="건강이 등장">
                 </div>
-            </a>       
-        </div>
+            </div>
+        </a>       
+    </div>
+</div>
+
+    <div class="products">
+
+        
         <div class="products_best">
             <div class="best_title">
                 <h3>인기 상품</h3>
@@ -140,24 +129,24 @@
         <div class="brand-container">
             <div class="brand-sidebar">
                 <span class="category">MAGAZINE</span>
-                <h3>저희는 양심적으로<br>운영합니다.</h3>
-                <p>반려동물을 가족처럼 생각하는 분들이 믿고 사용할 수 있도록, 우리가 지키는 원칙들을 투명하게 공개합니다.</p>
+                <h3 class="brand-title move">저희는 양심적으로<br>운영합니다.</h3>
+                <p class="brand-text move">반려동물을 가족처럼 생각하는 분들이 믿고 사용할 수 있도록, 우리가 지키는 원칙들을 투명하게 공개합니다.</p>
             </div>
 
             <div class="brand-content">
-                <div class="brand-item">
+                <div class="brand-item move">
                 <img src="./img/content1.jpg" alt="1c" />
                 <h4>100% 정품만 판매합니다</h4>
                 <p>모든 입점 상품은 브랜드 공식 계약 후 유통됩니다. 가품 적발 시 구매가의 200% 보상을 약속합니다.</p>
             </div>
             
-            <div class="brand-item">
+            <div class="brand-item move">
                 <img src="./img/content2.jpg" alt="2c" />
                 <h4>수의사가 직접 검수합니다</h4>
                 <p>사료·영양제·건강용품은 제휴 수의사 3인이 성분과 안전성을 검토한 뒤 등록됩니다.</p>
             </div>
             
-            <div class="brand-item">
+            <div class="brand-item move">
                 <img src="./img/content3.jpg" alt="3c" />
                 <h4>수익의 5%를 유기동물 보호소에</h4>
                 <p>매달 전체 매출의 5%가 전국 보호소에 사료 및 의료비로 기부됩니다. 구매가 곧 나눔입니다.</p>
@@ -169,7 +158,9 @@
         <img src="./img/join_logo_dark.png" alt="icon"/>
         <h3>멍냥허브 회원이 되어보세요</h3>
         <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
-        <button>무료 회원가입</button>
+        <a href="join.html" style="text-decoration: none;">
+        <button type="button">무료 회원가입</button>
+    </a>
     </div>
     <footer>
         <ul>
