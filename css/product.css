@@ -429,3 +429,59 @@
     opacity: 0.8; 
 }
 
+/* 장바구니 담김 모달 */
+.cart_modal_content {
+    max-width: 24rem;
+    text-align: center;
+    padding: 0;
+    overflow: hidden;
+}
+
+.cart_modal_header {
+    background: linear-gradient(135deg, #1F6F5F 0%, #2d9d85 100%);
+    padding: 2.5rem 2rem 1.8rem;
+}
+
+.cart_modal_icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart_modal_header h3 {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.cart_modal_buttons {
+    display: flex;
+    gap: 0.6rem;
+    padding: 1.5rem;
+}
+
+.cart_modal_buttons button {
+    flex: 1;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 3rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#cartModalClose {
+    background: #f1f1f1;
+    color: #666;
+}
+#cartModalClose:hover {
+    background: #e0e0e0;
+}
+
+#cartModalGo {
+    background: #1F6F5F;
+    color: #fff;
+}
+#cartModalGo:hover {
+    background: #165246;
+}

@@ -14,13 +14,13 @@ async function productload() {
   const res = await fetch("./json/product.json");
   allProducts = await res.json();
 
-    allProducts = allProducts.map((item, index) => {
+  allProducts = allProducts.map((item, index) => {
     return {
-        ...item,
-        date: item.date || `2026-06-${String(30 - (index % 25)).padStart(2, "0")}`,
-        review: item.review || Number((4.1 + (index % 9) * 0.1).toFixed(1))
+      ...item,
+      date: item.date || `2026-06-${String(30 - (index % 25)).padStart(2, "0")}`,
+      review: item.review || Number((4.1 + (index % 9) * 0.1).toFixed(1))
     };
-    });
+  });
 
   document.querySelector(".all_search h1").textContent =
     currentCategory === "전체" ? "전체상품" : currentCategory;
@@ -184,7 +184,19 @@ document.querySelector(".btn_modal_cart").addEventListener("click", function () 
 
   addToCart(allProducts[index], qty);
   closeModal();
-  alert("장바구니에 담겼습니다.");
+
+  document.getElementById("cartModal").classList.add("show");
+});
+
+// 장바구니 모달 - 쇼핑 계속하기
+document.getElementById("cartModalClose").addEventListener("click", function () {
+  document.getElementById("cartModal").classList.remove("show");
+  document.body.style.overflow = "auto";
+});
+
+// 장바구니 모달 - 장바구니 보기
+document.getElementById("cartModalGo").addEventListener("click", function () {
+  window.location.href = "./cart.html";
 });
 
 // 바로 구매하기 버튼
