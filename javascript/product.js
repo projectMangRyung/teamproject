@@ -38,6 +38,27 @@ function renderProducts(category) {
     document.querySelector(".product_box").innerHTML = html;
 }
 
+// 제품 검색
+const productSearch = document.querySelector("#product_search")
+const searchBtn = document.querySelector("#searchBtn")
+
+// 검색 실행 함수
+function handleSearch() {
+    const keyword = productSearch.value; // 입력한 검색어 가져오기
+    renderProducts(keyword); // 현재 카테고리 내에서 검색 실행
+}
+
+// 돋보기 버튼 클릭 시 검색
+searchBtn.addEventListener("click", handleSearch);
+
+// 검색창에서 엔터키 눌렀을 때 검색
+productSearch.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        handleSearch();
+    }
+});
+
+
 // 모달 열기
 function openModal(index) {
     let item = allProducts[index];
