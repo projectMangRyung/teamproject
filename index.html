@@ -49,15 +49,30 @@
         </div>
     </header>
 
+    <!-- 팝업 배너 창 -->
+    <div class="modalBg">
+        <div class="modal">
+            <div class="wrap">
+                <h2>공지사항</h2>
+                <a href="sale.html#event-target">
+                <img src="./img/popup.png" class="default-img" alt="팝업">
+                </a>
+            </div>
+            <div class="closebtn">
+                <button class="todayClose">오늘 그만보기</button>
+                <button class="close">닫기</button>
+            </div>
+        </div>
+    </div>
     <!-- 배너 화면 -->
     <div class="banner move">
         <div class="slidewrap">
             <div class="slides">
                 <div class="section1 slide"><img src="./img/new1.jpg" alt="banner_test"/></div>
-                <div class="section2 slide"><img src="./img/new2.jpg" alt="banner_1"/></div>
-                <div class="section3 slide"><img src="./img/new3.jpg" alt="banner_2"/></div>
-                <div class="section4 slide"><img src="./img/new4.jpg" alt="banner_3"/></div>
-                <div class="section5 slide"><img src="./img/new5.jpg" alt="banner_4"/></div>
+                <div class="section2 slide"><img src="./img/new4.jpg" alt="banner_1"/></div>
+                <div class="section3 slide"><img src="./img/new5.jpg" alt="banner_2"/></div>
+                <div class="section4 slide"><img src="./img/new3.jpg" alt="banner_3"/></div>
+                <div class="section5 slide"><img src="./img/new2.jpg" alt="banner_4"/></div>
                 <div class="section5 slide"><img src="./img/new6.jpg" alt="banner_5"/></div>       
             </div>
         </div>
@@ -146,23 +161,28 @@
                 <p>사료·영양제·건강용품은 제휴 수의사 3인이 성분과 안전성을 검토한 뒤 등록됩니다.</p>
             </div>
             
+            <!-- 중략 (brand-content 세 번째 아이템 위치) -->
             <div class="brand-item move">
                 <img src="./img/content3.jpg" alt="3c" />
                 <h4>수익의 5%를 유기동물 보호소에</h4>
                 <p>매달 전체 매출의 5%가 전국 보호소에 사료 및 의료비로 기부됩니다. 구매가 곧 나눔입니다.</p>
             </div>
-        </div>
-    </div>
+        </div> <!-- .brand-content 닫힘 -->
+    </div> <!-- .brand-container 닫힘 -->
+</div> <!-- 💡 1. 여기에 brandBox를 완벽히 격리해 줄 닫는 태그 </div>를 추가하세요! -->
 
-    <div class="join">
-        <img src="./img/join_logo_dark.png" alt="icon"/>
-        <h3>멍냥허브 회원이 되어보세요</h3>
-        <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
-        <a href="join.html" style="text-decoration: none;">
+<div class="join">
+    <img src="./img/join_logo_dark.png" alt="icon"/>
+    <h3>멍냥허브 회원이 되어보세요</h3>
+    <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
+    <a href="join.html" style="text-decoration: none;">
         <button type="button">무료 회원가입</button>
     </a>
-    </div>
-    <footer>
+</div>
+
+<!-- 💡 2. footer 자체는 100% 넓히고, 자식 요소들을 .footer-inner로 한 번 감싸줍니다. -->
+<footer>
+    <div class="footer-inner">
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
             <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
@@ -190,7 +210,8 @@
             <li>개인정보처리방침</li>
             <li>제휴/입점 문의</li>
         </ul>
-    </footer>
+    </div>
+</footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./javascript/index.js"></script>
     <script src="./javascript/common.js"></script>

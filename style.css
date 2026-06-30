@@ -14,124 +14,109 @@ body {
     /* cursor: url('../img/cursor.png'), auto; */
 }
 
-/* ========== header ========== */
-header {
-    width: 100%;
-    height: 4rem;
-    background-color: rgba(46, 90, 68, 0.8);
+/* 팝업 창 (2026.06.30최정은) */
+/* ==================== 멍냥허브 프리미엄 사이드 공지 팝업 ==================== */
+.modalBg {
     position: fixed;
-    z-index: 100;
-    border-bottom: none; 
-    box-shadow: 0 4px 15px rgba(46, 90, 68, 0.05); 
+    right: 30px;
+    bottom: -500px; /* 초기 위치를 화면 아래로 숨김 */
+    left: auto;
+    top: auto;
+    width: 340px;
+    height: auto;
+    display: block; /* 스크립트 결합을 위해 블록 유지 */
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    /* 젤리처럼 튕기며 올라오는 부드러운 패스 트랙 */
+    transition: bottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                opacity 0.4s ease;
 }
 
-.headerInner {
-    width: 90%;
-    max-width: 90rem;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
+/* 활성화되었을 때 우측 하단에 안착 */
+.modalBg.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
 }
 
-.logo {
-    width: clamp(8rem, 1.2vw, 9rem);
-}
-
-.logo > a {
-    cursor: pointer;
-}
-
-.gnb {
-    width: clamp(50rem, 1.3vw, 75rem);
-    height: 4rem;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    align-items: center;
-}
-
-.gnb > li {
+.modal {
     width: 100%;
-    height: 4rem;
-    transition: all 0.3s;
-}
-/* 호버 시 효과 수정(2026.06.29 최정은) */
-.gnb > li > a {
-    height: 100%;
+    background-color: #FDFBF7; /* 쇼핑몰 시그니처 크림톤 브랜딩 */
+    border: 2px solid #2E5A44; /* 고급스러운 딥그린 테두리 */
+    border-radius: 24px;       /* 통통 튀는 라운드 값 */
+    box-shadow: 0 12px 40px rgba(46, 90, 68, 0.15);
+    overflow: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-    transition: all 0.4s;
-    font-weight: bold;
-    cursor: pointer;
-    color: #ffffff;
-}
-
-.gnb > li:hover > a {
-    color: #2E5A44;
-}
-
-.login {
-    width: 20rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    font-weight: 600;
-    gap: 2rem;
-}
-
-.login > li > a {
-    font-size: clamp(0.7rem, 1.2vw, 1rem);
-    transition: all 0.3s;
-    display: flex;
-    color: #5A625E;
-}
-
-.login > li > a > img {
-    width: 1.6rem;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.login > li > a:hover{
-    color: #2E5A44;
-    transform: translateY(-2px);
-}
-.login > li > a:hover > img {
-    transform: scale(1.15) rotate(5deg); 
-}
-
-.snb {
-    position: relative;
-    width: 100%;
-    background-color: #FDFBF7;
-    display: none;
     flex-direction: column;
-    transition: all 0.3s;
-    gap: 1.25rem;
-    padding: 0.625rem;
-    border-radius: 0 0 16px 16px; 
-    box-shadow: 0 10px 20px rgba(46, 90, 68, 0.08);
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.snb > li > a {
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 600;
-    color: #5A625E;
+.modalBg.show .modal {
+    transform: scale(1);
 }
 
-.snb > li > a:hover {
+.modal .wrap {
+    padding: 24px 20px 16px;
+    text-align: center;
+}
+
+.wrap h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
     color: #2E5A44;
-    padding-left: 5px; 
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+    display: inline-block;
+    position: relative;
 }
 
-.snb.on {
-    display: flex;
+/* 공지사항 타이틀 양옆 귀여운 스파클 포인트 */
+.wrap h2::before { content: '✨'; position: absolute; left: -24px; top: -2px; font-size: 0.9rem; }
+.wrap h2::after { content: '✨'; position: absolute; right: -24px; top: -2px; font-size: 0.9rem; }
+
+.wrap .default-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
 }
+
+/* 이미지 마우스 호버 시 미세하게 반응하는 인터랙션 */
+.wrap .default-img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.closebtn {
+    display: flex;
+    border-top: 1px solid rgba(46, 90, 68, 0.08);
+    background: #F5F3EE;
+}
+
+.closebtn > button {
+    flex: 1;
+    padding: 14px 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #7A827E;
+    transition: all 0.2s ease;
+}
+
+.closebtn > button.todayClose {
+    border-right: 1px solid rgba(46, 90, 68, 0.08);
+    color: #2E5A44; /* 오늘 그만보기 강조 */
+}
+
+.closebtn > button:hover {
+    background-color: #2E5A44;
+    color: #FDFBF7;
+}
+
 
 /* ========== slide ========== (2025/06/19 최정은) */
 .banner {
@@ -164,6 +149,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    padding-bottom: 1.5rem;
 }
 /* ========== service  gap 추가(2026.06.22 최정은) ========== */
 .service {
@@ -215,6 +201,7 @@ header {
 }
 .serviceCard:hover img {
     transform: scale(1.1);
+    
 }
 .service .serviceBar {
     display: flex;
@@ -614,6 +601,11 @@ header {
     background-color: #FDFBF7; 
     padding: 6.25rem 0;
     background-image: url(../img/background_magazine.png);
+    
+    /* 여기서부터 추가 및 수정 */
+    background-repeat: repeat;      /* 이미지를 가로/세로로 반복 (가로만 반복하려면 repeat-x) */
+    background-position: center;    /* 패턴이 화면 중앙을 기준으로 뻗어나가도록 설정 */
+    background-size: auto;          /* 원본 크기로 반복 (패턴이 너무 크거나 작으면 100px처럼 고정값 지정) */
 }
 
 .brand-container {
@@ -738,77 +730,4 @@ header {
     transform: translateY(-4px) scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     background-color: #F5F3EE;
-}
-
-footer {
-    width: 90%;
-    max-width: 90rem;
-    margin: 0 auto;
-    padding: 5rem 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-}
-
-footer ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9375rem;
-}
-
-footer ul:first-child {
-    flex: 2;
-    padding-right: 2rem;
-}
-
-footer ul:not(:first-child) {
-    flex: 1;
-}
-
-footer ul:first-child li:nth-child(1) img {
-    width: 10rem;
-    margin-bottom: 0.625rem;
-}
-
-footer ul:first-child li:nth-child(2) {
-    color: #5A625E;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-}
-
-footer ul:first-child li:nth-child(3) {
-    display: flex;
-    gap: 0.625rem;
-    margin-top: 0.5rem;
-}
-
-footer ul:first-child li:nth-child(3) img {
-    width: 2.5rem;
-    height: 2.5rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-footer ul:first-child li:nth-child(3) img:hover {
-    transform: scale(1.15) translateY(-3px);
-}
-
-footer ul:not(:first-child) li:first-child {
-    font-size: 1.125rem;
-    font-weight: 800;
-    color: #2A2C2B;
-    margin-bottom: 0.625rem;
-}
-
-footer ul:not(:first-child) li:not(:first-child) {
-    font-size: 0.9375rem;
-    color: #7A827E;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-footer ul:not(:first-child) li:not(:first-child):hover {
-    color: #2E5A44;
-    font-weight: 700;
-    transform: translateX(5px); 
 }
