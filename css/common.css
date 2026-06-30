@@ -12,15 +12,18 @@ body {
     background-color: #EEEEEE;
 }
 
+
 /* ========== header ========== */
 header {
     width: 100%;
     height: 4rem;
-    background-color: white;
+    background-color: rgba(46, 90, 68, 0.8);
     position: fixed;
     z-index: 100;
-    border-bottom: 1px solid #ddd;
+    border-bottom: none; 
+    box-shadow: 0 4px 15px rgba(46, 90, 68, 0.05); 
 }
+
 .headerInner {
     width: 90%;
     max-width: 90rem;
@@ -33,7 +36,7 @@ header {
 }
 
 .logo {
-    width: clamp(6rem, 1.2vw, 9rem);
+    width: clamp(8rem, 1.2vw, 9rem);
 }
 
 .logo > a {
@@ -53,24 +56,21 @@ header {
     height: 4rem;
     transition: all 0.3s;
 }
-
+/* 호버 시 효과 수정(2026.06.29 최정은) */
 .gnb > li > a {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-    transition: all 0.3s;
+    transition: all 0.4s;
     font-weight: bold;
     cursor: pointer;
+    color: #ffffff;
 }
 
 .gnb > li:hover > a {
-    background-color: #f1f1f1;
-}
-
-.gnb > li > a:hover {
-    color: #1F6F5F;
+    color: #ddd;
 }
 
 .login {
@@ -86,35 +86,46 @@ header {
 .login > li > a {
     font-size: clamp(0.7rem, 1.2vw, 1rem);
     transition: all 0.3s;
+    display: flex;
+    color: white;
 }
 
 .login > li > a > img {
     width: 1.6rem;
     cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 .login > li > a:hover{
-    color: #1F6F5F;
+    color: #ddd;
+    transform: translateY(-2px);
+}
+.login > li > a:hover > img {
+    transform: scale(1.15) rotate(5deg); 
 }
 
 .snb {
     position: relative;
     width: 100%;
-    background-color: white;
+    background-color: #FDFBF7;
     display: none;
     flex-direction: column;
     transition: all 0.3s;
     gap: 1.25rem;
     padding: 0.625rem;
+    border-radius: 0 0 16px 16px; 
+    box-shadow: 0 10px 20px rgba(46, 90, 68, 0.08);
 }
 
 .snb > li > a {
     cursor: pointer;
     transition: all 0.3s;
     font-weight: 600;
+    color: #5A625E;
 }
 
 .snb > li > a:hover {
-    color: #1F6F5F;
+    color: #2E5A44;
+    padding-left: 5px; 
 }
 
 .snb.on {
@@ -153,7 +164,7 @@ footer ul:first-child li:nth-child(1) img {
 }
 
 footer ul:first-child li:nth-child(2) {
-    color: #666;
+    color: #5A625E;
     font-size: 0.9375rem;
     line-height: 1.6;
 }
@@ -168,23 +179,28 @@ footer ul:first-child li:nth-child(3) img {
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+footer ul:first-child li:nth-child(3) img:hover {
+    transform: scale(1.15) translateY(-3px);
 }
 
 footer ul:not(:first-child) li:first-child {
     font-size: 1.125rem;
-    font-weight: 700;
-    color: #333;
+    font-weight: 800;
+    color: #2A2C2B;
     margin-bottom: 0.625rem;
 }
 
 footer ul:not(:first-child) li:not(:first-child) {
     font-size: 0.9375rem;
-    color: #777;
+    color: #7A827E;
     cursor: pointer;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
 }
 
 footer ul:not(:first-child) li:not(:first-child):hover {
-    color: #1F6F5F;
-    font-weight: 600;
+    color: #2E5A44;
+    font-weight: 700;
+    transform: translateX(5px); 
 }

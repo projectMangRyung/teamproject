@@ -32,6 +32,58 @@
 .banner-text p{
     line-height: 1.6;
 }
+/* 검색 버튼 */
+.all_search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+    gap: 2rem;
+}
+.all_search > h1{
+    font-size: 1.875rem;
+    color: #333;
+    font-weight: 700;
+}
+.all_search > label{
+    width: 30rem;
+    border: 1px solid #ddd;
+    padding: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.all_search label:focus-within {
+    border-color: #1F6F5F;
+    background-color: #ffffff;
+    /* 그림자 삭제(2026.06.25 최정은) */
+    /* box-shadow: 0 0 0 3px rgba(31, 111, 95, 0.1); */
+}
+.all_search input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    width: 15rem;
+    color: #333;
+}
+.all_search button {
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-right: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.all_search button img{
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
 /* 지도 영역 컨테이너 */
 .map-container {
     position: relative;

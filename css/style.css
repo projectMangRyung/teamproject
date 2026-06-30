@@ -9,130 +9,48 @@
 body {
     font-family: 'Asta Sans', 'Noto Sans KR', sans-serif;
     color: #2A2C2B;
-    background-color: #F5F3EE;
+    background-color: #F5F2EB
     /* 내가 만든 커스텀 커서 적용 (경로와 파일명을 맞춰주세요) */
     /* cursor: url('../img/cursor.png'), auto; */
 }
 
-/* ========== header ========== */
-header {
-    width: 100%;
-    height: 4rem;
-    background-color: rgba(253, 251, 247, 0.98);
-    position: fixed;
-    z-index: 100;
-    border-bottom: none; 
-    box-shadow: 0 4px 15px rgba(46, 90, 68, 0.05); 
-}
+/* 팝업 창 (2026.06.30최정은) */
+.modalBg{
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            width: 250px;
+            height: 400px;
+            display: none;
+            z-index: 1000;
+        }
+        .modal{
+            width: 350px;
+            background-color: white;
+            overflow: hidden;
+        }
+        .modal.wrap{
+            padding: 20px;
+            text-align: center;
+        }
+        .wrap h2{
+            margin-bottom: 20px;
+        }
+        .wrap p{
+            line-height: 1.6;
+        }
+        .closebtn{
+            display: flex;
+            border-top: 1px solid #ccc;
 
-.headerInner {
-    width: 90%;
-    max-width: 90rem;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-}
-
-.logo {
-    width: clamp(6rem, 1.2vw, 9rem);
-}
-
-.logo > a {
-    cursor: pointer;
-}
-
-.gnb {
-    width: clamp(50rem, 1.3vw, 75rem);
-    height: 4rem;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    align-items: center;
-}
-
-.gnb > li {
-    width: 100%;
-    height: 4rem;
-    transition: all 0.3s;
-}
-/* 호버 시 효과 수정(2026.06.29 최정은) */
-.gnb > li > a {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-    transition: all 0.4s;
-    font-weight: bold;
-    cursor: pointer;
-    color: #5A625E;
-}
-
-.gnb > li:hover > a {
-    color: #2E5A44;
-}
-
-.login {
-    width: 20rem;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    font-weight: 600;
-    gap: 2rem;
-}
-
-.login > li > a {
-    font-size: clamp(0.7rem, 1.2vw, 1rem);
-    transition: all 0.3s;
-    display: flex;
-    color: #5A625E;
-}
-
-.login > li > a > img {
-    width: 1.6rem;
-    cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.login > li > a:hover{
-    color: #2E5A44;
-    transform: translateY(-2px);
-}
-.login > li > a:hover > img {
-    transform: scale(1.15) rotate(5deg); 
-}
-
-.snb {
-    position: relative;
-    width: 100%;
-    background-color: #FDFBF7;
-    display: none;
-    flex-direction: column;
-    transition: all 0.3s;
-    gap: 1.25rem;
-    padding: 0.625rem;
-    border-radius: 0 0 16px 16px; 
-    box-shadow: 0 10px 20px rgba(46, 90, 68, 0.08);
-}
-
-.snb > li > a {
-    cursor: pointer;
-    transition: all 0.3s;
-    font-weight: 600;
-    color: #5A625E;
-}
-
-.snb > li > a:hover {
-    color: #2E5A44;
-    padding-left: 5px; 
-}
-
-.snb.on {
-    display: flex;
-}
-
+        }
+        .closebtn > button{
+            padding: 5px 10px;
+            border: none;
+            background-color: #ccc;
+            cursor: pointer;
+            font-size: 15px;
+        }
 /* ========== slide ========== (2025/06/19 최정은) */
 .banner {
     height: auto;
@@ -140,7 +58,7 @@ header {
 }
 
 .slidewrap{
-    width: 100vw;
+    width: 100%;
     height: auto;
     position: relative;
     overflow: hidden;
@@ -171,7 +89,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FDFBF7;
+    background-color: #5C7765;
     position: relative;
     border-bottom: none;
     box-shadow: 0 4px 20px rgba(46, 90, 68, 0.03);
@@ -242,69 +160,93 @@ header {
 }
 
 /* 카테고리 수정(2026.06.22 최정은) */
+/* ==================== 카테고리 알약(Pill) 디자인 ==================== */
 .category {
     width: 90%;
     max-width: 90rem;
-    margin: 3.75rem auto;
+    margin: 5rem auto;
     display: flex;
     justify-content: space-between;
-    text-align: left;
-    gap: 3.125rem;
+    gap: 2rem; /* 각 카드 사이의 여백 */
 }
 
 .category a {
-    background-color: #FDFBF7;
+    background-color: #F5F2EB;
     flex: 1;
-    padding: 1.25rem;
+    padding: 1.5rem 2.5rem; /* 상하좌우 넉넉한 여백 확보 */
     border: 1px solid rgba(46, 90, 68, 0.05);
-    border-radius: 24px; 
+    border-radius: 50px; /* 둥근 알약 형태 */
     box-shadow: 0 8px 24px rgba(46, 90, 68, 0.04);
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    /* 카드 전체가 들썩거리는 애니메이션 삭제됨 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
 }
 
-.category div h4 {
-    margin-bottom: 0.3125rem;
-    font-size: 1.125rem;
-    color: #2A2C2B;
-    font-weight: bold;
+.category a:hover {
+    background-color: #ffedc3;
+    box-shadow: 0 12px 30px rgba(46, 90, 68, 0.08);
+    transition: opacity 0.1s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.category div p {
+/* ==================== 내부 Flex 정렬 (이미지 좌 - 글자 우) ==================== */
+.item-box {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* 이미지와 텍스트가 너무 붙지 않도록 간격 설정 */
+}
+
+.text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem; /* 제목과 설명 사이 간격 */
+}
+
+.text-wrap h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #2E5A44; /* 텍스트 색상 포인트 */
+    font-weight: 800;
+}
+
+.text-wrap p {
+    margin: 0;
     font-size: 1rem;
-    color: #5A625E;
+    color: #7A827E;
 }
 
-.hover-anim {
+/* ==================== 표정 변화(Hover Image Swap) 애니메이션 ==================== */
+.img-wrap {
+    position: relative;
+    width: 4.5rem; 
+    height: 4.5rem;
+    flex-shrink: 0; 
+}
+
+.img-wrap img {
     position: absolute;
-    width: 15rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* 💡 핵심 변경 포인트: 투명도는 0.1초 만에 즉각 교체, 크기는 0.4초 동안 통통 튀며 확대 */
+    transition: opacity 0.1s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 기본 상태 */
+.img-wrap .hover-img {
     opacity: 0;
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transform: scale(0.8); /* 기본 상태에서 약간 작게 둬서 커지는 극적인 효과를 줌 */
 }
 
-.dog-anim {
-    bottom: -9.375rem;
-    right: -7.5rem;
+/* 호버 상태: 기본 이미지는 숨기고 호버 이미지를 띄움 */
+.category a:hover .default-img {
+    opacity: 0;
 }
 
-.cat-anim {
-    bottom: -6.25rem;
-    right: -6.25rem;
-}
-
-.pill-right {
-    bottom: -4.375rem;
-    right: -6.25rem;
-}
-
-/* 카드 영역의 '어디를' 호버해도 애니메이션이 나오게 a 태그로 기준 변경 */
-.category a:hover .dog-anim,
-.category a:hover .cat-anim,
-.category a:hover .pill-right {
-    right: 1.25rem;
+.category a:hover .hover-img {
     opacity: 1;
+    transform: scale(1.15); /* 1.05 -> 1.15로 키워서 쑤욱 커지는 느낌 강조 */
 }
 
 /* 전체보기 버튼 클릭 시 높이 자동으로 변경(2026.06.25 최정은) */
@@ -589,6 +531,7 @@ header {
     width: 100%;
     background-color: #FDFBF7; 
     padding: 6.25rem 0;
+    background-image: url(../img/background_magazine.png);
 }
 
 .brand-container {
@@ -674,7 +617,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #2E5A44;
+    background-color: #D67051;
 }
 
 .join img {
@@ -713,77 +656,4 @@ header {
     transform: translateY(-4px) scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     background-color: #F5F3EE;
-}
-
-footer {
-    width: 90%;
-    max-width: 90rem;
-    margin: 0 auto;
-    padding: 5rem 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-}
-
-footer ul {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9375rem;
-}
-
-footer ul:first-child {
-    flex: 2;
-    padding-right: 2rem;
-}
-
-footer ul:not(:first-child) {
-    flex: 1;
-}
-
-footer ul:first-child li:nth-child(1) img {
-    width: 10rem;
-    margin-bottom: 0.625rem;
-}
-
-footer ul:first-child li:nth-child(2) {
-    color: #5A625E;
-    font-size: 0.9375rem;
-    line-height: 1.6;
-}
-
-footer ul:first-child li:nth-child(3) {
-    display: flex;
-    gap: 0.625rem;
-    margin-top: 0.5rem;
-}
-
-footer ul:first-child li:nth-child(3) img {
-    width: 2.5rem;
-    height: 2.5rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-footer ul:first-child li:nth-child(3) img:hover {
-    transform: scale(1.15) translateY(-3px);
-}
-
-footer ul:not(:first-child) li:first-child {
-    font-size: 1.125rem;
-    font-weight: 800;
-    color: #2A2C2B;
-    margin-bottom: 0.625rem;
-}
-
-footer ul:not(:first-child) li:not(:first-child) {
-    font-size: 0.9375rem;
-    color: #7A827E;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-footer ul:not(:first-child) li:not(:first-child):hover {
-    color: #2E5A44;
-    font-weight: 700;
-    transform: translateX(5px); 
 }
