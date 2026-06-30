@@ -185,6 +185,25 @@ document.querySelector(".btn_modal_cart").addEventListener("click", function () 
   addToCart(allProducts[index], qty);
   closeModal();
 
+  // 아이콘 애니메이션 재실행
+  const icon = document.querySelector(".cart_modal_icon");
+  icon.style.animation = "none";
+  setTimeout(() => { icon.style.animation = ""; }, 10);
+
+  // 컨페티 생성
+  const colors = ["#1F6F5F", "#ffce54", "#ff6b6b", "#4ecdc4", "#ffa07a"];
+  const wrap = document.getElementById("confettiWrap");
+  wrap.innerHTML = "";
+
+  for (let i = 0; i < 20; i++) {
+    const dot = document.createElement("div");
+    dot.className = "confetti active";
+    dot.style.left = Math.random() * 100 + "%";
+    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+    dot.style.animationDelay = Math.random() * 0.3 + "s";
+    wrap.appendChild(dot);
+  }
+
   document.getElementById("cartModal").classList.add("show");
 });
 
