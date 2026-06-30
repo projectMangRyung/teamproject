@@ -1,37 +1,34 @@
-/* ====================
+/* =====================
    스크롤 등장
-==================== */
+===================== */
 .scroll-hidden {
     opacity: 0;
     transform: translateY(2rem);
     transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
 .scroll-hidden.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* ====================
+
+/* =====================
    배너
-==================== */
+===================== */
 .cart-banner {
     padding: 11.25rem 0 5rem;
     text-align: center;
     background: linear-gradient(180deg, #fff 0%, #EEEEEE 100%);
 }
-
 .cart-banner h2 {
     font-size: 4rem;
     color: #1F6F5F;
     margin-bottom: 1rem;
 }
-
 .cart-banner > p {
     font-size: 1.3rem;
     color: #888;
 }
-
 .breadcrumb {
     display: flex;
     align-items: center;
@@ -40,35 +37,34 @@
     margin-bottom: 1.5rem;
     font-size: 0.9rem;
 }
-
 .breadcrumb a {
     color: #aaa;
     transition: color 0.2s;
 }
-
-.breadcrumb a:hover { color: #1F6F5F; }
-
-.breadcrumb-arrow { color: #ddd; }
-
+.breadcrumb a:hover {
+    color: #1F6F5F;
+}
+.breadcrumb-arrow {
+    color: #ddd;
+}
 .breadcrumb-current {
     color: #1F6F5F;
     font-weight: 600;
 }
-
 .cart-count {
     margin-top: 0.8rem;
     font-size: 1rem;
     color: #aaa;
 }
-
 .cart-count strong {
     color: #1F6F5F;
     font-weight: 700;
 }
 
-/* ====================
+
+/* =====================
    레이아웃
-==================== */
+===================== */
 .cart-wrap {
     max-width: 90rem;
     margin: 0 auto 10rem;
@@ -78,17 +74,17 @@
     align-items: flex-start;
 }
 
-/* ====================
+
+/* =====================
    장바구니 목록
-==================== */
+===================== */
 .cart-list {
     flex: 2;
     background: #fff;
     border-radius: 1.25rem;
     padding: 2rem;
-    box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0.25rem 1.5rem rgba(0,0,0,0.06);
 }
-
 .cart-list-header {
     display: flex;
     justify-content: space-between;
@@ -98,14 +94,12 @@
     margin-bottom: 1rem;
     font-weight: 600;
 }
-
 .cart-list-header label {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
 }
-
 .cart-list-header input[type="checkbox"],
 .cart-item input[type="checkbox"] {
     width: 1.1rem;
@@ -113,7 +107,6 @@
     accent-color: #1F6F5F;
     cursor: pointer;
 }
-
 #deleteSelected {
     background: none;
     border: 0.0625rem solid #ddd;
@@ -124,15 +117,15 @@
     color: #888;
     transition: all 0.3s;
 }
-
 #deleteSelected:hover {
     border-color: #e74c3c;
     color: #e74c3c;
 }
 
-/* ====================
+
+/* =====================
    아이템
-==================== */
+===================== */
 .cart-item {
     display: flex;
     align-items: center;
@@ -140,28 +133,25 @@
     padding: 1.5rem 0;
     border-bottom: 0.0625rem solid #f0f0f0;
 }
-
-.cart-item:last-child { border-bottom: none; }
-
-.cart-item input[type="checkbox"] { flex-shrink: 0; }
-
+.cart-item:last-child {
+    border-bottom: none;
+}
 .cart-item img {
     width: 6rem;
     height: 6rem;
     object-fit: cover;
     border-radius: 0.8rem;
     flex-shrink: 0;
-    box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.2rem 0.8rem rgba(0,0,0,0.08);
 }
-
-.cart-item-info { flex: 1; }
-
+.cart-item-info {
+    flex: 1;
+}
 .cart-item-info .brand {
     font-size: 0.85rem;
     color: #aaa;
     margin-bottom: 0.3rem;
 }
-
 .cart-item-info .name {
     font-size: 1rem;
     font-weight: 600;
@@ -169,20 +159,17 @@
     line-height: 1.4;
     margin-bottom: 0.5rem;
 }
-
 .cart-item-info .price {
     font-size: 1.1rem;
     color: #1F6F5F;
     font-weight: 700;
 }
-
 .cart-item-controls {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 1rem;
 }
-
 .qty-control {
     display: flex;
     align-items: center;
@@ -190,7 +177,6 @@
     border-radius: 2rem;
     overflow: hidden;
 }
-
 .qty-control button {
     width: 2.2rem;
     height: 2.2rem;
@@ -201,19 +187,16 @@
     color: #555;
     transition: all 0.2s;
 }
-
 .qty-control button:hover {
     background: #e8f5f2;
     color: #1F6F5F;
 }
-
 .qty-control span {
     width: 2.2rem;
     text-align: center;
     font-weight: 700;
     font-size: 0.95rem;
 }
-
 .delete-btn {
     background: none;
     border: none;
@@ -222,30 +205,29 @@
     font-size: 1.1rem;
     transition: color 0.2s;
 }
+.delete-btn:hover {
+    color: #e74c3c;
+}
 
-.delete-btn:hover { color: #e74c3c; }
 
-/* ====================
+/* =====================
    빈 장바구니
-==================== */
+===================== */
 .empty-cart {
     display: none;
     text-align: center;
     padding: 6rem 0;
 }
-
 .empty-cart p {
     font-size: 1.5rem;
     color: #aaa;
     margin-bottom: 0.5rem;
 }
-
 .empty-cart .empty-sub {
     font-size: 1rem;
     color: #bbb;
     margin-bottom: 2.5rem;
 }
-
 .empty-cart a {
     display: inline-block;
     padding: 0.9rem 2.5rem;
@@ -254,18 +236,16 @@
     border-radius: 3rem;
     font-size: 1rem;
     font-weight: 600;
-    box-shadow: 0 0.3rem 1rem rgba(31, 111, 95, 0.25);
     transition: all 0.3s;
 }
-
 .empty-cart a:hover {
     transform: translateY(-0.2rem);
-    box-shadow: 0 0.5rem 1.5rem rgba(31, 111, 95, 0.35);
 }
 
-/* ====================
+
+/* =====================
    주문 요약
-==================== */
+===================== */
 .cart-summary {
     flex: 1;
     background: #fff;
@@ -273,10 +253,9 @@
     padding: 2rem;
     position: sticky;
     top: 6rem;
-    box-shadow: 0 0.25rem 1.5rem rgba(0, 0, 0, 0.06);
+    box-shadow: 0 0.25rem 1.5rem rgba(0,0,0,0.06);
     border: 0.0625rem solid #f0f0f0;
 }
-
 .cart-summary h3 {
     font-size: 1.3rem;
     font-weight: 700;
@@ -284,7 +263,6 @@
     padding-bottom: 1rem;
     border-bottom: 0.125rem solid #222;
 }
-
 .summary-row {
     display: flex;
     justify-content: space-between;
@@ -292,12 +270,10 @@
     font-size: 1rem;
     color: #666;
 }
-
 .summary-row span:last-child {
     font-weight: 600;
     color: #222;
 }
-
 .summary-row.total {
     margin-top: 1.5rem;
     padding-top: 1rem;
@@ -305,12 +281,10 @@
     font-size: 1.2rem;
     font-weight: 700;
 }
-
 .summary-row.total span:last-child {
     color: #1F6F5F;
     font-size: 1.4rem;
 }
-
 .free-delivery-notice {
     font-size: 0.85rem;
     color: #1F6F5F;
@@ -320,7 +294,6 @@
     padding: 0.6rem 1rem;
     border-radius: 2rem;
 }
-
 .order-btn {
     width: 100%;
     padding: 1.1rem;
@@ -332,17 +305,16 @@
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 0.8rem;
-    box-shadow: 0 0.3rem 1rem rgba(31, 111, 95, 0.25);
+    box-shadow: 0 0.3rem 1rem rgba(31,111,95,0.25);
     transition: all 0.3s;
 }
-
 .order-btn:hover {
     transform: translateY(-0.15rem);
-    box-shadow: 0 0.5rem 1.5rem rgba(31, 111, 95, 0.35);
+    box-shadow: 0 0.5rem 1.5rem rgba(31,111,95,0.35);
 }
-
-.order-btn:active { transform: scale(0.98); }
-
+.order-btn:active {
+    transform: scale(0.98);
+}
 .continue-shopping {
     display: block;
     text-align: center;
@@ -351,12 +323,14 @@
     margin-top: 0.5rem;
     transition: color 0.2s;
 }
+.continue-shopping:hover {
+    color: #1F6F5F;
+}
 
-.continue-shopping:hover { color: #1F6F5F; }
 
-/* ====================
+/* =====================
    TOP 버튼
-==================== */
+===================== */
 .top-btn {
     display: none;
     position: fixed;
@@ -370,20 +344,256 @@
     border-radius: 50%;
     cursor: pointer;
     font-size: 1rem;
-    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.25rem 1rem rgba(0,0,0,0.2);
     z-index: 999;
 }
+.top-btn:hover {
+    opacity: 0.8;
+}
 
-.top-btn:hover { opacity: 0.8; }
 
-/* ====================
+/* =====================
+   주문 모달 공통
+===================== */
+.order-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+.order-modal.show {
+    display: flex;
+}
+.order-modal-content {
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    width: 90%;
+    max-width: 28rem;
+    text-align: center;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,0.15);
+    animation: modalUp 0.3s ease;
+    overflow: hidden;
+}
+@keyframes modalUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+
+/* =====================
+   주문 확인 모달 헤더 (그라데이션)
+===================== */
+.order-modal-header {
+    background: linear-gradient(135deg, #1F6F5F 0%, #2d9d85 100%);
+    margin: -2.5rem -2.5rem 1.5rem;
+    padding: 2.5rem 2.5rem 1.8rem;
+    border-radius: 1.25rem 1.25rem 0 0;
+}
+.order-modal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+.order-modal-header h3 {
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+}
+.order-modal-header p {
+    color: rgba(255,255,255,0.85);
+    font-size: 0.9rem;
+}
+
+
+/* =====================
+   일반 모달 텍스트 (빈 장바구니 / 완료 모달용)
+===================== */
+.order-modal-content h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+.order-modal-content > p {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 1.2rem;
+}
+
+
+/* =====================
+   주문 상품 목록
+===================== */
+.order-item-list {
+    max-height: 12rem;
+    overflow-y: auto;
+    border: 1px solid #f0f0f0;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+.order-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0.6rem;
+    transition: background 0.2s;
+}
+.order-item:hover {
+    background: #f8fbfa;
+}
+.order-item:last-child {
+    border-bottom: none;
+}
+.order-item img {
+    width: 3.2rem;
+    height: 3.2rem;
+    object-fit: cover;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.15rem 0.5rem rgba(0,0,0,0.1);
+}
+.order-item-info p {
+    font-size: 0.85rem;
+    color: #222;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+.order-item-info span {
+    font-size: 0.8rem;
+    color: #1F6F5F;
+    font-weight: 700;
+    background: #f0f9f7;
+    padding: 0.1rem 0.5rem;
+    border-radius: 1rem;
+}
+
+
+/* =====================
+   총 금액
+===================== */
+.order-modal-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f0f9f7;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    color: #222;
+}
+.order-modal-total span:last-child {
+    color: #1F6F5F;
+    font-size: 1.2rem;
+}
+
+
+/* =====================
+   모달 버튼
+===================== */
+.order-modal-buttons {
+    display: flex;
+    gap: 0.8rem;
+}
+.order-modal-buttons button {
+    flex: 1;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#orderCancel {
+    background: #f1f1f1;
+    color: #666;
+}
+#orderCancel:hover {
+    background: #e0e0e0;
+}
+#orderConfirm {
+    background: #1F6F5F;
+    color: #fff;
+}
+#orderConfirm:hover {
+    background: #165246;
+}
+#completeClose {
+    background: #1F6F5F;
+    color: #fff;
+}
+#completeClose:hover {
+    background: #165246;
+}
+#emptyShop {
+    background: #1F6F5F;
+    color: #fff;
+}
+#emptyShop:hover {
+    background: #165246;
+}
+
+
+/* =====================
+   체크마크 애니메이션
+===================== */
+.check-wrap {
+    width: 5rem;
+    height: 5rem;
+    margin: 0 auto 1.2rem;
+}
+.check-svg {
+    width: 100%;
+    height: 100%;
+}
+.check-circle {
+    fill: none;
+    stroke: #1F6F5F;
+    stroke-width: 2;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    animation: drawCircle 0.6s ease forwards;
+}
+.check-mark {
+    fill: none;
+    stroke: #1F6F5F;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: drawCheck 0.4s 0.6s ease forwards;
+}
+@keyframes drawCircle {
+    to { stroke-dashoffset: 0; }
+}
+@keyframes drawCheck {
+    to { stroke-dashoffset: 0; }
+}
+.complete-sub {
+    color: #1F6F5F !important;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+
+/* =====================
    반응형
-==================== */
+===================== */
 @media (max-width: 64rem) {
     .cart-wrap { flex-direction: column; }
     .cart-summary { position: static; width: 100%; }
 }
-
 @media (max-width: 48rem) {
     .cart-banner { padding: 8rem 1.5rem 3rem; }
     .cart-banner h2 { font-size: 2.5rem; }

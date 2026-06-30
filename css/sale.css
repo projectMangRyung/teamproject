@@ -27,6 +27,15 @@
     overflow: hidden;
 }
 
+.balloon {
+    width: 30px; height: 40px;
+    background: #fd4f6e;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -50px;
+    left: calc(10% + 80% * var(--i)); /* 랜덤 위치 설정 */
+}
+
 .hero-content {
     text-align: center;
     z-index: 10;
@@ -184,9 +193,9 @@
     text-shadow: 3px 3px 0px white;
 }
 
-.machine-title p { font-family: 'Jua', sans-serif; color: #0096B6; font-size: 1.2rem; }
+.machine-title p { font-family: 'Jua', sans-serif; color: #0096B6; font-size: 1.3rem;}
 .machine-title .sub {
-    background: #FFD54F; color: #883366; display: inline-block;
+    background: #ffe695; color: #db4f72; display: inline-block;
     padding: 8px 24px; border-radius: 20px; font-weight: bold; margin-bottom: 35px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
@@ -347,6 +356,17 @@
     font-size: 2rem;
     font-weight: 900;
 }
+
+.long-event-image-wrap{
+    padding: 2rem;
+    
+}
+
+.long-event-image-wrap img{
+    border-radius: 50px;
+    border: solid 2px #ffc4d0;
+    box-shadow: 0 10px 20px rgba(255, 37, 84, 0.2);
+    }
 
 @keyframes popIn {
     0% { transform: translate(-50%, -40%); opacity: 0; }
