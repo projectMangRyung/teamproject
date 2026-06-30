@@ -6,8 +6,9 @@
     <title>오시는 길 - 멍냥허브</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
-    <link rel="stylesheet" href="./css/style.css"/> 
     <link rel="stylesheet" href="./css/map.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet"> 
 </head>
 <body>
@@ -15,21 +16,21 @@
     <header>
         <div class="headerInner">
             <div class="logo">
-                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+                <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
             <ul class="gnb">
                 <li><a href="./index.html">홈</a></li>
-                <li class="active"><a href="./brand.html" style="color: #2E5A44;">브랜드</a></li>
+                <li class="active"><a href="./brand.html">브랜드</a></li>
                 <li class="gnb_products">
                     <a href="./product.html">제품보기</a>
                     <ul class="snb">
-                        <li><a>전체 상품</a></li>
-                        <li><a>강아지 용품</a></li>
-                        <li><a>고양이 용품</a></li>
-                        <li><a>사료/간식</a></li>
-                        <li><a>장난감</a></li>
-                        <li><a>액세서리</a></li>
-                        <li><a>건강/미용</a></li>
+                        <li><a href="./product.html">전체 상품</a></li>
+                        <li><a href="./dogproduct.html">강아지 용품</a></li>
+                        <li><a href="./catproduct.html">고양이 용품</a></li>
+                        <li><a href="food.html">사료/간식</a></li>
+                        <li><a href="toy.html">장난감</a></li>
+                        <li><a href="accessory.html">액세서리</a></li>
+                        <li><a href="healthproduct.html">건강/미용</a></li>
                     </ul>
                 </li>
                 <li><a href="sale.html">세일특가</a></li>
@@ -40,18 +41,40 @@
                 <li><a href="./login.html">로그인</a></li>
                 <li><a href="./join.html">회원가입</a></li>
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
-                <li><a><img src="./img/cart.png" alt="cart"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
         </div>
     </header>
 
     <main class="subpage-main">
         <section class="sub-banner map-banner fade-in">
-            <div class="banner-text">
+            <div class="banner-text move">
                 <h2>오시는 길</h2>
                 <p>멍냥허브 본사로 찾아오시는 방법을 안내해 드립니다.</p>
             </div>
         </section>
+
+    <div class="all_search">
+    <h1>길찾기</h1>
+    <div class="route-search">
+        
+        <div class="route-row">
+            <strong>출발지</strong>
+            <input id="start_search" type="text" placeholder="출발지를 입력해주세요" />
+            <button id="searchBtn" type="button">
+                <img src="./img/search.png" alt="검색" />
+            </button>
+        </div>
+        
+        <div class="route-row destination-row">
+            <strong>목적지</strong>
+            <input id="destination" type="text" value="서울특별시 강남구 테헤란로 427" readonly />
+        </div>
+        
+        <button id="routeBtn" type="button">길찾기</button>
+    </div>
+    <div id="routeResult" class="route-result"></div>
+</div>
 
         <!-- 카카오 맵 영역 -->
         <section class="map-container fade-in">
@@ -95,6 +118,7 @@
     </main>
 
     <footer>
+    <div class="footer-inner">
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
             <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
@@ -122,15 +146,15 @@
             <li>개인정보처리방침</li>
             <li>제휴/입점 문의</li>
         </ul>
-    </footer>
+    </div>
+</footer>
 
     <button class="top-btn">▲</button>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./javascript/common.js"></script>
-    <script src="./javascript/brand.js"></script>
 
 
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faa5b32ec9ddd4f39910a3a5eca4b743"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faa5b32ec9ddd4f39910a3a5eca4b743&libraries=services"></script>
     <script src="./javascript/map.js"></script>
 </body>
 </html>
