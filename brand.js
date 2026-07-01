@@ -103,3 +103,46 @@ $(function () {
         window.dispatchEvent(new Event('scroll'));
     }
 });
+$(function () {
+    /* ====================
+       연혁 요약 클릭 시 스크롤 이동 및 등장 애니메이션
+    ==================== */
+    const summaryItems = document.querySelectorAll('.summary-item');
+    const historySection = document.querySelector('.brand-history');
+    const historySummary = document.querySelector('.history-summary');
+
+    // 1. 스크롤을 내리다 요약 섹션이 보이면 스르륵 등장
+    if (historySummary) {
+        window.addEventListener('scroll', () => {
+            const rect = historySummary.getBoundingClientRect();
+            // 화면의 80% 지점에 도달하면 애니메이션 클래스 추가
+            if (rect.top < window.innerHeight * 0.8) {
+                historySummary.classList.add('show');
+            }
+        });
+    }
+
+    // 2. 작은 이미지(요약 아이템) 클릭 시 해당 연혁으로 스크롤 이동
+    summaryItems.forEach((item) => {
+        item.addEventListener('click', () => {
+            const index = parseInt(item.getAttribute('data-index'));
+            const stepCount = document.querySelectorAll('.history-step').length;
+            
+            if (historySection && stepCount > 0) {
+                // 각 스텝이 중앙에 완벽히 오도록 진행률 계산 (0.125, 0.375, 0.625, 0.875)
+                const targetProgress = (index + 0.5) / stepCount;
+                
+                // 해당 진행률에 맞는 실제 문서 상의 Y 스크롤 위치 계산
+                const sectionTop = historySection.offsetTop;
+                const scrollableHeight = historySection.offsetHeight - window.innerHeight;
+                const targetScrollY = sectionTop + (scrollableHeight * targetProgress);
+
+                // 부드럽게 스크롤 이동
+                window.scrollTo({
+                    top: targetScrollY,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});

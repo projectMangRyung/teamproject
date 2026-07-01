@@ -358,3 +358,69 @@
     50% { transform: translateY(-15px) rotate(3deg); }
     100% { transform: translateY(0) rotate(-3deg); }
 }
+
+/* ====================
+   브랜드 연혁 요약 (네비게이션)
+==================== */
+.history-summary {
+    width: 90%;
+    max-width: 80rem;
+    margin: 5rem auto 10rem;
+    text-align: center;
+    /* 스크롤 시 스르륵 나타나는 효과 */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.history-summary.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.history-summary h3 {
+    font-size: 2.5rem;
+    color: #2A2C2B;
+    font-weight: 800;
+    margin-bottom: 4rem;
+}
+
+.summary-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.summary-item {
+    flex: 1;
+    min-width: 180px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* 마우스 올렸을 때 둥둥 뜨는 효과 */
+.summary-item:hover {
+    transform: translateY(-15px);
+    filter: brightness(1.05);
+}
+
+.summary-item img {
+    height: 280px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+}
+
+
+
+.summary-item p {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #2E5A44;
+}
