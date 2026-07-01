@@ -1,6 +1,6 @@
 .sale-wrap {
     padding-top: 4rem;
-    background-color: #fff;
+    background: linear-gradient(135deg, #fff5f7 0%, #ffffff 100%);
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -33,7 +33,7 @@
     border-radius: 50%;
     position: absolute;
     bottom: -50px;
-    left: calc(10% + 80% * var(--i)); /* 랜덤 위치 설정 */
+    left: calc(10% + 80% * var(--i));
 }
 
 .hero-content {
@@ -43,7 +43,7 @@
 
 .badge-top {
     display: flex;
-    margin-bottom: 400px;
+    margin-bottom: 430px;
     animation: bounce 2s infinite;
 }
 
@@ -176,8 +176,8 @@
 .rating span { color: #888; }
 
 .sale-event-sec {
-    background-color: #E2F6F8;
-    padding: 6rem 0;
+    background: linear-gradient(180deg, #fff8f9, #79DDF2);
+    padding: 2rem 0;
     display: flex;
     justify-content: center;
     position: relative;
@@ -217,7 +217,7 @@
     background-image: url('../img/random.png');
     background-size: cover;
     background-position: center;
-    background-color: #79DDF2;
+    background-color: #79DDF2 ;
     height: 320px; 
     border-radius: 12px;
     border: 4px solid rgba(255, 255, 255, 0.8);
@@ -323,7 +323,6 @@
         0 4px 6px rgba(0,0,0,0.2);
 }
 
-/* 랜덤 쿠폰 팝업 스타일 */
 .coupon-popup {
     position: absolute;
     top: 50%;
@@ -359,14 +358,19 @@
 
 .long-event-image-wrap{
     padding: 2rem;
+    background: linear-gradient(180deg, #fff0f3, #FF4757);
     
 }
 
-.long-event-image-wrap img{
-    border-radius: 50px;
+.long-event-image-wrap .coupon-banner-container img{
+    border-radius: 20px;
+}
+
+.long-event-image-wrap .coupon-banner-container {
+    border-radius: 20px;
     border: solid 2px #ffc4d0;
     box-shadow: 0 10px 20px rgba(255, 37, 84, 0.2);
-    }
+}
 
 @keyframes popIn {
     0% { transform: translate(-50%, -40%); opacity: 0; }
@@ -397,3 +401,225 @@
     0%, 75% { transform: rotate(10deg); }
     88%, 100% { transform: rotate(-5deg); }
 }
+
+
+/* =======================================================
+   순수 CSS 인트로 애니메이션 (GSAP 완전히 대체)
+======================================================= */
+#intro-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #fd4f6e; /* 확 띄는 핑크 배경으로 변경 */
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.6s ease-in-out;
+    
+}
+#intro-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#intro-overlay .container {
+    color: #ffffff; /* 텍스트를 흰색으로 변경하여 눈에 잘 띄게 설정 */
+    text-align: center;
+    position: relative;
+    z-index: 9999;
+}
+
+#main-text {
+    font-size: 10rem; /* 텍스트 크기 상향 */
+    margin-bottom: 20px;
+    opacity: 0; 
+    font-weight: 900;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    z-index: 9999;
+}
+.intro-text-row {
+    display: flex; gap: 25px; justify-content: center; font-size: 2.8rem; font-weight: bold;
+}
+#free-text, #all-text { opacity: 0; text-shadow: 2px 2px 0 rgba(0,0,0,0.1); }
+#plane-icon { font-size: 3rem; margin-top: 30px; opacity: 0; display: inline-block; }
+
+/* 폭죽 파티클을 담는 컨테이너 */
+.confetti {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    z-index: 10;
+}
+
+/* 폭죽 개별 요소 - JS와 연동하여 애니메이션 생성 */
+.anim-confetti-particle {
+    position: absolute;
+    opacity: 0;
+    font-size: 2.5rem; /* 이모지 크기 큼직하게 */
+    transform-origin: center;
+    pointer-events: none;
+}
+
+/* --- 본문 숨김 제어 --- */
+body.intro-running header, 
+body.intro-running main, 
+body.intro-running footer {
+    opacity: 0;
+    visibility: hidden;
+}
+body.intro-done header, 
+body.intro-done main, 
+body.intro-done footer {
+    visibility: visible;
+}
+
+/* --- 텍스트 인트로 애니메이션 실행 클래스 --- */
+.anim-bounce { animation: dropBounce 1.2s cubic-bezier(0.28, 0.84, 0.42, 1) forwards; }
+.anim-slide-left { animation: slideLeftBack 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s; }
+.anim-slide-right { animation: slideRightBack 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s; }
+.anim-fly { animation: flyPlane 1.5s ease-in-out forwards 1.0s; }
+
+@keyframes dropBounce {
+    0% { opacity: 0; transform: translateY(-200px); }
+    60% { opacity: 1; transform: translateY(20px); }
+    80% { transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeftBack {
+    0% { opacity: 0; transform: translateX(-100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideRightBack {
+    0% { opacity: 0; transform: translateX(100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes flyPlane {
+    0% { opacity: 0; transform: scale(0.5) translate(0, 0); }
+    20% { opacity: 1; }
+    100% { opacity: 1; transform: scale(1.5) translate(150px, -40px); }
+}
+
+/* --- 폭죽 폭발 애니메이션 (JS 변수 연동) --- */
+@keyframes confettiBurst {
+    0% { opacity: 1; transform: translate(0, 0) scale(0) rotate(0deg); }
+    15% { opacity: 1; transform: translate(calc(var(--tx) * 0.2), calc(var(--ty) * 0.2)) scale(var(--scale)) rotate(calc(var(--rot) * 0.2)); }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(calc(var(--scale) * 0.8)) rotate(var(--rot)); }
+}
+
+/* --- 본문 등장 및 컬러 변경 클래스 --- */
+.fade-up-header { animation: fadeUpHeader 0.5s ease-out forwards; }
+.fade-up-main { animation: fadeUpMain 0.6s ease-out forwards 0.3s; }
+.fade-up-footer { animation: fadeUpHeader 0.5s ease-out forwards 0.5s; }
+
+@keyframes fadeUpHeader {
+    0% { opacity: 0; transform: translateY(-40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUpMain {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+header.bg-pink {
+    background-color: #fd4f6e !important;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.event-target {
+    background: linear-gradient(120deg, #fff0f3, #ffe4e6);
+    
+    position: relative;
+    overflow: hidden;
+    padding: 3rem;
+    border-radius: 40px;
+}
+
+.bg-banner {
+    width: 100%;
+    display: block;
+    
+}
+
+.event-target::before {
+    content: "✨";
+    position: absolute;
+    top: 10px; right: 10px;
+    animation: twinkle 1.5s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* =======================================================
+   스크롤 애니메이션 (Scroll-triggered Animations)
+======================================================= */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.scroll-hidden.is-visible { opacity: 1; transform: translateY(0); }
+.cat-item { opacity: 0; transform: translateY(36px) scale(0.94); transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1), transform 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+.cat-item.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+.todays-deal-sec .deal-header { opacity: 0; transform: translateY(30px); transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1); }
+.todays-deal-sec .deal-header.is-visible { opacity: 1; transform: translateY(0); }
+.deal-grid { opacity: 0; transform: translateY(40px); transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.15s; }
+.deal-grid.is-visible { opacity: 1; transform: translateY(0); }
+.machine-title { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); }
+.machine-title.is-visible { opacity: 1; transform: translateY(0); }
+.claw-machine { opacity: 0; transform: translateY(60px) scale(0.97); transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.25s, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.25s; }
+.claw-machine.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+.long-event-image-wrap { opacity: 0; transform: translateY(40px); transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1); }
+.long-event-image-wrap.is-visible { opacity: 1; transform: translateY(0); }
+.sale-categories-sec .section-title, .todays-deal-sec .section-title { opacity: 0; transform: translateX(-20px); transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.sale-categories-sec .section-title.is-visible, .todays-deal-sec .section-title.is-visible { opacity: 1; transform: translateX(0); }
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-hidden, .cat-item, .todays-deal-sec .deal-header, .deal-grid, .machine-title, .claw-machine, .long-event-image-wrap, .sale-categories-sec .section-title, .todays-deal-sec .section-title {
+        opacity: 1; transform: none; transition: none;
+    }
+}
+
+/* 쿠폰 배너 래퍼 */
+.coupon-banner-container {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.coupon-banner-container .bg-banner {
+    width: 100%;
+    display: block;
+    
+}
+
+/* 덮어씌우는 버튼 공통 속성 */
+.overlay-btn {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.1s ease; /* 누를 때 살짝 눌리는 효과용 */
+    
+}
+
+.overlay-btn:active {
+    transform: scale(0.95);
+}
+
+/* 완전히 숨기는 클래스 (발급 완료 시 사용) */
+.hidden-coupon {
+    display: none !important;
+}
+
+/* =========== 아래 수치들을 수정해서 위치와 크기를 맞춰주세요 =========== */
+/* 개별 쿠폰 위치 예시 */
+#btn-coupon-0 { top: 51%; left: 11%; width: 37%; }
+#btn-coupon-1 { top: 51%; left: 52%; width: 37%; }
+#btn-coupon-2 { top: 64%; left: 11%; width: 37%; }
+#btn-coupon-3 { top: 64%; left: 52%; width: 37%; }
+
+/* 전체 발급 쿠폰 위치 예시 */
+#btn-coupon-all { top: 66.6%; left: 5%; width: 90%; }
