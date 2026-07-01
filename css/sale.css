@@ -692,3 +692,115 @@ body.intro-done .sale-categories-sec {
     0% { transform: rotate(-10deg); }
     100% { transform: rotate(10deg); }
 }
+/* ==================== 모바일 반응형 (2026.07.01) ==================== */
+
+@media (max-width: 1024px) {
+    .sale-categories {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .deal-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .claw-machine {
+        width: 90%;
+        max-width: 550px;
+    }
+
+    #main-text {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .sale-hero {
+        height: 20rem;
+    }
+
+    .badge-top {
+        margin-bottom: 200px;
+    }
+
+    .deco {
+        display: none;
+    }
+
+    .sale-wrap .section-title {
+        font-size: 1.4rem;
+    }
+
+    .sale-categories {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .cat-item {
+        padding: 16px 8px;
+    }
+
+    .cat-item .icon {
+        font-size: 1.8rem;
+    }
+
+    .cat-item h3 {
+        font-size: 0.95rem;
+    }
+
+    .deal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .deal-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .machine-title h2 {
+        font-size: 2rem;
+    }
+
+    .machine-title p {
+        font-size: 1rem;
+    }
+
+    .glass-box {
+        height: 220px;
+    }
+
+    .machine-base .btn-play {
+        font-size: 1.3rem;
+        padding: 12px 0;
+    }
+
+    .coupon-banner-container {
+        width: 90%;
+    }
+
+    #main-text {
+        font-size: 3.5rem;
+    }
+
+    .intro-text-row {
+        font-size: 1.6rem;
+        gap: 12px;
+    }
+
+    #keyring-top-btn {
+        width: 120px;
+        bottom: 20%;
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sale-categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .deal-grid {
+        grid-template-columns: 1fr;
+    }
+}

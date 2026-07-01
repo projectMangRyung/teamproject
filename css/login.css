@@ -388,3 +388,55 @@
     color: #999;
 }
 
+
+/* ==================== 모바일 반응형 (2026.07.01) ==================== */
+
+@media (max-width: 768px) {
+    .userContainer {
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+    }
+
+    .select {
+        width: 94%;
+    }
+
+    .select > div {
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    .login_container,
+    .join_container {
+        width: 94%;
+        gap: 2.5rem;
+    }
+
+    .login_input,
+    .join_input {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .login_input h3,
+    .join_input h3 {
+        font-size: 1.5rem;
+    }
+
+    .login_banner {
+        display: none;
+    }
+
+    .benefit {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .phone_input {
+        flex-wrap: wrap;
+    }
+
+    .phone_input input {
+        min-width: 4rem;
+    }
+}

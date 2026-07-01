@@ -43,7 +43,7 @@
 }
 .bg-video {
     position: absolute;
-    top: 40%;
+    top: 40.5%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -72,18 +72,23 @@
     color: #ffffff;
 }
 
-/* 브랜드 비전 */
-.brand-vision {
+/* ====================
+   통합 브랜드 스토리 영역
+==================== */
+.brand-story {
     display: flex;
+    flex-direction: column;
+    align-items: center; /* 텍스트 및 컨텐츠 중앙 정렬[cite: 2] */
     gap: 5rem;
-    align-items: center;
+    margin-bottom: 5rem;
 }
 
-.vision-text {
-    flex: 1;
+.story-text {
+    text-align: center;
+    max-width: 800px;
 }
 
-.vision-text .badge {
+.story-text .badge {
     background: #E8E5DC;
     color: #2E5A44;
     padding: 6px 16px;
@@ -95,124 +100,261 @@
     margin-bottom: 1.5rem;
 }
 
-.vision-text h3 {
+.story-text h3 {
     font-size: 2.5rem;
     color: #2A2C2B;
     font-weight: 800;
     line-height: 1.4;
     margin-bottom: 1.5rem;
 }
-/* 비전 텍스트 로드 시 애니메이션 (2026.06.29 최정은)*/
-.vision-text h3.move,
-.vision-text p.move{
-    opacity: 0;
-    transform: translateY(1.2rem);
-    transition: all 2s;
-}
-.vision-text h3.move.on,
-.vision-text p.move.on{
-    opacity: 1;
-    transform: translateY(0);
-}
-.vision-text p {
+
+.story-text p {
     font-size: 1.1rem;
     color: #5A625E;
     line-height: 1.8;
 }
 
-.vision-image {
-    flex: 1;
-    height: 35rem;
-    border-radius: 32px;
-    overflow: hidden;
-    box-shadow: 0 16px 40px rgba(46, 90, 68, 0.1);
+/* ====================
+   세로 선 스크롤 타임라인 애니메이션
+==================== */
+.scroll-timeline {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.vision-image img {
+/* 길다란 세로 막대기 디자인 */
+.timeline-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 6px;
+    background: linear-gradient(to bottom, transparent, #2E5A44, transparent);
+    z-index: 0;
+}
+
+/* ====================
+   잎사귀 모양 및 지그재그 레이아웃 (수정됨)
+==================== */
+.value-grid-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem; 
+    width: 100%;
+    z-index: 1;
+}
+
+.leaf-item {
+    width: 45%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    will-change: transform, opacity;
+}
+
+/* 좌우 배치 */
+.leaf-item:nth-child(odd) {
+    align-self: flex-start;
+}
+.leaf-item:nth-child(even) {
+    align-self: flex-end;
+}
+
+/* 잎사귀 모양 이미지 컨테이너 */
+.leaf-image-box {
+    width: 100%;
+    height: 18rem;
+    position: relative;
+    border: 6px solid #2E5A44;
+    background-color: #FDFBF7;
+    overflow: hidden;
+    border-radius: 0 80% 0 80%;
+}
+
+/* 🌿 잎사귀 기준점 설정 (JS 애니메이션이 적용되는 곳에 설정해야 함) */
+.leaf-item:nth-child(odd) .leaf-image-box {
+    transform-origin: right bottom; /* 왼쪽 잎은 오른쪽(중앙선)에 붙어서 커짐 */
+}
+.leaf-item:nth-child(even) .leaf-image-box {
+    border-radius: 80% 0 80% 0;
+    transform-origin: left bottom; /* 오른쪽 잎은 왼쪽(중앙선)에 붙어서 커짐 */
+}
+
+.leaf-image-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.vision-image.move{
-    opacity: 0;
-    transform: translateY(2rem);
-    transition: all 2s;
+
+/* 🌿 줄기 디자인 (중복 코드 제거 및 통합) */
+.stem {
+    position: absolute;
+    top: 76.5%;
+    width: 12%; /* 10%~15% 사이 적절한 길이 */
+    height: 6px;
+    z-index: -1;
+    
 }
-.vision-image.move.on{
-    opacity: 1;
-    transform: translateY(0);
+
+/* 홀수(왼쪽) 잎사귀의 줄기 */
+.leaf-item:nth-child(odd) .stem {
+    right: -11%; /* width 값과 동일하게 빼주어 여백 없이 연결 */
+    transform-origin: right center; /* 중앙 타임라인 선에서 잎사귀 쪽으로 자라남 */
+    background: linear-gradient(to left, rgba(46, 90, 68,0), rgba(46, 90, 68,1)); 
 }
-/* 핵심 가치 */
-.section-title {
+
+/* 짝수(오른쪽) 잎사귀의 줄기 */
+.leaf-item:nth-child(even) .stem {
+    left: -11%;
+    transform-origin: left center; /* 중앙 타임라인 선에서 잎사귀 쪽으로 자라남 */
+    background: linear-gradient(to right, rgba(46, 90, 68,0), rgba(46, 90, 68,1)); 
+}
+
+/* ====================
+   텍스트 영역 및 빛나는 연출
+==================== */
+/* 텍스트 영역 초기 설정 */
+.value-info {
+    margin-top: -1rem;
+    z-index: 2;
     text-align: center;
-    margin-bottom: 4rem;
+    padding: 1.38rem;
+    box-shadow: radial-gradient(ellipse at center, rgba(253,251,247,0.95) 30%, rgba(253,251,247,0.6) 65%, rgba(253,251,247,0) 100%);
+    
+    
+    /* 텍스트 등장 애니메이션을 위해 추가 */
+    opacity: 0; 
+    transition: opacity 0.8s ease;
 }
-.section-title.move{
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: all 2s;
-}
-.section-title.move.on{
+
+/* 텍스트가 나타났을 때의 스타일 */
+.value-info.show {
     opacity: 1;
-    transform: translateY(0);
-}
-.section-title h3 {
-    font-size: 2.5rem;
-    color: #2A2C2B;
-    font-weight: 800;
+    font-size: 1.1rem;
 }
 
-.section-title h3 span {
-    color: #2E5A44;
-}
-
-.value-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-}
-.value-grid.move{
+.value-info h4, .value-info p {
     opacity: 0;
-    transform: translateY(1rem);
-    transition: all 2s;
-}
-.value-grid.move.on{
-    opacity: 1;
-    transform: translateY(0);
-}
-.value-card {
-    background-color: #FDFBF7;
-    border: 1px solid rgba(46, 90, 68, 0.04);
-    border-radius: 24px;
-    padding: 1.5rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.02);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    transition: opacity 0.8s ease;
 }
 
-.value-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 16px 32px rgba(46, 90, 68, 0.08);
-}
+/* h4와 p의 순차적 등장을 위한 클래스 */
+.value-info.show h4 { opacity: 1; transition-delay: 0.2s; color: #2E5A44; font-weight: 800; }
+.value-info.show p { opacity: 1; transition-delay: 0.5s; }
 
-.value-card img {
+/* ====================
+   브랜드 연혁 (간격 및 순차 노래방 업데이트)
+==================== */
+.brand-history {
+    height: 400vh;
+    position: relative;
     width: 100%;
-    height: 15rem;
-    object-fit: cover;
-    border-radius: 16px;
+    margin-bottom: 5rem; /* 기존 하단 여백 양식 */
 }
 
-.value-info h4 {
-    font-size: 1.25rem;
-    color: #2E5A44;
+/* 기존 사이트 메인 규격 (width 90%, max 90rem) 적용 */
+.history-container {
+    width: 90%;
+    max-width: 80rem;
+    margin: 0 auto;
+    height: 100%;
+}
+
+.history-sticky {
+    position: sticky;
+    top: 25vh; /* 헤더 여백을 고려해 조금 더 내림 */
+    height: 50vh;
+    display: flex;
+    align-items: center;
+}
+
+.history-step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem; /* 기존 매거진 섹션과 유사한 넉넉한 텍스트/이미지 간격 */
+    opacity: 0; 
+    pointer-events: none;
+    will-change: opacity;
+}
+
+
+
+.history-step.active {
+    pointer-events: auto;
+}
+
+.history-text-area {
+    flex: 1.2; 
+}
+
+.history-image-area {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 🎤 순차 노래방 텍스트 효과 */
+.karaoke-title {
+    /* 메인 타이틀 컬러 #2A2C2B */
+    background: linear-gradient(to right, #2A2C2B 50%, #d1cfc7 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+    
+    /* 폰트 스타일 양식 동기화 */
+    font-size: 3.25rem;
     font-weight: 800;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+    will-change: background-position;
+    
 }
 
-.value-info p {
-    font-size: 1rem;
-    color: #7A827E;
-    line-height: 1.5;
+.karaoke-desc {
+    /* 본문 컬러 #5A625E (메인페이지 매거진 본문색 동기화) */
+    background: linear-gradient(to right, #5A625E 50%, #d1cfc7 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+
+    /* 폰트 스타일 양식 동기화 */
+    font-size: 1.225rem;
+    line-height: 1.6;
+    word-break: keep-all;
+    will-change: background-position;
+}
+
+/* 이미지가 들어갈 공간 설정 */
+.history-png {
+    max-width: 120%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* 💃 으쓱으쓱 애니메이션 */
+.groove-anim {
+    animation: groove 3.5s ease-in-out infinite;
+}
+
+@keyframes groove {
+    0% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+    100% { transform: translateY(0) rotate(-3deg); }
 }
