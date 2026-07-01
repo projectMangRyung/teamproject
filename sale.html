@@ -10,39 +10,21 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap" rel="stylesheet"> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
-<style>
-    /* 인트로 오버레이 고정 스타일 */
-    #intro-overlay {
-        position: fixed;
-        top: 0; left: 0; width: 100vw; height: 100vh;
-        background-color: #0e100f; /* 참고하신 GSAP 배경색 */
-        z-index: 9999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-    }
-</style>
 </head>
-
-<div id="intro-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center;">
-        <div class="container" style="opacity: 0; color: white; text-align: center;">
-            <h1 id="main" style="font-size: 3rem; margin-bottom: 20px;">SALE EVENT</h1>
-            <div style="display: flex; gap: 20px; justify-content: center; font-size: 2rem;">
-                <span id="free">RIGHT</span>
-                <span id="all">NOW</span>
+<body>
+    <div id="intro-overlay">
+        <div class="container">
+            <h1 id="main-text">SALE EVENT</h1>
+            <div class="intro-text-row">
+                <span id="free-text">RIGHT</span>
+                <span id="all-text">NOW</span>
             </div>
-            <!-- 애니메이션용 가상 요소들 (필요시 SVG 구조에 맞게 커스텀) -->
-            <div id="plane" style="font-size: 2rem; margin-top: 20px;">✈️</div>
-            <div class="confetti">
-                <span style="position:absolute; opacity:0;">✨</span>
-                <span style="position:absolute; opacity:0;">🎉</span>
-                <span style="position:absolute; opacity:0;">🎈</span>
-            </div>
+            <div id="plane-icon">✈️</div>
+            <div class="confetti" id="confetti-container">
+                </div>
         </div>
     </div>
+
     <header>
         <div class="headerInner move" id="sale-header">
             <div class="logo">
@@ -179,53 +161,51 @@
     </main>
 
     <div class="long-event-image-wrap" id="event-target">
-        <img src="./img/pag_banner.png" alt="이벤트 상세 이미지" style="width: 50%; display: block; margin: 0 auto;">
+        <div class="coupon-banner-container">
+            <img src="./img/pag_banner.png" alt="이벤트 상세 이미지" class="bg-banner">
+            
+            <img src="./img/coupon.png" alt="3만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-0">
+            <img src="./img/coupon.png" alt="5만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-1">
+            <img src="./img/coupon.png" alt="7만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-2">
+            <img src="./img/coupon.png" alt="10만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-3">
+
+            <img src="./img/coupon_all.png" alt="모두 발급받기" class="overlay-btn large-btn" id="btn-coupon-all">
+        </div>
     </div>
 
-
     <footer>
-        <ul>
-            <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
-            <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
-            <li>
-                <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
-                <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
-            </li>
-        </ul>
-        <ul>
-            <li>쇼핑</li>
-            <li>제품보기</li>
-            <li>세일특가</li>
-            <li>브랜드 소개</li>
-        </ul>
-        <ul>
-            <li>고객지원</li>
-            <li>고객센터</li>
-            <li>오시는 길</li>
-            <li>로그인</li>
-            <li>회원가입</li>
-        </ul>
-        <ul>
-            <li>정보</li>
-            <li>이용약관</li>
-            <li>개인정보처리방침</li>
-            <li>제휴/입점 문의</li>
-        </ul>
+        <div class="footer-inner">
+            <ul>
+                <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
+                <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
+                <li>
+                    <img src="./img/footer_icon_1.png" alt="footer_icon1"/>
+                    <img src="./img/footer_icon_2.png" alt="footer_icon2"/>
+                </li>
+            </ul>
+            <ul>
+                <li>쇼핑</li>
+                <li>제품보기</li>
+                <li>세일특가</li>
+                <li>브랜드 소개</li>
+            </ul>
+            <ul>
+                <li>고객지원</li>
+                <li>고객센터</li>
+                <li>오시는 길</li>
+                <li>로그인</li>
+                <li>회원가입</li>
+            </ul>
+            <ul>
+                <li>정보</li>
+                <li>이용약관</li>
+                <li>개인정보처리방침</li>
+                <li>제휴/입점 문의</li>
+            </ul>
+        </div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <!-- jQuery[cite: 1] -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- GSAP & Plugins (CodePen 테스트용 URL 적용) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://assets.codepen.io/16327/SplitText3.min.js"></script>
-    <script src="https://assets.codepen.io/16327/DrawSVGPlugin3.min.js"></script>
-    <script src="https://assets.codepen.io/16327/MotionPathPlugin.min.js"></script>
-    <script src="https://assets.codepen.io/16327/CustomBounce3.min.js"></script>
-    <script src="https://assets.codepen.io/16327/CustomWiggle3.min.js"></script>
-    <script src="https://assets.codepen.io/16327/Physics2DPlugin3.min.js"></script>
-    
-    <!-- 새로 만든 sale.js 연결 -->
     <script src="./javascript/sale.js"></script>
     <script>
         $(function(){
