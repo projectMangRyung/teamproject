@@ -374,3 +374,74 @@
     word-break: keep-all; 
     margin: 0;
 }
+/* ==================== 모바일 반응형 추가 (2026.07.01) ==================== */
+
+@media (max-width: 1024px) {
+    .transport-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kakao-map {
+        height: 30rem;
+    }
+
+    .address-card {
+        left: 1.5rem;
+        bottom: 1.5rem;
+        padding: 1.75rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .subpage-main {
+        padding-bottom: 6rem;
+    }
+
+    .map-banner {
+        padding: 5rem 0;
+    }
+
+    .map-container {
+        width: 94%;
+        padding: 0.75rem;
+        border-radius: 24px;
+        margin-bottom: 3rem;
+    }
+
+    .kakao-map {
+        height: 22rem;
+        border-radius: 18px;
+    }
+
+    .address-card {
+        position: static;
+        margin-top: 0.75rem;
+        width: 100%;
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .address-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .address-header p {
+        font-size: 0.95rem;
+    }
+
+    .transport-grid {
+        width: 94%;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .transport-card {
+        padding: 1.75rem 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .t-icon {
+        width: 4rem;
+        height: 4rem;
+    }
+}

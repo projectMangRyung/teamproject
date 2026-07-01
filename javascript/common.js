@@ -129,3 +129,20 @@ like.addEventListener("click", function(){
     randomDog.style.display = "block"
     getRandomDogImage()
 })
+
+// ========== 모바일 햄버거 메뉴 (2026.07.01) ==========
+$(function () {
+    $("#hamburgerBtn").on("click", function () {
+        $(this).toggleClass("active");
+        $(".gnb").toggleClass("active");
+        $(".login").toggleClass("active");
+        $("body").toggleClass("no-scroll");
+    });
+
+    // 메뉴 클릭 시 자동 닫힘
+    $(".gnb a, .login a").on("click", function () {
+        $("#hamburgerBtn").removeClass("active");
+        $(".gnb, .login").removeClass("active");
+        $("body").removeClass("no-scroll");
+    });
+});

@@ -2,7 +2,6 @@
    고객센터 페이지 레이아웃 & 공통 여백 조정
 ========================================== */
 .subpage-main {
-    /* 하단 푸터와의 간격을 넓혀 전체적인 레이아웃 호흡을 유연하게 만듭니다. */
     padding-bottom: 10rem;
 }
 
@@ -13,13 +12,12 @@
     text-align: center;
 }
 
-/* 상담 방법 카드 섹션 */
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem; /* 카드 사이의 다닥다닥 붙은 간격 확대 */
-    max-width: 1500px; /* 대화면에서 무한정 늘어나지 않도록 고정 */
-    margin: 8rem auto; /* 상하 여백을 크게 주어 배너 및 하단 콘텐츠와 격리 */
+    gap: 2.5rem;
+    max-width: 1500px;
+    margin: 8rem auto;
     padding: 0 2rem;
 }
 
@@ -45,15 +43,15 @@
 .contact-card {
     background-color: #FDFBF7;
     border: 1px solid rgba(46, 90, 68, 0.06);
-    border-radius: 28px; /* 최신 트렌드에 맞게 더 둥글고 부드러운 모서리 */
-    padding: 4.5rem 2rem; /* 상하 패딩을 늘려 카드 내부 여백 확보 */
+    border-radius: 28px;
+    padding: 4.5rem 2rem;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(46, 90, 68, 0.02); /* 은은하고 고급스러운 그림자 */
+    box-shadow: 0 10px 30px rgba(46, 90, 68, 0.02);
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .contact-card:hover {
-    transform: translateY(-12px); /* 호버 시 입체감 상향 */
+    transform: translateY(-12px);
     box-shadow: 0 20px 40px rgba(46, 90, 68, 0.08);
 }
 .contact-card.move{
@@ -66,7 +64,7 @@
     transform: translateY(0);
 }
 .icon-wrap {
-    font-size: 3.5rem; /* 아이콘 크기 소폭 확대 */
+    font-size: 3.5rem;
     margin-bottom: 1.8rem;
 }
 
@@ -79,7 +77,7 @@
 
 .contact-card strong {
     display: block;
-    font-size: 2.2rem; /* 전화번호, 이메일 강조 처리 */
+    font-size: 2.2rem;
     color: #2E5A44;
     font-weight: 800;
     margin-bottom: 0.8rem;
@@ -92,13 +90,15 @@
 }
 
 /* 하단 서포트 레이아웃 (FAQ + 1:1문의) */
-.support-section {
-    display: flex;
-    gap: 6rem; /* FAQ와 문의 폼이 완전히 분리되어 보이도록 좌우 간격 확대 */
-    align-items: flex-start;
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0 2rem;
+.support-section{
+    display:flex;
+    gap:6rem;
+    align-items:flex-start;
+    max-width:1500px;
+    width:100%;
+    margin:0 auto;
+    padding:0 2rem;
+    box-sizing:border-box;
 }
 
 .faq-container, .inquiry-container {
@@ -107,20 +107,20 @@
 
 .left-align {
     text-align: left;
-    margin-bottom: 2.5rem; /* 타이틀과 본문 사이 여백 확보 */
+    margin-bottom: 2.5rem;
 }
 
 /* FAQ 아코디언 스타일 */
 .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem; /* 리스트 아이템 간격 확대 */
+    gap: 1.2rem;
 }
 
 .faq-item {
     background-color: #FDFBF7;
     border: 1px solid rgba(46, 90, 68, 0.05);
-    border-radius: 20px; /* 라운딩 통일감 부여 */
+    border-radius: 20px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -131,7 +131,7 @@
 }
 
 .faq-item summary {
-    padding: 1.8rem; /* 클릭 영역 및 텍스트 여백 확장 */
+    padding: 1.8rem;
     font-size: 1.15rem;
     font-weight: 700;
     color: #2A2C2B;
@@ -140,13 +140,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap:1rem;
+    line-height:1.5;
 }
 
 .faq-item summary::after {
     content: '🦴';
     font-size: 1.6rem;
-    
     transition: transform 0.3s;
+    flex-shrink:0;
 }
 
 .faq-item[open] summary::after {
@@ -155,25 +157,25 @@
 }
 
 .faq-item p {
-    padding: 0 1.8rem 1.8rem; /* 답변 내부 여백 밸런스 조정 */
+    padding: 0 1.8rem 1.8rem;
     color: #5A625E;
-    line-height: 1.7; /* 행간을 넓혀 가독성을 대폭 향상 */
+    line-height: 1.7;
 }
 
 /* 1:1 문의 폼 */
 .inquiry-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* 입력 칸들의 세로 다닥다닥한 느낌 해소 */
+    gap: 1.5rem;
     background-color: #FDFBF7;
-    padding: 3rem; /* 폼 박스 내부 공간 확장 */
+    padding: 3rem;
     border-radius: 28px;
     box-shadow: 0 10px 30px rgba(46, 90, 68, 0.02);
 }
 
 .input-row {
     display: flex;
-    gap: 1.5rem; /* 성함과 이메일 인풋 사이 가로 여백 확대 */
+    gap: 1.5rem;
 }
 
 .input-group {
@@ -184,7 +186,7 @@
 .inquiry-form select,
 .inquiry-form textarea {
     width: 100%;
-    padding: 1.3rem; /* 인풋 내부 패딩을 넓혀 타이핑 시 답답함 해소 */
+    padding: 1.3rem;
     background-color: #F5F3EE;
     border: 1px solid transparent;
     border-radius: 14px;
@@ -196,7 +198,7 @@
 }
 
 .inquiry-form textarea {
-    height: 14rem; /* 텍스트 작성 영역 높이 최적화 */
+    height: 14rem;
     resize: none;
     line-height: 1.6;
 }
@@ -211,11 +213,11 @@
 
 /* 문의 접수 버튼 */
 .submit-btn {
-    margin-top: 1.5rem; /* 상단 폼과의 거리 확보 */
+    margin-top: 1.5rem;
     background-color: #2E5A44;
     color: #FDFBF7;
     border: none;
-    padding: 1.3rem; /* 버튼 두께감 향상 */
+    padding: 1.3rem;
     font-size: 1.2rem;
     font-weight: 800;
     border-radius: 50px;
@@ -228,4 +230,125 @@
     transform: translateY(-5px);
     background-color: #1F4030;
     box-shadow: 0 15px 30px rgba(46, 90, 68, 0.3);
+}
+
+
+/* ==================== 모바일 반응형 (2026.07.01) ==================== */
+
+@media (max-width: 1024px) {
+    .contact-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 5rem auto;
+    }
+
+    .support-section {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .faq-container,
+    .inquiry-container{
+        width:100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .subpage-main {
+        padding-bottom: 6rem;
+    }
+
+    .contact-banner {
+        padding: 6rem 0;
+    }
+
+    .banner-text {
+        font-size: 1.4rem;
+        line-height: 1.6;
+    }
+
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        margin: 2.5rem auto;
+        gap: 1rem;
+        padding: 0 1.5rem;
+    }
+
+    .contact-card {
+        padding: 2.25rem 1.5rem;
+    }
+
+    .icon-wrap {
+        margin-bottom: 0.75rem;
+    }
+
+    .contact-card strong {
+        font-size: 1.6rem;
+    }
+
+    .contact-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .support-section {
+        gap: 2.5rem;
+        padding:0 1.5rem;
+    }
+
+    .inquiry-form {
+        padding: 1.75rem 1.5rem;
+        gap: 1rem;
+    }
+
+    .inquiry-form input,
+    .inquiry-form select,
+    .inquiry-form textarea {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    .inquiry-form textarea {
+        height: 8rem;
+    }
+
+    .submit-btn {
+        padding: 1.1rem;
+        font-size: 1.05rem;
+    }
+
+    .input-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .faq-item summary {
+        padding: 1.1rem 1.3rem;
+    }
+
+    .faq-item summary::after {
+        font-size: 1.2rem;
+    }
+
+     .faq-item p {
+        padding: 0 1.3rem 1.3rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .contact-banner {
+        padding: 5rem 1.25rem;
+    }
+
+    .banner-text {
+        font-size: 1.15rem;
+        line-height: 1.5;
+    }
+
+    .contact-card {
+        padding: 2.25rem 1.25rem;
+    }
+
+    .section-title h3 {
+        font-size: 1.4rem;
+    }
 }

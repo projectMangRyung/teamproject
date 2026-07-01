@@ -55,6 +55,11 @@
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
                 <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
+
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </button>
+
         </div>
     </header>
 
@@ -204,12 +209,12 @@
     </footer>
 
     <!-- 키링 형태의 TOP 버튼 -->
-<div id="keyring-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-    <!-- 준비된 이미지 경로를 src에 넣어주세요 -->
-    <img src="./img/top_sale.png" alt="TOP으로 이동">
-</div>
+    <div id="keyring-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <img src="./img/top_sale.png" alt="TOP으로 이동">
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./javascript/common.js"></script>
     <script src="./javascript/sale.js"></script>
     <script>
         $(function(){
@@ -256,13 +261,11 @@
             saleProducts.forEach(prod => {
                 const discountedPrice = Math.floor(prod.price * (1 - prod.discount / 100)).toLocaleString();
                 const originalPrice = prod.price.toLocaleString();
-                // 기존 deal-card 생성 부분을 아래와 같이 수정하세요.
-const card = `
+                const card = `
     <div class="deal-card" onclick="location.href='product.html?id=${prod.name}'">
         <div class="img-wrap">
             <div class="discount-badge">${prod.discount}%</div>
             <img src="${prod.src}" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/300?text=Image'">
-            <!-- 하트 버튼 클릭 시 페이지 이동을 막으려면 버블링 중단이 필요합니다 -->
             <button class="btn-wish" onclick="event.stopPropagation();">♡</button>
         </div>
         <div class="info-wrap">
@@ -281,45 +284,43 @@ const card = `
             });
         }
 
-       function randomCoupon() {
-    const today = new Date().toLocaleDateString(); // 오늘 날짜 텍스트 (예: "2026. 7. 1.")
-    const lastPlayed = localStorage.getItem('claw_machine_date');
+        function randomCoupon() {
+            const today = new Date().toLocaleDateString();
+            const lastPlayed = localStorage.getItem('claw_machine_date');
 
-    let randomBox = document.querySelector(".glass-box");
-    let existingPopup = document.querySelector(".coupon-popup");
-    
-    if(existingPopup) {
-        existingPopup.remove();
-    }
+            let randomBox = document.querySelector(".glass-box");
+            let existingPopup = document.querySelector(".coupon-popup");
+            
+            if(existingPopup) {
+                existingPopup.remove();
+            }
 
-    // 오늘 이미 참여한 경우
-    if (lastPlayed === today) {
-        let html = `
-            <div class="coupon-popup">
-                <h3>🥺 아쉽지만... 🥺</h3>
-                <p>오늘은 더 이상 도전할 수 없어요!</p>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">내일 다시 찾아와 주세요!</p>
-            </div>
-        `;
-        randomBox.insertAdjacentHTML('beforeend', html);
-        return; // 아래 쿠폰 당첨 로직이 실행되지 않도록 여기서 함수 종료
-    }
+            if (lastPlayed === today) {
+                let html = `
+                    <div class="coupon-popup">
+                        <h3>🥺 아쉽지만... 🥺</h3>
+                        <p>오늘은 더 이상 도전할 수 없어요!</p>
+                        <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">내일 다시 찾아와 주세요!</p>
+                    </div>
+                `;
+                randomBox.insertAdjacentHTML('beforeend', html);
+                return;
+            }
 
-    // 오늘 처음 참여하는 경우 (현재 날짜 저장)
-    localStorage.setItem('claw_machine_date', today);
+            localStorage.setItem('claw_machine_date', today);
 
-    const coupons = [10, 20, 30, 40, 50];
-    const randomIndex = Math.floor(Math.random() * coupons.length);
-    const selectedCoupon = coupons[randomIndex];
+            const coupons = [10, 20, 30, 40, 50];
+            const randomIndex = Math.floor(Math.random() * coupons.length);
+            const selectedCoupon = coupons[randomIndex];
 
-    let html = `
-        <div class="coupon-popup">
-            <h3>🎉 축하합니다! 🎉</h3>
-            <p><strong>${selectedCoupon}%</strong> 랜덤 쿠폰 당첨!</p>
-        </div>
-    `;
-    randomBox.insertAdjacentHTML('beforeend', html);
-}
+            let html = `
+                <div class="coupon-popup">
+                    <h3>🎉 축하합니다! 🎉</h3>
+                    <p><strong>${selectedCoupon}%</strong> 랜덤 쿠폰 당첨!</p>
+                </div>
+            `;
+            randomBox.insertAdjacentHTML('beforeend', html);
+        }
     </script>
 </body>
 </html>
