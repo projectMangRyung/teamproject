@@ -431,19 +431,26 @@
 }
 
 #main-text {
-    font-size: 10rem; /* 텍스트 크기 상향 */
+    font-size: 10rem; 
     margin-bottom: 20px;
     opacity: 0; 
     font-weight: 900;
     text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
-    z-index: 9999;
+    position: relative; /* 추가됨 */
+    z-index: 20;        /* 추가됨 (폭죽 10보다 높게) */
 }
 .intro-text-row {
     display: flex; gap: 25px; justify-content: center; font-size: 2.8rem; font-weight: bold;
+    position: relative; /* 추가됨 */
+    z-index: 20;        /* 추가됨 */
 }
-#free-text, #all-text { opacity: 0; text-shadow: 2px 2px 0 rgba(0,0,0,0.1); }
-#plane-icon { font-size: 3rem; margin-top: 30px; opacity: 0; display: inline-block; }
 
+#free-text, #all-text { opacity: 0; text-shadow: 2px 2px 0 rgba(0,0,0,0.1); }
+#plane-icon { 
+    font-size: 3rem; margin-top: 30px; opacity: 0; display: inline-block; 
+    position: relative; /* 추가됨 */
+    z-index: 20;        /* 추가됨 */
+}
 /* 폭죽 파티클을 담는 컨테이너 */
 .confetti {
     position: absolute;
@@ -614,6 +621,15 @@ header.bg-pink {
     display: none !important;
 }
 
+.gnb > li:hover > a {
+    color: #ffc8c8;
+}
+
+.login > li > a:hover{
+    color: #ffc8c8;
+    transform: translateY(-2px);
+}
+
 /* =========== 아래 수치들을 수정해서 위치와 크기를 맞춰주세요 =========== */
 /* 개별 쿠폰 위치 예시 */
 #btn-coupon-0 { top: 51%; left: 11%; width: 37%; }
@@ -623,3 +639,56 @@ header.bg-pink {
 
 /* 전체 발급 쿠폰 위치 예시 */
 #btn-coupon-all { top: 66.6%; left: 5%; width: 90%; }
+
+/* 인트로 종료 후 섹션 순차 등장 애니메이션 */
+.sale-hero, .timer-wrap, .sale-categories-sec {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.intro-done .sale-hero { 
+    opacity: 1; transform: translateY(0); transition-delay: 0.1s; 
+}
+body.intro-done .timer-wrap { 
+    opacity: 1; transform: translateY(0); transition-delay: 0.3s; 
+}
+body.intro-done .sale-categories-sec { 
+    opacity: 1; transform: translateY(0); transition-delay: 0.5s; 
+}
+
+/* 키링 TOP 버튼 기본 스타일 및 숨김 처리 */
+#keyring-top-btn {
+    position: fixed;
+    bottom: 39%; /* 화면 아래에서 띄울 여백 */
+    right: 30px;  /* 화면 오른쪽에서 띄울 여백 */
+    width: 200px;  /* 준비하신 이미지에 맞게 크기 조절하세요 */
+    z-index: 1000;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    
+    /* 🔴 여기서 축을 설정하세요! (X축 Y축 순서) */
+    /* 예: 50% 10% -> 가로 중앙, 세로 위쪽 10% 지점이 고정축이 됨 */
+    transform-origin: 50% 10%; 
+    animation: swingKeyring 1.5s ease-in-out infinite alternate;
+}
+
+/* 스크롤 시 보여주기 위한 클래스 */
+#keyring-top-btn.show-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+#keyring-top-btn img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 달랑달랑 스윙 애니메이션 */
+@keyframes swingKeyring {
+    0% { transform: rotate(-10deg); }
+    100% { transform: rotate(10deg); }
+}
