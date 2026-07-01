@@ -55,28 +55,26 @@
         </section>
 
     <div class="all_search">
-        <h1>길찾기</h1>
-        <div class="route-search">
-            <div>
-                <strong>출발지</strong>
-                <input id="start_search" type="text" placeholder="출발지를 입력해주세요" />
-                <button id="searchBtn" type="button">
-                    <img src="./img/search.png" alt="검색" />
-                </button>
-            </div>
-            <div>
-                <strong>목적지</strong>
-            <input
-                id="destination"
-                type="text"
-                value="서울특별시 강남구 테헤란로 427"
-                readonly
-            />
-            </div>
-            <button id="routeBtn" type="button">길찾기</button>
+    <h1>길찾기</h1>
+    <div class="route-search">
+        
+        <div class="route-row">
+            <strong>출발지</strong>
+            <input id="start_search" type="text" placeholder="출발지를 입력해주세요" />
+            <button id="searchBtn" type="button">
+                <img src="./img/search.png" alt="검색" />
+            </button>
         </div>
-        <div id="routeResult" class="route-result"></div>
+        
+        <div class="route-row destination-row">
+            <strong>목적지</strong>
+            <input id="destination" type="text" value="서울특별시 강남구 테헤란로 427" readonly />
+        </div>
+        
+        <button id="routeBtn" type="button">길찾기</button>
     </div>
+    <div id="routeResult" class="route-result"></div>
+</div>
 
         <!-- 카카오 맵 영역 -->
         <section class="map-container fade-in">

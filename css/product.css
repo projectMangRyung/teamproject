@@ -140,6 +140,10 @@
     object-fit: cover;
     cursor: pointer;
 }
+.productImg > img:hover{
+    transform: scale(1.05);
+    transition: all 0.5s;
+}
 .product_card > button{
     border: 1px solid #bbb;
     color: black;

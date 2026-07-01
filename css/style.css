@@ -9,48 +9,112 @@
 body {
     font-family: 'Asta Sans', 'Noto Sans KR', sans-serif;
     color: #2A2C2B;
-    background-color: #F5F2EB
+    background-color: #F5F2EB;
     /* 내가 만든 커스텀 커서 적용 (경로와 파일명을 맞춰주세요) */
     /* cursor: url('../img/cursor.png'), auto; */
 }
-
 /* 팝업 창 (2026.06.30최정은) */
-.modalBg{
-            position: fixed;
-            left: 20px;
-            top: 20px;
-            width: 250px;
-            height: 400px;
-            display: none;
-            z-index: 1000;
-        }
-        .modal{
-            width: 350px;
-            background-color: white;
-            overflow: hidden;
-        }
-        .modal.wrap{
-            padding: 20px;
-            text-align: center;
-        }
-        .wrap h2{
-            margin-bottom: 20px;
-        }
-        .wrap p{
-            line-height: 1.6;
-        }
-        .closebtn{
-            display: flex;
-            border-top: 1px solid #ccc;
+/* ==================== 멍냥허브 프리미엄 사이드 공지 팝업 ==================== */
+.modalBg {
+    position: fixed;
+    right: 30px;
+    bottom: -500px; /* 초기 위치를 화면 아래로 숨김 */
+    left: auto;
+    top: auto;
+    width: 340px;
+    height: auto;
+    display: block; /* 스크립트 결합을 위해 블록 유지 */
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    /* 젤리처럼 튕기며 올라오는 부드러운 패스 트랙 */
+    transition: bottom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                opacity 0.4s ease;
+}
 
-        }
-        .closebtn > button{
-            padding: 5px 10px;
-            border: none;
-            background-color: #ccc;
-            cursor: pointer;
-            font-size: 15px;
-        }
+/* 활성화되었을 때 우측 하단에 안착 */
+.modalBg.show {
+    bottom: 30px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal {
+    width: 100%;
+    background-color: #FDFBF7; /* 쇼핑몰 시그니처 크림톤 브랜딩 */
+    border: 2px solid #2E5A44; /* 고급스러운 딥그린 테두리 */
+    border-radius: 24px;       /* 통통 튀는 라운드 값 */
+    box-shadow: 0 12px 40px rgba(46, 90, 68, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modalBg.show .modal {
+    transform: scale(1);
+}
+
+.modal .wrap {
+    padding: 24px 20px 16px;
+    text-align: center;
+}
+
+.wrap h2 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #2E5A44;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+    display: inline-block;
+    position: relative;
+}
+
+/* 공지사항 타이틀 양옆 귀여운 스파클 포인트 */
+.wrap h2::before { content: '✨'; position: absolute; left: -24px; top: -2px; font-size: 0.9rem; }
+.wrap h2::after { content: '✨'; position: absolute; right: -24px; top: -2px; font-size: 0.9rem; }
+
+.wrap .default-img {
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* 이미지 마우스 호버 시 미세하게 반응하는 인터랙션 */
+.wrap .default-img:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.closebtn {
+    display: flex;
+    border-top: 1px solid rgba(46, 90, 68, 0.08);
+    background: #F5F3EE;
+}
+
+.closebtn > button {
+    flex: 1;
+    padding: 14px 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #7A827E;
+    transition: all 0.2s ease;
+}
+
+.closebtn > button.todayClose {
+    border-right: 1px solid rgba(46, 90, 68, 0.08);
+    color: #2E5A44; /* 오늘 그만보기 강조 */
+}
+
+.closebtn > button:hover {
+    background-color: #2E5A44;
+    color: #FDFBF7;
+}
 /* ========== slide ========== (2025/06/19 최정은) */
 .banner {
     height: auto;

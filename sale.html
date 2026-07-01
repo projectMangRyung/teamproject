@@ -12,8 +12,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100..900&family=Single+Day&display=swap" rel="stylesheet"> 
 </head>
 <body>
+    <div id="intro-overlay">
+        <div class="container">
+            <h1 id="main-text">SALE EVENT</h1>
+            <div class="intro-text-row">
+                <span id="free-text">RIGHT</span>
+                <span id="all-text">NOW</span>
+            </div>
+            <div id="plane-icon">✈️</div>
+            <div class="confetti" id="confetti-container">
+                </div>
+        </div>
+    </div>
+
     <header>
-        <div class="headerInner move">
+        <div class="headerInner move" id="sale-header">
             <div class="logo">
                 <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
@@ -147,8 +160,17 @@
         </section>
     </main>
 
-    <div class="long-event-image-wrap">
-        <img src="./img/pag_banner.png" alt="이벤트 상세 이미지" style="width: 100%; display: block; margin: 0 auto;">
+    <div class="long-event-image-wrap" id="event-target">
+        <div class="coupon-banner-container">
+            <img src="./img/pag_banner.png" alt="이벤트 상세 이미지" class="bg-banner">
+            
+            <img src="./img/coupon.png" alt="3만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-0">
+            <img src="./img/coupon.png" alt="5만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-1">
+            <img src="./img/coupon.png" alt="7만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-2">
+            <img src="./img/coupon.png" alt="10만원 쿠폰받기" class="overlay-btn small-btn" id="btn-coupon-3">
+
+            <img src="./img/coupon_all.png" alt="모두 발급받기" class="overlay-btn large-btn" id="btn-coupon-all">
+        </div>
     </div>
 
     <footer>
@@ -181,7 +203,14 @@
         </ul>
     </footer>
 
+    <!-- 키링 형태의 TOP 버튼 -->
+<div id="keyring-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+    <!-- 준비된 이미지 경로를 src에 넣어주세요 -->
+    <img src="./img/top_sale.png" alt="TOP으로 이동">
+</div>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="./javascript/sale.js"></script>
     <script>
         $(function(){
             $(".gnb_products").mouseenter(function(){
@@ -227,48 +256,70 @@
             saleProducts.forEach(prod => {
                 const discountedPrice = Math.floor(prod.price * (1 - prod.discount / 100)).toLocaleString();
                 const originalPrice = prod.price.toLocaleString();
-                const card = `
-                    <div class="deal-card">
-                        <div class="img-wrap">
-                            <div class="discount-badge">${prod.discount}%</div>
-                            <img src="${prod.src}" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/300?text=Image'">
-                            <button class="btn-wish">♡</button>
-                        </div>
-                        <div class="info-wrap">
-                            <h4>${prod.name}</h4>
-                            <div class="price-wrap">
-                                <span class="original">${originalPrice}원</span>
-                                <span class="discounted">${discountedPrice}원</span>
-                            </div>
-                            <div class="rating">
-                                ⭐ ${prod.rating} <span>(${prod.review})</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                // 기존 deal-card 생성 부분을 아래와 같이 수정하세요.
+const card = `
+    <div class="deal-card" onclick="location.href='product.html?id=${prod.name}'">
+        <div class="img-wrap">
+            <div class="discount-badge">${prod.discount}%</div>
+            <img src="${prod.src}" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/300?text=Image'">
+            <!-- 하트 버튼 클릭 시 페이지 이동을 막으려면 버블링 중단이 필요합니다 -->
+            <button class="btn-wish" onclick="event.stopPropagation();">♡</button>
+        </div>
+        <div class="info-wrap">
+            <h4>${prod.name}</h4>
+            <div class="price-wrap">
+                <span class="original">${originalPrice}원</span>
+                <span class="discounted">${discountedPrice}원</span>
+            </div>
+            <div class="rating">
+                ⭐ ${prod.rating} <span>(${prod.review})</span>
+            </div>
+        </div>
+    </div>
+`;
                 dealList.innerHTML += card;
             });
         }
 
-        function randomCoupon() {
-            const coupons = [10, 20, 30, 40, 50];
-            const randomIndex = Math.floor(Math.random() * coupons.length);
-            const selectedCoupon = coupons[randomIndex];
+       function randomCoupon() {
+    const today = new Date().toLocaleDateString(); // 오늘 날짜 텍스트 (예: "2026. 7. 1.")
+    const lastPlayed = localStorage.getItem('claw_machine_date');
 
-            let html = `
-                <div class="coupon-popup">
-                    <h3>🎉 축하합니다! 🎉</h3>
-                    <p><strong>${selectedCoupon}%</strong> 랜덤 쿠폰 당첨!</p>
-                </div>
-            `;
-            
-            let randomBox = document.querySelector(".glass-box");
-            let existingPopup = document.querySelector(".coupon-popup");
-            if(existingPopup) {
-                existingPopup.remove();
-            }
-            randomBox.insertAdjacentHTML('beforeend', html);
-        }
+    let randomBox = document.querySelector(".glass-box");
+    let existingPopup = document.querySelector(".coupon-popup");
+    
+    if(existingPopup) {
+        existingPopup.remove();
+    }
+
+    // 오늘 이미 참여한 경우
+    if (lastPlayed === today) {
+        let html = `
+            <div class="coupon-popup">
+                <h3>🥺 아쉽지만... 🥺</h3>
+                <p>오늘은 더 이상 도전할 수 없어요!</p>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">내일 다시 찾아와 주세요!</p>
+            </div>
+        `;
+        randomBox.insertAdjacentHTML('beforeend', html);
+        return; // 아래 쿠폰 당첨 로직이 실행되지 않도록 여기서 함수 종료
+    }
+
+    // 오늘 처음 참여하는 경우 (현재 날짜 저장)
+    localStorage.setItem('claw_machine_date', today);
+
+    const coupons = [10, 20, 30, 40, 50];
+    const randomIndex = Math.floor(Math.random() * coupons.length);
+    const selectedCoupon = coupons[randomIndex];
+
+    let html = `
+        <div class="coupon-popup">
+            <h3>🎉 축하합니다! 🎉</h3>
+            <p><strong>${selectedCoupon}%</strong> 랜덤 쿠폰 당첨!</p>
+        </div>
+    `;
+    randomBox.insertAdjacentHTML('beforeend', html);
+}
     </script>
 </body>
 </html>

@@ -47,7 +47,7 @@
         </div>
     </header>
 
-    <!-- ========== 배너 ========== -->
+    <!-- 배너 -->
     <section class="cart-banner scroll-hidden">
         <nav class="breadcrumb">
             <a href="./index.html">홈</a>
@@ -59,30 +59,23 @@
         <p class="cart-count">총 <strong id="bannerCount">0</strong>개의 상품</p>
     </section>
 
-    <!-- ========== 장바구니 본문 ========== -->
+    <!-- 장바구니 본문 -->
     <section class="cart-wrap scroll-hidden">
 
         <!-- 장바구니 목록 -->
         <div class="cart-list">
-
-            <!-- 전체선택 / 선택삭제 -->
             <div class="cart-list-header">
                 <label>
                     <input type="checkbox" id="checkAll"> 전체 선택
                 </label>
                 <button id="deleteSelected">선택 삭제</button>
             </div>
-
-            <!-- 아이템 렌더링 영역 (JS로 동적 생성) -->
             <div id="cartItems"></div>
-
-            <!-- 빈 장바구니 -->
             <div id="emptyCart" class="empty-cart">
                 <p>🐕‍🦺 장바구니가 비어있어요</p>
                 <p class="empty-sub">마음에 드는 상품을 담아보세요!</p>
                 <a href="./product.html">쇼핑 계속하기</a>
             </div>
-
         </div>
 
         <!-- 주문 요약 -->
@@ -107,8 +100,58 @@
 
     </section>
 
-    <!-- ========== TOP 버튼 ========== -->
+    <!-- TOP 버튼 -->
     <button class="top-btn">▲</button>
+
+    <!-- 장바구니 빈 모달 -->
+    <div id="emptyModal" class="order-modal">
+        <div class="order-modal-content">
+            <p style="font-size:3rem;">🐕‍🦺</p>
+            <h3>장바구니가 비어있어요!</h3>
+            <p>마음에 드는 상품을 담아보세요</p>
+            <div class="order-modal-buttons">
+                <button id="emptyClose">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 주문 확인 모달 -->
+    <div id="orderModal" class="order-modal">
+        <div class="order-modal-content">
+            <div class="order-modal-header">
+                <p class="order-modal-icon">🛒</p>
+                <h3>주문 확인</h3>
+                <p>아래 상품을 주문하시겠습니까?</p>
+            </div>
+            <div id="orderItemList" class="order-item-list"></div>
+            <div class="order-modal-total">
+                <span>총 결제금액</span>
+                <span id="orderTotalText"></span>
+            </div>
+            <div class="order-modal-buttons">
+                <button id="orderCancel">취소</button>
+                <button id="orderConfirm">주문하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 주문 완료 모달 -->
+    <div id="completeModal" class="order-modal">
+        <div class="order-modal-content">
+            <div class="check-wrap">
+                <svg class="check-svg" viewBox="0 0 52 52">
+                    <circle class="check-circle" cx="26" cy="26" r="25"/>
+                    <path class="check-mark" d="M14 27 L22 35 L38 18"/>
+                </svg>
+            </div>
+            <h3>주문 완료!</h3>
+            <p>주문이 정상적으로 완료되었습니다.</p>
+            <p class="complete-sub">감사합니다 🐾</p>
+            <div class="order-modal-buttons">
+                <button id="completeClose">확인</button>
+            </div>
+        </div>
+    </div>
 
     <!-- ========== 푸터 ========== -->
     <footer>
