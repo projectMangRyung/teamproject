@@ -6,7 +6,6 @@
     <title>브랜드 - 멍냥허브</title>
     <link rel="stylesheet" href="./reset.css"/>
     <link rel="stylesheet" href="./css/common.css"/>
-    <link rel="stylesheet" href="./css/style.css"/> <!-- 메인 스타일 연동 (헤더/푸터/폰트 유지) -->
     <link rel="stylesheet" href="./css/brand.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,21 +16,21 @@
     <header>
         <div class="headerInner">
             <div class="logo">
-                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+                <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
             <ul class="gnb">
                 <li><a href="./index.html">홈</a></li>
-                <li class="active"><a href="./brand.html" style="color: #2E5A44;">브랜드</a></li>
+                <li class="active"><a href="./brand.html">브랜드</a></li>
                 <li class="gnb_products">
                     <a href="./product.html">제품보기</a>
                     <ul class="snb">
-                        <li><a>전체 상품</a></li>
-                        <li><a>강아지 용품</a></li>
-                        <li><a>고양이 용품</a></li>
-                        <li><a>사료/간식</a></li>
-                        <li><a>장난감</a></li>
-                        <li><a>액세서리</a></li>
-                        <li><a>건강/미용</a></li>
+                        <li><a href="./product.html">전체 상품</a></li>
+                        <li><a href="./dogproduct.html">강아지 용품</a></li>
+                        <li><a href="./catproduct.html">고양이 용품</a></li>
+                        <li><a href="food.html">사료/간식</a></li>
+                        <li><a href="toy.html">장난감</a></li>
+                        <li><a href="accessory.html">액세서리</a></li>
+                        <li><a href="healthproduct.html">건강/미용</a></li>
                     </ul>
                 </li>
                 <li><a href="sale.html">세일특가</a></li>
@@ -42,73 +41,141 @@
                 <li><a href="./login.html">로그인</a></li>
                 <li><a href="./join.html">회원가입</a></li>
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
-                <li><a><img src="./img/cart.png" alt="cart"/></a></li>
+                <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
         </div>
     </header>
 
-    <main class="subpage-main">
-        <!-- 브랜드 배너 -->
-        <section class="sub-banner">
-    <video class="bg-video" autoplay muted loop playsinline poster="./img/fallback-image.jpg">
-        <source src="./img/brand_video.mp4" type="video/mp4">
-    </video>
-    
-    <div class="banner-text">
-        <h2>오늘의 행복으로<br>내일의 가치를 만듭니다</h2>
-        <p>반려동물의 건강과 행복을 최우선으로 생각하는 멍냥허브</p>
-    </div>
-</section>
+   <main class="subpage-main">
+    <!-- 브랜드 배너 (유지) -->
+    <section class="sub-banner move">
+        <video class="bg-video" autoplay muted loop playsinline poster="./img/fallback-image.jpg">
+            <source src="./img/brand_video.mp4" type="video/mp4">
+        </video>
+        <div class="banner-text">
+            <h2>오늘의 행복으로<br>내일의 가치를 만듭니다</h2>
+            <p>반려동물의 건강과 행복을 최우선으로 생각하는 멍냥허브</p>
+        </div>
+    </section>
 
-        <!-- 브랜드 비전 -->
-        <section class="brand-vision fade-in">
-            <div class="vision-text">
-                <span class="badge">OUR VISION</span>
-                <h3>우리가 말하지 않아도<br>가치가 증명되는 공간</h3>
-                <p>멍냥허브는 단순히 물건을 파는 곳이 아닙니다. 반려동물과 보호자가 함께하는 모든 순간이 더 빛날 수 있도록, 깐깐한 기준으로 엄선된 제품만을 소개합니다. 우리는 원칙을 통해 믿음을 만들어 갑니다.</p>
-            </div>
-            <div class="vision-image">
-                <img src="./img/brand-img9.png" alt="Vision Image"/>
-            </div>
-        </section>
+    <!-- 통합된 브랜드 스토리 & 핵심가치 영역 -->
+    <section class="brand-story">
+        <div class="story-text">
+            <span class="badge">OUR VISION & VALUES</span>
+            <h3>우리가 말하지 않아도<br>가치가 증명되는 공간</h3>
+            <p>멍냥허브는 단순히 물건을 파는 곳이 아닙니다. 반려동물과 보호자가 함께하는 모든 순간이 더 빛날 수 있도록, 깐깐한 기준으로 엄선된 제품만을 소개합니다. 우리는 원칙을 통해 믿음을 만들어 갑니다.</p>
+        </div>
 
-        <!-- 핵심 가치 -->
-        <section class="brand-values fade-in">
-            <div class="section-title">
-                <h3>멍냥허브의 <span>핵심가치</span></h3>
-            </div>
-            <div class="value-grid">
-                <div class="value-card">
-                    <img src="./img/brand_4.jpg" alt="고객"/>
+        <div class="scroll-timeline">
+            <!-- 중앙 세로 막대기 -->
+            <div class="timeline-line"></div>
+            
+            <div class="value-grid-scroll">
+                <!-- 핵심가치 카드 1 -->
+                <div class="leaf-item">
+                    <div class="stem"></div> <!-- 막대기와 연결되는 줄기 -->
+                    <div class="leaf-image-box">
+                        <img src="./img/brand_4.jpg" alt="고객"/>
+                        
+                    </div>
                     <div class="value-info">
                         <h4>고객과 이웃</h4>
                         <p>우리는 고객과 이웃을 먼저 생각하며 소통합니다.</p>
                     </div>
                 </div>
-                <div class="value-card">
-                    <img src="./img/brand-img15.jpg" alt="신뢰"/>
+                <!-- 핵심가치 카드 2 -->
+                <div class="leaf-item">
+                    <div class="stem"></div>
+                    <div class="leaf-image-box">
+                        
+                        <img src="./img/brand-img15.jpg" alt="신뢰"/>
+                        
+                    </div>
                     <div class="value-info">
                         <h4>투명한 신뢰</h4>
                         <p>타협하지 않는 원칙을 통해 굳건한 믿음을 만듭니다.</p>
                     </div>
                 </div>
-                <div class="value-card">
-                    <img src="./img/brand-img12.jpg" alt="전문성"/>
+                <!-- 핵심가치 카드 3 -->
+                <div class="leaf-item">
+                    <div class="stem"></div>
+                    <div class="leaf-image-box">
+                        <img src="./img/brand-img12.jpg" alt="전문성"/>
+                        
+                    </div>
                     <div class="value-info">
                         <h4>검증된 전문성</h4>
                         <p>각 분야 전문가들이 직접 선도하고 검수하는 상품입니다.</p>
                     </div>
                 </div>
-                <div class="value-card">
-                    <img src="./img/brand-img23.jpg" alt="행복"/>
+                <!-- 핵심가치 카드 4 -->
+                <div class="leaf-item">
+                    <div class="stem"></div>
+                    <div class="leaf-image-box">
+                        <img src="./img/brand-img23.jpg" alt="행복"/>
+                        
+                    </div>
                     <div class="value-info">
                         <h4>모두의 행복</h4>
                         <p>고객과 동물이 함께 누리는 행복을 최우선으로 합니다.</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
+
+<section class="brand-history">
+        <div class="history-container">
+            <div class="history-sticky">
+                
+                <div class="history-step" data-step="0">
+                    <div class="history-text-area">
+                        <h3 class="karaoke-title">2023, 문제 직면</h3>
+                        <p class="karaoke-desc">반려동물과 함께 생활하며 용품을 구매하던 중, 시장의 불합리함을 크게 느꼈습니다. 품질이 좋으면 터무니없이 비싸고, 저렴한 제품은 품질을 전혀 보장할 수 없었습니다. 무엇보다 말 못 하는 반려동물이 불편함을 겪거나, 나아가 건강까지 해칠 수 있다는<br>사실이 보호자로서 가장 두려웠습니다.</p>
+                    </div>
+                    <div class="history-image-area groove-anim">
+                        <img src="./img/brand_h1.png" alt="2023 이미지" class="history-png">
+                    </div>
+                </div>
+
+                <div class="history-step" data-step="1">
+                    <div class="history-text-area">
+                        <h3 class="karaoke-title">2024, 더 나은 변화</h3>
+                        <p class="karaoke-desc">반려 가구가 빠르게 늘어나는 만큼, 기존의 낡은 시장 구조를 벗어난 혁신적인 쇼핑몰이 필요하다고 생각했습니다. 반려동물의 입장에서 먼저 생각하고, 보호자가 안심할 수 있는 합리적이고 안전한 제품만을 선보이기로 다짐하며 ‘멍냥허브’를 기획했습니다.</p>
+                    </div>
+                    <div class="history-image-area groove-anim">
+                        <img src="./img/brand_h2.png" alt="2024 이미지" class="history-png">
+                        
+                    </div>
+                </div>
+
+                <div class="history-step" data-step="2">
+                    <div class="history-text-area">
+                        <h3 class="karaoke-title">2025, 첫발을 내딛다</h3>
+                        <p class="karaoke-desc">우리는 비윤리적인 유통 구조를 가진 펫샵에서의 소비를 지양하기로 했습니다. 대신, 반려동물에게 직접적인 행복이 전달될 수 있도록 투명한 운영을 약속하며 공식 스토어를 오픈했습니다. 우리가 전하는 제품 하나하나에 보호자의 걱정을 덜어내고자 하는 진심을 담았습니다.</p>
+                    </div>
+                    <div class="history-image-area groove-anim">
+                        <img src="./img/brand_h3.png" alt="2025 이미지" class="history-png">
+                        
+                    </div>
+                </div>
+
+                <div class="history-step" data-step="3">
+                    <div class="history-text-area">
+                        <h3 class="karaoke-title">2026, 함께하는 행복</h3>
+                        <p class="karaoke-desc">지금도 멍냥허브는 보호자의 부담은 낮추고, 반려동물의 삶의 질은 높이는 고민을 이어가고 있습니다. 단순히 제품을 판매하는 곳을 넘어, 유기동물에게도 작은 행복을 나눌 수 있는 건강한 반려 문화를 만들기 위해 매일 노력하고 있습니다.</p>
+                    </div>
+                    <div class="history-image-area groove-anim">
+                        <img src="./img/brand_h4.png" alt="2026 이미지" class="history-png">
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
 
     <!-- 푸터 영역 (index.html과 동일) -->
     <footer>
