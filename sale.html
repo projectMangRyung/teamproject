@@ -17,7 +17,7 @@
     #intro-overlay {
         position: fixed;
         top: 0; left: 0; width: 100vw; height: 100vh;
-        background-color: #0e100f; /* 참고하신 GSAP 배경색 */
+        background-color: #ffffff; /* 참고하신 GSAP 배경색 */
         z-index: 9999;
         display: flex;
         align-items: center;
@@ -27,19 +27,18 @@
 </style>
 </head>
 
-<div id="intro-overlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; justify-content: center; align-items: center;">
-        <div class="container" style="opacity: 0; color: white; text-align: center;">
-            <h1 id="main" style="font-size: 3rem; margin-bottom: 20px;">SALE EVENT</h1>
-            <div style="display: flex; gap: 20px; justify-content: center; font-size: 2rem;">
-                <span id="free">RIGHT</span>
-                <span id="all">NOW</span>
+<div id="intro-overlay">
+        <div class="container">
+            <h1 id="main-text">SALE EVENT</h1>
+            <div class="intro-text-row">
+                <span id="free-text">RIGHT</span>
+                <span id="all-text">NOW</span>
             </div>
-            <!-- 애니메이션용 가상 요소들 (필요시 SVG 구조에 맞게 커스텀) -->
-            <div id="plane" style="font-size: 2rem; margin-top: 20px;">✈️</div>
+            <div id="plane-icon">✈️</div>
             <div class="confetti">
-                <span style="position:absolute; opacity:0;">✨</span>
-                <span style="position:absolute; opacity:0;">🎉</span>
-                <span style="position:absolute; opacity:0;">🎈</span>
+                <span class="c1">✨</span>
+                <span class="c2">🎉</span>
+                <span class="c3">🎈</span>
             </div>
         </div>
     </div>

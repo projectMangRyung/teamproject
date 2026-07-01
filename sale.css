@@ -1,6 +1,6 @@
 .sale-wrap {
     padding-top: 4rem;
-    background-color: #fff;
+    background: linear-gradient(135deg, #fff5f7 0%, #ffffff 100%);
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -43,7 +43,7 @@
 
 .badge-top {
     display: flex;
-    margin-bottom: 400px;
+    margin-bottom: 430px;
     animation: bounce 2s infinite;
 }
 
@@ -396,4 +396,130 @@
 @keyframes gripRight {
     0%, 75% { transform: rotate(10deg); }
     88%, 100% { transform: rotate(-5deg); }
+}
+
+
+/* =======================================================
+   순수 CSS 인트로 애니메이션 (GSAP 대체)
+======================================================= */
+#intro-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: #0e100f;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.6s ease-in-out;
+}
+#intro-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#intro-overlay .container {
+    color: #fd4f6e;
+    text-align: center;
+}
+#main-text {
+    font-size: 3rem; margin-bottom: 20px;
+    opacity: 0; /* 초기 숨김 */
+}
+.intro-text-row {
+    display: flex; gap: 20px; justify-content: center; font-size: 2rem;
+}
+#free-text, #all-text { opacity: 0; }
+#plane-icon { font-size: 2rem; margin-top: 20px; opacity: 0; display: inline-block; }
+.confetti { position: relative; }
+.confetti span { position: absolute; opacity: 0; font-size: 1.5rem; top: -50px; left: 50%; }
+
+/* --- 본문 숨김 제어 --- */
+body.intro-running header, 
+body.intro-running main, 
+body.intro-running footer {
+    opacity: 0;
+    visibility: hidden;
+}
+body.intro-done header, 
+body.intro-done main, 
+body.intro-done footer {
+    visibility: visible;
+}
+
+/* --- 인트로 애니메이션 실행 클래스 --- */
+/* CustomBounce 대체 (통통 튀는 효과) */
+.anim-bounce { animation: dropBounce 1.2s cubic-bezier(0.28, 0.84, 0.42, 1) forwards; }
+/* SplitText & back.out 대체 (양옆에서 튀어나오는 효과) */
+.anim-slide-left { animation: slideLeftBack 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s; }
+.anim-slide-right { animation: slideRightBack 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.8s; }
+/* 비행기 비행 효과 */
+.anim-fly { animation: flyPlane 1.5s ease-in-out forwards 1.0s; }
+/* 폭죽 파티클 분산 효과 */
+.anim-confetti-1 { animation: scatter1 1.2s ease-out forwards 0.8s; }
+.anim-confetti-2 { animation: scatter2 1.2s ease-out forwards 0.85s; }
+.anim-confetti-3 { animation: scatter3 1.2s ease-out forwards 0.9s; }
+
+@keyframes dropBounce {
+    0% { opacity: 0; transform: translateY(-200px); }
+    60% { opacity: 1; transform: translateY(20px); }
+    80% { transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeftBack {
+    0% { opacity: 0; transform: translateX(-100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideRightBack {
+    0% { opacity: 0; transform: translateX(100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes flyPlane {
+    0% { opacity: 0; transform: scale(0.5) translate(0, 0); }
+    20% { opacity: 1; }
+    100% { opacity: 1; transform: scale(1.2) translate(150px, -40px); }
+}
+@keyframes scatter1 { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(-150px, -200px) rotate(180deg); } }
+@keyframes scatter2 { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(100px, -250px) rotate(-120deg); } }
+@keyframes scatter3 { 0% { opacity: 1; transform: translate(0,0) rotate(0); } 100% { opacity: 0; transform: translate(180px, -150px) rotate(360deg); } }
+
+/* --- 본문 등장 및 컬러 변경 클래스 --- */
+.fade-up-header { animation: fadeUpHeader 0.5s ease-out forwards; }
+.fade-up-main { animation: fadeUpMain 0.6s ease-out forwards 0.3s; }
+.fade-up-footer { animation: fadeUpHeader 0.5s ease-out forwards 0.5s; }
+
+@keyframes fadeUpHeader {
+    0% { opacity: 0; transform: translateY(-40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUpMain {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+header.bg-pink {
+    background-color: #fd4f6e !important;
+    transition: background-color 0.5s ease-in-out;
+}
+
+.event-target {
+    background: linear-gradient(120deg, #fff0f3, #ffe4e6);
+    border: 2px solid #ffccd5;
+    position: relative;
+    overflow: hidden;
+    padding: 3rem;
+    border-radius: 40px;
+}
+
+/* 블링블링 효과 */
+.event-target::before {
+    content: "✨";
+    position: absolute;
+    top: 10px; right: 10px;
+    animation: twinkle 1.5s infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
 }
