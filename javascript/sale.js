@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // 3. 다이나믹 폭죽 파티클 대량 생성 (화려하게 터지도록)
     const confettiContainer = document.getElementById("confetti-container");
     const emojis = ["✨", "🎉", "🎈", "💖", "🌸", "🎊", "⭐", "🛍️"];
-    const particleCount = 150; // 폭죽 개수 대폭 증가
+    const particleCount = 20;// 폭죽 개수 대폭 증가
 
     for(let i = 0; i < particleCount; i++) {
         const span = document.createElement("span");
@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
         span.className = "anim-confetti-particle";
         
         // CSS 변수를 사용해 각기 다른 랜덤 궤적과 속도로 튕겨나가도록 설정
-        const tx = (Math.random() - 0.5) * 1200; // 가로 반경을 크게
+        const tx = (Math.random() - 0.5) * 1500; // 가로 반경을 크게
         const ty = (Math.random() - 0.7) * 600; // 위로 더 많이 솟구치게
         const rot = Math.random() * 720;
-        const scale = Math.random() * 1.5 + 0.8; // 크기 다양화
+        const scale = Math.random() * 3.5 + 0.8; // 크기 다양화
         const delay = Math.random() * 1.5; // 터지는 타이밍을 조금씩 엇갈리게
         const duration = Math.random() * 1.2 + 1.2; // 지속 시간
 
@@ -53,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const footer = document.querySelector('footer');
 
             header.classList.add('fade-up-header');
-            main.classList.add('fade-up-main');
             footer.classList.add('fade-up-footer');
 
             // 헤더 배경색 변경 효과
@@ -225,5 +224,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
             showCouponAlert();
         });
+    }
+});
+
+// TOP 버튼 스크롤 감지 로직
+const topBtn = document.getElementById('keyring-top-btn');
+const categorySec = document.querySelector('.sale-categories-sec');
+
+window.addEventListener('scroll', () => {
+    if (categorySec && topBtn) {
+        // 카테고리 섹션의 실제 페이지 내 상단 위치 계산
+        const categoryOffset = categorySec.getBoundingClientRect().top + window.scrollY;
+        
+        // 현재 스크롤이 카테고리 섹션 근처(살짝 위쪽)에 도달했는지 확인
+        // -200은 화면에 카테고리가 보일 즈음 미리 버튼을 띄우기 위한 여유값입니다.
+        if (window.scrollY >= categoryOffset - 200) { 
+            topBtn.classList.add('show-btn');
+        } else {
+            topBtn.classList.remove('show-btn');
+        }
     }
 });
