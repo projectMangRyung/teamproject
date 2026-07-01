@@ -1,3 +1,42 @@
+/*  공통으로 이용할 함수
+
+        슬라이드 이동 함수
+            해당 기능에는 페이지네이션 HTML에 class를 이동하여 현 위치를 마크해야함
+        CSS 삽입 함수
+*/
+//CSS 삽입 함수
+function AddStyle(style){
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = style;
+    document.head.appendChild(styleTag);
+}
+
+// // 첫 진입 화면 제어
+// const introScreen = document.getElementById('introScreen');
+// if (introScreen) {
+//     introScreen.classList.remove('hidden');
+//     document.body.style.overflow = 'hidden';
+
+//     const hideIntro = () => {
+//         introScreen.classList.add('hidden');
+//         document.body.style.overflow = '';
+//         window.dispatchEvent(new Event('intro:closed'));
+//     };
+
+//     introScreen.addEventListener('click', (event) => {
+//         if (event.target.closest('.intro-button')) return;
+//         hideIntro();
+//     });
+
+//     const introButton = document.querySelector('.intro-button');
+//     if (introButton) {
+//         introButton.addEventListener('click', (event) => {
+//             event.stopPropagation();
+//             hideIntro();
+//         });
+//     }
+// }
+
 // 팝업 오늘 다시보지 않기
 $(function(){
     let today1 = new Date().toLocaleDateString()
@@ -19,33 +58,11 @@ $(function(){
 const slidewrap = document.querySelector(".slidewrap");
 const slidescnt = document.querySelectorAll(".slide").length;
 const slideContainer = document.getElementsByClassName("slides");
-let slideWidth = slidewrap.offsetWidth;
 let currentSlide = 0;
 
 window.addEventListener("resize", function(){
-    slideWidth = window.innerWidth
-    slidewrap.style.width = window.innerWidth
+    goToSlide(currentSlide)
 })
-/*  공통으로 이용할 함수
-
-        슬라이드 이동 함수
-            해당 기능에는 페이지네이션 HTML에 class를 이동하여 현 위치를 마크해야함
-        CSS 삽입 함수
-*/
-
-//슬라이드 이동 함수
-function goToSlide(index){
-    currentSlide = index;
-    slideContainer[0].style.transition = 'transform 0.5s ease';
-    slideContainer[0].style.transform = `translateX(-${slideWidth * currentSlide}px)`;
-}
-
-//CSS 삽입 함수
-function AddStyle(style){
-    const styleTag = document.createElement('style');
-    styleTag.innerHTML = style;
-    document.head.appendChild(styleTag);
-}
 
 /*  페이지네이션 생성 함수
         HTML 삽입
@@ -101,7 +118,7 @@ function Createpagination(){
 function goToSlide(index){
     currentSlide = index;
     slideContainer[0].style.transition = 'transform 0.5s ease';
-    slideContainer[0].style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+    slideContainer[0].style.transform = `translateX(-${100 * currentSlide}%)`;
 	// 추가 부분
     //페이지네이션 Class 부여하기  
     const pagination = document.querySelectorAll(".pagination li");
@@ -135,12 +152,94 @@ function Createbtn(){
             height : 50px;
             font-size: 40px;
             cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+            opacity: 0.9;
+            z-index: 5;
+        }
+        .btn:hover {
+            transform: translateY(-50%) scale(1.08);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+            opacity: 1;
+        }
+        .btn:active {
+            transform: translateY(-50%) scale(0.94);
         }
         .leftbtn{
             left : 20px;
+            animation: slideInLeft 0.6s ease both;
         }
         .rightbtn{
             right : 20px;
+            animation: slideInRight 0.6s ease both;
+        }
+        .btn img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            transition: transform 0.25s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn img {
+            animation: idleArrow 1.8s ease-in-out infinite;
+        }
+        .leftbtn img {
+            --arrow-shift: -2px;
+            animation-direction: normal;
+        }
+        .rightbtn img {
+            --arrow-shift: 2px;
+            animation-direction: normal;
+        }
+        .btn:hover img {
+            transform: scale(1.12) translateX(var(--arrow-shift, 0px));
+            animation: none;
+        }
+        .leftbtn:hover img {
+            --arrow-shift: -2px;
+        }
+        .rightbtn:hover img {
+            --arrow-shift: 2px;
+        }
+        .btn:active img {
+            transform: scale(0.92);
+            animation: none;
+        }
+        @keyframes idleArrow {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(var(--arrow-shift, 0px)) rotate(var(--arrow-rotate, 0deg));
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(-12px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(12px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(-50%) translateX(0);
+            }
         }
     `
     AddStyle(BtnStyle);
@@ -218,11 +317,10 @@ function startAutoSlide() {
 
 startAutoSlide();
 
-Createpagination()
+Createpagination();
 
 //웹 브라우저 시작
 Createbtn();
-
 
 async function productload(){
     try{
