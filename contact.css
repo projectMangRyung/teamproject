@@ -1,122 +1,269 @@
 /* ==========================================
-   고객센터 페이지 레이아웃 & 공통 여백 조정
+   고객센터 페이지 레이아웃 & 상단 배너
 ========================================== */
 .subpage-main {
-    /* 하단 푸터와의 간격을 넓혀 전체적인 레이아웃 호흡을 유연하게 만듭니다. */
-    padding-bottom: 10rem;
+    padding-bottom: 0;
+    background-color: #ffffff;
 }
 
-/* 고객센터 배너 */
+/* 상단 첫 화면 배너: 완전한 흰색 바탕 및 화면 꽉 차는 높이 */
 .contact-banner {
-    background: linear-gradient(rgba(46, 90, 68, 0.8), rgba(46, 90, 68, 0.8)), url('../img/background_black.png') center/contain;
-    padding: 10rem 0;
-    text-align: center;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4rem;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-/* 상담 방법 카드 섹션 */
+/* 가로형 정렬 컨테이너 */
+.banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    width: 100%;
+    gap: 4rem;
+    margin: 0 auto;
+}
+
+/* 큰 글씨 및 왼쪽 정렬 텍스트 영역 */
+.banner-text {
+    flex: 1.2;
+    text-align: left;
+}
+
+.ani-text-1 {
+    font-size: 3.8rem; /* 크게 변경 */
+    font-weight: 800;
+    color: #2E5A44; /* 어두운 초록 포인트 컬러 */
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.ani-text-2 {
+    font-size: 1.5rem; /* 크게 변경 */
+    line-height: 1.7;
+    color: #4A4D4B; /* 흰 바탕에서 잘 보이도록 어두운 글씨 */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 애니메이션 작동 클래스 */
+.ani-text-1.on, .ani-text-2.on {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 고양이 이미지 영역 (화면 우측에 큼직하게 배치) */
+.cat-wrap {
+    flex: 0.8;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.cat-wrap.on {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 숨결이 살아있는 듯한 좌우 들썩임 애니메이션 */
+@keyframes catWiggle {
+    0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+    50% { transform: rotate(1.5deg) translateY(-5px); }
+}
+@keyframes tailWiggle {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(12deg); }
+}
+
+.cat-img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    position: relative;
+    z-index: 2;
+    animation: catWiggle 3s infinite ease-in-out;
+    transform-origin: bottom center;
+}
+
+.cat-tail-img {
+    position: absolute;
+    bottom: 25%;
+    right: 2%;
+    width: 42%;
+    z-index: 1;
+    animation: tailWiggle 3s infinite ease-in-out;
+    transform-origin: bottom left;
+}
+
+
+/* ==========================================
+   동그라미 모양으로 차오르는 스크롤 배경 설정
+========================================== */
+.scroll-bg-section {
+    position: relative;
+    background-color: #ffffff;
+    padding: 8rem 0 12rem;
+    overflow: hidden;
+    /* JS에서 실시간으로 제어할 원형 크기 기본값 변수 선언 */
+    --circle-radius: 0%; 
+}
+
+/* 하단부터 동그라미 모양으로 차오르는 가상 배경막 생성 */
+.scroll-bg-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #F5F3EE; /* 기본 약간 회색인 배경 */
+    z-index: 0;
+    clip-path: circle(var(--circle-radius) at 50% 100%);
+    transition: clip-path 0.1s linear;
+    pointer-events: none;
+}
+
+/* 내부 콘텐츠가 가상 배경 위로 올라오도록 명시 */
+.scroll-bg-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ==========================================
+   구름/고양이 형태의 상담 카드 스크롤 애니메이션
+========================================== */
 .contact-info-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem; /* 카드 사이의 다닥다닥 붙은 간격 확대 */
-    max-width: 1500px; /* 대화면에서 무한정 늘어나지 않도록 고정 */
-    margin: 8rem auto; /* 상하 여백을 크게 주어 배너 및 하단 콘텐츠와 격리 */
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto 8rem;
     padding: 0 2rem;
 }
 
-.banner-text{
-    font-size: 1.8rem;
-    font-weight: 800;
-    line-height: 3;
-    color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+/* 각각의 카드가 차례로 올라올 수 있도록 기본 투명화 처리 */
+.contact-card-wrap {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    filter: drop-shadow(0 15px 30px rgba(46, 90, 68, 0.04));
+    margin-top: 60px;
 }
 
-.banner-text p{
-    line-height: 1.6;
+/* 스크롤 다운 시 차오르는 활성화 상태 클래스 */
+.contact-card-wrap.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
+
+/* 구름/고양이 형태 둥근 카드 커스텀 디자인 */
 .contact-card {
-    background-color: #FDFBF7;
-    border: 1px solid rgba(46, 90, 68, 0.06);
-    border-radius: 28px; /* 최신 트렌드에 맞게 더 둥글고 부드러운 모서리 */
-    padding: 4.5rem 2rem; /* 상하 패딩을 늘려 카드 내부 여백 확보 */
+    position: relative;
+    background-color: #ffffff; /* 회색 배경 위에 도드라지게 흰색 처리 */
+    border-radius: 45px;
+    padding: 5rem 2rem 3.5rem;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(46, 90, 68, 0.02); /* 은은하고 고급스러운 그림자 */
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.contact-card:hover {
-    transform: translateY(-12px); /* 호버 시 입체감 상향 */
-    box-shadow: 0 20px 40px rgba(46, 90, 68, 0.08);
+/* 구름 굴곡을 표현하는 가상 요소 볼록이들 */
+.contact-card::before, .contact-card::after {
+    content: '';
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: -1;
+}
+.contact-card::before {
+    width: 100px; height: 100px;
+    top: -45px; left: 15%;
+}
+.contact-card::after {
+    width: 100px; height: 100px;
+    top: -45px; right: 15%;
+}
+
+/* 호버 시 부드러운 움직임 효과 */
+.contact-card-wrap:hover {
+    transform: translateY(-10px) !important;
 }
 
 .icon-wrap {
-    font-size: 3.5rem; /* 아이콘 크기 소폭 확대 */
-    margin-bottom: 1.8rem;
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
 }
-
 .contact-card h3 {
     font-size: 1.3rem;
     color: #5A625E;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     font-weight: 700;
 }
-
 .contact-card strong {
     display: block;
-    font-size: 2.2rem; /* 전화번호, 이메일 강조 처리 */
+    font-size: 2.1rem;
     color: #2E5A44;
     font-weight: 800;
     margin-bottom: 0.8rem;
-    letter-spacing: -0.5px;
 }
-
 .contact-card p {
-    color: #7A827E;
+    color: #8A928E;
     font-size: 1rem;
 }
 
-/* 하단 서포트 레이아웃 (FAQ + 1:1문의) */
+
+/* ==========================================
+   하단 자주묻는질문 ~ 문의 영역 (일반 스르륵 효과)
+========================================== */
 .support-section {
     display: flex;
-    gap: 6rem; /* FAQ와 문의 폼이 완전히 분리되어 보이도록 좌우 간격 확대 */
+    gap: 5rem;
     align-items: flex-start;
-    max-width: 1500px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+    
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* 스크롤 활성화 */
+.support-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .faq-container, .inquiry-container {
     flex: 1;
 }
-
 .left-align {
     text-align: left;
-    margin-bottom: 2.5rem; /* 타이틀과 본문 사이 여백 확보 */
+    margin-bottom: 2rem;
+}
+.left-align h3 {
+    font-size: 2rem;
+    color: #2E5A44;
 }
 
-/* FAQ 아코디언 스타일 */
-.faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem; /* 리스트 아이템 간격 확대 */
-}
-
+/* 아코디언 및 질문 폼 스타일링 */
+.faq-list { display: flex; flex-direction: column; gap: 1rem; }
 .faq-item {
-    background-color: #FDFBF7;
-    border: 1px solid rgba(46, 90, 68, 0.05);
-    border-radius: 20px; /* 라운딩 통일감 부여 */
+    background-color: #ffffff;
+    border: 1px solid rgba(46, 90, 68, 0.06);
+    border-radius: 20px;
     overflow: hidden;
-    transition: all 0.3s ease;
 }
-
-.faq-item[open] {
-    box-shadow: 0 12px 28px rgba(46, 90, 68, 0.06);
-    border-color: #2E5A44;
-}
-
 .faq-item summary {
-    padding: 1.8rem; /* 클릭 영역 및 텍스트 여백 확장 */
-    font-size: 1.15rem;
+    padding: 1.6rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #2A2C2B;
     cursor: pointer;
@@ -125,91 +272,48 @@
     justify-content: space-between;
     align-items: center;
 }
+.faq-item summary::after { content: '🦴'; font-size: 1.3rem; }
+.faq-item p { padding: 0 1.6rem 1.6rem; color: #5A625E; line-height: 1.6; }
 
-.faq-item summary::after {
-    content: '🦴';
-    font-size: 1.6rem;
-    
-    transition: transform 0.3s;
-}
-
-.faq-item[open] summary::after {
-    content: '🦴';
-    transform: rotate(180deg);
-}
-
-.faq-item p {
-    padding: 0 1.8rem 1.8rem; /* 답변 내부 여백 밸런스 조정 */
-    color: #5A625E;
-    line-height: 1.7; /* 행간을 넓혀 가독성을 대폭 향상 */
-}
-
-/* 1:1 문의 폼 */
 .inquiry-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* 입력 칸들의 세로 다닥다닥한 느낌 해소 */
-    background-color: #FDFBF7;
-    padding: 3rem; /* 폼 박스 내부 공간 확장 */
+    gap: 1.2rem;
+    background-color: #ffffff;
+    padding: 2.5rem;
     border-radius: 28px;
-    box-shadow: 0 10px 30px rgba(46, 90, 68, 0.02);
 }
-
-.input-row {
-    display: flex;
-    gap: 1.5rem; /* 성함과 이메일 인풋 사이 가로 여백 확대 */
+.input-row { display: flex; gap: 1.2rem; }
+.input-group { flex: 1; }
+.inquiry-form input, .inquiry-form select, .inquiry-form textarea {
+    width: 100%; padding: 1.2rem; background-color: #F5F3EE;
+    border: 1px solid transparent; border-radius: 12px;
+    font-family: inherit; font-size: 0.95rem; color: #2A2C2B;
+    outline: none; box-sizing: border-box;
 }
-
-.input-group {
-    flex: 1;
+.inquiry-form textarea { height: 12rem; resize: none; }
+.inquiry-form input:focus, .inquiry-form select:focus, .inquiry-form textarea:focus {
+    border-color: #2E5A44; background-color: #fff;
 }
-
-.inquiry-form input,
-.inquiry-form select,
-.inquiry-form textarea {
-    width: 100%;
-    padding: 1.3rem; /* 인풋 내부 패딩을 넓혀 타이핑 시 답답함 해소 */
-    background-color: #F5F3EE;
-    border: 1px solid transparent;
-    border-radius: 14px;
-    font-family: inherit;
-    font-size: 1rem;
-    color: #2A2C2B;
-    transition: all 0.3s;
-    outline: none;
-}
-
-.inquiry-form textarea {
-    height: 14rem; /* 텍스트 작성 영역 높이 최적화 */
-    resize: none;
-    line-height: 1.6;
-}
-
-.inquiry-form input:focus,
-.inquiry-form select:focus,
-.inquiry-form textarea:focus {
-    border-color: #2E5A44;
-    background-color: #fff;
-    box-shadow: 0 0 0 4px rgba(46, 90, 68, 0.1);
-}
-
-/* 문의 접수 버튼 */
 .submit-btn {
-    margin-top: 1.5rem; /* 상단 폼과의 거리 확보 */
-    background-color: #2E5A44;
-    color: #FDFBF7;
-    border: none;
-    padding: 1.3rem; /* 버튼 두께감 향상 */
-    font-size: 1.2rem;
-    font-weight: 800;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(46, 90, 68, 0.2);
-    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    background-color: #2E5A44; color: #fff; border: none; padding: 1.2rem;
+    font-size: 1.15rem; font-weight: 800; border-radius: 50px; cursor: pointer;
 }
 
-.submit-btn:hover {
-    transform: translateY(-5px);
-    background-color: #1F4030;
-    box-shadow: 0 15px 30px rgba(46, 90, 68, 0.3);
+
+/* ==================== 모바일 반응형 대응 ==================== */
+@media (max-width: 1024px) {
+    .banner-inner { flex-direction: column-reverse; text-align: center; gap: 3rem; }
+    .banner-text { text-align: center; }
+    .ani-text-1 { font-size: 2.8rem; }
+    .ani-text-2 { font-size: 1.2rem; }
+    .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
+    .support-section { flex-direction: column; gap: 4rem; }
+}
+@media (max-width: 768px) {
+    .contact-banner { padding: 4rem 1.5rem; }
+    .contact-info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .contact-card::before { width: 100px; height: 100px; top: -35px; }
+    .contact-card::after { width: 70px; height: 70px; top: -20px; }
+    .input-row { flex-direction: column; gap: 1.2rem; }
 }
