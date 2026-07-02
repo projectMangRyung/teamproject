@@ -15,7 +15,7 @@
     <header>
         <div class="headerInner">
             <div class="logo">
-                <a href="./index.html"><img src="./img/logo_dark.png" alt="logo"/></a>
+                <a href="./index.html"><img src="./img/logo_white.png" alt="logo"/></a>
             </div>
             <ul class="gnb">
                 <li><a href="./index.html">홈</a></li>
@@ -42,6 +42,11 @@
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
                 <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
+
+            <button class="hamburger" id="hamburgerBtn">
+                <span></span><span></span><span></span>
+            </button>
+            
         </div>
     </header>
 
@@ -116,8 +121,11 @@
     <!-- 주문 확인 모달 -->
     <div id="orderModal" class="order-modal">
         <div class="order-modal-content">
-            <h3>🛒 주문 확인</h3>
-            <p>아래 상품을 주문하시겠습니까?</p>
+            <div class="order-modal-header">
+                <p class="order-modal-icon">🛒</p>
+                <h3>주문 확인</h3>
+                <p>아래 상품을 주문하시겠습니까?</p>
+            </div>
             <div id="orderItemList" class="order-item-list"></div>
             <div class="order-modal-total">
                 <span>총 결제금액</span>
@@ -141,14 +149,14 @@
             </div>
             <h3>주문 완료!</h3>
             <p>주문이 정상적으로 완료되었습니다.</p>
-            <p class="complete-sub">감사합니다</p>
+            <p class="complete-sub">감사합니다 🐾</p>
             <div class="order-modal-buttons">
                 <button id="completeClose">확인</button>
             </div>
         </div>
     </div>
 
-    <!-- 푸터 -->
+    <!-- ========== 푸터 ========== -->
     <footer>
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
