@@ -9,9 +9,7 @@
 body {
     font-family: 'Asta Sans', 'Noto Sans KR', sans-serif;
     color: #2A2C2B;
-    background-color: #F5F2EB
-    /* 내가 만든 커스텀 커서 적용 (경로와 파일명을 맞춰주세요) */
-    /* cursor: url('../img/cursor.png'), auto; */
+    background-color: #F5F2EB;
 }
 
 /* 팝업 창 (2026.06.30최정은) */
@@ -25,7 +23,7 @@ body {
     width: 340px;
     height: auto;
     display: block; /* 스크립트 결합을 위해 블록 유지 */
-    z-index: 1000;
+    z-index: 10000;
     opacity: 0;
     pointer-events: none;
     /* 젤리처럼 튕기며 올라오는 부드러운 패스 트랙 */
@@ -116,8 +114,6 @@ body {
     background-color: #2E5A44;
     color: #FDFBF7;
 }
-
-
 /* ========== slide ========== (2025/06/19 최정은) */
 .banner {
     height: auto;
@@ -148,8 +144,26 @@ body {
 .slide > img{
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding-bottom: 1.5rem;
+    object-fit: cover;
+}
+.slideGauge {
+    position: absolute;
+    left: 50%;
+    bottom: 1.5rem;
+    width: min(28rem, 72vw);
+    height: 0.35rem;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.45);
+    z-index: 4;
+}
+
+.slideGaugeBar {
+    width: 0;
+    height: 100%;
+    border-radius: inherit;
+    background: #2E5A44;
+    transition: width 0.03s linear;
 }
 /* ========== service  gap 추가(2026.06.22 최정은) ========== */
 .service {
@@ -201,7 +215,6 @@ body {
 }
 .serviceCard:hover img {
     transform: scale(1.1);
-    
 }
 .service .serviceBar {
     display: flex;
@@ -233,10 +246,13 @@ body {
 .category {
     width: 90%;
     max-width: 90rem;
-    margin: 5rem auto;
+    
+    /* [수정 포인트] 위쪽 마진을 7.5rem으로 늘려서 페이지네이션 아이콘이 들어갈 자리를 마련합니다 */
+    margin: 7.5rem auto 4rem auto; 
+    
     display: flex;
     justify-content: space-between;
-    gap: 2rem; /* 각 카드 사이의 여백 */
+    gap: 2rem; 
 }
 
 .category a {
@@ -452,15 +468,16 @@ body {
 }
 
 .review_box {
-    width: 100%;
+    width: 200%;
     margin: 0 auto;
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
     gap: 1.25rem;
 }
 
 .review_card {
+    width: 25rem;
+    height: 30rem;
     background-color: #FDFBF7;
     overflow: hidden;
     text-align: left;
@@ -601,11 +618,8 @@ body {
     background-color: #FDFBF7; 
     padding: 6.25rem 0;
     background-image: url(../img/background_magazine.png);
-    
-    /* 여기서부터 추가 및 수정 */
-    background-repeat: repeat;      /* 이미지를 가로/세로로 반복 (가로만 반복하려면 repeat-x) */
-    background-position: center;    /* 패턴이 화면 중앙을 기준으로 뻗어나가도록 설정 */
-    background-size: auto;          /* 원본 크기로 반복 (패턴이 너무 크거나 작으면 100px처럼 고정값 지정) */
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .brand-container {
@@ -730,4 +744,45 @@ body {
     transform: translateY(-4px) scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     background-color: #F5F3EE;
+}
+
+/* ==================== 모바일 반응형 (2026.07.02) ==================== */
+@media (max-width: 1024px) {
+    .category {
+        flex-direction: column;
+        gap: 1rem; 
+    }
+
+    .best_box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review h1{
+        font-size: 1.8rem;
+    }
+
+    .brand-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .brand-sidebar {
+        position: static; 
+        top: auto; 
+    }
+    .brand-sidebar h3{
+        font-size: 2rem;
+    }
+}
+@media (max-width: 768px) {
+    .best_box {
+        grid-template-columns: repeat(1, 1fr);
+        left: 50%;
+        transform: translateX(50%);
+        width: 50%;
+    }
+    .review_box {
+        height: 50%;
+        gap: 0.2rem;
+    }
 }

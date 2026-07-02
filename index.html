@@ -11,8 +11,211 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asta+Sans:wght@300..800&family=Black+Han+Sans&family=Do+Hyeon&family=DotGothic16&family=Gaegu&family=Gamja+Flower&family=Grandiflora+One&family=Gugi&family=Jua&family=Noto+Sans+KR:wght@100&family=Single+Day&display=swap" rel="stylesheet"> 
+
+    <!-- ==================== 인트로 전용 스타일 프리셋 ==================== -->
+    <style>
+        /* 초기 로드 시 스크롤 절대 방지 및 커서 숨김 */
+        body.intro-active {
+            overflow: hidden !important;
+            height: 100vh;
+        }
+        
+        /* 인트로 화면 진행 중에만 전체 커서 숨김 처리 */
+        body.intro-active, body.intro-active * {
+            cursor: none !important; 
+        }
+
+        /* 인트로 전체 화면 레이아웃 */
+        #introOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transform-origin: center center;
+            transition: transform 1.2s cubic-bezier(0.76, 0, 0.24, 1), 
+                        opacity 1.2s cubic-bezier(0.76, 0, 0.24, 1),
+                        filter 1.2s ease;
+        }
+
+        /* 수채화 그라데이션 */
+        .watercolor-bg {
+            position: absolute;
+            bottom: -50%;
+            left: -25%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle at center, #2E5A44 0%, rgba(46, 90, 68, 0.8) 40%, rgba(255,255,255,0) 70%);
+            filter: blur(60px); 
+            opacity: 0;
+            transform: translateY(100vh) scale(0.5);
+            animation: watercolorUp 3.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        @keyframes watercolorUp {
+            0% { opacity: 0; transform: translateY(80vh) scale(0.6); }
+            40% { opacity: 0.5; }
+            100% { opacity: 1; transform: translateY(10vh) scale(1.2); }
+        }
+
+        /* 콘텐츠 정렬 박스 */
+        .intro-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 60rem;
+            padding: 2rem;
+        }
+
+        /* 1. 글자 이미지 애니메이션 영역 (중앙 배치) */
+        .text-wraping {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex !important;
+            flex-direction: row !important; /* 세로 정렬 절대 방지 */
+            flex-wrap: nowrap !important;   /* 줄바꿈 절대 방지 */
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            width: max-content !important;  /* 내용물 크기만큼만 넓이 차지 */
+            z-index: 10;
+        }
+
+        .intro-text-img {
+            height: 4.5rem;
+            object-fit: contain;
+            opacity: 0;
+            animation: boingEffect 0.65s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* 글자는 발자국 이후에 등장하도록 딜레이 유지 */
+        .intro-text-img:nth-child(1) { animation-delay: 2.2s; }
+        .intro-text-img:nth-child(2) { animation-delay: 2.5s; }
+        .intro-text-img:nth-child(3) { animation-delay: 2.8s; }
+
+        @keyframes boingEffect {
+            0% { opacity: 0; transform: scale(0); }
+            60% { opacity: 1; transform: scale(1.3); }
+            80% { transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* 2. 발자국 애니메이션 영역 (글자 아래 배치) */
+        .footprint-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            height: 8rem;
+        }
+
+        .footprint {
+            width: 4.5rem;
+            height: 4.5rem;
+            object-fit: contain;
+            opacity: 0;
+            transform: translateY(40px) scale(0.2);
+            filter: brightness(0) invert(1);
+            animation: footprintPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .footprint:nth-child(1) { animation-delay: 0.6s; animation-name: fpPop1; }
+        .footprint:nth-child(2) { animation-delay: 1.1s; animation-name: fpPop2; width: 5.5rem; height: 5.5rem; }
+        .footprint:nth-child(3) { animation-delay: 1.6s; animation-name: fpPop3; width: 6.5rem; height: 6.5rem; }
+
+        @keyframes footprintPop {
+            0% { opacity: 0; transform: translateY(40px) scale(0.2); }
+            100% { opacity: 0.85; }
+        }
+        @keyframes fpPop1 { 100% { opacity:0.9; transform: translateY(0) rotate(-15deg) scale(1); } }
+        @keyframes fpPop2 { 100% { opacity:0.9; transform: translateY(-15px) rotate(10deg) scale(1.2); } }
+        @keyframes fpPop3 { 100% { opacity:0.9; transform: translateY(-30px) rotate(-5deg) scale(1.4); } }
+
+        /* 3. 입장 유도 가이드 글씨 */
+        .entry-guide {
+            position: absolute;
+            bottom: 4rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInGuide 1.5s ease 3.4s infinite alternate;
+        }
+
+        @keyframes fadeInGuide {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 0.7; transform: translateY(0); }
+        }
+
+        /* 4. 메인 페이지로 스르륵 빨려 들어가는 연출 트리거 클래스 */
+        #introOverlay.sucked-in {
+            transform: scale(2.8);
+            filter: blur(15px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        
+
+        /* ==================== 반응형 레이아웃 ==================== */
+        @media (max-width: 1024px) {
+            .text-wrap { gap: 1rem; margin-bottom: 1.5rem; }
+            .intro-text-img { height: 3.5rem; }
+            .footprint-wrap { gap: 2rem; }
+            .footprint:nth-child(1) { width: 3.5rem; height: 3.5rem; }
+            .footprint:nth-child(2) { width: 4.3rem; height: 4.3rem; }
+            .footprint:nth-child(3) { width: 5.2rem; height: 5.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .text-wrap { gap: 0.6rem; margin-bottom: 1rem; }
+            .intro-text-img { height: 2.5rem; }
+            .footprint-wrap { gap: 1.2rem; }
+            .footprint:nth-child(1) { width: 2.8rem; height: 2.8rem; }
+            .footprint:nth-child(2) { width: 3.4rem; height: 3.4rem; }
+            .footprint:nth-child(3) { width: 4.2rem; height: 4.2rem; }
+            .entry-guide { font-size: 0.85rem; bottom: 3rem; }
+        }
+    </style>
 </head>
-<body>
+<body class="intro-active">
+
+    <!-- ==================== 트렌디 인트로 인터랙션 레이어 ==================== -->
+    <div id="introOverlay">
+        <div class="watercolor-bg"></div>
+        
+        <!-- 좌측 하단에서 대각선으로 걸어 올라오는 발자국 3개 -->
+        <div class="footprint-wrap">
+            <img src="./img/join_logo_dark.png" alt="발자국1" class="footprint">
+            <img src="./img/join_logo_dark.png" alt="발자국2" class="footprint">
+            <img src="./img/join_logo_dark.png" alt="발자국3" class="footprint">
+        </div>
+
+        <!-- 정중앙에 가로로 나란히 뜨는 글자 이미지 3개 -->
+        <div class="text-wrap">
+            <img src="./img/T1.png" alt="T1" class="intro-text-img">
+            <img src="./img/T2.png" alt="T2" class="intro-text-img">
+            <img src="./img/T3.png" alt="T3" class="intro-text-img">
+        </div>
+        
+        <div class="entry-guide">CLICK TO ENTER</div>
+    </div>
+
+    <!-- 본문 시작 -->
     <header>
         <div class="headerInner move">
             <div class="logo">
@@ -30,15 +233,15 @@
                         <li><a href="./product.html">전체 상품</a></li>
                         <li><a href="./dogproduct.html">강아지 용품</a></li>
                         <li><a href="./catproduct.html">고양이 용품</a></li>
-                        <li><a href="food.html">사료/간식</a></li>
-                        <li><a href="toy.html">장난감</a></li>
-                        <li><a href="accessory.html">액세서리</a></li>
-                        <li><a href="healthproduct.html">건강/미용</a></li>
+                        <li><a href="./food.html">사료/간식</a></li>
+                        <li><a href="./toy.html">장난감</a></li>
+                        <li><a href="./accessory.html">액세서리</a></li>
+                        <li><a href="./healthproduct.html">건강/미용</a></li>
                     </ul>
                 </li>
-                <li><a href="sale.html">세일특가</a></li>
-                <li><a href="map.html">오시는 길</a></li>
-                <li><a href="contact.html">고객센터</a></li>
+                <li><a href="./sale.html">세일특가</a></li>
+                <li><a href="./map.html">오시는 길</a></li>
+                <li><a href="./contact.html">고객센터</a></li>
             </ul>
             <ul class="login">
                 <li><a href="./login.html">로그인</a></li>
@@ -46,6 +249,9 @@
                 <li><a><img src="./img/like.png" alt="like"/></a></li>
                 <li><a href="./cart.html"><img src="./img/cart.png" alt="cart"/></a></li>
             </ul>
+            <button class="hamburger" id="hamburgerBtn" title="메뉴 열기">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
@@ -54,7 +260,7 @@
         <div class="modal">
             <div class="wrap">
                 <h2>공지사항</h2>
-                <a href="sale.html#event-target">
+                <a href="./sale.html#event-target">
                 <img src="./img/popup.png" class="default-img" alt="팝업">
                 </a>
             </div>
@@ -64,6 +270,7 @@
             </div>
         </div>
     </div>
+    
     <!-- 배너 화면 -->
     <div class="banner move">
         <div class="slidewrap">
@@ -77,7 +284,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="service">
     <div class="category">
@@ -120,14 +326,10 @@
         </a>       
     </div>
 </div>
-
     <div class="products">
-
-        
         <div class="products_best">
             <div class="best_title">
                 <h3>인기 상품</h3>
-                <!-- 전체 보기 버튼 클릭 시 모든 상품 표시(2026.06.25 최정은) -->
                 <button id="show_all">전체 보기</button>
             </div>
             <div class="best_box">
@@ -150,39 +352,35 @@
 
             <div class="brand-content">
                 <div class="brand-item move">
-                <img src="./img/content1.jpg" alt="1c" />
-                <h4>100% 정품만 판매합니다</h4>
-                <p>모든 입점 상품은 브랜드 공식 계약 후 유통됩니다. 가품 적발 시 구매가의 200% 보상을 약속합니다.</p>
+                    <img src="./img/content1.jpg" alt="1c" />
+                    <h4>100% 정품만 판매합니다</h4>
+                    <p>모든 입점 상품은 브랜드 공식 계약 후 유통됩니다. 가품 적발 시 구매가의 200% 보상을 약속합니다.</p>
+                </div>
+                
+                <div class="brand-item move">
+                    <img src="./img/content2.jpg" alt="2c" />
+                    <h4>수의사가 직접 검수합니다</h4>
+                    <p>사료·영양제·건강용품은 제휴 수의사 3인이 성분과 안전성을 검토한 뒤 등록됩니다.</p>
+                </div>
+                
+                <div class="brand-item move">
+                    <img src="./img/content3.jpg" alt="3c" />
+                    <h4>수익의 5%를 유기동물 보호소에</h4>
+                    <p>매달 전체 매출의 5%가 전국 보호소에 사료 및 의료비로 기부됩니다. 구매가 곧 나눔입니다.</p>
+                </div>
             </div>
-            
-            <div class="brand-item move">
-                <img src="./img/content2.jpg" alt="2c" />
-                <h4>수의사가 직접 검수합니다</h4>
-                <p>사료·영양제·건강용품은 제휴 수의사 3인이 성분과 안전성을 검토한 뒤 등록됩니다.</p>
-            </div>
-            
-            <!-- 중략 (brand-content 세 번째 아이템 위치) -->
-            <div class="brand-item move">
-                <img src="./img/content3.jpg" alt="3c" />
-                <h4>수익의 5%를 유기동물 보호소에</h4>
-                <p>매달 전체 매출의 5%가 전국 보호소에 사료 및 의료비로 기부됩니다. 구매가 곧 나눔입니다.</p>
-            </div>
-        </div> <!-- .brand-content 닫힘 -->
-    </div> <!-- .brand-container 닫힘 -->
-</div> <!-- 💡 1. 여기에 brandBox를 완벽히 격리해 줄 닫는 태그 </div>를 추가하세요! -->
+        </div>
+    </div>
 
-<div class="join">
-    <img src="./img/join_logo_dark.png" alt="icon"/>
-    <h3>멍냥허브 회원이 되어보세요</h3>
-    <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
-    <a href="join.html" style="text-decoration: none;">
-        <button type="button">무료 회원가입</button>
-    </a>
-</div>
-
-<!-- 💡 2. footer 자체는 100% 넓히고, 자식 요소들을 .footer-inner로 한 번 감싸줍니다. -->
-<footer>
-    <div class="footer-inner">
+    <div class="join">
+        <img src="./img/join_logo_dark.png" alt="icon"/>
+        <h3>멍냥허브 회원이 되어보세요</h3>
+        <p>첫 주문 10% 할인 쿠폰 + 생일 할인 혜택까지!</p>
+        <a href="join.html" style="text-decoration: none;">
+            <button type="button">무료 회원가입</button>
+        </a>
+    </div>
+    <footer>
         <ul>
             <li><img src="./img/logo_dark.png" alt="logo_dark"/></li>
             <li>반려동물과 함께하는 행복한 일상을 만들어가는 쇼핑몰입니다.</li>
@@ -210,10 +408,35 @@
             <li>개인정보처리방침</li>
             <li>제휴/입점 문의</li>
         </ul>
-    </div>
-</footer>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./javascript/index.js"></script>
     <script src="./javascript/common.js"></script>
+
+    <!-- ==================== 인트로 스크립트 ==================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const introOverlay = document.getElementById("introOverlay");
+            let isAnimFinished = false;
+
+            // 애니메이션 종료 후 진입 허용
+            setTimeout(function() {
+                isAnimFinished = true;
+            }, 3400);
+
+            // 화면 클릭 시 메인 사이트 진입
+            introOverlay.addEventListener("click", function() {
+                if (!isAnimFinished) return; 
+
+                introOverlay.classList.add("sucked-in");
+
+                setTimeout(function() {
+                    introOverlay.remove();
+                    document.body.classList.remove("intro-active");
+                }, 1200);
+            });
+        });
+    </script>
 </body>
 </html>
