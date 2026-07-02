@@ -467,3 +467,11 @@ $(function () {
         $("body").removeClass("no-scroll");
     });
 });
+
+// 학생용 포트폴리오입니다
+const footerText = document.createElement("div");
+footerText.className = "footerText";
+footerText.innerHTML = `
+    <b><p>학생용 포트폴리오입니다</p></b>
+`
+document.querySelector("footer").appendChild(footerText);

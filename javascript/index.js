@@ -262,7 +262,6 @@ Createpagination();
 
 //웹 브라우저 시작
 Createbtn();
-
 async function productload(){
     try{
         let res = await fetch("./json/product.json")
@@ -287,6 +286,7 @@ async function productload(){
         console.error("에러발생", err)
     }
 }
+
 // 전체보기 버튼 클릭 시 높이 자동으로 변경(2026.06.26 최정은)
 $(function(){
     $("#show_all").on("click", function(){
@@ -294,6 +294,7 @@ $(function(){
         $(this).html($(this).html() === "전체 보기" ? "닫기" : "전체 보기");
     });
 })
+
 async function userload(){
     try{
         let res = await fetch("./json/user.json")
@@ -314,20 +315,109 @@ async function userload(){
                             <li>${item.userName}</li>
                         </ul>
                         <ul>
-                            <li>도움돼요 ${item.likes}</li>
+                            <li>👍 도움돼요 ${item.likes}</li>
                         </ul>
                     </div>
                     `
         })
-        const reviewBox = document.querySelector(".review_box")
+        let reviewBox = document.querySelector(".review_box")
         reviewBox.innerHTML = html
+
+        // 슬라이드 초기화
+        initReviewSlider();
     }catch(err){
         console.error("에러발생", err)
     }
 }
+
+function initReviewSlider() {
+    const reviewBox = document.querySelector(".review_box");
+    const cards = document.querySelectorAll(".review_card");
+    const total = cards.length;
+    const visibleCount = 4;
+    const dotCount = total - visibleCount + 1;
+    let current = 0;
+    let startX = 0;
+    let isDragging = false;
+    let dragOffset = 0;
+    let cardWidth = 0;
+
+    // 카드 너비 한 번만 계산
+    function updateCardWidth() {
+        cardWidth = cards[0].offsetWidth + 24; // gap 1.5rem = 24px
+    }
+    updateCardWidth();
+    window.addEventListener("resize", updateCardWidth);
+
+    // dot 생성
+    const dotWrap = document.createElement("div");
+    dotWrap.className = "review_dots";
+    for(let i = 0; i < dotCount; i++){
+        const dot = document.createElement("span");
+        dot.className = "review_dot" + (i === 0 ? " active" : "");
+        dot.addEventListener("click", () => goReview(i));
+        dotWrap.appendChild(dot);
+    }
+    reviewBox.parentElement.appendChild(dotWrap);
+
+    function goReview(index) {
+        current = index;
+        reviewBox.style.transition = "transform 0.4s ease";
+        reviewBox.style.transform = `translateX(-${current * cardWidth}px)`;
+        document.querySelectorAll(".review_dot").forEach((d, i) => {
+            d.classList.toggle("active", i === current);
+        });
+    }
+
+    // 드래그 이벤트
+    reviewBox.addEventListener("mousedown", (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        reviewBox.style.transition = "none";
+    });
+
+    reviewBox.addEventListener("mousemove", (e) => {
+        if(!isDragging) return;
+        dragOffset = e.clientX - startX;
+        reviewBox.style.transform = `translateX(${-current * cardWidth + dragOffset}px)`;
+    });
+
+    reviewBox.addEventListener("mouseup", (e) => {
+        if(!isDragging) return;
+        isDragging = false;
+        const diff = startX - e.clientX;
+        if(diff > 180 && current < dotCount - 1) goReview(current + 1);
+        else if(diff < -180 && current > 0) goReview(current - 1);
+        else goReview(current);
+    });
+
+    reviewBox.addEventListener("mouseleave", () => {
+        if(!isDragging) return;
+        isDragging = false;
+        goReview(current);
+    });
+
+    // 터치 이벤트 (모바일)
+    reviewBox.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+        reviewBox.style.transition = "none";
+    });
+
+    reviewBox.addEventListener("touchmove", (e) => {
+        dragOffset = e.touches[0].clientX - startX;
+        reviewBox.style.transform = `translateX(${-current * cardWidth + dragOffset}px)`;
+    });
+
+    reviewBox.addEventListener("touchend", (e) => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if(diff > 180 && current < dotCount - 1) goReview(current + 1);
+        else if(diff < -180 && current > 0) goReview(current - 1);
+        else goReview(current);
+    });
+}
+
 productload()
 userload()
-
 
 // ==================== 팝업 시스템 (사이드 오프셋 토글 방식) ====================
 $(function(){
@@ -358,13 +448,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const observerOptions = {
         root: null, 
         rootMargin: "0px 0px -12% 0px", // 화면 하단에 닿기 직전 미리 실행되어 시각적 리듬감 부여
-        threshold: 0.15 
+        threshold: 5 
     };
 
     const scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("on");
+                entry.target.classList.add("animated");
                 // 원활한 렌더링 성능을 위해 한번 등장한 타겟은 관찰 대상에서 제외
                 observer.unobserve(entry.target);
             }
