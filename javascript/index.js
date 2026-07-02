@@ -10,33 +10,6 @@ function AddStyle(style){
     styleTag.innerHTML = style;
     document.head.appendChild(styleTag);
 }
-
-// // 첫 진입 화면 제어
-// const introScreen = document.getElementById('introScreen');
-// if (introScreen) {
-//     introScreen.classList.remove('hidden');
-//     document.body.style.overflow = 'hidden';
-
-//     const hideIntro = () => {
-//         introScreen.classList.add('hidden');
-//         document.body.style.overflow = '';
-//         window.dispatchEvent(new Event('intro:closed'));
-//     };
-
-//     introScreen.addEventListener('click', (event) => {
-//         if (event.target.closest('.intro-button')) return;
-//         hideIntro();
-//     });
-
-//     const introButton = document.querySelector('.intro-button');
-//     if (introButton) {
-//         introButton.addEventListener('click', (event) => {
-//             event.stopPropagation();
-//             hideIntro();
-//         });
-//     }
-// }
-
 // 팝업 오늘 다시보지 않기
 $(function(){
     let today1 = new Date().toLocaleDateString()
@@ -266,37 +239,7 @@ function Createbtn(){
 // 자동 슬라이드 + 게이지 직접 제어
 const autoSlideDelay = 7500;
 let autoSlideTimer = null;
-let gaugeTimer = null;
-let gaugePercent = 0;
 
-// 게이지 생성
-slidewrap.insertAdjacentHTML("beforeend", `
-    <div class="slideGauge">
-        <div class="slideGaugeBar"></div>
-    </div>
-`);
-
-const slideGaugeBar = document.querySelector(".slideGaugeBar");
-
-function resetGauge() {
-    gaugePercent = 0;
-    slideGaugeBar.style.width = "0%";
-}
-
-function startGauge() {
-    clearInterval(gaugeTimer);
-    resetGauge();
-
-    gaugeTimer = setInterval(function () {
-        gaugePercent += 100 / (autoSlideDelay / 30);
-
-        if (gaugePercent >= 100) {
-            gaugePercent = 100;
-        }
-
-        slideGaugeBar.style.width = gaugePercent + "%";
-    }, 30);
-}
 
 function nextSlide() {
     const nextIndex = (currentSlide + 1) < slidescnt ? currentSlide + 1 : 0;
@@ -306,9 +249,7 @@ function nextSlide() {
 
 function startAutoSlide() {
     clearTimeout(autoSlideTimer);
-    clearInterval(gaugeTimer);
 
-    startGauge();
 
     autoSlideTimer = setTimeout(function () {
         nextSlide();
@@ -378,7 +319,7 @@ async function userload(){
                     </div>
                     `
         })
-        let reviewBox = document.querySelector(".review_box")
+        const reviewBox = document.querySelector(".review_box")
         reviewBox.innerHTML = html
     }catch(err){
         console.error("에러발생", err)
@@ -417,13 +358,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const observerOptions = {
         root: null, 
         rootMargin: "0px 0px -12% 0px", // 화면 하단에 닿기 직전 미리 실행되어 시각적 리듬감 부여
-        threshold: 5 
+        threshold: 0.15 
     };
 
     const scrollObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add("animated");
+                entry.target.classList.add("on");
                 // 원활한 렌더링 성능을 위해 한번 등장한 타겟은 관찰 대상에서 제외
                 observer.unobserve(entry.target);
             }
