@@ -1,49 +1,35 @@
 $(function () {
 
-    /* ====================
-       상수
-    ==================== */
     const CART_KEY = 'cart';
     const FREE_DELIVERY = 30000;
     const DELIVERY_FEE = 3000;
 
-    /* ====================
-       localStorage 관리
-    ==================== */
+    // localStorage 관리
     function getCart() {
         return JSON.parse(localStorage.getItem(CART_KEY)) || [];
     }
-
     function saveCart(cart) {
         localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-    /* ====================
-       장바구니 렌더링
-    ==================== */
+    // 장바구니 렌더링
     function renderCart() {
         const cart = getCart();
-        const $items = $('#cartItems');
-        const $empty = $('#emptyCart');
-
-        $items.empty();
-
-        // 배너 상품 수 업데이트
+        $('#cartItems').empty();
         $('#bannerCount').text(cart.length);
 
         if (cart.length === 0) {
-            $empty.show();
+            $('#emptyCart').show();
             $('.cart-list-header').hide();
             updateSummary([]);
             return;
         }
 
-        $empty.hide();
+        $('#emptyCart').hide();
         $('.cart-list-header').show();
 
-        // 아이템 HTML 생성
         cart.forEach((item, index) => {
-            $items.append(`
+            $('#cartItems').append(`
                 <div class="cart-item" data-index="${index}">
                     <input type="checkbox" class="item-check">
                     <img src="${item.src}" alt="${item.name}">
@@ -68,9 +54,7 @@ $(function () {
         syncCheckAll();
     }
 
-    /* ====================
-       금액 계산
-    ==================== */
+    // 금액 계산
     function updateSummary(cart) {
         const total = cart.reduce((sum, item) => sum + item.priceNum * item.qty, 0);
         const fee = cart.length === 0 ? 0 : total >= FREE_DELIVERY ? 0 : DELIVERY_FEE;
@@ -89,9 +73,7 @@ $(function () {
         }
     }
 
-    /* ====================
-       수량 변경
-    ==================== */
+    // 수량 변경
     $(document).on('click', '.qty-plus', function () {
         const cart = getCart();
         cart[$(this).data('index')].qty++;
@@ -109,9 +91,7 @@ $(function () {
         }
     });
 
-    /* ====================
-       개별 삭제
-    ==================== */
+    // 개별 삭제
     $(document).on('click', '.delete-btn', function () {
         const cart = getCart();
         cart.splice($(this).data('index'), 1);
@@ -119,9 +99,7 @@ $(function () {
         renderCart();
     });
 
-    /* ====================
-       선택 삭제
-    ==================== */
+    // 선택 삭제
     $('#deleteSelected').click(function () {
         const checked = [];
         $('.item-check').each(function (i) {
@@ -132,9 +110,7 @@ $(function () {
         renderCart();
     });
 
-    /* ====================
-       전체 선택 / 해제
-    ==================== */
+    // 전체 선택
     $('#checkAll').change(function () {
         $('.item-check').prop('checked', $(this).is(':checked'));
     });
@@ -147,34 +123,76 @@ $(function () {
         $('#checkAll').prop('checked', total > 0 && total === checked);
     }
 
-    /* ====================
-       주문하기
-    ==================== */
+    // 주문하기 버튼
     $('.order-btn').click(function () {
         const cart = getCart();
+
         if (cart.length === 0) {
-            alert('장바구니가 비어있어요!');
+            $('#emptyModal').addClass('show');
             return;
         }
-        alert('주문이 완료되었습니다! 감사합니다 🐾');
-        localStorage.removeItem(CART_KEY);
-        renderCart();
+
+        // 상품 목록 렌더링
+        let itemHtml = '';
+        cart.forEach(item => {
+            itemHtml += `
+                <div class="order-item">
+                    <img src="${item.src}" alt="${item.name}">
+                    <div class="order-item-info">
+                        <p>${item.name}</p>
+                        <span>${(item.priceNum * item.qty).toLocaleString()}원 / ${item.qty}개</span>
+                    </div>
+                </div>
+            `;
+        });
+        $('#orderItemList').html(itemHtml);
+
+        // 총 금액
+        const total = cart.reduce((sum, item) => sum + item.priceNum * item.qty, 0);
+        const fee = total >= FREE_DELIVERY ? 0 : DELIVERY_FEE;
+        $('#orderTotalText').text((total + fee).toLocaleString() + '원');
+
+        $('#orderModal').addClass('show');
     });
 
-    /* ====================
-       TOP 버튼
-    ==================== */
+    // 빈 장바구니 모달 닫기
+    $('#emptyClose').click(function () {
+        $('#emptyModal').removeClass('show');
+    });
+
+    // 주문 취소
+    $('#orderCancel').click(function () {
+        $('#orderModal').removeClass('show');
+    });
+
+    // 주문 확인
+    $('#orderConfirm').click(function () {
+        $('#orderModal').removeClass('show');
+        localStorage.removeItem(CART_KEY);
+        renderCart();
+
+        // 체크마크 애니메이션 재실행
+        $('.check-circle, .check-mark').css('animation', 'none');
+        setTimeout(function () {
+            $('.check-circle, .check-mark').css('animation', '');
+            $('#completeModal').addClass('show');
+        }, 10);
+    });
+
+    // 주문 완료 닫기
+    $('#completeClose').click(function () {
+        $('#completeModal').removeClass('show');
+    });
+
+    // TOP 버튼
     $(window).scroll(function () {
         $(this).scrollTop() > 300 ? $('.top-btn').fadeIn() : $('.top-btn').fadeOut();
     });
-
     $('.top-btn').click(function () {
         $('html, body').animate({ scrollTop: 0 }, 400);
     });
 
-    /* ====================
-       IntersectionObserver
-    ==================== */
+    // 스크롤 애니메이션
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -183,9 +201,7 @@ $(function () {
 
     document.querySelectorAll('.scroll-hidden').forEach(el => observer.observe(el));
 
-    /* ====================
-       초기 실행
-    ==================== */
+    // 초기 실행
     renderCart();
 
 });
