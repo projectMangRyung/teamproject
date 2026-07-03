@@ -424,3 +424,104 @@
     font-weight: 800;
     color: #2E5A44;
 }
+/* ==================== 모바일 반응형 대응 ==================== */
+/* (2026.07.03 최정은) */
+@media (max-width: 1024px) {
+    .summary-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==================== 
+   모바일 반응형 대응 (480px, 768px, 1024px) 
+==================== */
+@media (max-width: 1024px) {
+    /* 요약 그리드 2열 전환 */
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* 브랜드 연혁 수정: 세로 배치 (그림 위, 글씨 가로 꽉 채운 아래) */
+    .history-sticky {
+        top: 15vh;
+        height: 70vh; /* 세로 배치로 인해 쌓이는 공간 확보 */
+    }
+    .history-step {
+        flex-direction: column-reverse; /* HTML 순서와 반대로 이미지를 위로 배치 */
+        justify-content: center;
+        text-align: center;
+        gap: 3rem;
+    }
+    .history-text-area,
+    .history-image-area {
+        flex: none;
+        width: 100%; /* 글씨와 이미지가 가로를 꽉 채우도록 수정 */
+    }
+    .history-png {
+        max-width: 60%; /* 패드 화면에 맞게 이미지 축소 */
+        max-height: 250px;
+    }
+    .bg-video {
+    top: 38%;
+    }
+    .stem {
+        top: 17.6rem; /* 축소된 이미지 박스 높이(12rem)에 맞게 줄기 위치 재조정 */
+
+    }
+
+}
+
+@media (max-width: 768px) {
+
+
+    /* 잎사귀 타임라인 줄기 어긋남 방지 및 사이즈 축소 */
+    .leaf-item {
+        width: 44%; /* 중앙 타임라인 선 확보 */
+    }
+    
+    .stem {
+        top: 17.6rem; /* 축소된 이미지 박스 높이(12rem)에 맞게 줄기 위치 재조정 */
+        width: 15%; /* 줄기 길이 약간 연장 */
+    }
+    .leaf-item:nth-child(odd) .stem { right: -14%; }
+    .leaf-item:nth-child(even) .stem { left: -14%; }
+    
+    .value-info { padding: 1rem 0.5rem; }
+    .value-info.show { font-size: 0.95rem; }
+
+    /* 브랜드 연혁 폰트 및 이미지 조절 */
+    .karaoke-title { font-size: 2.2rem; }
+    .karaoke-desc { font-size: 1.05rem; }
+    .history-png { max-width: 75%; }
+    
+    .bg-video {
+    top: 35.5%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* 요약 그리드 1열 전환 */
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .banner-text h2 { font-size: 2.8rem; }
+    
+    /* 모바일 타임라인 축소 및 줄기 유지 최적화 */
+    .leaf-image-box {
+        height: 10rem;
+    }
+    .stem {
+        top: 9.6rem; /* 10rem에 맞게 줄기 위치 조정 */
+        width: 18%; /* 모바일에서 잎사귀가 좁아지므로 줄기를 길게 빼서 닿게 함 */
+    }
+    .leaf-item:nth-child(odd) .stem { right: -17%; }
+    .leaf-item:nth-child(even) .stem { left: -17%; }
+
+    /* 브랜드 연혁 모바일 폰트 및 이미지 조절 */
+    .karaoke-title { font-size: 1.8rem; }
+    .karaoke-desc { font-size: 0.95rem; }
+    .history-png { max-width: 90%; }
+}
