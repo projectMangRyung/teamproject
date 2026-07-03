@@ -44,46 +44,77 @@ window.addEventListener("resize", function(){
 */
 // 페이지네이션 생성
 function Createpagination(){
-    //HTML Tag 생성
-    slidewrap.innerHTML += `<div class="pagination"></div>`;
+    // 1. 삽입 위치를 slidewrap 안에서 service 영역 최상단으로 변경
+    const serviceSection = document.querySelector(".service");
+    serviceSection.insertAdjacentHTML('afterbegin', `<ul class="pagination"></ul>`);
     const pagination = document.querySelector(".pagination");
-    for (let i = 1 ; i < slidescnt; i++){
-        if(i===1){pagination.innerHTML += `<li class="act"></li>`;}
-        pagination.innerHTML += `<li></li>`;
+    
+    // 2. 꼬여있던 for문을 0 인덱스부터 깔끔하게 생성하도록 개선
+    let html = "";
+    for (let i = 0 ; i < slidescnt; i++){
+        if(i === 0) {
+            html += `<li class="act"></li>`;
+        } else {
+            html += `<li></li>`;
+        }
     }
+    pagination.innerHTML = html;
 
-    //CSS 생성
+    // 3. 막대기 CSS 대신 투명 PNG 배경 & 홀짝 로직 추가
     const paginationStyle = `
         .pagination {
-            display : flex;
-            position : absolute;
-            left : 50%;
+            display: flex;
+            position: absolute;
+            top: 1.7rem; /* .service 상단에서 2rem 만큼 떨어지게 배치 */
+            left: 50%;
             transform: translateX(-50%);
-            top : 1rem;
-            gap : 0.5rem;
-            
+            gap: 1.5rem; /* 아이콘 사이 간격 */
+            padding: 0;
+            margin: 0;
+            z-index: 10;
         }
-        .pagination li{
+        .pagination li {
             list-style: none;
-            width: clamp(5rem, 0.8vw, 8rem);
-            height: 0.5rem;
-            background-color:  #1F6F5F;
-            opacity: 0.5;
+            width: 60px; /* 준비하신 png 이미지 크기에 맞춰 픽셀을 조절하세요 */
+            height: 60px;
             cursor: pointer;
-            border-radius: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .pagination .act{
-            opacity: 1;
+        
+        /* 홀수번째 슬라이드 (1, 3, 5...) - 강아지 */
+        .pagination li:nth-child(odd) {
+            background-image: url('./img/dog_slide.png');
+            opacity: 0.7
+        }
+        .pagination li:nth-child(odd).act {
+            background-image: url('./img/dog_slide2.png');
+            transform: scale(1.15) translateY(-4px); /* 활성화 시 살짝 커지며 위로 붕 뜨는 효과 */
+            opacity: 1
+        }
+
+        /* 짝수번째 슬라이드 (2, 4, 6...) - 고양이 */
+        .pagination li:nth-child(even) {
+            background-image: url('./img/cat_slide.png');
+            opacity: 0.7
+        }
+        .pagination li:nth-child(even).act {
+            background-image: url('./img/cat_slide2.png');
+            transform: scale(1.15) translateY(-4px);
+            opacity: 1
         }
     `
     AddStyle(paginationStyle);
 
-    //페이지네이션 이벤트 생성
-    const paginationlink = document.querySelectorAll(".pagination li a");
+    // 4. 페이지네이션 클릭 이벤트 (기존 a 태그 삭제에 맞춰 li 요소 자체에 이벤트 부여)
+    const paginationlink = document.querySelectorAll(".pagination li");
     paginationlink.forEach((link, index) => {
         link.addEventListener('click', (event) => {
-          event.preventDefault(); // 기본 앵커 링크 동작을 막습니다.
+          event.preventDefault();
           goToSlide(index);
+          startAutoSlide(); // 클릭해서 넘겼을 때 자동 슬라이드 타이머가 꼬이지 않도록 리셋
         });
     });
 }
@@ -334,7 +365,7 @@ function initReviewSlider() {
     const reviewBox = document.querySelector(".review_box");
     const cards = document.querySelectorAll(".review_card");
     const total = cards.length;
-    const visibleCount = 4;
+    const visibleCount = 2;
     const dotCount = total - visibleCount + 1;
     let current = 0;
     let startX = 0;
