@@ -133,11 +133,12 @@
                     <hr class="modal_divider">
                     
                     <div class="modal_option">
-                        <label for="productOption">옵션 선택</label>
-                        <select id="productOption">
-                            <option value="">[필수] 옵션을 선택해주세요</option>
-                            <option value="basic">기본형 (추가금 없음)</option>
-                            <option value="premium">고급형 (+3,000원)</option>
+                        <label for="modalOption">옵션 선택</label>
+                        <!-- data-extra: 옵션별 추가금액 (2026.07.03 이영기) -->
+                        <select id="modalOption">
+                            <option value="" data-extra="0">[필수] 옵션을 선택해주세요</option>
+                            <option value="basic" data-extra="0">기본형 (추가금 없음)</option>
+                            <option value="premium" data-extra="3000">고급형 (+3,000원)</option>
                         </select>
                     </div>
                     
