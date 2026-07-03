@@ -497,6 +497,13 @@
         document.addEventListener("DOMContentLoaded", function() {
             const introOverlay = document.getElementById("introOverlay");
             let isAnimFinished = false;
+            
+            // 화면 크기가 작을 때 인트로 스킵
+            if(window.innerWidth <= 1024){
+                isAnimFinished = true
+                introOverlay.remove();
+                document.body.classList.remove("intro-active");
+            }
 
             // 애니메이션 종료 후 진입 허용
             setTimeout(function() {

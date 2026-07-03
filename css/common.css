@@ -256,6 +256,16 @@ footer ul:not(:first-child) li:not(:first-child):hover {
 }
 
 @media (max-width: 1024px) {
+    /* 화면 줄어들 시 커서 기본으로 변경(2026.07.03 최정은) */
+    .paw_cursor{
+        display: none;
+    }
+    .paw_cursor_trail{
+        display: none;
+    }
+    .gnb > li > a {
+        cursor: pointer;
+    }
     .headerInner {
         width: 94%;
     }

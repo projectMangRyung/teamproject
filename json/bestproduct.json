@@ -1,0 +1,23 @@
+[
+    {"src":"./img/product_1.jpg","name":"로얄캐닌 미니 어덜트 사료 2kg","price":"28,900원","brand":"로얄캐닌","title":"product_1","category":"사료/간식"},
+    {"src":"./img/product_2.jpg","name":"오리&고구마 저알러지 수제간식200g","price":"11,900원","brand":"수제공방","title":"product_2","category":"사료/간식"},
+    {"src":"./img/product_3.jpg","name":"퍼피 그레인프리 연어 사료 1.5kg","price":"45,000원","brand":"내추럴코어","title":"product_3","category":"사료/간식"},
+    {"src":"./img/product_4.jpg","name":"치킨 저키 간식 100g","price":"8,900원","brand":"도기랑","title":"product_4","category":"사료/간식"},
+    {"src":"./img/product_5.jpg","name":"강아지 치즈볼 간식 130g","price":"9,500원","brand":"도기랑","title":"product_5","category":"사료/간식"},
+    {"src":"./img/product_6.jpg","name":"홀리스틱 어덜트 람&채소 사료 6kg","price":"68,000원","brand":"홀리스틱","title":"product_6","category":"사료/간식"},
+
+    {"src":"./img/product_9.jpg","name":"베이비 쪽쪽이 치발기","price":"5,600원","brand":"딩동펫","title":"product_9","category":"강아지 용품"},
+    {"src":"./img/product_40.jpg","name":"레이닝 투피스 바람막이 방수 우비 올인원","price":"16,600원","brand":"딩동펫","title":"product_40","category":"강아지 용품"},
+    {"src":"./img/product_35.jpg","name":"디즈니 구명조끼 도널드","price":"45,000원","brand":"이츠독","title":"product_35","category":"강아지 용품"},
+    {"src":"./img/product_32.jpg","name":"디즈니 할로윈 틱톡 스카프 퍼플","price":"15,500원","brand":"이츠독","title":"product_32","category":"강아지 용품"},
+    {"src":"./img/product_30.jpg","name":"디즈니 할로윈 케이프 오렌지","price":"23,600원","brand":"이츠독","title":"product_30","category":"강아지 용품"},
+    {"src":"./img/product_33.jpg","name":"세온 왕자한복","price":"64,600원","brand":"이츠독","title":"product_33","category":"강아지 용품"},
+
+    {"src":"./img/product_10.jpg","name":"스페이스 간식볼","price":"10,200원","brand":"딩동펫","title":"product_10","category":"장난감"},
+    {"src":"./img/product_11.jpg","name":"장난감 흡착형 셀프터그놀이","price":"14,200원","brand":"딩동펫","title":"product_11","category":"장난감"},
+    {"src":"./img/product_12.jpg","name":"플라잉 원반 장난감 세트","price":"13,400원","brand":"딩동펫","title":"product_12","category":"장난감"},
+    {"src":"./img/product_13.jpg","name":"오뚝이 트랙간식볼","price":"12,900원","brand":"딩동펫","title":"product_13","category":"장난감"},
+    {"src":"./img/product_15.jpg","name":"대형 모찌 바스락 삑삑이 인형","price":"9,500원","brand":"딩동펫","title":"product_15","category":"장난감"},
+    {"src":"./img/product_16.jpg","name":"포켓 플라워 노즈워크","price":"20,000원","brand":"딩동펫","title":"product_16","category":"장난감"},
+    {"src":"./img/product_26.jpg","name":"무궁화 풍차 낚시대 리필","price":"3,300원","brand":"크레용펫","title":"product_26","category":"장난감"}
+]
