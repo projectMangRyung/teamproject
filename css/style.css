@@ -146,25 +146,7 @@ body {
     height: 100%;
     object-fit: contain;
 }
-.slideGauge {
-    position: absolute;
-    left: 50%;
-    bottom: 1.5rem;
-    width: min(28rem, 72vw);
-    height: 0.35rem;
-    overflow: hidden;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.45);
-    z-index: 4;
-}
 
-.slideGaugeBar {
-    width: 0;
-    height: 100%;
-    border-radius: inherit;
-    background: #2E5A44;
-    transition: width 0.03s linear;
-}
 /* ========== service  gap 추가(2026.06.22 최정은) ========== */
 .service {
     width: 100%;
@@ -754,7 +736,7 @@ body {
     }
     .best_box {
         display: grid;
-        grid-template-columns: repeat(3, 280px);
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
         gap: 20px;
     }
@@ -774,23 +756,11 @@ body {
     .brand-sidebar h3{
         font-size: 2rem;
     }
-
-    /* 패드 사이즈일 때 배너 높이 고정 추가 */
-    .slidewrap {
-        height: 15rem; 
-    }
-    .slide {
-        height: 100%;
-    }
-    .slide > img{
-    scale: 1.2; /* 이미지 확대 */
-    }
-
 }
 @media (max-width: 768px) {
     .best_box {
         display: grid;
-        grid-template-columns: repeat(2, 260px);
+        grid-template-columns: repeat(2, 280px);
         justify-content: center;
         gap: 20px;
     }
@@ -799,11 +769,13 @@ body {
         height: 50%;
         gap: 0.2rem;
     }
-    .slidewrap {
-        height: 24.5rem; 
+    .btn{
+        width: 2rem;
+        height: 2rem;
     }
-    .slide {
-        height: 100%;
+    .btn img{
+        width: 1rem;
+        height: 1rem;
     }
     .slide > img{
     scale: 1.2; /* 이미지 확대 */
@@ -820,16 +792,6 @@ body {
     .review_box {
         height: 50%;
         gap: 0.2rem;
-    }
-    .slidewrap {
-        height: 26rem; 
-    }
-    .slide {
-        height: 100%;
-    }
-
-    .slide > img{
-    scale: 1.2; /* 이미지 확대 */
     }
 }
 

@@ -34,6 +34,7 @@ const slideContainer = document.getElementsByClassName("slides");
 let currentSlide = 0;
 
 window.addEventListener("resize", function(){
+    slidewrap.style.width = window.innerWidth
     goToSlide(currentSlide)
 })
 

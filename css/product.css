@@ -110,7 +110,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    gap: 1rem;
     margin: 2rem 0;
     
 }
@@ -119,24 +119,29 @@
     border: 1px solid #ddd;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 0.5rem;
     padding: 0.9375rem;
     cursor: pointer;
 }
 .product_card > p{
     color: #1F6F5F;
-    font-size: 14px;
+    font-size: clamp(1rem, 1vw, 1.2rem);
     font-weight: 500;
     
 }
+.product_card > h4{
+    font-size: clamp(1rem, 1vw, 1.2rem);
+}
 .productImg{
-    height: 20rem;
+    height: fit-content;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .productImg > img{
+    width: 100%;
     object-fit: cover;
     cursor: pointer;
 }
@@ -150,7 +155,6 @@
     padding: 0.8rem;
     transition: all 0.3s;
     font-weight: 500;
-    
 }
 .product_card > button:hover{
     border-color: #999;
@@ -521,4 +525,25 @@
 }
 #cartModalGo:hover {
     background: #165246;
+}
+
+/* ==================== 모바일 반응형 대응 ==================== */
+/* (2026.07.03 최정은) */
+@media (max-width: 1024px) {
+    .all_search{
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .all_search h1{
+        font-size: 1.2rem;
+    }
+    .product_box{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+}
+@media (max-width: 768px){
+    .product_box{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
