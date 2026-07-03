@@ -106,6 +106,14 @@ function Createpagination(){
             transform: scale(1.15) translateY(-4px);
             opacity: 1
         }
+        @media (max-width: 1024px) {
+            .banner{
+                display: none;
+            }
+            .pagination{
+                display: none;
+            }
+        }
     `
     AddStyle(paginationStyle);
 
@@ -296,7 +304,7 @@ Createpagination();
 Createbtn();
 async function productload() {
     try {
-        let res = await fetch("./json/product.json");
+        let res = await fetch("./json/bestproduct.json");
         let product = await res.json();
 
         let html = '';
@@ -408,7 +416,7 @@ function initReviewSlider() {
     const reviewBox = document.querySelector(".review_box");
     const cards = document.querySelectorAll(".review_card");
     const total = cards.length;
-    const visibleCount = 2;
+    let visibleCount = 2;
     const dotCount = total - visibleCount + 1;
     let current = 0;
     let startX = 0;
