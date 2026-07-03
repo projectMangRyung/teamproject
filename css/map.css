@@ -229,6 +229,8 @@
 
 /* ==================== 반응형 ==================== */
 @media (max-width: 1024px) {
+    .banner-text { font-size: 1.2rem; }
+    .sliding-dog { width: 4rem; }
     .map-and-info-wrapper { flex-direction: column; gap: 2rem; margin-bottom: 6rem; }
     .map-container { position: relative; top: 0; flex: 0 0 100% !important; max-width: 100% !important; width: 100%; }
     .map-and-info-wrapper.is-shrunk .transport-grid { opacity: 1; pointer-events: auto; }
@@ -239,6 +241,8 @@
 }
 
 @media (max-width: 768px) {
+    .banner-text { font-size: 1rem; }
+    .sliding-dog { width: 3.5rem; }
     .scroll-bg-container { top: 20rem; }
     .all_search { width: 90%; margin: 3rem auto; padding: 24px 18px; }
     .all_search h1 { font-size: 1.5rem; }
