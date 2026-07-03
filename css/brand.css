@@ -424,3 +424,11 @@
     font-weight: 800;
     color: #2E5A44;
 }
+/* ==================== 모바일 반응형 대응 ==================== */
+/* (2026.07.03 최정은) */
+@media (max-width: 1024px) {
+    .summary-grid{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

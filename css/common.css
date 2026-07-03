@@ -95,7 +95,7 @@ header {
 }
 
 .login > li > a {
-    font-size: clamp(0.7rem, 1.2vw, 1rem);
+    font-size: clamp(0.7rem, 1vw, 1rem);
     transition: all 0.3s;
     display: flex;
     color: white;
