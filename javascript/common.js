@@ -156,7 +156,7 @@ const pawCursorStyle = `
         cursor: none;
     }
     .paw_cursor {
-        background-image: url('./img/black_paw.png');
+        background-image: url('./img/pawprint.png');
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -171,7 +171,7 @@ const pawCursorStyle = `
         filter: drop-shadow(0 6px 10px rgba(31, 111, 95, 0.25));
     }
     .paw_cursor_trail {
-        background-image: url('./img/black_paw.png');
+        background-image: url('./img/pawprint.png');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;

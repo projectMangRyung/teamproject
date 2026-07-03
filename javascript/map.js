@@ -346,6 +346,7 @@ document.addEventListener("DOMContentLoaded", function() {
             img.style.top = item.top;
             img.style.left = item.left;
             img.style.width = item.width;
+            img.style.opacity = "0.4"
             
             // 패럴랙스 속도 데이터 저장
             img.dataset.speed = item.speed;
