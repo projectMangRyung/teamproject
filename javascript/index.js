@@ -34,6 +34,7 @@ const slideContainer = document.getElementsByClassName("slides");
 let currentSlide = 0;
 
 window.addEventListener("resize", function(){
+    slidewrap.style.width = window.innerWidth
     goToSlide(currentSlide)
 })
 
@@ -293,28 +294,70 @@ Createpagination();
 
 //웹 브라우저 시작
 Createbtn();
-async function productload(){
-    try{
-        let res = await fetch("./json/product.json")
-        let product = await res.json()
-        let html = ''
+async function productload() {
+    try {
+        let res = await fetch("./json/product.json");
+        let product = await res.json();
+
+        let html = '';
+
         product.forEach(function(item){
             html += `
-                    <div class='best_card'>
-                        <div class='bestImg'>
-                            <img src='${item.src}' alt='${item.title}'/>
-                        </div>
-                        <p>${item.brand}</p>
-                        <h4>${item.name}</h4>
-                        <h4>${item.price}</h4>
-                        <button>장바구니</button>
+                <div class="best_card">
+                    <div class="bestImg">
+                        <img src="${item.src}" alt="${item.title}">
                     </div>
-                    `
-        })
-        let bestBox = document.querySelector(".best_box")
-        bestBox.innerHTML = html
-    }catch(err){
-        console.error("에러발생", err)
+                    <p>${item.brand}</p>
+                    <h4>${item.name}</h4>
+                    <h4>${item.price}</h4>
+                    <button>장바구니</button>
+                </div>
+            `;
+        });
+
+        let bestBox = document.querySelector(".best_box");
+        bestBox.innerHTML = html;
+
+        // 버튼 생성 후 이벤트 연결
+document.querySelectorAll(".best_card").forEach(card => {
+    const btn = card.querySelector("button");
+
+    btn.addEventListener("click", () => {
+
+        // 기존 장바구니 가져오기
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // 가격 숫자로 변환
+        const priceText = card.querySelectorAll("h4")[1].innerText;
+        const priceNum = Number(priceText.replace(/[^\d]/g, ""));
+
+        const product = {
+            src: card.querySelector("img").src,
+            brand: card.querySelector("p").innerText,
+            name: card.querySelectorAll("h4")[0].innerText,
+            priceNum: priceNum,
+            qty: 1
+        };
+
+        // 같은 상품이면 수량 증가
+        const exist = cart.find(item => item.name === product.name);
+
+        if (exist) {
+            exist.qty++;
+        } else {
+            cart.push(product);
+        }
+
+        // 장바구니 저장
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        // 장바구니 페이지 이동
+        location.href = "./cart.html";
+    });
+});
+
+    } catch(err) {
+        console.error("에러발생", err);
     }
 }
 
@@ -373,6 +416,20 @@ function initReviewSlider() {
     let dragOffset = 0;
     let cardWidth = 0;
 
+    // ===== 드래그 시 이미지/텍스트 선택 방지 (추가) =====
+    AddStyle(`
+        .review_box {
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .review_box img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            pointer-events: none;
+        }
+    `);
+    // ===================================================
+
     // 카드 너비 한 번만 계산
     function updateCardWidth() {
         cardWidth = cards[0].offsetWidth + 24; // gap 1.5rem = 24px
@@ -402,6 +459,7 @@ function initReviewSlider() {
 
     // 드래그 이벤트
     reviewBox.addEventListener("mousedown", (e) => {
+        e.preventDefault(); // ← 추가: 텍스트/이미지 드래그 선택 방지
         startX = e.clientX;
         isDragging = true;
         reviewBox.style.transition = "none";
@@ -409,6 +467,7 @@ function initReviewSlider() {
 
     reviewBox.addEventListener("mousemove", (e) => {
         if(!isDragging) return;
+        e.preventDefault(); // ← 추가
         dragOffset = e.clientX - startX;
         reviewBox.style.transform = `translateX(${-current * cardWidth + dragOffset}px)`;
     });
@@ -428,7 +487,7 @@ function initReviewSlider() {
         goReview(current);
     });
 
-    // 터치 이벤트 (모바일)
+    // 터치 이벤트 (모바일) - 그대로 유지
     reviewBox.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
         reviewBox.style.transition = "none";

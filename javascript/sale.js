@@ -48,9 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.remove('intro-running');
             document.body.classList.add('intro-done');
 
-           const header = document.querySelector('header');
+            const header = document.querySelector('header');
             const main = document.querySelector('main');
             const footer = document.querySelector('footer');
+            const gnb = document.querySelector(".gnb")
+            const login = document.querySelector(".login")
 
             header.classList.add('fade-up-header');
             footer.classList.add('fade-up-footer');
@@ -65,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // 헤더 배경색 변경 효과
             setTimeout(() => {
                 header.classList.add('bg-pink');
+                gnb.style.background = "#fd4f6e";
+                login.style.background = "#fd4f6e";
             }, 800);
 
         }, 600); 
