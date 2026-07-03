@@ -48,12 +48,19 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.classList.remove('intro-running');
             document.body.classList.add('intro-done');
 
-            const header = document.querySelector('header');
+           const header = document.querySelector('header');
             const main = document.querySelector('main');
             const footer = document.querySelector('footer');
 
             header.classList.add('fade-up-header');
             footer.classList.add('fade-up-footer');
+
+            header.addEventListener('animationend', function handler() {
+            header.style.animation = 'none';   // 애니메이션 자체를 끊어서 우선권을 제거
+            header.style.opacity = '1';        // fade-up-header가 주던 opacity:1도 수동으로 유지
+            header.style.transform = 'none';   // 이제서야 인라인 transform이 제대로 적용됨
+            header.removeEventListener('animationend', handler);
+        });
 
             // 헤더 배경색 변경 효과
             setTimeout(() => {

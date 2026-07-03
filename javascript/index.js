@@ -479,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const observerOptions = {
         root: null, 
         rootMargin: "0px 0px -12% 0px", // 화면 하단에 닿기 직전 미리 실행되어 시각적 리듬감 부여
-        threshold: 5 
+        threshold: 0.5
     };
 
     const scrollObserver = new IntersectionObserver((entries, observer) => {
