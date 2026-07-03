@@ -546,4 +546,18 @@
     .product_box{
         grid-template-columns: repeat(1, 1fr);
     }
+    
+    .product_leftBox{
+        width: 8rem;      /* 최소 너비 확보 */
+        min-width: 8rem;
+        padding: 1rem;
+    }
+
+    .product_leftBox ul li{
+        white-space: nowrap;   /* 줄바꿈 방지 */
+        word-break: keep-all;
+        font-size: 0.9rem;
+    }
+
+
 }
