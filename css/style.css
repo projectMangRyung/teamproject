@@ -754,7 +754,7 @@ body {
     }
     .best_box {
         display: grid;
-        grid-template-columns: repeat(3, 320px);
+        grid-template-columns: repeat(3, 280px);
         justify-content: center;
         gap: 20px;
     }
@@ -790,7 +790,7 @@ body {
 @media (max-width: 768px) {
     .best_box {
         display: grid;
-        grid-template-columns: repeat(2, 280px);
+        grid-template-columns: repeat(2, 260px);
         justify-content: center;
         gap: 20px;
     }
