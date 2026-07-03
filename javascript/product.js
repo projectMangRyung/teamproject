@@ -1,5 +1,6 @@
 let allProducts = [];
 let currentPrice = 0;
+let basePrice = 0; // 옵션 추가금 계산을 위한 기본가격 (2026.07.03 이영기)
 
 const urlParams = new URLSearchParams(window.location.search);
 let currentCategory = urlParams.get("category") || "전체";
@@ -100,7 +101,9 @@ sortSelect.addEventListener("change", renderProducts);
 // 모달 열기
 function openModal(index) {
   const item = allProducts[index];
-  currentPrice = parseInt(String(item.price).replace(/[^0-9]/g, "")) || 0;
+  // 기본가격 저장 후 currentPrice 초기화 (2026.07.03 이영기)
+  basePrice = parseInt(String(item.price).replace(/[^0-9]/g, "")) || 0;
+  currentPrice = basePrice;
 
   document.getElementById("modalImg").src = item.src;
   document.getElementById("modalBrand").textContent = item.brand;
@@ -108,6 +111,9 @@ function openModal(index) {
   document.getElementById("modalPrice").textContent = item.price;
   document.getElementById("modalQty").value = 1;
   document.getElementById("productModal").setAttribute("data-index", index);
+
+  // 옵션 초기화 (2026.07.03 이영기)
+  document.getElementById("modalOption").selectedIndex = 0;
 
   calcTotal();
   document.getElementById("productModal").classList.add("show");
@@ -123,9 +129,19 @@ function closeModal() {
 // 총 금액 계산
 function calcTotal() {
   const qty = parseInt(document.getElementById("modalQty").value);
+  // 옵션 추가금 반영 (2026.07.03 이영기)
+  const optionExtra = parseInt(
+    document.getElementById("modalOption").selectedOptions[0].getAttribute("data-extra")
+  ) || 0;
+
+  currentPrice = basePrice + optionExtra;
+
   document.getElementById("modalTotalPrice").textContent =
     (currentPrice * qty).toLocaleString() + "원";
 }
+
+// 옵션 변경 시 금액 재계산 (2026.07.03 이영기)
+document.getElementById("modalOption").addEventListener("change", calcTotal);
 
 // 장바구니 담기
 function addToCart(item, qty = 1) {

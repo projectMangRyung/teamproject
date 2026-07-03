@@ -784,10 +784,11 @@ body {
 
 @media (max-width: 480px) {
     .best_box {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 260px);
         left: 50%;
         transform: translateX(50%);
         width: 50%;
+        object-fit: contain;
     }
     .review_box {
         height: 50%;
