@@ -1,3 +1,15 @@
+/*  공통으로 이용할 함수
+
+        슬라이드 이동 함수
+            해당 기능에는 페이지네이션 HTML에 class를 이동하여 현 위치를 마크해야함
+        CSS 삽입 함수
+*/
+//CSS 삽입 함수
+function AddStyle(style){
+    const styleTag = document.createElement('style');
+    styleTag.innerHTML = style;
+    document.head.appendChild(styleTag);
+}
 // 팝업 오늘 다시보지 않기
 $(function(){
     let today1 = new Date().toLocaleDateString()
@@ -15,39 +27,15 @@ $(function(){
         $(".modalBg").hide()
     })
 })
-
 //기본적인 슬라이드 정보 얻어두기
 const slidewrap = document.querySelector(".slidewrap");
 const slidescnt = document.querySelectorAll(".slide").length;
 const slideContainer = document.getElementsByClassName("slides");
-let slideWidth = slidewrap.offsetWidth;
 let currentSlide = 0;
 
 window.addEventListener("resize", function(){
-    slideWidth = window.innerWidth
-    slidewrap.style.width = window.innerWidth
+    goToSlide(currentSlide)
 })
-
-/*  공통으로 이용할 함수
-
-        슬라이드 이동 함수
-            해당 기능에는 페이지네이션 HTML에 class를 이동하여 현 위치를 마크해야함
-        CSS 삽입 함수
-*/
-
-//슬라이드 이동 함수
-function goToSlide(index){
-    currentSlide = index;
-    slideContainer[0].style.transition = 'transform 0.5s ease';
-    slideContainer[0].style.transform = `translateX(-${slideWidth * currentSlide}px)`;
-}
-
-//CSS 삽입 함수
-function AddStyle(style){
-    const styleTag = document.createElement('style');
-    styleTag.innerHTML = style;
-    document.head.appendChild(styleTag);
-}
 
 /*  페이지네이션 생성 함수
         HTML 삽입
@@ -56,55 +44,85 @@ function AddStyle(style){
 */
 // 페이지네이션 생성
 function Createpagination(){
-    //HTML Tag 생성
-    slidewrap.innerHTML += `<div class="pagination"></div>`;
+    // 1. 삽입 위치를 slidewrap 안에서 service 영역 최상단으로 변경
+    const serviceSection = document.querySelector(".service");
+    serviceSection.insertAdjacentHTML('afterbegin', `<ul class="pagination"></ul>`);
     const pagination = document.querySelector(".pagination");
-    for (let i = 1 ; i < slidescnt; i++){
-        if(i===1){pagination.innerHTML += `<li class="act"></li>`;}
-        pagination.innerHTML += `<li></li>`;
+    
+    // 2. 꼬여있던 for문을 0 인덱스부터 깔끔하게 생성하도록 개선
+    let html = "";
+    for (let i = 0 ; i < slidescnt; i++){
+        if(i === 0) {
+            html += `<li class="act"></li>`;
+        } else {
+            html += `<li></li>`;
+        }
     }
+    pagination.innerHTML = html;
 
-    //CSS 생성
+    // 3. 막대기 CSS 대신 투명 PNG 배경 & 홀짝 로직 추가
     const paginationStyle = `
         .pagination {
-            display : flex;
-            position : absolute;
-            left : 50%;
+            display: flex;
+            position: absolute;
+            top: 1.7rem; /* .service 상단에서 2rem 만큼 떨어지게 배치 */
+            left: 50%;
             transform: translateX(-50%);
-            top : 1rem;
-            gap : 0.5rem;
-            
+            gap: 1.5rem; /* 아이콘 사이 간격 */
+            padding: 0;
+            margin: 0;
+            z-index: 10;
         }
-        .pagination li{
+        .pagination li {
             list-style: none;
-            width: clamp(5rem, 0.8vw, 8rem);
-            height: 0.5rem;
-            background-color:  #1F6F5F;
-            opacity: 0.5;
+            width: 60px; /* 준비하신 png 이미지 크기에 맞춰 픽셀을 조절하세요 */
+            height: 60px;
             cursor: pointer;
-            border-radius: 40px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        .pagination .act{
-            opacity: 1;
+        
+        /* 홀수번째 슬라이드 (1, 3, 5...) - 강아지 */
+        .pagination li:nth-child(odd) {
+            background-image: url('./img/dog_slide.png');
+            opacity: 0.7
+        }
+        .pagination li:nth-child(odd).act {
+            background-image: url('./img/dog_slide2.png');
+            transform: scale(1.15) translateY(-4px); /* 활성화 시 살짝 커지며 위로 붕 뜨는 효과 */
+            opacity: 1
+        }
+
+        /* 짝수번째 슬라이드 (2, 4, 6...) - 고양이 */
+        .pagination li:nth-child(even) {
+            background-image: url('./img/cat_slide.png');
+            opacity: 0.7
+        }
+        .pagination li:nth-child(even).act {
+            background-image: url('./img/cat_slide2.png');
+            transform: scale(1.15) translateY(-4px);
+            opacity: 1
         }
     `
     AddStyle(paginationStyle);
 
-    //페이지네이션 이벤트 생성
-    const paginationlink = document.querySelectorAll(".pagination li a");
+    // 4. 페이지네이션 클릭 이벤트 (기존 a 태그 삭제에 맞춰 li 요소 자체에 이벤트 부여)
+    const paginationlink = document.querySelectorAll(".pagination li");
     paginationlink.forEach((link, index) => {
         link.addEventListener('click', (event) => {
-          event.preventDefault(); // 기본 앵커 링크 동작을 막습니다.
+          event.preventDefault();
           goToSlide(index);
+          startAutoSlide(); // 클릭해서 넘겼을 때 자동 슬라이드 타이머가 꼬이지 않도록 리셋
         });
     });
 }
-
 //슬라이드 이동 함수
 function goToSlide(index){
     currentSlide = index;
     slideContainer[0].style.transition = 'transform 0.5s ease';
-    slideContainer[0].style.transform = `translateX(-${slideWidth * currentSlide}px)`;
+    slideContainer[0].style.transform = `translateX(-${100 * currentSlide}%)`;
 	// 추가 부분
     //페이지네이션 Class 부여하기  
     const pagination = document.querySelectorAll(".pagination li");
@@ -138,12 +156,94 @@ function Createbtn(){
             height : 50px;
             font-size: 40px;
             cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+            transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+            opacity: 0.9;
+            z-index: 5;
+        }
+        .btn:hover {
+            transform: translateY(-50%) scale(1.08);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+            opacity: 1;
+        }
+        .btn:active {
+            transform: translateY(-50%) scale(0.94);
         }
         .leftbtn{
             left : 20px;
+            animation: slideInLeft 0.6s ease both;
         }
         .rightbtn{
             right : 20px;
+            animation: slideInRight 0.6s ease both;
+        }
+        .btn img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            transition: transform 0.25s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn img {
+            animation: idleArrow 1.8s ease-in-out infinite;
+        }
+        .leftbtn img {
+            --arrow-shift: -2px;
+            animation-direction: normal;
+        }
+        .rightbtn img {
+            --arrow-shift: 2px;
+            animation-direction: normal;
+        }
+        .btn:hover img {
+            transform: scale(1.12) translateX(var(--arrow-shift, 0px));
+            animation: none;
+        }
+        .leftbtn:hover img {
+            --arrow-shift: -2px;
+        }
+        .rightbtn:hover img {
+            --arrow-shift: 2px;
+        }
+        .btn:active img {
+            transform: scale(0.92);
+            animation: none;
+        }
+        @keyframes idleArrow {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            50% {
+                transform: translateX(var(--arrow-shift, 0px)) rotate(var(--arrow-rotate, 0deg));
+            }
+        }
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(-12px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(-50%) translateX(0);
+            }
+        }
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateY(-50%) translateX(12px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(-50%) translateX(0);
+            }
         }
     `
     AddStyle(BtnStyle);
@@ -167,41 +267,10 @@ function Createbtn(){
     startAutoSlide();
 });
 }
-
 // 자동 슬라이드 + 게이지 직접 제어
 const autoSlideDelay = 7500;
 let autoSlideTimer = null;
-let gaugeTimer = null;
-let gaugePercent = 0;
 
-// 게이지 생성
-slidewrap.insertAdjacentHTML("beforeend", `
-    <div class="slideGauge">
-        <div class="slideGaugeBar"></div>
-    </div>
-`);
-
-const slideGaugeBar = document.querySelector(".slideGaugeBar");
-
-function resetGauge() {
-    gaugePercent = 0;
-    slideGaugeBar.style.width = "0%";
-}
-
-function startGauge() {
-    clearInterval(gaugeTimer);
-    resetGauge();
-
-    gaugeTimer = setInterval(function () {
-        gaugePercent += 100 / (autoSlideDelay / 30);
-
-        if (gaugePercent >= 100) {
-            gaugePercent = 100;
-        }
-
-        slideGaugeBar.style.width = gaugePercent + "%";
-    }, 30);
-}
 
 function nextSlide() {
     const nextIndex = (currentSlide + 1) < slidescnt ? currentSlide + 1 : 0;
@@ -211,9 +280,7 @@ function nextSlide() {
 
 function startAutoSlide() {
     clearTimeout(autoSlideTimer);
-    clearInterval(gaugeTimer);
 
-    startGauge();
 
     autoSlideTimer = setTimeout(function () {
         nextSlide();
@@ -222,12 +289,10 @@ function startAutoSlide() {
 
 startAutoSlide();
 
-Createpagination()
+Createpagination();
 
 //웹 브라우저 시작
 Createbtn();
-
-
 async function productload(){
     try{
         let res = await fetch("./json/product.json")
@@ -300,7 +365,7 @@ function initReviewSlider() {
     const reviewBox = document.querySelector(".review_box");
     const cards = document.querySelectorAll(".review_card");
     const total = cards.length;
-    const visibleCount = 4;
+    const visibleCount = 2;
     const dotCount = total - visibleCount + 1;
     let current = 0;
     let startX = 0;
@@ -414,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const observerOptions = {
         root: null, 
         rootMargin: "0px 0px -12% 0px", // 화면 하단에 닿기 직전 미리 실행되어 시각적 리듬감 부여
-        threshold: 5 
+        threshold: 0.5
     };
 
     const scrollObserver = new IntersectionObserver((entries, observer) => {

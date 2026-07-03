@@ -5,7 +5,7 @@
 }
 .headerInner.move.on {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 .banner.move{
     opacity: 0;
@@ -70,8 +70,8 @@
     margin-top: 1.5rem;
 }
 .review_dot {
-    width: 0.785rem;
-    height: 0.785rem;
+    width: 0.625rem;
+    height: 0.625rem;
     border-radius: 50%;
     background-color: #ccc;
     cursor: pointer;

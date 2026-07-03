@@ -66,7 +66,7 @@
    레이아웃
 ===================== */
 .cart-wrap {
-    max-width: 100rem;
+    max-width: 90rem;
     margin: 0 auto 10rem;
     padding: 0 2rem;
     display: flex;
@@ -79,7 +79,7 @@
    장바구니 목록
 ===================== */
 .cart-list {
-    flex: 3;
+    flex: 2;
     background: #fff;
     border-radius: 1.25rem;
     padding: 2rem;
@@ -126,31 +126,19 @@
 /* =====================
    아이템
 ===================== */
-.cart-item{
-    display:flex;
-    align-items:center;
-    gap:1.5rem;
-
-    padding:1.5rem;
-    margin-bottom:1rem;
-
-    border:1px solid #eee;
-    border-radius:1rem;
-    background:#fff;
-
-    transition:.3s;
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 0.0625rem solid #f0f0f0;
 }
-
-.cart-item:hover{
-    background:#fafafa;
-}
-
 .cart-item:last-child {
     border-bottom: none;
 }
 .cart-item img {
-    width: 8rem;
-    height: 8rem;
+    width: 6rem;
+    height: 6rem;
     object-fit: cover;
     border-radius: 0.8rem;
     flex-shrink: 0;
@@ -599,6 +587,7 @@
 }
 
 
+
 /* =====================
    반응형
 ===================== */
@@ -627,6 +616,7 @@
         height:6rem;
     }
 }
+
 @media (max-width: 48rem) {
 
     .cart-banner{
