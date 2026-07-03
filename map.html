@@ -50,74 +50,82 @@
     </header>
 
     <main class="subpage-main">
+        
+        <div class="floating-bg-container" id="floatingBgContainer"></div>
+
+        <!-- 붓터치 배경의 곡선 모양을 심플하고 우아하게 수정 -->
+        <div class="scroll-bg-container">
+            <svg class="scroll-bg-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path class="brush-path" d="M 10,0 C 70,30 30,70 80,100" fill="none" stroke="#2E5A44" vector-effect="non-scaling-stroke" />
+            </svg>
+        </div>
+
         <section class="sub-banner map-banner fade-in">
+            <img src="./img/dog_slide2.png" class="sliding-dog" alt="dog slide">
+            
             <div class="banner-text move">
                 <h2>오시는 길</h2>
                 <p>멍냥허브 본사로 찾아오시는 방법을 안내해 드립니다.</p>
             </div>
         </section>
 
-    <div class="all_search">
-    <h1>길찾기</h1>
-    <div class="route-search">
-        
-        <div class="route-row">
-            <strong>출발지</strong>
-            <input id="start_search" type="text" placeholder="출발지를 입력해주세요" />
-            <button id="searchBtn" type="button">
-                <img src="./img/search.png" alt="검색" />
-            </button>
+        <div class="all_search fade-up">
+            <h1>길찾기</h1>
+            <div class="route-search">
+                <div class="route-row">
+                    <strong>출발지</strong>
+                    <input id="start_search" type="text" placeholder="출발지를 입력해주세요" />
+                    <button id="searchBtn" type="button">
+                        <img src="./img/search.png" alt="검색" />
+                    </button>
+                </div>
+                <div class="route-row destination-row">
+                    <strong>목적지</strong>
+                    <input id="destination" type="text" value="서울특별시 강남구 테헤란로 427" readonly />
+                </div>
+                <button id="routeBtn" type="button">길찾기</button>
+            </div>
+            <div id="routeResult" class="route-result"></div>
         </div>
-        
-        <div class="route-row destination-row">
-            <strong>목적지</strong>
-            <input id="destination" type="text" value="서울특별시 강남구 테헤란로 427" readonly />
-        </div>
-        
-        <button id="routeBtn" type="button">길찾기</button>
-    </div>
-    <div id="routeResult" class="route-result"></div>
-</div>
 
-        <!-- 카카오 맵 영역 -->
-        <section class="map-container fade-in">
-            <div id="map" class="kakao-map"></div>
-            
-            <div class="address-card">
-                <div class="address-header">
-                    <h3>멍냥허브 본사</h3>
-                    <p>서울특별시 강남구 테헤란로 427 위워크타워 5층</p>
+        <div class="map-and-info-wrapper">
+            <section class="map-container">
+                <div id="map" class="kakao-map"></div>
+                <div class="address-card">
+                    <div class="address-header">
+                        <h3>멍냥허브 본사</h3>
+                        <p>서울특별시 강남구 테헤란로 427 위워크타워 5층</p>
+                    </div>
+                    <div class="address-contact">
+                        <strong>TEL.</strong> 02-1234-5678
+                    </div>
                 </div>
-                <div class="address-contact">
-                    <strong>TEL.</strong> 02-1234-5678
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 오시는 길 안내 카드 -->
-        <section class="transport-grid fade-in">
-            <div class="transport-card">
-                <div class="t-icon"><img src="./img/map_subway_icon.png" alt="subway"/></div>
-                <div class="t-info">
-                    <h4>지하철 이용시</h4>
-                    <p>2호선, 수인분당선 선릉역 10번 출구에서 도보 5분</p>
+            <section class="transport-grid">
+                <div class="transport-card">
+                    <div class="t-icon"><img src="./img/map_subway_icon.png" alt="subway"/></div>
+                    <div class="t-info">
+                        <h4>지하철 이용시</h4>
+                        <p>2호선, 수인분당선 선릉역 10번 출구에서 도보 5분</p>
+                    </div>
                 </div>
-            </div>
-            <div class="transport-card">
-                <div class="t-icon"><img src="./img/map_bus_icon.png" alt="bus"/></div>
-                <div class="t-info">
-                    <h4>버스 이용시</h4>
-                    <p>선릉역.선정릉정문 정류장 하차 (간선 472, 지선 3426)</p>
+                <div class="transport-card">
+                    <div class="t-icon"><img src="./img/map_bus_icon.png" alt="bus"/></div>
+                    <div class="t-info">
+                        <h4>버스 이용시</h4>
+                        <p>선릉역.선정릉정문 정류장 하차 (간선 472, 지선 3426)</p>
+                    </div>
                 </div>
-            </div>
-            <div class="transport-card">
-                <div class="t-icon"><img src="./img/map_car_icon.png" alt="car"/></div>
-                <div class="t-info">
-                    <h4>자가용 이용시</h4>
-                    <p>건물 내 지하 주차장 이용 가능 (방문객 2시간 무료)</p>
+                <div class="transport-card">
+                    <div class="t-icon"><img src="./img/map_car_icon.png" alt="car"/></div>
+                    <div class="t-info">
+                        <h4>자가용 이용시</h4>
+                        <p>건물 내 지하 주차장 이용 가능 (방문객 2시간 무료)</p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div> 
     </main>
 
     <footer>
@@ -153,8 +161,6 @@
     <button class="top-btn">▲</button>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./javascript/common.js"></script>
-
-
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=faa5b32ec9ddd4f39910a3a5eca4b743&libraries=services"></script>
     <script src="./javascript/map.js"></script>
 </body>
