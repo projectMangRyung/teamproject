@@ -246,10 +246,13 @@ body {
 .category {
     width: 90%;
     max-width: 90rem;
-    margin: 5rem auto;
+    
+    /* [수정 포인트] 위쪽 마진을 7.5rem으로 늘려서 페이지네이션 아이콘이 들어갈 자리를 마련합니다 */
+    margin: 7.5rem auto 4rem auto; 
+    
     display: flex;
     justify-content: space-between;
-    gap: 2rem; /* 각 카드 사이의 여백 */
+    gap: 2rem; 
 }
 
 .category a {
