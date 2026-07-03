@@ -559,5 +559,8 @@
         font-size: 0.9rem;
     }
 
-
+    .product_all{
+        overflow: hidden;
+        margin: 1.5rem;
+    }
 }
