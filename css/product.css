@@ -4,7 +4,7 @@
     display: flex;
     top: 4rem;
     background: white;
-/* background: linear-gradient(0deg, rgba(204, 232, 218, 0.2) 0%, rgba(255, 255, 255, 1) 2%, rgba(255, 255, 255, 1) 98%, rgba(204, 232, 218, 0.2) 100%); */
+    margin-bottom: 4rem;
 }
 .product_leftBox{
     width: 20rem;
@@ -12,7 +12,6 @@
     background-color: #f1f1f1;
     border-right: 1px solid #ddd;
     padding: 2rem;
-    /* box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.1); */
 }
 .product_leftBox ul {
     display: flex;
@@ -526,7 +525,6 @@
 #cartModalGo:hover {
     background: #165246;
 }
-
 /* ==================== 모바일 반응형 대응 ==================== */
 /* (2026.07.03 최정은) */
 @media (max-width: 1024px) {
