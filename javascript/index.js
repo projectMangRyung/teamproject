@@ -276,7 +276,7 @@ function Createbtn(){
     startAutoSlide();
 });
 }
-// 자동 슬라이드
+// 자동 슬라이드 + 게이지 직접 제어
 const autoSlideDelay = 7500;
 let autoSlideTimer = null;
 
@@ -416,7 +416,7 @@ function initReviewSlider() {
     const reviewBox = document.querySelector(".review_box");
     const cards = document.querySelectorAll(".review_card");
     const total = cards.length;
-    let visibleCount = 1;
+    let visibleCount = 2;
     const dotCount = total - visibleCount + 1;
     let current = 0;
     let startX = 0;
@@ -424,6 +424,9 @@ function initReviewSlider() {
     let dragOffset = 0;
     let cardWidth = 0;
 
+    if(window.innerWidth <= 1024){
+        visibleCount = 1
+    }
     // ===== 드래그 시 이미지/텍스트 선택 방지 (추가) =====
     AddStyle(`
         .review_box {
@@ -465,22 +468,22 @@ function initReviewSlider() {
         });
     }
 
-    // 드래그 이벤트
+    // ===== 드래그 이벤트 (mousedown만 reviewBox, move/up은 document로 이동) =====
     reviewBox.addEventListener("mousedown", (e) => {
-        e.preventDefault(); // ← 추가: 텍스트/이미지 드래그 선택 방지
+        e.preventDefault(); // ← 텍스트/이미지 드래그 선택 방지
         startX = e.clientX;
         isDragging = true;
         reviewBox.style.transition = "none";
     });
 
-    reviewBox.addEventListener("mousemove", (e) => {
+    document.addEventListener("mousemove", (e) => {
         if(!isDragging) return;
-        e.preventDefault(); // ← 추가
+        e.preventDefault();
         dragOffset = e.clientX - startX;
         reviewBox.style.transform = `translateX(${-current * cardWidth + dragOffset}px)`;
     });
 
-    reviewBox.addEventListener("mouseup", (e) => {
+    document.addEventListener("mouseup", (e) => {
         if(!isDragging) return;
         isDragging = false;
         const diff = startX - e.clientX;
@@ -488,25 +491,26 @@ function initReviewSlider() {
         else if(diff < -180 && current > 0) goReview(current - 1);
         else goReview(current);
     });
+    // mouseleave는 이제 필요 없음 (document가 mouseup을 항상 잡아줌)
+    // ================================================================
 
-    reviewBox.addEventListener("mouseleave", () => {
-        if(!isDragging) return;
-        isDragging = false;
-        goReview(current);
-    });
-
-    // 터치 이벤트 (모바일) - 그대로 유지
+    // 터치 이벤트 (모바일)
     reviewBox.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
+        isDragging = true; // ← 추가: 상태 명확히
         reviewBox.style.transition = "none";
-    });
+    }, { passive: false });
 
     reviewBox.addEventListener("touchmove", (e) => {
+        if(!isDragging) return;
+        e.preventDefault(); // ← 추가: 페이지 스크롤과 충돌 방지
         dragOffset = e.touches[0].clientX - startX;
         reviewBox.style.transform = `translateX(${-current * cardWidth + dragOffset}px)`;
-    });
+    }, { passive: false });
 
     reviewBox.addEventListener("touchend", (e) => {
+        if(!isDragging) return;
+        isDragging = false;
         const diff = startX - e.changedTouches[0].clientX;
         if(diff > 180 && current < dotCount - 1) goReview(current + 1);
         else if(diff < -180 && current > 0) goReview(current - 1);
