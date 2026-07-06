@@ -276,7 +276,7 @@ function Createbtn(){
     startAutoSlide();
 });
 }
-// 자동 슬라이드 + 게이지 직접 제어
+// 자동 슬라이드
 const autoSlideDelay = 7500;
 let autoSlideTimer = null;
 
@@ -416,7 +416,7 @@ function initReviewSlider() {
     const reviewBox = document.querySelector(".review_box");
     const cards = document.querySelectorAll(".review_card");
     const total = cards.length;
-    let visibleCount = 2;
+    let visibleCount = 1;
     const dotCount = total - visibleCount + 1;
     let current = 0;
     let startX = 0;
