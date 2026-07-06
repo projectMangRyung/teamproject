@@ -424,6 +424,9 @@ function initReviewSlider() {
     let dragOffset = 0;
     let cardWidth = 0;
 
+    if(window.innerWidth <= 1024){
+        visibleCount = 1
+    }
     // ===== 드래그 시 이미지/텍스트 선택 방지 (추가) =====
     AddStyle(`
         .review_box {

@@ -772,8 +772,12 @@ body {
     }
 
     .review_box {
+        width: 400%;
         height: 50%;
         gap: 0.2rem;
+    }
+    .review_card{
+        width: 100%;
     }
     .btn{
         width: 2rem;

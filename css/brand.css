@@ -427,6 +427,15 @@
 /* ==================== 모바일 반응형 대응 ==================== */
 /* (2026.07.03 최정은) */
 @media (max-width: 1024px) {
+    .banner-text h2{
+        font-size: 2rem;
+    }
+    .banner-text p{
+        font-size: 1.2rem;
+    }
+    .story-text h3{
+        font-size: 2rem;
+    }
     .summary-grid{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
