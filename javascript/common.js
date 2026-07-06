@@ -294,16 +294,28 @@ async function getRandomDogImage() {
         spinner.innerHTML = "새로운 댕댕이 매칭 중...🐾";
     }
     try {
-        const response = await fetch('https://dog.ceo/api/breeds/image/random');
-        const data = await response.json();
+        // random.dog은 가끔 mp4/webm 파일도 섞여 나오므로
+        // 이미지 확장자가 나올 때까지 최대 5번 재시도
+        let imageUrl = null;
+        for (let i = 0; i < 5; i++) {
+            const response = await fetch('https://random.dog/woof.json');
+            const data = await response.json();
+            if (/\.(jpg|jpeg|png|gif)$/i.test(data.url)) {
+                imageUrl = data.url;
+                break;
+            }
+        }
+        if (!imageUrl) throw new Error("이미지 형식을 찾지 못함");
+
         if(imgEl) {
-            imgEl.src = data.message;
+            imgEl.src = imageUrl;
             imgEl.onload = () => {
                 if(spinner) spinner.style.display = "none";
                 imgEl.style.display = "block";
             };
         }
     } catch (error) {
+        console.error("강아지 이미지 로드 실패:", error);
         if(spinner) spinner.innerHTML = "❌ 댕댕이가 도망쳤어요!";
     }
 }
