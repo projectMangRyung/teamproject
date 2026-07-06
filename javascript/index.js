@@ -465,22 +465,22 @@ function initReviewSlider() {
         });
     }
 
-    // 드래그 이벤트
+    // ===== 드래그 이벤트 (mousedown만 reviewBox, move/up은 document로 이동) =====
     reviewBox.addEventListener("mousedown", (e) => {
-        e.preventDefault(); // ← 추가: 텍스트/이미지 드래그 선택 방지
+        e.preventDefault(); // ← 텍스트/이미지 드래그 선택 방지
         startX = e.clientX;
         isDragging = true;
         reviewBox.style.transition = "none";
     });
 
-    reviewBox.addEventListener("mousemove", (e) => {
+    document.addEventListener("mousemove", (e) => {
         if(!isDragging) return;
-        e.preventDefault(); // ← 추가
+        e.preventDefault();
         dragOffset = e.clientX - startX;
         reviewBox.style.transform = `translateX(${-current * cardWidth + dragOffset}px)`;
     });
 
-    reviewBox.addEventListener("mouseup", (e) => {
+    document.addEventListener("mouseup", (e) => {
         if(!isDragging) return;
         isDragging = false;
         const diff = startX - e.clientX;
@@ -488,25 +488,26 @@ function initReviewSlider() {
         else if(diff < -180 && current > 0) goReview(current - 1);
         else goReview(current);
     });
+    // mouseleave는 이제 필요 없음 (document가 mouseup을 항상 잡아줌)
+    // ================================================================
 
-    reviewBox.addEventListener("mouseleave", () => {
-        if(!isDragging) return;
-        isDragging = false;
-        goReview(current);
-    });
-
-    // 터치 이벤트 (모바일) - 그대로 유지
+    // 터치 이벤트 (모바일)
     reviewBox.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
+        isDragging = true; // ← 추가: 상태 명확히
         reviewBox.style.transition = "none";
-    });
+    }, { passive: false });
 
     reviewBox.addEventListener("touchmove", (e) => {
+        if(!isDragging) return;
+        e.preventDefault(); // ← 추가: 페이지 스크롤과 충돌 방지
         dragOffset = e.touches[0].clientX - startX;
         reviewBox.style.transform = `translateX(${-current * cardWidth + dragOffset}px)`;
-    });
+    }, { passive: false });
 
     reviewBox.addEventListener("touchend", (e) => {
+        if(!isDragging) return;
+        isDragging = false;
         const diff = startX - e.changedTouches[0].clientX;
         if(diff > 180 && current < dotCount - 1) goReview(current + 1);
         else if(diff < -180 && current > 0) goReview(current - 1);
