@@ -246,13 +246,13 @@ footer ul:not(:first-child) li:not(:first-child):hover {
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: translateY(0.55rem) rotate(45deg);
+    transform: translateY(0.5rem) rotate(45deg);
 }
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-    transform: translateY(-0.55rem) rotate(-45deg);
+    transform: translateY(-0.5rem) rotate(-45deg);
 }
 
 @media (max-width: 1024px) {
