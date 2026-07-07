@@ -54,6 +54,16 @@ let lastMouseX = mouseX;
 let lastMouseY = mouseY;
 const trailHistory = Array.from({ length: trailCount }, () => ({ x: mouseX, y: mouseY }));
 
+// 화면 너비에 따라 커서를 활성화할지 체크하는 함수 (1024px 이하에선 false)
+function checkCursorEnable() {
+    if (window.innerWidth <= 1024) {
+        cursorEnabled = false;
+        hideCustomCursor(); // 화면이 줄어들면 즉시 커스텀 커서 숨김
+    } else {
+        cursorEnabled = true;
+    }
+}
+
 function hideCustomCursor() {
     isCursorVisible = false;
     isHeaderCursorActive = false;
@@ -149,18 +159,17 @@ window.addEventListener("mouseup", () => {
     cursorTargetScale = 1;
 });
 
+// 화면 크기가 변할 때(resize) 실시간으로 체크
+window.addEventListener("resize", checkCursorEnable);
+// 초기 로드 시 한 번 실행
+checkCursorEnable();
+
 const pawCursorStyle = `
     body { cursor: default; }
-    @media (max-width: 1025px) {
+    @media (min-width: 1025px) {
         header, .headerInner, .logo > a, .gnb > li > a,
         .login > li > a, .snb > li > a, .login > li > a > img {
-            cursor: none;
-        }
-        .paw_cursor{
-            background-image: none;
-        }
-        .paw_cursor_trail{
-            background-image: none;
+            cursor: pointer;
         }
     }
     .paw_cursor {
@@ -191,6 +200,19 @@ const pawCursorStyle = `
         opacity: 0;
         filter: blur(0.8px);
         mix-blend-mode: multiply;
+    }
+    /* 1024px 이하 모바일/태블릿 환경에서는 발바닥 요소를 아예 안 보이게 처리 */
+    @media (max-width: 1024px) {
+
+        .paw_cursor, .paw_cursor_trail {
+            display: none !important;
+        }
+        header, header *, .headerInner, .logo, .gnb, .login, .snb {
+            cursor: default !important;
+        }
+        header a, header button, .gnb a, .login a, .snb a, #hamburgerBtn {
+            cursor: pointer !important;
+        }
     }
 `
 AddStyle(pawCursorStyle);
