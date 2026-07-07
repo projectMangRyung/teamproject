@@ -151,9 +151,17 @@ window.addEventListener("mouseup", () => {
 
 const pawCursorStyle = `
     body { cursor: default; }
-    header, .headerInner, .logo > a, .gnb > li > a,
-    .login > li > a, .snb > li > a, .login > li > a > img {
-        cursor: none;
+    @media (max-width: 1025px) {
+        header, .headerInner, .logo > a, .gnb > li > a,
+        .login > li > a, .snb > li > a, .login > li > a > img {
+            cursor: none;
+        }
+        .paw_cursor{
+            background-image: none;
+        }
+        .paw_cursor_trail{
+            background-image: none;
+        }
     }
     .paw_cursor {
         background-image: url('./img/pawprint.png');
