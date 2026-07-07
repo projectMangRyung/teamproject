@@ -324,10 +324,10 @@ async function getRandomDogImage() {
         spinner.innerHTML = "새로운 댕댕이 매칭 중...🐾";
     }
     try {
-        const response = await fetch('https://dog.ceo/api/breeds/image/random');
+        const response = await fetch('https://random.dog/woof.json');
         const data = await response.json();
         if(imgEl) {
-            imgEl.src = data.message;
+            imgEl.src = data.url;
             imgEl.onload = () => {
                 if(spinner) spinner.style.display = "none";
                 imgEl.style.display = "block";
